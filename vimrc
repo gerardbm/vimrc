@@ -343,7 +343,7 @@ nnoremap <Leader>ba :1,1000 bd!<CR>
 vnoremap <Leader>ba <Esc>:1,1000 bd!<CR>
 inoremap <Leader>ba <Esc>:1,1000 bd!<CR>
 
-" Move between buffers using Shift+[h/l]
+" Move between buffers
 nnoremap <C-H> :bprev<CR>
 vnoremap <C-H> <Esc>:bprev<CR>
 
@@ -567,7 +567,7 @@ vnoremap <Leader>4 g$
 vnoremap <Home> g^
 vnoremap <End> g$
 
-" Move lines using Shift+[k/j]
+" Move lines
 nnoremap <C-K> :m .-2<CR>==
 vnoremap <C-K> :m '<-2<CR>gv=gv
 inoremap <C-K> <Esc>:m .-2<CR>==gi
@@ -576,7 +576,6 @@ nnoremap <C-J> :m .+1<CR>==
 vnoremap <C-J> :m '>+1<CR>gv=gv
 inoremap <C-J> <Esc>:m .+1<CR>==gi
 
-" Move lines using Ctrl+[Up/Down]
 nnoremap <C-Down> :m .+1<CR>==
 vnoremap <C-Down> :m '>+1<CR>gv=gv
 inoremap <C-Down> <Esc>:m .+1<CR>==gi
@@ -585,7 +584,7 @@ nnoremap <C-Up> :m .-2<CR>==
 vnoremap <C-Up> :m '<-2<CR>gv=gv
 inoremap <C-Up> <Esc>:m .-2<CR>==gi
 
-" Duplicate a line using <Leader>
+" Duplicate a line
 nnoremap <Leader>ds yyP
 vnoremap <Leader>ds <Esc>yyPgv
 inoremap <Leader>ds <Esc>yyPi
@@ -594,7 +593,6 @@ nnoremap <Leader>df yyp
 vnoremap <Leader>df <Esc>yypgv
 inoremap <Leader>df <Esc>yypi
 
-" Duplicate a line using Ctrl+Shift+[Up/Down]
 nnoremap <C-S-Up> yyP
 vnoremap <C-S-Up> <Esc>yyPgv
 inoremap <C-S-Up> <Esc>yyPi
