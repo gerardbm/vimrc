@@ -6,10 +6,10 @@
 "  (_)___/_/_/ /_/ /_/_/   \___/
 "
 "----------------------------------------------------------------
-"  Version : 1.0.0
+"  Version : 1.1.2
 "  License : MIT
 "  Author  : Gerard Bajona
-"  URL     : https://github.com/gerardbm/dotfiles
+"  URL     : https://github.com/gerardbm/vimrc
 "----------------------------------------------------------------
 "  Index:
 "   1. General settings
@@ -37,9 +37,9 @@
 set nocompatible
 
 " Reload .vimrc
-nnoremap <F12> :so ~/.vimrc<CR>
-vnoremap <F12> <Esc>:so ~/.vimrc<CR>gv
-inoremap <F12> <C-O>:so ~/.vimrc<CR>
+nnoremap <F12> :so $MYVIMRC<CR>
+vnoremap <F12> <Esc>:so $MYVIMRC<CR>gv
+inoremap <F12> <C-O>:so $MYVIMRC<CR>
 
 " Lines of memory to remember
 set history=1000
@@ -50,6 +50,9 @@ let g:mapleader = ","
 
 " Time delay on <Leader> key
 set timeoutlen=2000 ttimeoutlen=100
+
+" Update time
+set updatetime=250
 
 " Faster Escape key
 vnoremap <Leader><Leader> <Esc>
@@ -87,10 +90,33 @@ call plug#begin('~/.vim/plugged')
 	Plug 'othree/html5.vim'
 	Plug 'JulesWang/css.vim'
 	Plug 'hail2u/vim-css3-syntax'
+	Plug 'itspriddle/vim-jquery'
 	Plug 'pangloss/vim-javascript'
-	Plug 'vim-scripts/bash-support.vim'
-	" Alternate Files quickly (.c --> .h)
-	" Plug 'vim-scripts/a.vim'
+	Plug 'vim-scripts/a.vim'
+	Plug 'mattn/webapi-vim'
+	Plug 'tyru/open-browser.vim'
+
+	" Autocomplete
+	Plug 'Shougo/neocomplete.vim'
+	Plug 'shawncplus/phpcomplete.vim'
+	Plug 'dsawardekar/wordpress.vim'
+	Plug 'Rip-Rip/clang_complete'
+	Plug 'davidhalter/jedi-vim'
+	Plug 'ervandew/supertab'
+
+	" Snippets
+	Plug 'Shougo/neosnippet'
+	Plug 'Shougo/neosnippet-snippets'
+	Plug 'Shougo/context_filetype.vim'
+
+	" Plug 'suan/vim-instant-markdown'
+	" Plug 'tmhedberg/matchit'
+	" Plug 'sukima/xmledit'
+
+	" Run code
+	Plug 'thinca/vim-quickrun'
+	Plug 'Shougo/vimproc.vim', {'do' : 'make'}
+	Plug 'Shougo/vimshell.vim'
 
 	" Edition
 	Plug 'junegunn/vim-easy-align'
@@ -98,6 +124,9 @@ call plug#begin('~/.vim/plugged')
 	Plug 'jiangmiao/auto-pairs'
 	Plug 'tpope/vim-surround'
 	Plug 'tpope/vim-repeat'
+
+	" Misc
+	Plug 'joeytwiddle/sexy_scroller.vim'
 
 call plug#end()
 
@@ -108,6 +137,7 @@ call plug#end()
 let g:airline_theme='atomic'
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#fnamemod = ':t'
 call airline#parts#define_accent('mode', 'black')
 
 " Gitgutter settings
@@ -117,6 +147,10 @@ let g:gitgutter_sign_modified = '»'
 let g:gitgutter_sign_removed = '_'
 let g:gitgutter_sign_modified_removed = '»╌'
 
+nmap <Leader>j :GitGutterNextHunk<CR>zz
+nmap <Leader>k :GitGutterPrevHunk<CR>zz
+nmap <Leader>h :GitGutterPreviewHunk<CR>zz
+
 " Vim-session settings
 let g:session_autosave = 'no'
 let g:session_autoload = 'no'
@@ -125,25 +159,26 @@ let g:session_autoload = 'no'
 let NERDSpaceDelims=1
 nnoremap <C-C> :call NERDComment(0,'toggle')<CR>
 vnoremap <C-C> :call NERDComment(0,"toggle")<CR>gv
-inoremap <C-C> <C-O>:call NERDComment(0,"toggle")<CR>
 
 " NERDTree settings
-nnoremap <silent> <NUL> :call ToggleTree()<CR>
-vnoremap <silent> <NUL> <Esc>:call ToggleTree()<CR>
-inoremap <silent> <NUL> <C-O>:call ToggleTree()<CR>
+nnoremap <silent> <C-N> :call ToggleTree()<CR>
 
 " Syntastic settings
 let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
+let g:syntastic_auto_loc_list = 0
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 let g:syntastic_aggregate_errors = 1
 let g:syntastic_enable_perl_checker = 1
 let g:syntastic_enable_signs=1
-let g:syntastic_error_symbol="xx"
-let g:syntastic_warning_symbol="ww"
+let g:syntastic_echo_current_error=1
 let g:syntastic_go_checkers = ['golint', 'govet']
 let g:syntastic_perl_checkers=['perl']
+let g:syntastic_javascript_checkers = ['jshint']
+let g:syntastic_error_symbol = "✗"
+let g:syntastic_warning_symbol = "⚠"
+let g:syntastic_style_error_symbol = "S✗"
+let g:syntastic_style_warning_symbol = "S⚠"
 
 " Listtoggle settings
 let g:lt_location_list_toggle_map = '<leader>l'
@@ -159,6 +194,16 @@ nnoremap <Leader>g :GundoToggle<CR>
 vnoremap <Leader>g <Esc>:GundoToggle<CR>
 inoremap <Leader>g <C-O>:GundoToggle<CR>
 
+" Go settings
+let g:go_highlight_functions = 1
+let g:go_highlight_methods = 1
+let g:go_highlight_fields = 1
+let g:go_highlight_types = 1
+let g:go_highlight_operators = 1
+let g:go_highlight_build_constraints = 1
+let g:go_bin_path = expand("~/.gotools")
+let g:go_list_type = "quickfix"
+
 " CSS3 settings
 augroup VimCSS3Syntax
 	autocmd!
@@ -170,30 +215,51 @@ let g:javascript_plugin_jsdoc = 1
 let g:javascript_plugin_ngdoc = 1
 let g:javascript_plugin_flow = 1
 
-" Go settings
-let g:go_highlight_functions = 1
-let g:go_highlight_methods = 1
-let g:go_highlight_fields = 1
-let g:go_highlight_types = 1
-let g:go_highlight_operators = 1
-let g:go_highlight_build_constraints = 1
-let g:go_bin_path = expand("~/.gotools")
-"let g:go_list_type = "quickfix"
+" Instant markdown settings
+let g:instant_markdown_autostart = 0
+
+" Neocomplete settings
+let g:neocomplete#enable_at_startup = 1
+
+" WordPress settings
+let g:wordpress_vim_wordpress_path = "/home/" . $USER . "/DEV/wpdev/"
+let g:wordpress_vim_jump_to_core_mappings = 0
+
+" SuperTab settings
+let g:SuperTabDefaultCompletionType = '<TAB>'
+
+" Neosnippet settings
+imap <C-B> <Plug>(neosnippet_expand_or_jump)
+smap <C-B> <Plug>(neosnippet_expand_or_jump)
+xmap <C-B> <Plug>(neosnippet_expand_target)
+
+" Behaviour like SuperTab
+smap <expr><TAB>
+	\ neosnippet#expandable_or_jumpable() ?
+	\ "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
+
+" For conceal markers
+if has('conceal')
+	set conceallevel=2 concealcursor=niv
+endif
+
+autocmd InsertLeave * NeoSnippetClearMarkers
+
+" QuickRun settings
+let g:quickrun_no_default_key_mappings = 0
 
 " Easy align settings
 xnoremap ga <Plug>(EasyAlign)
 nnoremap ga <Plug>(EasyAlign)
 
-" Tabular settings
-if exists(":Tabularize")
-	" Tabularize (e.g. /= or /:)
-	vnoremap <Leader>ta :Tabularize /
-	" Tabularize only the first match on the line (e.g. /=.*/)
-	vnoremap <Leader>te :Tabularize /.*/<Left><Left><Left>
-endif
+" Tabularize (e.g. /= or /:)
+vnoremap <Leader>ta :Tabularize /
+
+" Tabularize only the first match on the line (e.g. /=.*/)
+vnoremap <Leader>te :Tabularize /.*/<Left><Left><Left>
 
 " Auto-apirs settings
-let g:AutoPairsFlyMode = 1
+let g:AutoPairsFlyMode = 0
 
 " Surround settings
 autocmd FileType php,html let b:surround_45 = "<?php \r ?>"
@@ -202,7 +268,7 @@ autocmd FileType php,html let b:surround_45 = "<?php \r ?>"
 " 4. User interface
 "----------------------------------------------------------------
 " Set X lines to the cursor when moving vertically
-set scrolloff=5
+set scrolloff=0
 
 " Always show mode
 set showmode
@@ -237,16 +303,36 @@ set novisualbell
 set t_vb=
 
 " Get ctrl+arrows working in tmux
-if &term =~ '^screen'
-	" tmux will send xterm-style keys when its xterm-keys option is on
+if exists('$TMUX')
+	" Tmux knows the extended mouse mode
+	set ttymouse=xterm2
+	" Tmux will send xterm-style keys when xterm-keys is on
 	execute "set <xUp>=\e[1;*A"
 	execute "set <xDown>=\e[1;*B"
 	execute "set <xRight>=\e[1;*C"
 	execute "set <xLeft>=\e[1;*D"
+	execute "set <xHome>=\e[1;*H"
+	execute "set <xEnd>=\e[1;*F"
+	execute "set <Insert>=\e[2;*~"
+	execute "set <Delete>=\e[3;*~"
+	execute "set <PageUp>=\e[5;*~"
+	execute "set <PageDown>=\e[6;*~"
+	execute "set <xF1>=\e[1;*P"
+	execute "set <xF2>=\e[1;*Q"
+	execute "set <xF3>=\e[1;*R"
+	execute "set <xF4>=\e[1;*S"
+	execute "set <F5>=\e[15;*~"
+	execute "set <F6>=\e[17;*~"
+	execute "set <F7>=\e[18;*~"
+	execute "set <F8>=\e[19;*~"
+	execute "set <F9>=\e[20;*~"
+	execute "set <F10>=\e[21;*~"
+	execute "set <F11>=\e[23;*~"
+	execute "set <F12>=\e[24;*~"
 endif
 
 " Mouse
-set mouse=a
+set mousehide
 
 " Hilight cursor line and cursor column
 set cursorline
@@ -259,7 +345,7 @@ set laststatus=2
 " 5. Scheme and colors
 "----------------------------------------------------------------
 " Enable 256 colors
-if &term == "xterm" || &term == "xterm-256color"
+if &term =~ '256color' || has('gui_running')
 	set t_Co=256
 endif
 
@@ -270,7 +356,18 @@ syntax enable
 set background=dark
 
 " Colorscheme colors
-colorscheme wombat256
+colorscheme atomic
+
+" Reload the current colorscheme
+nnoremap <Leader><F11> :call GetColorschemeName()<CR>
+
+" Save the current buffer and reload the current colorscheme
+nnoremap <Leader><F5> :update<CR>:call GetColorschemeName()<CR>
+vnoremap <Leader><F5> <Esc>:update<CR>gv:call GetColorschemeName()<CR>
+inoremap <Leader><F5> <C-O>:update<CR><C-O>:call GetColorschemeName()<CR>
+
+" Show syntax highlighting groups
+nnoremap <C-Z> :call <SID>SynStack()<CR>
 
 "----------------------------------------------------------------
 " 6. Files and backup
@@ -312,7 +409,7 @@ silent !stty -ixon
 " Restore default behaviour when leaving Vim.
 autocmd VimLeave * silent !stty ixon
 
-" Use CTRL-S and <Leader>s for saving
+" Save the current buffer
 nnoremap <Leader>s :update<CR>
 vnoremap <Leader>s <Esc>:update<CR>gv
 inoremap <Leader>s <C-O>:update<CR>
@@ -326,6 +423,17 @@ inoremap <Leader>S <C-O>:bufdo update<CR>
 nnoremap <F2> :call RenameFile()<CR>
 vnoremap <F2> <Esc>:call RenameFile()<CR>
 inoremap <F2> <C-O>:call RenameFile()<CR>
+
+" Delete file
+nnoremap <Leader><Del>y :call DeleteFile()<CR>
+vnoremap <Leader><Del>y <Esc>:call DeleteFile()<CR>
+inoremap <Leader><Del>y <Esc>:call DeleteFile()<CR>
+
+" Rename title of tmux tab with current filename
+if exists('$TMUX')
+	autocmd BufEnter * call system("tmux rename-window '" . expand("%:t") . "'")
+	autocmd VimLeave * call system("tmux setw automatic-rename")
+endif
 
 "----------------------------------------------------------------
 " 7. Buffers management
@@ -362,6 +470,9 @@ inoremap <Leader>bg <Esc>:buffers<CR>:buffer<Space>
 " Switch CWD to the directory of the open buffer
 nnoremap <Leader>cd :cd %:p:h<CR>:pwd<CR>
 
+" Ignore case when autocompletes when browsing files
+set fileignorecase
+
 " Specify the behavior when switching between buffers
 try
 	set switchbuf=useopen,usetab,newtab
@@ -370,7 +481,7 @@ catch
 endtry
 
 " Remember info about open buffers on close
-set viminfo^=%
+" set viminfo^=%
 
 "----------------------------------------------------------------
 " 8. Tabs management
@@ -411,26 +522,24 @@ set splitbelow
 set splitright
 
 " Split windows
-map <C-W>, :split<CR>
+map <C-W>- :split<CR>
 map <C-W>. :vsplit<CR>
 map <C-W><CR> :close<CR>
 map <C-W>x :q!<CR>
+map <C-W>, <C-W>=
 
 " Resizing windows
 if bufwinnr(1)
-	map + <C-W>+
-	map - <C-W>-
-	map < <C-W><
-	map > <C-W>>
+	map + :resize +1<CR>
+	map - :resize -1<CR>
+	map < :vertical resize +1<CR>
+	map > :vertical resize -1<CR>
 endif
 
 " Toggle resize window
 nnoremap <silent> <F10> :ToggleResize<CR>
 vnoremap <silent> <F10> <Esc>:ToggleResize<CR>gv
 inoremap <silent> <F10> <C-O>:ToggleResize<CR>
-
-"Resize all windows proportionally when the terminal is resized
-autocmd VimResized * :wincmd =
 
 " Last window
 nnoremap <silent> <C-W>l :wincmd p<CR>:echo "Last window."<CR>
@@ -475,11 +584,11 @@ set tabstop=4
 vnoremap > >gv
 vnoremap < <gv
 
-nnoremap <Tab> >>
-vnoremap <Tab> >gv
+nnoremap <TAB> >>
+vnoremap <TAB> >gv
 
-nnoremap <S-Tab> <<
-vnoremap <S-Tab> <gv
+nnoremap <S-TAB> <<
+vnoremap <S-TAB> <gv
 
 " Don't show tabs
 set list
@@ -493,12 +602,13 @@ inoremap <F6> <C-O>:set list!<CR><C-O>:echo f6msg<CR>
 set listchars=tab:│\ ,trail:·
 
 " Delete trailing white space on save
-func! DeleteTrailingWS()
+func! DeleteTrailing()
 	exe "normal mz"
 	%s/\s\+$//ge
 	exe "normal `z"
 endfunc
-autocmd BufWrite *.* :call DeleteTrailingWS() " All files
+
+autocmd BufWrite * :call DeleteTrailing() " All files
 
 "----------------------------------------------------------------
 " 11. Moving around lines
@@ -515,7 +625,7 @@ set wrap
 " Don't break the words
 " Only works if I set nolist (F6)
 set linebreak
-set showbreak=»
+set showbreak=│——»
 
 " Stop automatic wrapping
 set textwidth=0
@@ -601,6 +711,9 @@ nnoremap <C-S-Down> yyp
 vnoremap <C-S-Down> <Esc>yypgv
 inoremap <C-S-Down> <Esc>yypi
 
+" Jump to the end of the current line in the Insert Mode
+inoremap <C-E> <C-O>$
+
 " Sort a selection of lines
 vnoremap <Leader>z <ESC>{!}sort<CR>}
 
@@ -682,17 +795,16 @@ set mmp=1000
 " Map <Space> to / (search)
 nnoremap <Space> /
 
-" Search word under the cursor
-nnoremap <CR> *
+" Search word under the cursor and don't jump to next
+nnoremap <silent> <Leader><CR> :let @/='\<<C-R>=expand("<cword>")<CR>\>'<CR>:set hls<CR>
 
-" Search the selected text (visual mode)
-vnoremap <CR> :<C-U>call <SID>VSetSearch()<CR>//<CR>
-vnoremap # :<C-U>call <SID>VSetSearch()<CR>??<CR>
+" Search the selected text and don't jump to next
+vnoremap <silent> <Leader><CR> :<C-U>call <SID>VSetSearch()<CR>:set hls<CR>
 
 " Disable highlight
-nnoremap <Leader><CR> :noh<CR>
-vnoremap <Leader><CR> <Esc>:noh<CR>gv
-inoremap <Leader><CR> <C-O>:noh<CR>
+nnoremap <Leader><BS> :noh<CR>
+vnoremap <Leader><BS> <Esc>:noh<CR>gv
+inoremap <Leader><BS> <C-O>:noh<CR>
 
 " --- Vimgrep ---
 "----------------------------------------------------------------
@@ -709,10 +821,6 @@ nnoremap <Leader>v :vimgrep /<C-R>// **/*.*
 nnoremap <Leader>n :cnext<CR>
 nnoremap <Leader>p :cprev<CR>
 
-" Quickfix/location list windows use <CR> to jump to errors
-autocmd CmdwinEnter * nnoremap <CR> <CR>
-autocmd BufReadPost quickfix nnoremap <CR> <CR>
-
 " --- Replace ---
 "----------------------------------------------------------------
 " Replace the word under the cursor
@@ -728,16 +836,13 @@ vnoremap <Leader>r :s/\%V<C-R>/\%V//g<Left><Left>
 " Replace the hilight to all project
 nnoremap <Leader>as :args *.
 nnoremap <Leader>aa :args **/*.
-nnoremap <Leader>ar :argdo %s/<C-R>///cge\|up<Left><Left><Left><Left><Left><Left><Left>
+nnoremap <Leader>ad :argdo %s/<C-R>///cge\|up<Left><Left><Left><Left><Left><Left><Left>
 
 "----------------------------------------------------------------
 " 14. Text related
 "----------------------------------------------------------------
 " Toggle case
 vnoremap <Leader>x y:call setreg('', ToggleCase(@"), getregtype(''))<CR>gv""Pgv
-
-" Backspace removes the last character
-nnoremap <BS> X
 
 " Increase and decrease numbers
 nnoremap <C-S> <C-A>
@@ -764,15 +869,21 @@ nnoremap <Leader>wx zw
 " Suggest correctly spelled words
 nnoremap <Leader>w? z=
 
+" Copy all content into the clipboard
+nnoremap <Leader>y <Esc>ggVG"+y<Esc><C-O><C-O>
+
 " Copy text into the clipboard
 vnoremap <Leader>y "+y<Esc>
 
-" Copy all content into the clipboard
-nnoremap <Leader>y <Esc>ggVG"+y<Esc><C-O><C-O>
+" Retab the selected text
+vnoremap <Leader>tf :retab!<CR>
 
 "----------------------------------------------------------------
 " 15. Running code
 "----------------------------------------------------------------
+" If QuickRun is installed, first it will use the plugin.
+" If not, use 'makeprg'.
+
 " Set makeprg
 autocmd FileType sh setlocal makeprg=clear\ &&\ bash\ %
 autocmd FileType perl setlocal makeprg=clear\ &&\ perl\ %
@@ -790,8 +901,7 @@ endif
 " Go to the error line
 set errorformat=%m\ in\ %f\ on\ line\ %l
 
-" Run code
-nnoremap <silent> <Leader><Tab> :update<CR>:make<CR>
+nnoremap <silent> <Leader><TAB> :call RunCode()<CR>
 
 "----------------------------------------------------------------
 " 16. Helper functions
@@ -911,4 +1021,39 @@ function! RenameFile()
 		exec ':silent !rm ' . old_name
 		redraw!
 	endif
+endfunction
+
+" Delete file
+function! DeleteFile()
+	if (&filetype == 'help')
+		echo "It's a help buffer. Don't delete it."
+	else
+		call delete(expand('%')) | bdelete!
+	endif
+endfunction
+
+" Show syntax highlighting groups
+function! <SID>SynStack()
+	if !exists("*synstack")
+		return
+	endif
+	echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')
+endfunc
+
+" Reload the current colorscheme
+function! GetColorschemeName()
+	try
+		exec ':colorscheme ' . g:colors_name
+	catch /^Vim:E121/
+		exec ':colorscheme default'
+	endtry
+endfunction
+
+" Running code
+function! RunCode() abort
+	try
+		QuickRun
+	catch
+		update | make
+	endtry
 endfunction

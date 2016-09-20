@@ -18,7 +18,7 @@ set guioptions+=a
 " somehow, it develops ugly white borders around
 " the bottom frame, I have no clue where they come from.
 if !has("gui_win32")
-	:set guioptions-=m
+	set guioptions-=m
 endif
 
 " Typography
