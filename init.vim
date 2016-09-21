@@ -1,9 +1,9 @@
 "----------------------------------------------------------------
-"            _
-"     _   __(_)___ ___  __________
-"    | | / / / __ `__ \/ ___/ ___/
-"   _| |/ / / / / / / / /  / /__
-"  (_)___/_/_/ /_/ /_/_/   \___/
+"      _   ____________ _    ________  ___
+"     / | / / ____/ __ \ |  / /  _/  |/  /
+"    /  |/ / __/ / / / / | / // // /|_/ /
+"   / /|  / /___/ /_/ /| |/ // // /  / /
+"  /_/ |_/_____/\____/ |___/___/_/  /_/
 "
 "----------------------------------------------------------------
 "  Version : 1.1.2
@@ -33,16 +33,13 @@
 "----------------------------------------------------------------
 " 1. General settings
 "----------------------------------------------------------------
-" Disable vi compatibility
-set nocompatible
-
 " Reload .vimrc
 nnoremap <F12> :so $MYVIMRC<CR>
 vnoremap <F12> <Esc>:so $MYVIMRC<CR>gv
 inoremap <F12> <C-O>:so $MYVIMRC<CR>
 
 " Lines of memory to remember
-set history=1000
+set history=10000 " (default)
 
 " Leader key to add extra key combinations
 let mapleader = ","
@@ -62,7 +59,7 @@ inoremap <Leader><Leader> <Esc>
 " 2. Plugins (Plug)
 "----------------------------------------------------------------
 " List of plugins installed
-call plug#begin('~/.vim/plugged')
+call plug#begin('~/.config/nvim/plugged')
 
 	" Airline statusbar
 	Plug 'vim-airline/vim-airline'
@@ -79,7 +76,6 @@ call plug#begin('~/.vim/plugged')
 	" Tools
 	Plug 'scrooloose/nerdcommenter'
 	Plug 'scrooloose/nerdtree'
-	Plug 'scrooloose/syntastic'
 	Plug 'valloric/listtoggle'
 	Plug 'majutsushi/tagbar'
 	Plug 'ctrlpvim/ctrlp.vim'
@@ -93,11 +89,12 @@ call plug#begin('~/.vim/plugged')
 	Plug 'itspriddle/vim-jquery'
 	Plug 'pangloss/vim-javascript'
 	Plug 'vim-scripts/a.vim'
+
 	Plug 'mattn/webapi-vim'
 	Plug 'tyru/open-browser.vim'
 
 	" Autocomplete
-	Plug 'Shougo/neocomplete.vim'
+	Plug 'Shougo/deoplete.nvim'
 	Plug 'shawncplus/phpcomplete.vim'
 	Plug 'justmao945/vim-clang'
 	Plug 'davidhalter/jedi-vim'
@@ -108,12 +105,12 @@ call plug#begin('~/.vim/plugged')
 	Plug 'Shougo/neosnippet-snippets'
 	Plug 'Shougo/context_filetype.vim'
 
-	Plug 'suan/vim-instant-markdown'
+	" Plug 'suan/vim-instant-markdown'
 	" Plug 'tmhedberg/matchit'
 	" Plug 'sukima/xmledit'
 
 	" Run code
-	Plug 'thinca/vim-quickrun'
+	Plug 'neomake/neomake'
 	Plug 'Shougo/vimproc.vim', {'do' : 'make'}
 	Plug 'Shougo/vimshell.vim'
 
@@ -128,6 +125,7 @@ call plug#begin('~/.vim/plugged')
 	Plug 'joeytwiddle/sexy_scroller.vim'
 
 call plug#end()
+
 
 "----------------------------------------------------------------
 " 3. Plugins settings
@@ -162,22 +160,8 @@ vnoremap <C-C> :call NERDComment(0,"toggle")<CR>gv
 " NERDTree settings
 nnoremap <silent> <C-N> :call ToggleTree()<CR>
 
-" Syntastic settings
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 0
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
-let g:syntastic_aggregate_errors = 1
-let g:syntastic_enable_perl_checker = 1
-let g:syntastic_enable_signs=1
-let g:syntastic_echo_current_error=1
-let g:syntastic_go_checkers = ['golint', 'govet']
-let g:syntastic_perl_checkers=['perl']
-let g:syntastic_javascript_checkers = ['jshint']
-let g:syntastic_error_symbol = "✗"
-let g:syntastic_warning_symbol = "⚠"
-let g:syntastic_style_error_symbol = "S✗"
-let g:syntastic_style_warning_symbol = "S⚠"
+" Neomake settings
+autocmd! BufWritePost * Neomake
 
 " Listtoggle settings
 let g:lt_location_list_toggle_map = '<leader>l'
@@ -217,8 +201,8 @@ let g:javascript_plugin_flow = 1
 " Instant markdown settings
 let g:instant_markdown_autostart = 0
 
-" Neocomplete settings
-let g:neocomplete#enable_at_startup = 1
+" Deoplete settings
+let g:deoplete#enable_at_startup = 1
 
 " SuperTab settings
 let g:SuperTabDefaultCompletionType = '<TAB>'
@@ -239,9 +223,6 @@ if has('conceal')
 endif
 
 autocmd InsertLeave * NeoSnippetClearMarkers
-
-" QuickRun settings
-let g:quickrun_no_default_key_mappings = 0
 
 " Easy align settings
 xnoremap ga <Plug>(EasyAlign)
@@ -295,12 +276,9 @@ set mat=2
 " No annoying sound on errors
 set noerrorbells
 set novisualbell
-set t_vb=
 
 " Get ctrl+arrows working in tmux
 if exists('$TMUX')
-	" Tmux knows the extended mouse mode
-	set ttymouse=xterm2
 	" Tmux will send xterm-style keys when xterm-keys is on
 	execute "set <xUp>=\e[1;*A"
 	execute "set <xDown>=\e[1;*B"
@@ -339,11 +317,6 @@ set laststatus=2
 "----------------------------------------------------------------
 " 5. Scheme and colors
 "----------------------------------------------------------------
-" Enable 256 colors
-if &term =~ '256color' || has('gui_running')
-	set t_Co=256
-endif
-
 " Enable syntax highlighting
 syntax enable
 
@@ -376,9 +349,6 @@ set nobackup
 " Prevents automatic write backup
 set nowritebackup
 
-" Use UTF-8 as default encoding
-set encoding=utf8
-
 " Use Unix as the standard file type
 set ffs=unix,dos,mac
 
@@ -397,9 +367,6 @@ filetype off
 " Enable filetype plugins
 filetype plugin on
 filetype indent on
-
-" Allow us to use Ctrl-s and Ctrl-q as keybinds
-silent !stty -ixon
 
 " Restore default behaviour when leaving Vim.
 autocmd VimLeave * silent !stty ixon
@@ -876,7 +843,7 @@ vnoremap <Leader>tf :retab!<CR>
 "----------------------------------------------------------------
 " 15. Running code
 "----------------------------------------------------------------
-" If QuickRun is installed, first it will use the plugin.
+" If Neomake is installed, first it will use the plugin.
 " If not, use 'makeprg'.
 
 " Set makeprg
@@ -896,7 +863,8 @@ endif
 " Go to the error line
 set errorformat=%m\ in\ %f\ on\ line\ %l
 
-nnoremap <silent> <Leader><TAB> :call RunCode()<CR>
+" nnoremap <silent> <Leader><TAB> :call RunCode()<CR>
+nnoremap <silent> <Leader><TAB> :make<CR>
 
 "----------------------------------------------------------------
 " 16. Helper functions

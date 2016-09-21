@@ -1,6 +1,7 @@
 # Public vimrc
-Gerard's Vim configuration.
+Gerard's Vim & Neovim configuration.
 
+### Changelog
 = 1.1.2 =
 * Fixed `xterm-keys` for tmux.
 * Improved conditional to enable 256 colors, matching to a `$TERM` pattern.
@@ -30,7 +31,7 @@ Gerard's Vim configuration.
 * Added ignore case when autocompletes when browsing files.
 * Added maps for 'gitgutter' hunks: next, prev and preview.
 * Added a map to delete the current file: `<Leader><Del>y`.
-* Added a plugin for markdown preview. It requieres nodejs.
+* Added a plugin for markdown preview. It requires nodejs.
 * Added a map to reload the current colorscheme: `<Leader><F5>`.
 * Removed conditional statement on 'tabularize' settings.
 * Rename the title of tmux tabs with the current filename.
