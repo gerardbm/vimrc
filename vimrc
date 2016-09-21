@@ -6,7 +6,7 @@
 "  (_)___/_/_/ /_/ /_/_/   \___/
 "
 "----------------------------------------------------------------
-"  Version : 1.1.2
+"  Version : 1.3.0
 "  License : MIT
 "  Author  : Gerard Bajona
 "  URL     : https://github.com/gerardbm/vimrc
@@ -93,8 +93,6 @@ call plug#begin('~/.vim/plugged')
 	Plug 'itspriddle/vim-jquery'
 	Plug 'pangloss/vim-javascript'
 	Plug 'vim-scripts/a.vim'
-	Plug 'mattn/webapi-vim'
-	Plug 'tyru/open-browser.vim'
 
 	" Autocomplete
 	Plug 'Shougo/neocomplete.vim'
@@ -108,10 +106,6 @@ call plug#begin('~/.vim/plugged')
 	Plug 'Shougo/neosnippet-snippets'
 	Plug 'Shougo/context_filetype.vim'
 
-	Plug 'suan/vim-instant-markdown'
-	" Plug 'tmhedberg/matchit'
-	" Plug 'sukima/xmledit'
-
 	" Run code
 	Plug 'thinca/vim-quickrun'
 	Plug 'Shougo/vimproc.vim', {'do' : 'make'}
@@ -123,9 +117,15 @@ call plug#begin('~/.vim/plugged')
 	Plug 'jiangmiao/auto-pairs'
 	Plug 'tpope/vim-surround'
 	Plug 'tpope/vim-repeat'
+	Plug 'tpope/vim-capslock'
 
 	" Misc
 	Plug 'joeytwiddle/sexy_scroller.vim'
+	Plug 'suan/vim-instant-markdown'
+	Plug 'Valloric/MatchTagAlways'
+	Plug 'tyru/open-browser.vim'
+	Plug 'mattn/webapi-vim'
+	Plug 'mattn/emmet-vim'
 
 call plug#end()
 
@@ -146,9 +146,9 @@ let g:gitgutter_sign_modified = '»'
 let g:gitgutter_sign_removed = '_'
 let g:gitgutter_sign_modified_removed = '»╌'
 
-nmap <Leader>j :GitGutterNextHunk<CR>zz
-nmap <Leader>k :GitGutterPrevHunk<CR>zz
-nmap <Leader>h :GitGutterPreviewHunk<CR>zz
+nnoremap <Leader>j :GitGutterNextHunk<CR>zz
+nnoremap <Leader>k :GitGutterPrevHunk<CR>zz
+nnoremap <Leader>f :GitGutterPreviewHunk<CR>zz
 
 " Vim-session settings
 let g:session_autosave = 'no'
@@ -180,7 +180,7 @@ let g:syntastic_style_error_symbol = "S✗"
 let g:syntastic_style_warning_symbol = "S⚠"
 
 " Listtoggle settings
-let g:lt_location_list_toggle_map = '<leader>l'
+let g:lt_location_list_toggle_map = '<leader>e'
 let g:lt_quickfix_list_toggle_map = '<leader>q'
 
 " Tagbar toggle
@@ -213,9 +213,6 @@ augroup END
 let g:javascript_plugin_jsdoc = 1
 let g:javascript_plugin_ngdoc = 1
 let g:javascript_plugin_flow = 1
-
-" Instant markdown settings
-let g:instant_markdown_autostart = 0
 
 " Neocomplete settings
 let g:neocomplete#enable_at_startup = 1
@@ -258,6 +255,12 @@ let g:AutoPairsFlyMode = 0
 
 " Surround settings
 autocmd FileType php,html let b:surround_45 = "<?php \r ?>"
+
+" Instant markdown settings
+let g:instant_markdown_autostart = 0
+nnoremap <Leader>z :InstantMarkdownPreview<CR>
+vnoremap <Leader>z <Esc>:InstantMarkdownPreview<CR>gv
+inoremap <Leader>z <C-O>:InstantMarkdownPreview<CR>
 
 "----------------------------------------------------------------
 " 4. User interface
@@ -710,7 +713,7 @@ inoremap <C-S-Down> <Esc>yypi
 inoremap <C-E> <C-O>$
 
 " Sort a selection of lines
-vnoremap <Leader>z <ESC>{!}sort<CR>}
+vnoremap <Leader>az <ESC>{!}sort<CR>}
 
 " Folding
 set foldmethod=manual
@@ -813,14 +816,11 @@ vnoremap <Leader><Space> :vimgrep /<C-R>// %
 nnoremap <Leader>v :vimgrep /<C-R>// **/*.*
 
 " Navigate between vimgrep results
-nnoremap <Leader>n :cnext<CR>
-nnoremap <Leader>p :cprev<CR>
+nnoremap <Leader>l :cnext<CR>
+nnoremap <Leader>h :cprev<CR>
 
 " --- Replace ---
 "----------------------------------------------------------------
-" Replace the word under the cursor
-nnoremap <Leader>e :s/\<<C-R><C-W>\>//<Left>
-
 " Replace the highlight in the current file
 nnoremap <Leader>r :%s/<C-R>///g<Left><Left>
 
@@ -865,10 +865,13 @@ nnoremap <Leader>wx zw
 nnoremap <Leader>w? z=
 
 " Copy all content into the clipboard
-nnoremap <Leader>y <Esc>ggVG"+y<Esc><C-O><C-O>
+nnoremap <Leader>ya <Esc>ggVG"+y<Esc><C-O><C-O>
 
 " Copy text into the clipboard
 vnoremap <Leader>y "+y<Esc>
+
+" Paste text from the clipboard
+nnoremap <Leader>p "+p
 
 " Retab the selected text
 vnoremap <Leader>tf :retab!<CR>

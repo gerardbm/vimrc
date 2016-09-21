@@ -2,13 +2,31 @@
 Gerard's Vim & Neovim configuration.
 
 ### Changelog
+= 1.3.0 =
+* Installed the plugin 'vim-capslock': use `<C-L>` (Insert Mode) instead of Caps Lock key.
+* Removed the nnoremap `<Leader>e` (replace the word under the cursor). Use `ciw` instead.
+* The nnoremap `<Leader>h` (`:GitGutterPreviewHunk`) changed to `<Leader>f`.
+* The nnoremap `<Leader>l` (toggle the 'loclist') changed to `<Leader>e`.
+* The nnoremap `<Leader>p` (`:cprev`) changed to `<Leader>h`.
+* The nnoremap `<Leader>n` (`:cnext`) changed to `<Leader>l`.
+* Added the nnoremap `<Leader>p` to paste from the clipboard.
+* The nnoremap `<Leader>y` changed to `<Leader>ya` (**y**ank **a**ll).
+
+= 1.2.0 =
+* Installed the plugin 'vim-instant-markdown'
+* Added a map to preview markdown files using `<Leader>z`.
+* The vnoremap `<Leader>z` (sorting lines) changed to `<Leader>az`.
+* Installed the plugin 'open-browser'.
+* Installed the plugin 'MatchTagAlways'.
+* Installed the plugin 'Emmet'.
+
 = 1.1.2 =
 * Fixed `xterm-keys` for tmux.
 * Improved conditional to enable 256 colors, matching to a `$TERM` pattern.
 * Turn `viminfo^=%` to comment (don't remember the last open buffer on close).
 * Better maps for splitting and resizing windows, so it fits in my `.tmux.conf`.
 * Stop resizing all windows when the terminal is resized. Makes no sense.
-* Removed the map `<BS>` for deleting the last character in Normal Mode.
+* Removed the nnoremap `<BS>` (delete the last character).
 
 = 1.1.1 =
 * Fixed the map for reloading settings `.vimrc`. Now it uses `$MYVIMRC` var.
@@ -31,7 +49,6 @@ Gerard's Vim & Neovim configuration.
 * Added ignore case when autocompletes when browsing files.
 * Added maps for 'gitgutter' hunks: next, prev and preview.
 * Added a map to delete the current file: `<Leader><Del>y`.
-* Added a plugin for markdown preview. It requires nodejs.
 * Added a map to reload the current colorscheme: `<Leader><F5>`.
 * Removed conditional statement on 'tabularize' settings.
 * Rename the title of tmux tabs with the current filename.
@@ -42,7 +59,7 @@ Gerard's Vim & Neovim configuration.
 * Vim-airline's tabline show only the filename instead of path.
 * Installed plugins for autocomplete and snippets.
 * Added a new category for `:make` settings.
-* Installed the plugin QuickRun.
+* Installed the plugin 'QuickRun'.
 * Set `updatetime` to 250.
 
 = 1.0.0 =
