@@ -2,6 +2,73 @@
 Gerard's Vim & Neovim configuration.
 
 ### Changelog
+
+= 1.4.0 =
+* Added a new section: 'Filetype settings'.
+* More time delay for `timeoutlen` (3000).
+* New inoremap to insert a colon and return to Normal Mode.
+* Trigger `InsertLeave` autocmd when using `<C-C>` to escape.
+* Echo a warning when pressing `<C-C>` in Normal Mode.
+* Disabled Q mode.
+* New cnoreabbrev to open help in a vertical window.
+* Installed the plugin 'fzf'.
+* Installed the plugin 'tern_for_vim'.
+* Installed the plugin 'vim-closetag'.
+* Installed the plugin 'targets.vim'.
+* Installed the plugin 'vim-sort-motion'.
+* Installed the plugin 'vim-expand-region'.
+* Installed the plugin 'MatchTagAlways'.
+* Installed the plugin 'vim-argwrap'.
+* Installed the plugin 'vim-characterize'.
+* GitGutter will ignore space at EOL.
+* The map `<C-P>` (open CtrlP plugin) changed to `<Leader><Space>`.
+* Added the nmap `<C-P>` to toggle preview GitGutter hunks.
+* All maps `<C-C>` (toggle comment) changed to `<Leader>x`.
+* Added new maps `<Leader>h` to jump to the previous error.
+* Added new maps `<Leader>l` to jump to the next error.
+* Added new maps `<Leader>z` to open FZF plugin.
+* All maps `<C-T>` (toggle Tagbar) changed to `<F4>`.
+* All maps `<C-N>` (expand neosnippet) changed to `<C-S>`.
+* Added the nnoremap `<C-Z>` to open `:VimShell` or `:terminal`.
+* The plugin 'easy-align' now uses the map `<Leader>ga`.
+* The plugin 'tabularize' now uses the map `<Leader>t1`.
+* The plugin 'expand-region' uses the vmap `v` and `<C-V>`.
+* Added settings for the plugin 'MatchTagAlways'.
+* Added settings for the plugin 'ArgWrap' and `<Leader>W`.
+* The plugin 'vim-instant-markdown' now uses the map `<Leader>M`.
+* Added new settings to change the cursor shape.
+* To reload the `colorscheme` now it is mapped to `<S-F12>`
+* The nnoremap `<C-Z>` (show syntax) changed to `<C-S>`.
+* Added the onoremap `af` and `aF` to work on all file.
+* Added the nnoremap `<Leader>cf` to copy the filepath to clipboard.
+* Added the cnoremap `%%` to expand the path of the current buffer.
+* All maps `<F4>` (toggle relative numbers) changed to `<S-F3>`.
+* Removed maps to treat long lines as break lines using arrows.
+* Removed maps to move lines using arrows.
+* Removed maps to duplicate a line using arrows.
+* Added four 'Readline commands': `<C-A>`, `<C-E>`, `<C-B>`, `<C-F>`.
+* The nnoremap `<Leader><Space>` (`:vimgrep`) changed to `<Leader>v`.
+* The vnoremap `<Leader><Space>` (`:vimgrep`) changed to `<Leader>v`.
+* The nnoremap `<Leader>v` (`:vimgrep`) changed to `<Leader>V`.
+* The nnoremap `<Leader>l` (`:cnext`) changed to `<Leader>n`.
+* The nnoremap `<Leader>h` (`:cprev`) changed to `<Leader>N`.
+* The nnoremap `<Leader>aa` (`:args *.`) changed to `<Leader>a`.
+* The nnoremap `<Leader>as` (`:args **/*.`) changed to `<Leader>A`.
+* The nnoremap `<Leader>ad` (`:argdo %s...`) changed to `<Leader>da`.
+* The vnoremap `<Leader>x` (toggle case) changed to `<Leader>u`.
+* Added the nnoremap `<Leader>u` to toggle case: easier than `~`.
+* Added the inoremap `<Leader>u` to toggle case from Insert Mode.
+* Added maps to toggle spell dictionary using `<S-F8>`.
+* Added the inoremap `<Leader>p` to paste the clipboard from Insert Mode.
+* Added the nnoremap `Y` to yank everything from the cursor to the EOL.
+* Added the inoremap `<C-D>` to delete de current line from Insert Mode.
+* Added the nnoremap `<Leader>o` to isolate the current line.
+* Added the nnoremap `<Leader>f` to add a new line below.
+* Added the nnoremap `<Leader>F` to join lines.
+* Added 'binary' filetype settings.
+* Added 'markdown' filetype settings.
+* Added 'mail' filetype settings.
+
 = 1.3.0 =
 * Installed the plugin 'vim-capslock': use `<C-L>` (Insert Mode) instead of Caps Lock key.
 * Removed the nnoremap `<Leader>e` (replace the word under the cursor). Use `ciw` instead.
