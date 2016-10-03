@@ -20,7 +20,7 @@ This Vim configuration is purely subjective: I wrote it according to my needs. T
 
 Vim and Neovim configurations are identical excepting little details. For example: Vim uses the plugins Syntastic, QuickRun and Neocomplete, while Neovim uses Neomake and Deoplete. Neovim is faster with these —asynchronous architecture wins—; and Vim 8.0 will be fast as well, when someone writes asynchronous plugins for it.
 
-#### <C-{a-z}> maps:
+#### \<C-{a-z}\> maps:
 ###### Buffers:
 - `<C-h>` - goes to the previous buffer.
 - `<C-l>` - goes to the next buffer.
@@ -40,14 +40,14 @@ Vim and Neovim configurations are identical excepting little details. For exampl
 ###### Misc:
 - `<C-s>` - shows syntax highlighting groups.
 
-#### <S-{A-Z}> maps:
+#### \<S-{A-Z}\> maps:
 ###### Windows:
 - `<S-H>` - goes to the window: left.
 - `<S-J>` - goes to the window: down.
 - `<S-K>` - goes to the window: up.
 - `<S-L>` - goes to the window: right.
 
-#### <F{1..12}> and <S-F{1-12}> maps:
+#### \<F{1..12}\> and \<S-F{1-12}\> maps:
 - `<F1>` - it's the default help.
 - `<F2>` - renames the current buffer.
 - `<F3>` - toggles line numbers.
