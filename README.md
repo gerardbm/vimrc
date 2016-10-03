@@ -21,9 +21,11 @@ This Vim configuration is purely subjective: I wrote it according to my needs. T
 Vim and Neovim configurations are identical excepting little details. For example: Vim uses the plugins Syntastic, QuickRun and Neocomplete, while Neovim uses Neomake and Deoplete. Neovim is faster with these —asynchronous architecture wins—; and Vim 8.0 will be fast as well, when someone writes asynchronous plugins for it.
 
 #### \<C-{a-z}\> maps:
+
 ###### Buffers:
 - `<C-h>` - goes to the previous buffer.
 - `<C-l>` - goes to the next buffer.
+
 ###### Text edition:
 - `<C-j>` - moves lines down.
 - `<C-k>` - moves lines up.
@@ -32,15 +34,18 @@ Vim and Neovim configurations are identical excepting little details. For exampl
 - `<C-b>` - moves the cursor back one character.
 - `<C-f>` - moves the cursor forward one character.
 - `<C-d>` - deletes the current line from 'Insert Mode'.
+
 ###### Plugins related:
 - `<C-p>` - previews the current GitGutter hunk.
 - `<C-n>` - opens, focuses or closes NERDTree.
 - `<C-s>` - expands neosnippet from 'Insert Mode'.
 - `<C-z>` - goes to the `:VimShell`.
+
 ###### Misc:
 - `<C-s>` - shows syntax highlighting groups.
 
 #### \<S-{A-Z}\> maps:
+
 ###### Windows:
 - `<S-H>` - goes to the window: left.
 - `<S-J>` - goes to the window: down.
@@ -65,6 +70,7 @@ Vim and Neovim configurations are identical excepting little details. For exampl
 - `<S-F12>` - reloads the current colorscheme.
 
 #### \<Leader\> maps:
+
 ###### Buffers:
 - `<Leader>s` - updates the buffer (saves if it has changes).
 - `<Leader>S` - updates all the buffers.
@@ -73,15 +79,18 @@ Vim and Neovim configurations are identical excepting little details. For exampl
 - `<Leader>bb` - opens the `:edit` command.
 - `<Leader>bg` - opens a list of all the buffers.
 - `<Leader><Del>y` - deletes the current buffer. Careful!
+
 ###### Filepath:
 - `<Leader>cd` - switches CWD to the current filepath.
 - `<Leader>cf` - copies the filepath to the clipboard.
+
 ###### Tabs:
 - `<Leader>td` - closes the current tab.
 - `<Leader>to` - closes all the tabs except the current.
 - `<Leader>tt` - opens the `:tabedit` command.
 - `<Leader>tr` - moves the tab position to the left.
 - `<Leader>ty` - moves the tab position to the right.
+
 ###### Windows:
 - `<Leader>.` - it is `wincmd` to easily manage windows.
 - `<Leader>.-` - splits window horizontally.
@@ -93,6 +102,7 @@ Vim and Neovim configurations are identical excepting little details. For exampl
 - `<Leader>.p` - goes to the previous window.
 - `<Leader>.n` - goes to the next window.
 - `<Leader>.o` - closes all windows excepting the current.
+
 ###### About lines:
 - `<Leader>m` - removes the Windows ^M.
 - `<Leader>ds` - duplicates a line up.
@@ -100,20 +110,24 @@ Vim and Neovim configurations are identical excepting little details. For exampl
 - `<Leader>o` - isolates the current line.
 - `<Leader>f` - enters a new line from 'Normal Mode'.
 - `<Leader>F` - joins the current line with the line below.
+
 ###### Search:
 - `<Leader><CR>` - searches the word under the cursor.
 - `<Leader><CR>` - also, searches the current selection!
 - `<Leader><BS>` - disables highlight.
+
 ###### Vimgrep:
 - `<Leader>v` - vimgreps the highlight in the current file.
 - `<Leader>V` - vimgreps the highlight in the current directory.
 - `<Leader>n` - goes to the next vimgrep result.
 - `<Leader>N` - goes to the previous vimgrep result.
+
 ###### Replace:
 - `<Leader>r` - replaces the current highlight.
 - `<Leader>a` - opens all the files of the current directory.
 - `<Leader>A` - opens all the files of the subdirectories, as well.
 - `<Leader>da` - replaces the highlight to all the buffers.
+
 ###### Text edition:
 - `<Leader>u` - toggles the case of a character.
 - `<Leader>u` - toggles the case of a selection, as well.
@@ -123,9 +137,11 @@ Vim and Neovim configurations are identical excepting little details. For exampl
 - `<Leader>wx` - marks the word under the cursor as wrong.
 - `<Leader>w?` - suggests correctly spelled words.
 - `<Leader>tf` - retabs the current selection.
+
 ###### Copy and paste:
 - `<Leader>y` - copies text into the clipboard.
 - `<Leader>p` - pastes text from the clipboard.
+
 ###### Plugins related:
 - `<Leader><TAB>` - runs the code of the current buffer.
 - `<Leader>j` - goes to the next GitGutter hunk.
