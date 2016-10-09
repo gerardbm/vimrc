@@ -6,7 +6,7 @@
 "  (_)___/_/_/ /_/ /_/_/   \___/
 "
 "----------------------------------------------------------------
-"  Version : 1.4.0
+"  Version : 1.4.1
 "  License : MIT
 "  Author  : Gerard Bajona
 "  URL     : https://github.com/gerardbm/vimrc
@@ -147,6 +147,7 @@ call plug#begin('~/.vim/plugged')
 	Plug 'FooSoft/vim-argwrap'
 
 	" Misc
+	Plug 'christoomey/vim-tmux-navigator'
 	Plug 'joeytwiddle/sexy_scroller.vim'
 	Plug 'suan/vim-instant-markdown'
 	Plug 'tpope/vim-characterize'
@@ -238,9 +239,9 @@ vnoremap <Leader>z <Esc>:FZF<CR>gv
 inoremap <Leader>z <C-O>:FZF<CR>
 
 " Gundo toggle
-nnoremap <Leader>g :GundoToggle<CR>
-vnoremap <Leader>g <Esc>:GundoToggle<CR>
-inoremap <Leader>g <C-O>:GundoToggle<CR>
+nnoremap <Leader>gu :GundoToggle<CR>
+vnoremap <Leader>gu <Esc>:GundoToggle<CR>
+inoremap <Leader>gu <C-O>:GundoToggle<CR>
 
 " Go settings
 let g:go_highlight_functions         = 1
@@ -264,7 +265,11 @@ let g:javascript_plugin_ngdoc = 1
 let g:javascript_plugin_flow  = 1
 
 " Neocomplete settings
+let g:acp_enableAtStartup = 0
 let g:neocomplete#enable_at_startup = 1
+let g:neocomplete#enable_smart_case = 1
+let g:neocomplete#sources#syntax#min_keyword_length = 3
+let g:neocomplete#lock_buffer_name_pattern = '\*ku\*'
 
 " SuperTab settings
 let g:SuperTabDefaultCompletionType = '<TAB>'
@@ -273,6 +278,11 @@ let g:SuperTabDefaultCompletionType = '<TAB>'
 imap <C-S> <Plug>(neosnippet_expand_or_jump)
 smap <C-S> <Plug>(neosnippet_expand_or_jump)
 xmap <C-S> <Plug>(neosnippet_expand_target)
+
+" Jedi settings
+let g:jedi#auto_initialization = 1
+let g:jedi#completions_command = "<C-D>"
+let g:jedi#popup_on_dot = 0
 
 " Behaviour like SuperTab
 smap <expr><TAB>
@@ -308,6 +318,9 @@ let g:AutoPairsFlyMode = 0
 " Surround settings
 autocmd FileType php,html let b:surround_45 = "<?php \r ?>"
 
+" Caps Lock settings
+imap <expr><C-L> neocomplete#smart_close_popup()."\<C-O><Plug>CapsLockToggle"
+
 " Expand region settings
 vmap v <Plug>(expand_region_expand)
 vmap <C-V> <Plug>(expand_region_shrink)
@@ -326,6 +339,9 @@ let g:argwrap_tail_comma    = 1
 let g:argwrap_padded_braces = '[{'
 
 nnoremap <Leader>W :ArgWrap<CR>
+
+" Vim-tmux navigator settings
+let g:tmux_navigator_no_mappings = 1
 
 " Instant markdown settings
 let g:instant_markdown_autostart = 0
@@ -415,14 +431,20 @@ set nocursorcolumn
 set laststatus=2
 
 " Change the cursor shape
-if exists('$TMUX')
-	let &t_SI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=1\x7\<Esc>\\"
-	let &t_SR = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=2\x7\<Esc>\\"
-	let &t_EI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=0\x7\<Esc>\\"
-else
-	let &t_SI = "\<Esc>]50;CursorShape=1\x7"
-	let &t_EI = "\<Esc>]50;CursorShape=0\x7"
-	let &t_SR = "\<Esc>]50;CursorShape=2\x7"
+if &term =~ 'xterm\|tmux'
+	if exists('$TMUX')
+		let &t_SI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=1\x7\<Esc>\\"
+		if (v:version == 704 && has("patch687") || v:version >= 800)
+			let &t_SR = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=2\x7\<Esc>\\"
+		endif
+		let &t_EI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=0\x7\<Esc>\\"
+	else
+		let &t_SI = "\<Esc>]50;CursorShape=1\x7"
+		if (v:version == 704 && has("patch687") || v:version >= 800 )
+			let &t_SR = "\<Esc>]50;CursorShape=2\x7"
+		endif
+		let &t_EI = "\<Esc>]50;CursorShape=0\x7"
+	endif
 endif
 
 "----------------------------------------------------------------
@@ -641,16 +663,33 @@ nnoremap <silent> <C-W>p :wincmd w<CR>:echo "Previous window."<CR>
 nnoremap <silent> <C-W>n :wincmd W<CR>:echo "Next window."<CR>
 nnoremap <silent> <C-W>o :wincmd o<CR>:echo "Only one window."<CR>
 
-" Navigate between windows
-nnoremap <S-H> :wincmd h<CR>:echo "Left."<CR>
-nnoremap <S-J> :wincmd j<CR>:echo "Down."<CR>
-nnoremap <S-K> :wincmd k<CR>:echo "Up."<CR>
-nnoremap <S-L> :wincmd l<CR>:echo "Right."<CR>
+" Move between Vim windows and Tmux panes
+" - It requires the corresponding configuration into Tmux.
+" - Check it at my .tmux.conf from my Atomic files repository.
+" - URL: https://github.com/gerardbm/atomic/blob/master/tmux/tmux.conf
+" - Plugin required: https://github.com/christoomey/vim-tmux-navigator
+set <M-h>=h
+set <M-j>=j
+set <M-k>=k
+set <M-l>=l
 
-vnoremap <S-H> <Esc>:wincmd h<CR>:echo "Left."<CR>gv
-vnoremap <S-J> <Esc>:wincmd j<CR>:echo "Down."<CR>gv
-vnoremap <S-K> <Esc>:wincmd k<CR>:echo "Up."<CR>gv
-vnoremap <S-L> <Esc>:wincmd l<CR>:echo "Right."<CR>gv
+nnoremap <silent> <M-h> :TmuxNavigateLeft<cr>
+nnoremap <silent> <M-j> :TmuxNavigateDown<cr>
+nnoremap <silent> <M-k> :TmuxNavigateUp<cr>
+nnoremap <silent> <M-l> :TmuxNavigateRight<cr>
+nnoremap <silent> <M-p> :TmuxNavigatePrevious<cr>
+
+vnoremap <silent> <M-h> <Esc>:TmuxNavigateLeft<CR>gv
+vnoremap <silent> <M-j> <Esc>:TmuxNavigateDown<CR>gv
+vnoremap <silent> <M-k> <Esc>:TmuxNavigateUp<CR>gv
+vnoremap <silent> <M-l> <Esc>:TmuxNavigateRight<CR>gv
+vnoremap <silent> <M-p> <Esc>:TmuxNavigatePrevious<CR>gv
+
+inoremap <silent> <M-h> <C-O>:TmuxNavigateLeft<CR>
+inoremap <silent> <M-j> <C-O>:TmuxNavigateDown<CR>
+inoremap <silent> <M-k> <C-O>:TmuxNavigateUp<CR>
+inoremap <silent> <M-l> <C-O>:TmuxNavigateRight<CR>
+inoremap <silent> <M-p> <C-O>:TmuxNavigatePrevious<CR>
 
 " Remove the Windows ^M - when the encodings gets messed up
 noremap <Leader>m mmHmt:%s/<C-V><CR>//ge<CR>'tzt'm
@@ -737,6 +776,23 @@ nnoremap <silent> <S-F3> :set norelativenumber!<CR>:echo f4msg<CR>
 vnoremap <silent> <S-F3> <Esc>:set norelativenumber!<CR>:echo f4msg<CR>gv
 inoremap <silent> <S-F3> <C-O>:set norelativenumber!<CR><C-O>:echo f4msg<CR>
 
+" Navigate from Insert Mode
+inoremap <expr>@sh neocomplete#smart_close_popup()."\<Left>"
+inoremap <expr>@sj neocomplete#smart_close_popup()."\<Down>"
+inoremap <expr>@sk neocomplete#smart_close_popup()."\<Up>"
+inoremap <expr>@sl neocomplete#smart_close_popup()."\<Right>"
+
+" Do nothing from Normal/Visual modes
+nnoremap @sh <NOP>
+nnoremap @sj <NOP>
+nnoremap @sk <NOP>
+nnoremap @sl <NOP>
+
+vnoremap @sh <NOP>
+vnoremap @sj <NOP>
+vnoremap @sk <NOP>
+vnoremap @sl <NOP>
+
 " Treat long lines as break lines (useful when moving around in them)
 nnoremap <silent> <expr> k (v:count == 0 ? 'gk' : 'k')
 nnoremap <silent> <expr> j (v:count == 0 ? 'gj' : 'j')
@@ -790,10 +846,14 @@ inoremap <C-A> <C-O>0
 inoremap <C-E> <C-O>$
 
 " Moves the cursor back one character
-inoremap <C-B> <C-O>h
+inoremap <expr><C-B> neocomplete#smart_close_popup()."\<Left>"
 
 " Moves the cursor forward one character
-inoremap <C-F> <C-O>l
+inoremap <expr><C-F> neocomplete#smart_close_popup()."\<Right>"
+
+" Moves the cursor one character from Command Mode
+cnoremap @sh <Left>
+cnoremap @sl <Right>
 
 "----------------------------------------------------------------
 " 12. Paste mode improved
@@ -902,7 +962,7 @@ vnoremap <Leader>r :s/\%V<C-R>/\%V//g<Left><Left>
 " Replace the hilight to all project
 nnoremap <Leader>a :args *.
 nnoremap <Leader>A :args **/*.
-nnoremap <Leader>da :argdo %s/<C-R>///cge\|up<Left><Left><Left><Left><Left><Left><Left>
+nnoremap <Leader>do :argdo %s/<C-R>///cge\|up<Left><Left><Left><Left><Left><Left><Left>
 
 "----------------------------------------------------------------
 " 14. Text edition
@@ -954,17 +1014,14 @@ nnoremap Y y$
 " Retab the selected text
 vnoremap <Leader>tf :retab!<CR>
 
-" Delete the current line from Insert Mode
-inoremap <C-D> <C-O>dd
-
 " Isolate the current line
 nnoremap <Leader>o m`o<Esc>kO<Esc>``
 
-" Enter a new line from 'Normal Mode'
+" Enter a new line Down from 'Normal Mode'
 nnoremap <Leader>f mao<Esc>`a
 
-" Join lines ('J' moves between windows)
-nnoremap <Leader>F J
+" Enter a new line Up from 'Normal Mode'
+nnoremap <Leader>F maO<Esc>`a
 
 "----------------------------------------------------------------
 " 15. Make settings

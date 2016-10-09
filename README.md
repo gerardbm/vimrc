@@ -6,239 +6,274 @@ This Vim configuration is purely subjective: I wrote it according to my needs. T
 ## General settings:
 
 - `<Leader>` key is ",". It's really a good practice.
-- Double `<Leader>` escapes the current mode.
+- Then `<Leader><Leader>` escapes the current mode.
 - Three cursor shapes for Normal, Insert and Replace modes.
+- In Vim encoding is set to UTF8. In Neovim it is a default.
 - 256 colors for Vim and True Color for Neovim.
-- Backups and swap files are disabled. I use git!
-- In Vim, encoding is set to UTF8. In Neovim, it is a default.
+- Backups and swap files are disabled. Use Git!
+- Relative numbers are enabled. Toggle it with `<F3>`.
+- Rename and delete files. Reload and save all files.
+- Navigate between buffers, tabs and windows easily.
+- Do a search in the current buffer with `<Space>`.
+- Highlight the selection with `<Leader><CR>`.
+- Vimgrep the highlight with `<Leader>v`.
+- Replace the highlight with `<Leader>r`.
+- Argdo the highlight with `<Leader>do`.
+- Toggle spell, dictionary, list and colorcolumn.
 - Auto-toggle 'Paste Mode' when pasting text.
-- `<C-l>` (Insert Mode) to toggle Caps keys.
-- `<Space>` to make a search in the current buffer.
+- Caps Lock is `<C-l>` from 'Insert Mode'.
 - Indentation is using `<Tab>`and `<S-Tab>`.
-- Expands and shrinks selection: `v` and `<C-V>` (Visual Mode).
-- Nonintrusive configuration with the native maps.
+- Duplicate lines, move them and add new ones.
+- Non intrusive configuration with the native keymaps.
+- Rename the Tmux windows titles with the current buffer.
+- Move between Vim windows and Tmux panes with `<Alt-{hjkl}>`.
 
-Vim and Neovim configurations are identical excepting little details. For example: Vim uses the plugins Syntastic, QuickRun and Neocomplete, while Neovim uses Neomake and Deoplete. Neovim is faster with these —asynchronous architecture wins—; and Vim 8.0 will be fast as well, when someone writes asynchronous plugins for it.
+Vim and Neovim configurations are identical excepting little details. For example: Vim uses the plugins Syntastic, QuickRun and Neocomplete, while Neovim uses Neomake and Deoplete. Neovim is faster with these plugins —asynchronous architecture wins—; and Vim 8.0 will be fast as well, when someone writes asynchronous plugins for it.
 
-#### \<C-{a-z}\> maps:
+Take a look at the following list explaining the main keymaps ordered by keys: Control, Alt, F1-F12, Leader and Windows.
 
-###### Buffers:
-- `<C-h>` - goes to the previous buffer.
-- `<C-l>` - goes to the next buffer.
+#### \<C-{a-z}\> keymaps:
 
-###### Text edition:
-- `<C-j>` - moves lines down.
-- `<C-k>` - moves lines up.
-- `<C-a>` - moves the cursor to the line start.
-- `<C-e>` - moves the cursor to the line end.
-- `<C-b>` - moves the cursor back one character.
-- `<C-f>` - moves the cursor forward one character.
-- `<C-d>` - deletes the current line from 'Insert Mode'.
+- Buffers:
+  - `<C-h>` goes to the previous buffer.
+  - `<C-l>` goes to the next buffer.
 
-###### Plugins related:
-- `<C-p>` - previews the current GitGutter hunk.
-- `<C-n>` - opens, focuses or closes NERDTree.
-- `<C-s>` - expands neosnippet from 'Insert Mode'.
-- `<C-z>` - goes to the `:VimShell`.
+- Text edition:
+  - `<C-j>` moves lines down.
+  - `<C-k>` moves lines up.
+  - `<C-a>` moves the cursor to the line start.
+  - `<C-e>` moves the cursor to the line end.
+  - `<C-b>` moves the cursor back one character.
+  - `<C-f>` moves the cursor forward one character.
 
-###### Misc:
-- `<C-s>` - shows syntax highlighting groups.
+- Plugins related:
+  - `<C-p>` previews the current GitGutter hunk.
+  - `<C-n>` opens, focuses or closes NERDTree.
+  - `<C-s>` expands neosnippet from 'Insert Mode'.
+  - `<C-z>` goes to the `:VimShell`.
+  - `<C-d>` expands Jedi completions.
 
-#### \<S-{A-Z}\> maps:
+- Misc:
+  - `<C-s>` shows syntax highlighting groups.
 
-###### Windows:
-- `<S-H>` - goes to the window: left.
-- `<S-J>` - goes to the window: down.
-- `<S-K>` - goes to the window: up.
-- `<S-L>` - goes to the window: right.
+#### \<A-{a-z}\> keymaps:
 
-#### \<F{1..12}\> and \<S-F{1-12}\> maps:
-- `<F1>` - it's the default help.
-- `<F2>` - renames the current buffer.
-- `<F3>` - toggles line numbers.
-- `<S-F3>` - toggles relative numbers.
-- `<F4>` - toggles Tagbar (plugin).
-- `<F5>` - reloads all open buffers.
-- `<F6>` - toggles list.
-- `<F7>` - toggles 'Paste Mode'.
-- `<F8>` - toggles spell checking.
-- `<S-F8>` - toggles spell dictionaries.
-- `<F9>` - toggles colorcolumn.
-- `<F10>` - toggles maximize/minimize the current window.
-- `<F11>` - empty: desktops use it to toggle fullscreen.
-- `<F12>` - reloads your Vim/Neovim configuration.
-- `<S-F12>` - reloads the current colorscheme.
+- Windows:
+  - `<A-h>` goes to the window: left.
+  - `<A-j>` goes to the window: down.
+  - `<A-k>` goes to the window: up.
+  - `<A-l>` goes to the window: right.
 
-#### \<Leader\> maps:
+#### \<F{1..12}\> and \<S-F{1-12}\> keymaps:
+- `<F1>` it's the default help.
+- `<F2>` renames the current buffer.
+- `<F3>` toggles line numbers.
+- `<S-F3>` toggles relative numbers.
+- `<F4>` toggles Tagbar (plugin).
+- `<F5>` reloads all open buffers.
+- `<F6>` toggles list.
+- `<F7>` toggles 'Paste Mode'.
+- `<F8>` toggles spell checking.
+- `<S-F8>` toggles spell dictionaries.
+- `<F9>` toggles colorcolumn.
+- `<F10>` toggles maximize/minimize the current window.
+- `<F11>` empty: desktops use it to toggle fullscreen.
+- `<F12>` reloads your Vim/Neovim configuration.
+- `<S-F12>` reloads the current colorscheme.
 
-###### Buffers:
-- `<Leader>s` - updates the buffer (saves if it has changes).
-- `<Leader>S` - updates all the buffers.
-- `<Leader>bd` - closes the current buffer.
-- `<Leader>ba` - closes all the buffers.
-- `<Leader>bb` - opens the `:edit` command.
-- `<Leader>bg` - opens a list of all the buffers.
-- `<Leader><Del>y` - deletes the current buffer. Careful!
+#### \<Leader\> keymaps:
 
-###### Filepath:
-- `<Leader>cd` - switches CWD to the current filepath.
-- `<Leader>cf` - copies the filepath to the clipboard.
+- Buffers:
+  - `<Leader>s` updates the buffer (saves if it has changes).
+  - `<Leader>S` updates all the buffers.
+  - `<Leader>bd` closes the current buffer.
+  - `<Leader>ba` closes all the buffers.
+  - `<Leader>bb` opens the `:edit` command.
+  - `<Leader>bg` opens a list of all the buffers.
+  - `<Leader><Del>y` deletes the current buffer. Careful!
 
-###### Tabs:
-- `<Leader>td` - closes the current tab.
-- `<Leader>to` - closes all the tabs except the current.
-- `<Leader>tt` - opens the `:tabedit` command.
-- `<Leader>tr` - moves the tab position to the left.
-- `<Leader>ty` - moves the tab position to the right.
+- Filepath:
+  - `<Leader>cd` switches CWD to the current filepath.
+  - `<Leader>cf` copies the filepath to the clipboard.
 
-###### Windows:
-- `<Leader>.` - it is `wincmd` to easily manage windows.
-- `<Leader>.-` - splits window horizontally.
-- `<Leader>..` - splits window vertically.
-- `<Leader>.<CR>` - closes the current window.
-- `<Leader>.x` - closes the current window forcing it.
-- `<Leader>.,` - restores the proportional size of windows.
-- `<Leader>.l` - returns to the last window.
-- `<Leader>.p` - goes to the previous window.
-- `<Leader>.n` - goes to the next window.
-- `<Leader>.o` - closes all windows excepting the current.
+- Tabs:
+  - `<Leader>td` closes the current tab.
+  - `<Leader>to` closes all the tabs except the current.
+  - `<Leader>tt` opens the `:tabedit` command.
+  - `<Leader>tr` moves the tab position to the left.
+  - `<Leader>ty` moves the tab position to the right.
 
-###### About lines:
-- `<Leader>m` - removes the Windows ^M.
-- `<Leader>ds` - duplicates a line up.
-- `<Leader>df` - duplicates a line down.
-- `<Leader>o` - isolates the current line.
-- `<Leader>f` - enters a new line from 'Normal Mode'.
-- `<Leader>F` - joins the current line with the line below.
+- Windows:
+  - `<Leader>.` it is `wincmd` to easily manage windows.
+  - `<Leader>.-` splits window horizontally.
+  - `<Leader>..` splits window vertically.
+  - `<Leader>.<CR>` closes the current window.
+  - `<Leader>.x` closes the current window forcing it.
+  - `<Leader>.,` restores the proportional size of windows.
+  - `<Leader>.l` returns to the last window.
+  - `<Leader>.p` goes to the previous window.
+  - `<Leader>.n` goes to the next window.
+  - `<Leader>.o` closes all windows excepting the current.
 
-###### Search:
-- `<Leader><CR>` - searches the word under the cursor.
-- `<Leader><CR>` - also, searches the current selection!
-- `<Leader><BS>` - disables highlight.
+- About lines:
+  - `<Leader>m` removes the Windows ^M.
+  - `<Leader>ds` duplicates a line up.
+  - `<Leader>df` duplicates a line down.
+  - `<Leader>o` isolates the current line.
+  - `<Leader>f` enters a new line down from 'Normal Mode'.
+  - `<Leader>F` enters a new line up from 'Normal Mode'.
 
-###### Vimgrep:
-- `<Leader>v` - vimgreps the highlight in the current file.
-- `<Leader>V` - vimgreps the highlight in the current directory.
-- `<Leader>n` - goes to the next vimgrep result.
-- `<Leader>N` - goes to the previous vimgrep result.
+- Search:
+  - `<Leader><CR>` searches the word under the cursor.
+  - `<Leader><CR>` also, searches the current selection!
+  - `<Leader><BS>` disables highlight.
 
-###### Replace:
-- `<Leader>r` - replaces the current highlight.
-- `<Leader>a` - opens all the files of the current directory.
-- `<Leader>A` - opens all the files of the subdirectories, as well.
-- `<Leader>da` - replaces the highlight to all the buffers.
+- Vimgrep:
+  - `<Leader>v` vimgreps the highlight in the current file.
+  - `<Leader>V` vimgreps the highlight in the current directory.
+  - `<Leader>n` goes to the next vimgrep result.
+  - `<Leader>N` goes to the previous vimgrep result.
 
-###### Text edition:
-- `<Leader>u` - toggles the case of a character.
-- `<Leader>u` - toggles the case of a selection, as well.
-- `<Leader>wn` - moves to the next misspelled word.
-- `<Leader>wp` - moves to the previous misspelled word.
-- `<Leader>wa` - adds the word under the cursor into the dictionary.
-- `<Leader>wx` - marks the word under the cursor as wrong.
-- `<Leader>w?` - suggests correctly spelled words.
-- `<Leader>tf` - retabs the current selection.
+- Replace:
+  - `<Leader>r` replaces the current highlight.
+  - `<Leader>a` opens all the files of the current directory.
+  - `<Leader>A` opens all the files of the subdirectories, as well.
+  - `<Leader>da` replaces the highlight to all the buffers.
 
-###### Copy and paste:
-- `<Leader>y` - copies text into the clipboard.
-- `<Leader>p` - pastes text from the clipboard.
+- Text edition:
+  - `<Leader>u` toggles the case of a character.
+  - `<Leader>u` toggles the case of a selection, as well.
+  - `<Leader>wn` moves to the next misspelled word.
+  - `<Leader>wp` moves to the previous misspelled word.
+  - `<Leader>wa` adds the word under the cursor into the dictionary.
+  - `<Leader>wx` marks the word under the cursor as wrong.
+  - `<Leader>w?` suggests correctly spelled words.
+  - `<Leader>tf` retabs the current selection.
 
-###### Plugins related:
-- `<Leader><TAB>` - runs the code of the current buffer.
-- `<Leader>j` - goes to the next GitGutter hunk.
-- `<Leader>k` - goes to the previous GitGutter hunk.
-- `<Leader>x` - toggles the commented code..
-- `<Leader>h` - goes to the previous warning/error.
-- `<Leader>l` - goes to the next warning/error.
-- `<Leader>q` - toggles the quickfix window.
-- `<Leader>e` - toggles the location list window.
-- `<Leader>z` - toggles the plugin FZF.
-- `<Leader>g` - toggles the plugin Gundo.
-- `<Leader>ga` - inits easy align plugin.
-- `<Leader>ta` - inits tabularize plugin.
-- `<Leader>t1` - inits tabularize plugin (only the first match).
-- `<Leader>W` - inits ArgWrap plugin.
-- `<Leader>M` - inits Markdown preview plugin.
+- Clipboard:
+  - `<Leader>y` copies text into the clipboard.
+  - `<Leader>p` pastes text from the clipboard.
+
+- Plugins related:
+  - `<Leader><TAB>` runs the code of the current buffer.
+  - `<Leader>j` goes to the next GitGutter hunk.
+  - `<Leader>k` goes to the previous GitGutter hunk.
+  - `<Leader>x` toggles the commented code..
+  - `<Leader>h` goes to the previous warning/error.
+  - `<Leader>l` goes to the next warning/error.
+  - `<Leader>q` toggles the quickfix window.
+  - `<Leader>e` toggles the location list window.
+  - `<Leader>z` toggles the plugin FZF.
+  - `<Leader>gu` toggles the plugin Gundo.
+  - `<Leader>ga` inits easy align plugin.
+  - `<Leader>ta` inits tabularize plugin.
+  - `<Leader>t1` inits tabularize plugin (only the first match).
+  - `<Leader>W` inits ArgWrap plugin.
+  - `<Leader>M` inits Markdown preview plugin.
+
+#### \<Win-{a-z}\> keymaps:
+
+- 'Insert Mode' and 'Command Mode':
+  - `<Win-h>` moves the cursor back one character.
+  - `<Win-j>` moves the cursor down one line.
+  - `<Win-k>` moves the cursor up one line.
+  - `<Win-l>` moves the cursor forward one character.
 
 It's a generic explanation of the main commands. Some are only for a specific mode and most of them are usable from all the modes, so if you need more precise information, check the code.
 
 ## List of plugins:
-Statusbar
-- [vim-airline](https://github.com/vim-airline/vim-airline)
-- [vim-airline-themes](https://github.com/vim-airline/vim-airline-themes)
+- Statusbar:
+  - [vim-airline](https://github.com/vim-airline/vim-airline)
+  - [vim-airline-themes](https://github.com/vim-airline/vim-airline-themes)
 
-Git tools
-- [vim-gitgutter](https://github.com/airblade/vim-gitgutter)
-- [vim-fugitive](https://github.com/tpope/vim-fugitive)
+- Git tools:
+  - [vim-gitgutter](https://github.com/airblade/vim-gitgutter)
+  - [vim-fugitive](https://github.com/tpope/vim-fugitive)
 
-Sessions
-- [vim-session](https://github.com/xolox/vim-session)
-- [vim-misc](https://github.com/xolox/vim-misc)
+- Sessions:
+  - [vim-session](https://github.com/xolox/vim-session)
+  - [vim-misc](https://github.com/xolox/vim-misc)
 
-Tools
-- [nerdcommenter](https://github.com/scrooloose/nerdcommenter)
-- [nerdtree](https://github.com/scrooloose/nerdtree)
-- [syntastic](https://github.com/scrooloose/syntastic) (only Vim)
-- [listtoggle](https://github.com/valloric/listtoggle)
-- [tagbar](https://github.com/majutsushi/tagbar)
-- [ctrlp.vim](https://github.com/ctrlpvim/ctrlp.vim)
-- [fzf](https://github.com/junegunn/fzf)
-- [fzf.vim](https://github.com/junegunn/fzf.vim)
-- [gundo.vim](https://github.com/sjl/gundo.vim)
+- Tools:
+  - [nerdcommenter](https://github.com/scrooloose/nerdcommenter)
+  - [nerdtree](https://github.com/scrooloose/nerdtree)
+  - [syntastic](https://github.com/scrooloose/syntastic) (only Vim)
+  - [listtoggle](https://github.com/valloric/listtoggle)
+  - [tagbar](https://github.com/majutsushi/tagbar)
+  - [ctrlp.vim](https://github.com/ctrlpvim/ctrlp.vim)
+  - [fzf](https://github.com/junegunn/fzf)
+  - [fzf.vim](https://github.com/junegunn/fzf.vim)
+  - [gundo.vim](https://github.com/sjl/gundo.vim)
 
-Languages
-- [vim-go](https://github.com/fatih/vim-go)
-- [html5.vim](https://github.com/othree/html5.vim)
-- [css.vim](https://github.com/JulesWang/css.vim)
-- [vim-css3-syntax](https://github.com/hail2u/vim-css3-syntax)
-- [vim-jquery](https://github.com/itspriddle/vim-jquery)
-- [vim-javascript](https://github.com/pangloss/vim-javascript)
-- [tern_for_vim](https://github.com/ternjs/tern_for_vim)
-- [a.vim](https://github.com/vim-scripts/a.vim)
+- Languages:
+  - [vim-go](https://github.com/fatih/vim-go)
+  - [html5.vim](https://github.com/othree/html5.vim)
+  - [css.vim](https://github.com/JulesWang/css.vim)
+  - [vim-css3-syntax](https://github.com/hail2u/vim-css3-syntax)
+  - [vim-jquery](https://github.com/itspriddle/vim-jquery)
+  - [vim-javascript](https://github.com/pangloss/vim-javascript)
+  - [tern_for_vim](https://github.com/ternjs/tern_for_vim)
+  - [a.vim](https://github.com/vim-scripts/a.vim)
 
-Autocomplete
-- [neocomplete.vim](https://github.com/Shougo/neocomplete.vim) (only Vim)
-- [deoplete](https://github.com/Shougo/deoplete) (only Neovim)
-- [phpcomplete.vim](https://github.com/shawncplus/phpcomplete.vim)
-- [vim-clang](https://github.com/justmao945/vim-clang)
-- [jedi-vim](https://github.com/davidhalter/jedi-vim)
-- [supertab](https://github.com/ervandew/supertab)
+- Autocomplete:
+  - [neocomplete.vim](https://github.com/Shougo/neocomplete.vim) (only Vim)
+  - [deoplete](https://github.com/Shougo/deoplete) (only Neovim)
+  - [phpcomplete.vim](https://github.com/shawncplus/phpcomplete.vim)
+  - [vim-clang](https://github.com/justmao945/vim-clang)
+  - [jedi-vim](https://github.com/davidhalter/jedi-vim) (only Vim)
+  - [deoplete-jedi](https://github.com/zchee/deoplete-jedi) (only Neovim)
+  - [supertab](https://github.com/ervandew/supertab)
 
-Snippets
-- [neosnippet](https://github.com/Shougo/neosnippet)
-- [neosnippet-snippets](https://github.com/Shougo/neosnippet-snippets)
-- [context_filetype.vim](https://github.com/Shougo/context_filetype.vim)
+- Snippets:
+  - [neosnippet](https://github.com/Shougo/neosnippet)
+  - [neosnippet-snippets](https://github.com/Shougo/neosnippet-snippets)
+  - [context_filetype.vim](https://github.com/Shougo/context_filetype.vim)
 
-Run code
-- [vim-quickrun](https://github.com/thinca/vim-quickrun) (only Vim)
-- [neomake](https://github.com/neomake/neomake) (only Neovim)
-- [vimproc.vim](https://github.com/Shougo/vimproc.vim)
-- [vimshell.vim](https://github.com/Shougo/vimshell.vim)
+- Run code:
+  - [vim-quickrun](https://github.com/thinca/vim-quickrun) (only Vim)
+  - [neomake](https://github.com/neomake/neomake) (only Neovim)
+  - [vimproc.vim](https://github.com/Shougo/vimproc.vim)
+  - [vimshell.vim](https://github.com/Shougo/vimshell.vim)
 
-Edition
-- [vim-easy-align](https://github.com/junegunn/vim-easy-align)
-- [tabular](https://github.com/godlygeek/tabular)
-- [auto-pairs](https://github.com/jiangmiao/auto-pairs)
-- [vim-surround](https://github.com/tpope/vim-surround)
-- [vim-repeat](https://github.com/tpope/vim-repeat)
-- [vim-capslock](https://github.com/tpope/vim-capslock)
-- [vim-closetag](https://github.com/alvan/vim-closetag)
-- [targets.vim](https://github.com/wellle/targets.vim)
-- [vim-sort-motion](https://github.com/christoomey/vim-sort-motion)
-- [vim-expand-region](https://github.com/terryma/vim-expand-region)
-- [MatchTagAlways](https://github.com/Valloric/MatchTagAlways)
-- [vim-argwrap](https://github.com/FooSoft/vim-argwrap)
+- Edition:
+  - [vim-easy-align](https://github.com/junegunn/vim-easy-align)
+  - [tabular](https://github.com/godlygeek/tabular)
+  - [auto-pairs](https://github.com/jiangmiao/auto-pairs)
+  - [vim-surround](https://github.com/tpope/vim-surround)
+  - [vim-repeat](https://github.com/tpope/vim-repeat)
+  - [vim-capslock](https://github.com/tpope/vim-capslock)
+  - [vim-closetag](https://github.com/alvan/vim-closetag)
+  - [targets.vim](https://github.com/wellle/targets.vim)
+  - [vim-sort-motion](https://github.com/christoomey/vim-sort-motion)
+  - [vim-expand-region](https://github.com/terryma/vim-expand-region)
+  - [MatchTagAlways](https://github.com/Valloric/MatchTagAlways)
+  - [vim-argwrap](https://github.com/FooSoft/vim-argwrap)
 
-Misc
-- [sexy_scroller.vim](https://github.com/joeytwiddle/sexy_scroller.vim)
-- [vim-instant-markdown](https://github.com/suan/vim-instant-markdown)
-- [vim-characterize](https://github.com/tpope/vim-characterize)
-- [open-browser.vim](https://github.com/tyru/open-browser.vim)
-- [webapi-vim](https://github.com/mattn/webapi-vim)
-- [emmet-vim](https://github.com/mattn/emmet-vim)
+- Misc:
+  - [christoomey/vim-tmux-navigator](https://github.com/christoomey/vim-tmux-navigator)
+  - [sexy_scroller.vim](https://github.com/joeytwiddle/sexy_scroller.vim)
+  - [vim-instant-markdown](https://github.com/suan/vim-instant-markdown)
+  - [vim-characterize](https://github.com/tpope/vim-characterize)
+  - [open-browser.vim](https://github.com/tyru/open-browser.vim)
+  - [webapi-vim](https://github.com/mattn/webapi-vim)
+  - [emmet-vim](https://github.com/mattn/emmet-vim)
 
 Read the [code](https://github.com/gerardbm/vimrc/blob/master/vimrc) directly to know more details.
 
 ## Changelog
+
+= 1.4.1 =
+* The maps `<Leader>g` (`:GundoToggle`) changed to `<Leader>gu`.
+* Better Neocomplete/Deoplete settings.
+* Deleted the inoremap `<C-D>` to delete a line.
+* Added the inoremap `<C-D>` to expand Jedi completions.
+* Fixed the imap `<C-L>` (Caps Lock) to prevents popup completions.
+* Better cursor shape detection for older Vim versions.
+* New maps to switch between Vim and Tmux windows even from the Insert/Visual Modes.
+* Now easily navigate between characters from Insert Mode with Windows key + hjkl.
+* Added the cnoremaps `^X@sh` and `^X@sl` to move one character left and right.
+* The nnoremap `<Leader>da` (`:argdo`) changed to `<Leader>**do**`.
+* The nnoremap `<Leader>F` now it enters a new line Up.
 
 = 1.4.0 =
 * Added a new section: 'Filetype settings'.
