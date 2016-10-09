@@ -262,6 +262,9 @@ Read the [code](https://github.com/gerardbm/vimrc/blob/master/vimrc) directly to
 
 ## Changelog
 
+= 1.4.2 =
+* Fixed the inoremap `<Leader>p` (paste from clipboard one character left).
+
 = 1.4.1 =
 * The maps `<Leader>g` (`:GundoToggle`) changed to `<Leader>gu`.
 * Better Neocomplete/Deoplete settings.

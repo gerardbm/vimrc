@@ -6,7 +6,7 @@
 "  (_)___/_/_/ /_/ /_/_/   \___/
 "
 "----------------------------------------------------------------
-"  Version : 1.4.1
+"  Version : 1.4.2
 "  License : MIT
 "  Author  : Gerard Bajona
 "  URL     : https://github.com/gerardbm/vimrc
@@ -1003,7 +1003,7 @@ vnoremap <Leader>y "+y<Esc>
 
 " Paste text from the clipboard
 nnoremap <Leader>p "+p
-inoremap <Leader>p <C-O>"+p
+inoremap <Leader>p <Esc>"+pa
 
 " Quickly select the text pasted from the clipboard
 nnoremap gV `[v`]
