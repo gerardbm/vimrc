@@ -6,7 +6,7 @@
 "  /_/ |_/_____/\____/ |___/___/_/  /_/
 "
 "----------------------------------------------------------------
-"  Version : 1.4.2
+"  Version : 1.4.3
 "  License : MIT
 "  Author  : Gerard Bajona
 "  URL     : https://github.com/gerardbm/vimrc
@@ -691,6 +691,9 @@ set textwidth=0
 
 " Column at 100 width
 set colorcolumn=100
+
+" Listings don't pause
+set nomore
 
 " Color column
 let f9msg = "Toggle colorcolumn."

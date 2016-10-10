@@ -262,6 +262,9 @@ Read the [code](https://github.com/gerardbm/vimrc/blob/master/vimrc) directly to
 
 ## Changelog
 
+= 1.4.3 =
+* Added the setting `nomore` to avoid the pause of listings.
+
 = 1.4.2 =
 * Fixed the inoremap `<Leader>p` (paste from clipboard one character left).
 
