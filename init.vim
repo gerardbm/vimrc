@@ -6,7 +6,7 @@
 "  /_/ |_/_____/\____/ |___/___/_/  /_/
 "
 "----------------------------------------------------------------
-"  Version : 1.4.3
+"  Version : 1.4.4
 "  License : MIT
 "  Author  : Gerard Bajona
 "  URL     : https://github.com/gerardbm/vimrc
@@ -291,7 +291,7 @@ let g:AutoPairsFlyMode = 0
 autocmd FileType php,html let b:surround_45 = "<?php \r ?>"
 
 " Caps Lock settings
-imap <expr><C-L> deoplete#smart_close_popup()."\<C-O><Plug>CapsLockToggle"
+imap <expr><C-L> deoplete#smart_close_popup()."\<Plug>CapsLockToggle"
 
 " Expand region settings
 vmap v <Plug>(expand_region_expand)
@@ -724,17 +724,6 @@ inoremap <expr>@sj deoplete#smart_close_popup()."\<Down>"
 inoremap <expr>@sk deoplete#smart_close_popup()."\<Up>"
 inoremap <expr>@sl deoplete#smart_close_popup()."\<Right>"
 
-" Do nothing from Normal/Visual modes
-nnoremap @sh <NOP>
-nnoremap @sj <NOP>
-nnoremap @sk <NOP>
-nnoremap @sl <NOP>
-
-vnoremap @sh <NOP>
-vnoremap @sj <NOP>
-vnoremap @sk <NOP>
-vnoremap @sl <NOP>
-
 " Treat long lines as break lines (useful when moving around in them)
 nnoremap <silent> <expr> k (v:count == 0 ? 'gk' : 'k')
 nnoremap <silent> <expr> j (v:count == 0 ? 'gj' : 'j')
@@ -1017,18 +1006,13 @@ augroup END
 augroup markdown
 	au!
 	au FileType markdown setl spell
-	au FileType markdown setl expandtab
-	au FileType markdown setl tabstop=2
-	au FileType markdown setl softtabstop=2
-	au FileType markdown setl shiftwidth=2
 augroup end
 
 " Mail
 augroup mail
 	au!
 	au FileType mail setl spell
-	au FileType mail setl spelllang=es
-	au FileType mail setl expandtab
+	au FileType mail setl spelllang=ca
 augroup end
 
 "----------------------------------------------------------------

@@ -262,6 +262,11 @@ Read the [code](https://github.com/gerardbm/vimrc/blob/master/vimrc) directly to
 
 ## Changelog
 
+= 1.4.4 =
+* Removed indentation settings from markdown and mail file types.
+* Removed useless nnoremap and vnoremap to `<NOP>` for Windows key.
+* Fixed Caps Lock setting: leaving 'Insert Mode' now disables CAPS automatically.
+
 = 1.4.3 =
 * Added the setting `nomore` to avoid the pause of listings.
 
