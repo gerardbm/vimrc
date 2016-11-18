@@ -6,7 +6,7 @@
 "  (_)___/_/_/ /_/ /_/_/   \___/
 "
 "----------------------------------------------------------------
-"  Version : 1.4.4
+"  Version : 1.5.0
 "  License : MIT
 "  Author  : Gerard Bajona
 "  URL     : https://github.com/gerardbm/vimrc
@@ -58,9 +58,6 @@ set updatetime=250
 " Faster Escape key
 vnoremap <Leader><Leader> <Esc>
 inoremap <Leader><Leader> <Esc>
-
-" Insert only one ',' and return to Normal Mode
-inoremap ;; ,<Esc>
 
 " Trigger InsertLeave autocmd
 inoremap <C-C> <Esc>
@@ -185,7 +182,7 @@ let g:session_autosave = 'no'
 let g:session_autoload = 'no'
 
 " NERDCommenter settings
-let NERDSpaceDelims=1
+let NERDSpaceDelims = 1
 
 nnoremap <Leader>x :call NERDComment(0,'toggle')<CR>
 vnoremap <Leader>x :call NERDComment(0,"toggle")<CR>gv
@@ -214,6 +211,7 @@ let g:syntastic_style_warning_symbol     = "S⚠"
 nnoremap <Leader>h :lprevious<CR>zz
 vnoremap <Leader>h <Esc>:lprevious<CR>gvzz
 inoremap <Leader>h <C-O>:lprevious<CR>zz
+
 nnoremap <Leader>l :lnext<CR>zz
 vnoremap <Leader>l <Esc>:lnext<CR>gvzz
 inoremap <Leader>l <C-O>:lnext<CR>zz
@@ -332,7 +330,7 @@ let g:mta_filetypes = {
 	\ 'xml'   : 1,
 	\ 'jinja' : 1,
 	\ 'php'   : 1,
-	\}
+	\ }
 
 " ArgWrap settings
 let g:argwrap_tail_comma    = 1
@@ -692,7 +690,7 @@ inoremap <silent> <M-l> <C-O>:TmuxNavigateRight<CR>
 inoremap <silent> <M-p> <C-O>:TmuxNavigatePrevious<CR>
 
 " Remove the Windows ^M - when the encodings gets messed up
-noremap <Leader>m mmHmt:%s/<C-V><CR>//ge<CR>'tzt'm
+noremap <Leader>m mmHmt:%s/<C-V><CR>//ge<CR>'tzt`m
 
 "----------------------------------------------------------------
 " 10. Indentation tabs
@@ -745,7 +743,7 @@ set wrap
 " Don't break the words
 " Only works if I set nolist (F6)
 set linebreak
-set showbreak=│——»
+set showbreak=├——»
 
 " Stop automatic wrapping
 set textwidth=0
@@ -926,6 +924,14 @@ vnoremap <silent> <Leader><CR> :<C-U>call <SID>VSetSearch()<CR>:set hls<CR>
 nnoremap <Leader><BS> :noh<CR>
 vnoremap <Leader><BS> <Esc>:noh<CR>gv
 inoremap <Leader><BS> <C-O>:noh<CR>
+
+" Search into a Visual selection
+vnoremap <silent> <Space> :<C-U>call RangeSearch('/')<CR>
+	\ :if strlen(g:srchstr) > 0
+	\ \|exec '/'.g:srchstr\|endif<CR>n
+vnoremap <silent> ? :<C-U>call RangeSearch('?')<CR>
+	\ :if strlen(g:srchstr) > 0
+	\ \|exec '?'.g:srchstr\|endif<CR>N
 
 " --- Vimgrep ---
 "----------------------------------------------------------------
@@ -1156,6 +1162,20 @@ function! s:ToggleResize() abort
 endfunction
 command! ToggleResize call s:ToggleResize()
 
+" Search into a Visual selection
+function! RangeSearch(direction)
+	call inputsave()
+	let g:srchstr = input(a:direction)
+	call inputrestore()
+	if strlen(g:srchstr) > 0
+		let g:srchstr = g:srchstr.
+			\ '\%>'.(line("'<")-1).'l'.
+			\ '\%<'.(line("'>")+1).'l'
+	else
+		let g:srchstr = ''
+	endif
+endfunction
+
 " Search the selected text (visual mode)
 " Source: https://github.com/nelstrom/vim-visual-star-search
 " (You can install it as a plugin)
@@ -1182,10 +1202,13 @@ endfunction
 function! <SID>ToggleSpelllang()
 	if (&spelllang =~ 'en')
 		set spelllang=ca
+		echo 'Català'
 	elseif (&spelllang == 'ca')
 		set spelllang=es
+		echo 'Castellano'
 	else
 		set spelllang=en_us,en_gb
+		echo 'English'
 	endif
 	set spelllang?
 endfunction

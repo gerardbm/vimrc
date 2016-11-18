@@ -1,5 +1,11 @@
 ## Changelog
 
+= 1.5.0 =
+* Added a new function: search into a Visual selection.
+* Removed the inoremap ';;' (inserts a comma and `<Esc>`).
+* The map `<Leader>m` now returns to the last column cursor position.
+* Display the current dictionary when we toggle between dictionaries.
+
 = 1.4.4 =
 * Removed indentation settings from markdown and mail file types.
 * Removed useless nnoremap and vnoremap to `<NOP>` for Windows key.
