@@ -30,6 +30,10 @@ This Vim configuration is purely subjective: I wrote it according to my needs. T
 
 Vim and Neovim configurations are identical excepting little details. For example: Vim uses the plugins Syntastic, QuickRun and Neocomplete, while Neovim uses Neomake and Deoplete. Neovim is faster with these plugins —asynchronous architecture wins—; and Vim 8.0 will be fast as well, when someone writes asynchronous plugins for it.
 
+**More specific information:**
+- [Keymaps](https://github.com/gerardbm/vimrc/blob/master/KEYMAPS.md)
+- [Changelog](https://github.com/gerardbm/vimrc/blob/master/CHANGELOG.md)
+
 ## List of plugins:
 - Statusbar:
   - [vim-airline](https://github.com/vim-airline/vim-airline)

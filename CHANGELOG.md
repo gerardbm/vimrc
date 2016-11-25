@@ -1,5 +1,19 @@
 ## Changelog
 
+= 1.5.1 =
+* New NERDCommenter settings: default maps disabled.
+* The maps `<Leader>x` (toggle comments) changed to `<Leader>c`.
+* New Neomake/Syntastic settings: new error signs.
+* New CtrlP settings: changed some prompt mappings.
+* Added a new map `<Leader>x` to open `:Buffers` (FZF).
+* Added a new map `<Leader>C` to open `:Commits` (FZF).
+* The maps `<Leader>gu` (toggle Gundo) changed to `<Leader>u`.
+* The map `<Leader>cd` (pwd directory) changed to `<Leader>bw`.
+* The map `<Leader>by` (copy filepath) changed to `<Leader>by`.
+* Added new 'Readline commands' for the Command mode, navigate like in a terminal.
+* The maps `<Leader>u` (toggle case) changed to `<Leader><`.
+* The function to toggle GitGutterPreviewHunk has been improved.
+
 = 1.5.0 =
 * Added a new function: search into a Visual selection.
 * Removed the inoremap ';;' (inserts a comma and `<Esc>`).

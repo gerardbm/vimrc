@@ -7,10 +7,6 @@
 - Text edition:
   - `<C-j>` moves lines down.
   - `<C-k>` moves lines up.
-  - `<C-a>` moves the cursor to the line start.
-  - `<C-e>` moves the cursor to the line end.
-  - `<C-b>` moves the cursor back one character.
-  - `<C-f>` moves the cursor forward one character.
 
 - Plugins related:
   - `<C-p>` previews the current GitGutter hunk.
@@ -21,6 +17,12 @@
 
 - Misc:
   - `<C-s>` shows syntax highlighting groups.
+
+- 'Insert Mode' and 'Command Mode':
+  - `<C-a>` moves the cursor to the line start.
+  - `<C-e>` moves the cursor to the line end.
+  - `<C-b>` moves the cursor back one character.
+  - `<C-f>` moves the cursor forward one character.
 
 #### \<A-{a-z}\> keymaps:
 
@@ -59,8 +61,8 @@
   - `<Leader><Del>y` deletes the current buffer. Careful!
 
 - Filepath:
-  - `<Leader>cd` switches CWD to the current filepath.
-  - `<Leader>cf` copies the filepath to the clipboard.
+  - `<Leader>bw` switches CWD to the current filepath.
+  - `<Leader>by` copies the filepath to the clipboard.
 
 - Tabs:
   - `<Leader>td` closes the current tab.
@@ -104,11 +106,11 @@
   - `<Leader>r` replaces the current highlight.
   - `<Leader>a` opens all the files of the current directory.
   - `<Leader>A` opens all the files of the subdirectories, as well.
-  - `<Leader>da` replaces the highlight to all the buffers.
+  - `<Leader>do` replaces the highlight to all the buffers.
 
 - Text edition:
-  - `<Leader>u` toggles the case of a character.
-  - `<Leader>u` toggles the case of a selection, as well.
+  - `<Leader><` toggles the case of a character.
+  - `<leader><` toggles the case of a selection, as well.
   - `<Leader>wn` moves to the next misspelled word.
   - `<Leader>wp` moves to the previous misspelled word.
   - `<Leader>wa` adds the word under the cursor into the dictionary.
@@ -124,13 +126,15 @@
   - `<Leader><TAB>` runs the code of the current buffer.
   - `<Leader>j` goes to the next GitGutter hunk.
   - `<Leader>k` goes to the previous GitGutter hunk.
-  - `<Leader>x` toggles the commented code..
+  - `<Leader>c` toggles the commented code..
   - `<Leader>h` goes to the previous warning/error.
   - `<Leader>l` goes to the next warning/error.
   - `<Leader>q` toggles the quickfix window.
   - `<Leader>e` toggles the location list window.
-  - `<Leader>z` toggles the plugin FZF.
-  - `<Leader>gu` toggles the plugin Gundo.
+  - `<Leader>z` toggles the plugin FZF (:Files).
+  - `<Leader>x` toggles the plugin FZF (:Buffers).
+  - `<Leader>C` toggles the plugin FZF (:Commits).
+  - `<Leader>u` toggles the plugin Gundo.
   - `<Leader>ga` inits easy align plugin.
   - `<Leader>ta` inits tabularize plugin.
   - `<Leader>t1` inits tabularize plugin (only the first match).

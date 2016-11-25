@@ -6,7 +6,7 @@
 "  (_)___/_/_/ /_/ /_/_/   \___/
 "
 "----------------------------------------------------------------
-"  Version : 1.5.0
+"  Version : 1.5.1
 "  License : MIT
 "  Author  : Gerard Bajona
 "  URL     : https://github.com/gerardbm/vimrc
@@ -182,11 +182,15 @@ let g:session_autosave = 'no'
 let g:session_autoload = 'no'
 
 " NERDCommenter settings
-let NERDSpaceDelims = 1
+let g:NERDDefaultAlign          = 'left'
+let g:NERDSpaceDelims           = 1
+let g:NERDCompactSexyComs       = 1
+let g:NERDCommentEmptyLines     = 0
+let g:NERDCreateDefaultMappings = 0
 
-nnoremap <Leader>x :call NERDComment(0,'toggle')<CR>
-vnoremap <Leader>x :call NERDComment(0,"toggle")<CR>gv
-inoremap <Leader>x <C-O>:call NERDComment(0,"toggle")<CR>
+nnoremap <Leader>c :call NERDComment(0,'toggle')<CR>
+vnoremap <Leader>c :call NERDComment(0,"toggle")<CR>gv
+inoremap <Leader>c <C-O>:call NERDComment(0,"toggle")<CR>
 
 " NERDTree settings
 nnoremap <silent> <C-N> :call ToggleTree()<CR>
@@ -203,9 +207,9 @@ let g:syntastic_echo_current_error       = 1
 let g:syntastic_go_checkers              = ['golint', 'govet']
 let g:syntastic_perl_checkers            = ['perl']
 let g:syntastic_javascript_checkers      = ['jshint']
-let g:syntastic_error_symbol             = "✗"
+let g:syntastic_error_symbol             = "✖"
 let g:syntastic_warning_symbol           = "⚠"
-let g:syntastic_style_error_symbol       = "S✗"
+let g:syntastic_style_error_symbol       = "S✖"
 let g:syntastic_style_warning_symbol     = "S⚠"
 
 nnoremap <Leader>h :lprevious<CR>zz
@@ -228,6 +232,12 @@ inoremap <F4> <C-O>:TagbarToggle<CR>
 " CtrlP settings
 let g:ctrlp_map               = '<Leader><Space>'
 let g:ctrlp_working_path_mode = 'ra'
+let g:ctrlp_prompt_mappings   = {
+	\ 'ToggleType(1)'  : ['<c-h>', '<c-up>'],
+	\ 'ToggleType(-1)' : ['<c-l>', '<c-down>'],
+	\ 'PrtCurLeft()'   : ['<c-b>', '<left>', '<c-^>'],
+	\ 'PrtCurRight()'  : ['<c-f>', '<right>'],
+	\ }
 
 " FZF settings
 let g:fzf_layout = { 'down': '~25%' }
@@ -236,10 +246,18 @@ nnoremap <Leader>z :FZF<CR>
 vnoremap <Leader>z <Esc>:FZF<CR>gv
 inoremap <Leader>z <C-O>:FZF<CR>
 
+nnoremap <Leader>x :Buffers<CR>
+vnoremap <Leader>x <Esc>:Buffers<CR>gv
+inoremap <Leader>x <C-O>:Buffers<CR>
+
+nnoremap <Leader>C :Commits<CR>
+vnoremap <Leader>C <Esc>:Commits<CR>gv
+inoremap <Leader>C <C-O>:Commits<CR>
+
 " Gundo toggle
-nnoremap <Leader>gu :GundoToggle<CR>
-vnoremap <Leader>gu <Esc>:GundoToggle<CR>
-inoremap <Leader>gu <C-O>:GundoToggle<CR>
+nnoremap <Leader>u :GundoToggle<CR>
+vnoremap <Leader>u <Esc>:GundoToggle<CR>
+inoremap <Leader>u <C-O>:GundoToggle<CR>
 
 " Go settings
 let g:go_highlight_functions         = 1
@@ -574,10 +592,10 @@ vnoremap <Leader>bg <Esc>:buffers<CR>:buffer<Space>
 inoremap <Leader>bg <Esc>:buffers<CR>:buffer<Space>
 
 " Switch CWD to the directory of the current buffer
-nnoremap <Leader>cd :cd %:p:h<CR>:pwd<CR>
+nnoremap <Leader>bw :cd %:p:h<CR>:pwd<CR>
 
 " Copy the filepath to clipboard
-nnoremap <Leader>cf :let @+=expand("%:p")<CR>
+nnoremap <Leader>by :let @+=expand("%:p")<CR>
 
 " Expand '%%' to the path of the current buffer
 cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h').'/' : '%%'
@@ -845,6 +863,11 @@ inoremap <expr><C-F> neocomplete#smart_close_popup()."\<Right>"
 cnoremap @sh <Left>
 cnoremap @sl <Right>
 
+cnoremap <C-B> <Left>
+cnoremap <C-F> <Right>
+cnoremap <C-A> <Home>
+cnoremap <C-E> <End>
+
 "----------------------------------------------------------------
 " 12. Paste mode improved
 "----------------------------------------------------------------
@@ -966,9 +989,9 @@ nnoremap <Leader>do :argdo %s/<C-R>///cge\|up<Left><Left><Left><Left><Left><Left
 " 14. Text edition
 "----------------------------------------------------------------
 " Toggle case
-nnoremap <Leader>u ~
-inoremap <Leader>u ~
-vnoremap <Leader>u y:call setreg('', ToggleCase(@"), getregtype(''))<CR>gv""Pgv
+nnoremap <Leader>< ~
+inoremap <Leader>< ~
+vnoremap <Leader>< y:call setreg('', ToggleCase(@"), getregtype(''))<CR>gv""Pgv
 
 " Toggle and untoggle spell checking
 let f8msg = "Toggle spell checking."
@@ -1247,9 +1270,14 @@ endfunction
 function! s:ToggleGGPrev()
 	if getwinvar(winnr("#"), "&pvw") == 1
 		pclose
+		echo "GitGutter closed."
 	else
 		GitGutterPreviewHunk
-		echo "GitGutter Preview."
+		if getwinvar(winnr("#"), "&pvw") == 0
+			echo "Nothing to show."
+		else
+			echo "GitGutter preview."
+		endif
 	endif
 endfunction
 
