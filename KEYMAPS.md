@@ -149,4 +149,9 @@
   - `<Win-k>` moves the cursor up one line.
   - `<Win-l>` moves the cursor forward one character.
 
+#### {a-z} keymaps:
+
+- Moving around lines:
+  - `ñ` toggles the cursor position: start and end of the line.
+
 It's a generic explanation of the main commands. Some are only for a specific mode and most of them are usable from all the modes, so if you need more precise information, check the code.

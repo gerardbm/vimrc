@@ -773,6 +773,9 @@ vnoremap <Leader>4 g$
 vnoremap <Home> g^
 vnoremap <End> g$
 
+" Toggle the cursor position start/end
+nnoremap <silent> ñ :<C-U>call <SID>ToggleStartEnd()<CR>
+
 " Move lines
 nnoremap <C-K> :m .-2<CR>==
 vnoremap <C-K> :m '<-2<CR>gv=gv
@@ -1206,6 +1209,21 @@ function! s:ToggleColorColumn()
 	else
 		Windo let &colorcolumn = s:color_column_old
 		let s:color_column_old = 0
+	endif
+endfunction
+
+" Toggle the cursor position start/end
+let s:toggleline = 0
+
+function! s:ToggleStartEnd()
+	if col(".") >= col("$") - 1
+		let s:toggleline = 1
+		norm! ^
+		echo "Start of the text: ^"
+	else
+		let s:toggleline = 0
+		norm! g_
+		echo "End of the text: $"
 	endif
 endfunction
 

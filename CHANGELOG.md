@@ -1,5 +1,8 @@
 ## Changelog
 
+= 1.5.2 =
+* New toggle function to switch start and end of line with `ñ`.
+
 = 1.5.1 =
 * New NERDCommenter settings: default maps disabled.
 * The maps `<Leader>x` (toggle comments) changed to `<Leader>c`.
