@@ -1,5 +1,12 @@
 ## Changelog
 
+= 1.5.7 =
+* Added the inoremaps `<Tab>` and `<S-Tab>`.
+* Better misspelled words navigation with `ç` and `Ç`.
+* The map `<Leader>w?` (suggestions) changed to `<Leader>ç`.
+* The map `<Leader>wa` (wrong is good) changed to `<Leader>wg`.
+* The map `<Leader>wx` (wrong is wrong) changed to `<Leader>ww`.
+
 = 1.5.6 =
 * Removed the nnoremap `<C-c>` (stop pressing message).
 * The map `<Leader><Space>` (open CtrlP) changed to `<C-c>`.

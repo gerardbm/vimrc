@@ -19,6 +19,7 @@ This Vim configuration is purely subjective: I wrote it according to my needs. T
 - Toggle Paste mode to cut or copy in Vim with `<F7>`.
 - Also, auto-toggle 'Paste Mode' when pasting text.
 - Toggle spell and swithc dictionaries with `<F8>/<S-F8>`.
+- Navigate between misspelled words with `ç/Ç`.
 - Display or hide the colorcolumn with `<F9>`.
 - Maximize and resize a Vim window with `<F10>`.
 - The key `<F11>` is reserved for some desktops.
@@ -42,28 +43,24 @@ This Vim configuration is purely subjective: I wrote it according to my needs. T
 - Navigate between vimgrep results with `<Leader>n/N`.
 - Open the menu of the plugin CtrlP with `<Leader><Space>`.
 - Into CtrlP, switch files/mru/buffers with `<C-h>/<C-l>`.
-
+- Readline maps for Commands, Insert and CtrlP navigation.
 - Open the plugin FZF - all files with `<Leader>z`.
 - Open the plugin FZF - commits with `<Leader>Z`.
-
-- Navigate between misspelled words with `<Leader>wn/wp`.
-
 - Copy/paste from the clipboard with `<Leader>y/p`.
 - Select the text pasted from the clipboard with `<Leader>gV`.
 - Caps Lock is `<C-l>` from 'Insert Mode' (plugin).
-
 - Indent lines and selection using `<Tab>`and `<S-Tab>`.
-
 - Duplicate lines up and down with `<Leader>ds/df`.
 - Move lines up and down (even selected) with `<C-j>/<C-k>`.
 - Add new empty lines up and down with `<Leader>f/F`.
 - Isolate the current line with `<Leader>o`.
-- Non intrusive configuration with the native keymaps.
+- Toggle the cursor position start/end of line with `ñ`.
 - Rename the Tmux windows titles with the current buffer.
 - Resize the Vim windows with `-`, `+`, `<` and `>`.
 - Toggle case a letter or a selection with `<Leader><`.
 - Make settings for sh, perl, python, js, php, ruby, go, c, cpp.
 - Show the syntax highlighting groups with `<C-S>`.
+- Non intrusive configuration with the native keymaps.
 
 Vim and Neovim configurations are identical excepting little details. For example: Vim uses the plugins Syntastic, QuickRun and Neocomplete, while Neovim uses Neomake and Deoplete. Neovim is faster with these plugins —asynchronous architecture wins—; and Vim 8.0 will be fast as well, when someone writes asynchronous plugins for it.
 

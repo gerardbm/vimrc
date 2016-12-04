@@ -6,7 +6,7 @@
 "  (_)___/_/_/ /_/ /_/_/   \___/
 "
 "----------------------------------------------------------------
-"  Version : 1.5.6
+"  Version : 1.5.7
 "  License : MIT
 "  Author  : Gerard Bajona
 "  URL     : https://github.com/gerardbm/vimrc
@@ -722,9 +722,11 @@ set tabstop=4
 nnoremap <TAB> >>
 nnoremap <S-TAB> <<
 
-" Stay in 'Visual Mode' when indenting
 vnoremap <TAB> >gv
 vnoremap <S-TAB> <gv
+
+inoremap <TAB> <C-i>
+inoremap <S-TAB> <C-d>
 
 " Don't show tabs
 set list
@@ -1006,19 +1008,19 @@ vnoremap <silent> <S-F8> <Esc>:call <SID>ToggleSpelllang()<CR>gv
 inoremap <silent> <S-F8> <C-O>:call <SID>ToggleSpelllang()<CR>
 
 " Move to next misspelled word
-nnoremap <Leader>wn ]s
+nnoremap ç ]s
 
 " Find the misspelled word before the cursor
-nnoremap <Leader>wp [s
+nnoremap Ç [s
 
 " Add word under the cursor as a good word
 nnoremap <Leader>wa zg
 
 " Mark the word under the cursor as wrong
-nnoremap <Leader>wx zw
+nnoremap <Leader>wd zw
 
 " Suggest correctly spelled words
-nnoremap <Leader>w? z=
+nnoremap <Leader>ç z=
 
 " Copy text into the clipboard
 vnoremap <Leader>y "+y<Esc>

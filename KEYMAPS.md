@@ -117,11 +117,11 @@
 - Text edition:
   - `<Leader><` toggles the case of a character.
   - `<leader><` toggles the case of a selection, as well.
-  - `<Leader>wn` moves to the next misspelled word.
-  - `<Leader>wp` moves to the previous misspelled word.
-  - `<Leader>wa` adds the word under the cursor into the dictionary.
-  - `<Leader>wx` marks the word under the cursor as wrong.
-  - `<Leader>w?` suggests correctly spelled words.
+  - `ç` moves to the next misspelled word.
+  - `Ç` moves to the previous misspelled word.
+  - `<Leader>ç` suggests correctly spelled words.
+  - `<Leader>wg` adds the word under the cursor into the dictionary.
+  - `<Leader>ww` marks the word under the cursor as wrong.
   - `<Leader>tf` retabs the current selection.
 
 - Clipboard:
@@ -158,5 +158,11 @@
 
 - Moving around lines:
   - `ñ` toggles the cursor position: start/end of the line.
+
+#### Tab keymaps:
+
+- Indentation:
+  - `<Tab>` adds one tabulator.
+  - `<S-Tab>` removes one tabulator.
 
 It's a generic explanation of the main commands. Some are only for a specific mode and most of them are usable from all the modes, so if you need more precise information, check the code.
