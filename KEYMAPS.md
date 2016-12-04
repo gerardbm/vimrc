@@ -8,21 +8,27 @@
   - `<C-j>` moves lines down.
   - `<C-k>` moves lines up.
 
-- Plugins related:
-  - `<C-p>` previews the current GitGutter hunk.
-  - `<C-n>` opens, focuses or closes NERDTree.
-  - `<C-s>` expands neosnippet from 'Insert Mode'.
-  - `<C-z>` goes to the `:VimShell`.
-  - `<C-d>` expands Jedi completions.
-
-- Misc:
-  - `<C-s>` shows syntax highlighting groups.
-
-- 'Insert Mode' and 'Command Mode':
+- 'Insert Mode' and 'Command Mode' (readline):
   - `<C-a>` moves the cursor to the line start.
   - `<C-e>` moves the cursor to the line end.
   - `<C-b>` moves the cursor back one character.
   - `<C-f>` moves the cursor forward one character.
+
+- Plugins related:
+  - `<C-p>` previews the current GitGutter hunk.
+  - `<C-n>` opens, focuses or closes NERDTree.
+  - `<C-z>` goes to the `:VimShell`.
+  - `<C-c>` opens the CtrlP menu.
+    - `<C-h>` toggles type (into CtrlP).
+    - `<C-l>` toggles type (into CtrlP).
+    - `<C-b>` goes to the left (into CtrlP).
+    - `<C-f>` goes to the right (into CtrlP).
+  - `<C-l>` toggles caps lock from 'Insert Mode'.
+  - `<C-s>` expands neosnippet from 'Insert Mode'.
+  - `<C-d>` expands Jedi completions.
+
+- Misc:
+  - `<C-s>` shows syntax highlighting groups.
 
 #### \<A-{a-z}\> keymaps:
 
@@ -105,8 +111,8 @@
 - Replace:
   - `<Leader>r` replaces the highlight in the current file.
   - `<Leader>R` replaces the highlight to all open buffers.
-  - `<Leader>a` opens all the files of the current directory.
-  - `<Leader>A` opens all the files of the subdirectories, as well.
+  - `<Leader>a` opens files (`*.*`) of the current directory.
+  - `<Leader>A` opens files (`**/*.*`) of the subdirectories.
 
 - Text edition:
   - `<Leader><` toggles the case of a character.
@@ -126,14 +132,13 @@
   - `<Leader><TAB>` runs the code of the current buffer.
   - `<Leader>j` goes to the next GitGutter hunk.
   - `<Leader>k` goes to the previous GitGutter hunk.
-  - `<Leader>c` toggles the commented code..
+  - `<Leader>c` toggles the commented code.
   - `<Leader>h` goes to the previous warning/error.
   - `<Leader>l` goes to the next warning/error.
   - `<Leader>q` toggles the quickfix window.
   - `<Leader>e` toggles the location list window.
   - `<Leader>z` toggles the plugin FZF (:Files).
-  - `<Leader>x` toggles the plugin FZF (:Buffers).
-  - `<Leader>C` toggles the plugin FZF (:Commits).
+  - `<Leader>Z` toggles the plugin FZF (:Commits).
   - `<Leader>u` toggles the plugin Gundo.
   - `<Leader>ga` inits easy align plugin.
   - `<Leader>ta` inits tabularize plugin.
@@ -143,7 +148,7 @@
 
 #### \<Win-{a-z}\> keymaps:
 
-- 'Insert Mode' and 'Command Mode':
+- 'Insert Mode' and 'Command Mode' (readline alternative):
   - `<Win-h>` moves the cursor back one character.
   - `<Win-j>` moves the cursor down one line.
   - `<Win-k>` moves the cursor up one line.
@@ -152,6 +157,6 @@
 #### {a-z} keymaps:
 
 - Moving around lines:
-  - `ñ` toggles the cursor position: start and end of the line.
+  - `ñ` toggles the cursor position: start/end of the line.
 
 It's a generic explanation of the main commands. Some are only for a specific mode and most of them are usable from all the modes, so if you need more precise information, check the code.

@@ -8,26 +8,62 @@ This Vim configuration is purely subjective: I wrote it according to my needs. T
 - `<Leader>` key is ",". It's really a good practice.
 - Then `<Leader><Leader>` escapes the current mode.
 - Three cursor shapes for Normal, Insert and Replace modes.
-- In Vim encoding is set to UTF8. In Neovim it is a default.
+- UTF8 is the default encoding for Vim and Neovim.
 - 256 colors for Vim and True Color for Neovim.
 - Backups and swap files are disabled. Use Git!
-- Relative numbers are enabled. Toggle it with `<F3>`.
-- Rename and delete files. Reload and save all files.
-- Navigate between buffers, tabs and windows easily.
-- Do a search in the current buffer with `<Space>`.
+- Rename files with `<F2>` without leaving Vim.
+- Toggle numbers and relative numbers with `<F3>/<S-F3>`
+- Display or hide the TagBar list (plugin) with `<F4>`.
+- Reload a buffer with edited from outside with `<F5>`.
+- Display or hide unprintable characters with `<F6>`.
+- Toggle Paste mode to cut or copy in Vim with `<F7>`.
+- Also, auto-toggle 'Paste Mode' when pasting text.
+- Toggle spell and swithc dictionaries with `<F8>/<S-F8>`.
+- Display or hide the colorcolumn with `<F9>`.
+- Maximize and resize a Vim window with `<F10>`.
+- The key `<F11>` is reserved for some desktops.
+- Reload the Vim configuration with `<F12>`.
+- Reload the current colorscheme with `<S-F12>`.
+- Save a buffer or all buffers with `<Leader>s/S`.
+- Delete the current file with `<Leader><Del>y`.
+- Navigate between buffers with `<Leader>h/l`.
+- Navigate between Vim/Tmux panes with `<Alt-{hjkl}>`.
+- Navigate between GitGutter hunks with `<Leader>j/k`.
+- Preview or hide the GitGutter hunks with `<C-p>`.
+- Search in the current buffer with `<Space>`.
 - Highlight the selection with `<Leader><CR>`.
-- Vimgrep the highlight with `<Leader>v`.
-- Vimgrep to all files with `<Leader>V`.
-- Replace the highlight with `<Leader>r`.
-- Replace to all open files with `<Leader>R`.
-- Toggle spell, dictionary, list and colorcolumn.
-- Auto-toggle 'Paste Mode' when pasting text.
-- Caps Lock is `<C-l>` from 'Insert Mode'.
-- Indentation is using `<Tab>`and `<S-Tab>`.
-- Duplicate lines, move them and add new ones.
+- Highlight the word under the cursor, as well.
+- Stop the highlighting with `<Leader><BS>`.
+- Vimgrep the highlight with `<Leader>v` (current file).
+- Vimgrep the highlight with `<Leader>V` (current directory).
+- Replace the highlight with `<Leader>r` (current file).
+- Replace the highlight with `<Leader>R` (all open buffers).
+- Search, vimgrep and replace into the visual selection.
+- Navigate between vimgrep results with `<Leader>n/N`.
+- Open the menu of the plugin CtrlP with `<Leader><Space>`.
+- Into CtrlP, switch files/mru/buffers with `<C-h>/<C-l>`.
+
+- Open the plugin FZF - all files with `<Leader>z`.
+- Open the plugin FZF - commits with `<Leader>Z`.
+
+- Navigate between misspelled words with `<Leader>wn/wp`.
+
+- Copy/paste from the clipboard with `<Leader>y/p`.
+- Select the text pasted from the clipboard with `<Leader>gV`.
+- Caps Lock is `<C-l>` from 'Insert Mode' (plugin).
+
+- Indent lines and selection using `<Tab>`and `<S-Tab>`.
+
+- Duplicate lines up and down with `<Leader>ds/df`.
+- Move lines up and down (even selected) with `<C-j>/<C-k>`.
+- Add new empty lines up and down with `<Leader>f/F`.
+- Isolate the current line with `<Leader>o`.
 - Non intrusive configuration with the native keymaps.
 - Rename the Tmux windows titles with the current buffer.
-- Move between Vim windows and Tmux panes with `<Alt-{hjkl}>`.
+- Resize the Vim windows with `-`, `+`, `<` and `>`.
+- Toggle case a letter or a selection with `<Leader><`.
+- Make settings for sh, perl, python, js, php, ruby, go, c, cpp.
+- Show the syntax highlighting groups with `<C-S>`.
 
 Vim and Neovim configurations are identical excepting little details. For example: Vim uses the plugins Syntastic, QuickRun and Neocomplete, while Neovim uses Neomake and Deoplete. Neovim is faster with these plugins —asynchronous architecture wins—; and Vim 8.0 will be fast as well, when someone writes asynchronous plugins for it.
 

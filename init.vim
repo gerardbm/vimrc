@@ -6,7 +6,7 @@
 "  /_/ /_/\___/\____/|___/_/_/ /_/ /_/
 "
 "----------------------------------------------------------------
-"  Version : 1.5.5
+"  Version : 1.5.6
 "  License : MIT
 "  Author  : Gerard Bajona
 "  URL     : https://github.com/gerardbm/vimrc
@@ -58,11 +58,6 @@ inoremap <Leader><Leader> <Esc>
 
 " Trigger InsertLeave autocmd
 inoremap <C-C> <Esc>
-
-" You can stop pressing <C-C>
-nnoremap <C-C> :echohl WarningMsg
-	\ <Bar> echo "Already in 'Normal Mode'!"
-	\ <Bar> echohl None<CR>
 
 " No need for Ex mode
 nnoremap Q <NOP>
@@ -229,7 +224,7 @@ vnoremap <F4> <Esc>:TagbarToggle<CR>gv
 inoremap <F4> <C-O>:TagbarToggle<CR>
 
 " CtrlP settings
-let g:ctrlp_map               = '<Leader><Space>'
+let g:ctrlp_map               = '<C-c>'
 let g:ctrlp_working_path_mode = 'ra'
 let g:ctrlp_prompt_mappings   = {
 	\ 'ToggleType(1)'  : ['<c-h>', '<c-up>'],
@@ -245,13 +240,9 @@ nnoremap <Leader>z :FZF<CR>
 vnoremap <Leader>z <Esc>:FZF<CR>gv
 inoremap <Leader>z <C-O>:FZF<CR>
 
-nnoremap <Leader>x :Buffers<CR>
-vnoremap <Leader>x <Esc>:Buffers<CR>gv
-inoremap <Leader>x <C-O>:Buffers<CR>
-
-nnoremap <Leader>C :Commits<CR>
-vnoremap <Leader>C <Esc>:Commits<CR>gv
-inoremap <Leader>C <C-O>:Commits<CR>
+nnoremap <Leader>Z :Commits<CR>
+vnoremap <Leader>Z <Esc>:Commits<CR>gv
+inoremap <Leader>Z <C-O>:Commits<CR>
 
 " Gundo toggle
 nnoremap <Leader>u :GundoToggle<CR>
@@ -474,7 +465,7 @@ set ffs=unix,dos,mac
 set autoread
 
 " Reload a file when it is changed from the outside
-let f5msg = "All files reloaded."
+let f5msg = "Buffer reloaded."
 nnoremap <F5> :e<CR>:echo f5msg<CR>
 vnoremap <F5> <Esc>:e<CR>:echo f5msg<CR>gv
 inoremap <F5> <C-O>:e<CR><C-O>:echo f5msg<CR>
@@ -895,10 +886,10 @@ set mmp=1000
 " Map <Space> to / (search)
 nnoremap <Space> /
 
-" Search word under the cursor and don't jump to next
+" Highlight word under the cursor and don't jump to next
 nnoremap <silent> <Leader><CR> :let @/='\<<C-R>=expand("<cword>")<CR>\>'<CR>:set hls<CR>
 
-" Search the selected text and don't jump to next
+" Highlight the selected text and don't jump to next
 vnoremap <silent> <Leader><CR> :<C-U>call <SID>VSetSearch()<CR>:set hls<CR>
 
 " Disable highlight
@@ -1161,7 +1152,7 @@ function! RangeSearch(direction)
 	endif
 endfunction
 
-" Search the selected text (visual mode)
+" Highlight the selected text (visual mode)
 " Source: https://github.com/nelstrom/vim-visual-star-search
 " (You can install it as a plugin)
 function! s:VSetSearch()

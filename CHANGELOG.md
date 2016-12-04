@@ -1,5 +1,11 @@
 ## Changelog
 
+= 1.5.6 =
+* Removed the nnoremap `<C-c>` (stop pressing message).
+* The map `<Leader><Space>` (open CtrlP) changed to `<C-c>`.
+* The maps `<Leader>x` (open FZF buffers) have been removed.
+* The maps `<Leader>C` (poen FZF commits) changed to `<Leader>Z`.
+
 = 1.5.5 =
 * Added and fixed the vnoremap to vimgrep into the visual selection.
 * The nnoremap `<Leader>do` (replace to all open files) changed to `<Leader>R`.
