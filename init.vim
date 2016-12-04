@@ -774,7 +774,7 @@ vnoremap <Home> g^
 vnoremap <End> g$
 
 " Toggle the cursor position start/end
-nnoremap <silent> ñ :<C-U>call <SID>ToggleStartEnd()<CR>
+nnoremap <silent> ñ :<C-U>call <SID>ToggleCPosition()<CR>
 
 " Move lines
 nnoremap <C-K> :m .-2<CR>==
@@ -1213,15 +1213,15 @@ function! s:ToggleColorColumn()
 endfunction
 
 " Toggle the cursor position start/end
-let s:toggleline = 0
+let s:togglecp = 0
 
-function! s:ToggleStartEnd()
+function! s:ToggleCPosition()
 	if col(".") >= col("$") - 1
-		let s:toggleline = 1
+		let s:togglecp = 1
 		norm! ^
 		echo "Start of the text: ^"
 	else
-		let s:toggleline = 0
+		let s:togglecp = 0
 		norm! g_
 		echo "End of the text: $"
 	endif
