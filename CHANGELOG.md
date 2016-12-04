@@ -1,5 +1,9 @@
 ## Changelog
 
+= 1.5.4 =
+* Added `:copen` to `:vimgrep` nnoremaps.
+* Removed the vnoremap to vimgrep into the visual selection.
+
 = 1.5.3 =
 * Jump to the search results (grep, vimgrep) in buffers, not in tabs.
 

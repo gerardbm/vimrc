@@ -6,7 +6,7 @@
 "  (_)___/_/_/ /_/ /_/_/   \___/
 "
 "----------------------------------------------------------------
-"  Version : 1.5.3
+"  Version : 1.5.4
 "  License : MIT
 "  Author  : Gerard Bajona
 "  URL     : https://github.com/gerardbm/vimrc
@@ -439,7 +439,7 @@ endif
 " Mouse
 set mousehide
 
-" Hilight cursor line and cursor column
+" Highlight cursor line and cursor column
 set cursorline
 set nocursorcolumn
 
@@ -961,14 +961,12 @@ vnoremap <silent> ? :<C-U>call RangeSearch('?')<CR>
 
 " --- Vimgrep ---
 "----------------------------------------------------------------
-" Vimgrep the hilight in the current file
-nnoremap <Leader>v :vimgrep /<C-R>// %
+" Vimgrep the highlight in the current file
+nnoremap <Leader>v :vimgrep /<C-R>//j % \| copen<CR>
 
-" Vimgrep the hilight into the current selection
-vnoremap <Leader>v :vimgrep /<C-R>// %
-
-" Vimgrep the hilight in the current directory and subdirectories
-nnoremap <Leader>V :vimgrep /<C-R>// **/*.
+" Vimgrep the highlight in the current directory and subdirectories
+nnoremap <Leader>V :vimgrep /<C-R>//j **/*. \| copen
+	\ <Left><Left><Left><Left><Left><Left><Left><Left><Left>
 
 " Navigate between vimgrep results
 nnoremap <Leader>n :cnext<CR>zz
@@ -982,11 +980,11 @@ set switchbuf=useopen
 " Replace the highlight in the current file
 nnoremap <Leader>r :%s/<C-R>///g<Left><Left>
 
-" Replace the hilight into the current selection
+" Replace the highlight into the current selection
 " Flag \%V --> Match only inside the Visual selection
 vnoremap <Leader>r :s/\%V<C-R>/\%V//g<Left><Left>
 
-" Replace the hilight to all project
+" Replace the highlight to all project
 nnoremap <Leader>a :args *.
 nnoremap <Leader>A :args **/*.
 nnoremap <Leader>do :argdo %s/<C-R>///cge\|up<Left><Left><Left><Left><Left><Left><Left>
