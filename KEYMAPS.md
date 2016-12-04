@@ -103,10 +103,10 @@
   - `<Leader>N` goes to the previous vimgrep result.
 
 - Replace:
-  - `<Leader>r` replaces the current highlight.
+  - `<Leader>r` replaces the highlight in the current file.
+  - `<Leader>R` replaces the highlight to all open buffers.
   - `<Leader>a` opens all the files of the current directory.
   - `<Leader>A` opens all the files of the subdirectories, as well.
-  - `<Leader>do` replaces the highlight to all the buffers.
 
 - Text edition:
   - `<Leader><` toggles the case of a character.

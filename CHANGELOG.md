@@ -1,5 +1,9 @@
 ## Changelog
 
+= 1.5.5 =
+* Added and fixed the vnoremap to vimgrep into the visual selection.
+* The nnoremap `<Leader>do` (replace to all open files) changed to `<Leader>R`.
+
 = 1.5.4 =
 * Added `:copen` to `:vimgrep` nnoremaps.
 * Removed the vnoremap to vimgrep into the visual selection.

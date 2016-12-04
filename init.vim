@@ -6,7 +6,7 @@
 "  /_/ /_/\___/\____/|___/_/_/ /_/ /_/
 "
 "----------------------------------------------------------------
-"  Version : 1.5.4
+"  Version : 1.5.5
 "  License : MIT
 "  Author  : Gerard Bajona
 "  URL     : https://github.com/gerardbm/vimrc
@@ -919,6 +919,9 @@ vnoremap <silent> ? :<C-U>call RangeSearch('?')<CR>
 " Vimgrep the highlight in the current file
 nnoremap <Leader>v :vimgrep /<C-R>//j % \| copen<CR>
 
+" Vimgrep the highlight in the visual selection
+vnoremap <Leader>v :vimgrep /\%V<C-R>/\%V/j % \| copen<CR>
+
 " Vimgrep the highlight in the current directory and subdirectories
 nnoremap <Leader>V :vimgrep /<C-R>//j **/*. \| copen
 	\ <Left><Left><Left><Left><Left><Left><Left><Left><Left>
@@ -935,14 +938,17 @@ set switchbuf=useopen
 " Replace the highlight in the current file
 nnoremap <Leader>r :%s/<C-R>///g<Left><Left>
 
-" Replace the highlight into the current selection
-" Flag \%V --> Match only inside the Visual selection
+" Replace the highlight into the visual selection
+" Flag \%V --> Match only inside the visual selection
 vnoremap <Leader>r :s/\%V<C-R>/\%V//g<Left><Left>
 
-" Replace the highlight to all project
+" Replace the highlight to all open buffers
+nnoremap <Leader>R :argdo %s/<C-R>///cge
+	\ \|up<Left><Left><Left><Left><Left><Left><Left><Left>
+
+" Populate the argslist
 nnoremap <Leader>a :args *.
 nnoremap <Leader>A :args **/*.
-nnoremap <Leader>do :argdo %s/<C-R>///cge\|up<Left><Left><Left><Left><Left><Left><Left>
 
 "----------------------------------------------------------------
 " 14. Text edition
