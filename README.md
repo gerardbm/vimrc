@@ -14,26 +14,26 @@ This Vim configuration is purely subjective: I wrote it according to my needs. T
 - Rename files with `<F2>` without leaving Vim.
 - Toggle numbers and relative numbers with `<F3>/<S-F3>`
 - Display or hide the TagBar list (plugin) with `<F4>`.
-- Reload a buffer with edited from outside with `<F5>`.
+- Reload a buffer edited from outside with `<F5>`.
 - Display or hide unprintable characters with `<F6>`.
 - Toggle Paste mode to cut or copy in Vim with `<F7>`.
-- Also, auto-toggle 'Paste Mode' when pasting text.
-- Toggle spell and swithc dictionaries with `<F8>/<S-F8>`.
+- Also, auto-toggle Paste mode when pasting text.
+- Toggle spell and switch dictionaries with `<F8>/<S-F8>`.
 - Navigate between misspelled words with `ç/Ç`.
 - Display or hide the colorcolumn with `<F9>`.
 - Maximize and resize a Vim window with `<F10>`.
 - The key `<F11>` is reserved for some desktops.
-- Reload the Vim configuration with `<F12>`.
+- Reload the Vim/Neovim configuration with `<F12>`.
 - Reload the current colorscheme with `<S-F12>`.
 - Save a buffer or all buffers with `<Leader>s/S`.
 - Delete the current file with `<Leader><Del>y`.
-- Navigate between buffers with `<Leader>h/l`.
+- Navigate between buffers with `<C-h>/<C-l>`.
 - Navigate between Vim/Tmux panes with `<Alt-{hjkl}>`.
 - Navigate between GitGutter hunks with `<Leader>j/k`.
 - Preview or hide the GitGutter hunks with `<C-p>`.
 - Search in the current buffer with `<Space>`.
-- Highlight the selection with `<Leader><CR>`.
-- Highlight the word under the cursor, as well.
+- Highlight the current selection with `<Leader><CR>`.
+- Highlight the word under the cursor with `<Leader><CR>`.
 - Stop the highlighting with `<Leader><BS>`.
 - Vimgrep the highlight with `<Leader>v` (current file).
 - Vimgrep the highlight with `<Leader>V` (current directory).
@@ -41,9 +41,9 @@ This Vim configuration is purely subjective: I wrote it according to my needs. T
 - Replace the highlight with `<Leader>R` (all open buffers).
 - Search, vimgrep and replace into the visual selection.
 - Navigate between vimgrep results with `<Leader>n/N`.
-- Open the menu of the plugin CtrlP with `<Leader><Space>`.
+- Open the menu of the plugin CtrlP with `<C-c>`.
 - Into CtrlP, switch files/mru/buffers with `<C-h>/<C-l>`.
-- Readline maps for Commands, Insert and CtrlP navigation.
+- Readline maps for Commands mode, Insert mode and CtrlP.
 - Open the plugin FZF - all files with `<Leader>z`.
 - Open the plugin FZF - commits with `<Leader>Z`.
 - Copy/paste from the clipboard with `<Leader>y/p`.
@@ -58,8 +58,8 @@ This Vim configuration is purely subjective: I wrote it according to my needs. T
 - Rename the Tmux windows titles with the current buffer.
 - Resize the Vim windows with `-`, `+`, `<` and `>`.
 - Toggle case a letter or a selection with `<Leader><`.
-- Make settings for sh, perl, python, js, php, ruby, go, c, cpp.
-- Show the syntax highlighting groups with `<C-S>`.
+- Make settings for the most used languages.
+- Show the syntax highlighting groups with `<C-s>`.
 - Non intrusive configuration with the native keymaps.
 
 Vim and Neovim configurations are identical excepting little details. For example: Vim uses the plugins Syntastic, QuickRun and Neocomplete, while Neovim uses Neomake and Deoplete. Neovim is faster with these plugins —asynchronous architecture wins—; and Vim 8.0 will be fast as well, when someone writes asynchronous plugins for it.
