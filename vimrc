@@ -6,7 +6,7 @@
 "  (_)___/_/_/ /_/ /_/_/   \___/
 "
 "----------------------------------------------------------------
-"  Version : 1.5.2
+"  Version : 1.5.3
 "  License : MIT
 "  Author  : Gerard Bajona
 "  URL     : https://github.com/gerardbm/vimrc
@@ -968,11 +968,14 @@ nnoremap <Leader>v :vimgrep /<C-R>// %
 vnoremap <Leader>v :vimgrep /<C-R>// %
 
 " Vimgrep the hilight in the current directory and subdirectories
-nnoremap <Leader>V :vimgrep /<C-R>// **/*.*
+nnoremap <Leader>V :vimgrep /<C-R>// **/*.
 
 " Navigate between vimgrep results
 nnoremap <Leader>n :cnext<CR>zz
 nnoremap <Leader>N :cprev<CR>zz
+
+" Jump to the results in buffers (first open window), not tabs
+set switchbuf=useopen
 
 " --- Replace ---
 "----------------------------------------------------------------

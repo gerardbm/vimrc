@@ -1,5 +1,8 @@
 ## Changelog
 
+= 1.5.3 =
+* Jump to the search results (grep, vimgrep) in buffers, not in tabs.
+
 = 1.5.2 =
 * New toggle function to switch start and end of line with `ñ`.
 
