@@ -17,8 +17,9 @@ This Vim configuration is purely subjective: I wrote it according to my needs. T
 - Do a search in the current buffer with `<Space>`.
 - Highlight the selection with `<Leader><CR>`.
 - Vimgrep the highlight with `<Leader>v`.
+- Vimgrep to all files with `<Leader>V`.
 - Replace the highlight with `<Leader>r`.
-- Argdo the highlight with `<Leader>do`.
+- Replace to all open files with `<Leader>R`.
 - Toggle spell, dictionary, list and colorcolumn.
 - Auto-toggle 'Paste Mode' when pasting text.
 - Caps Lock is `<C-l>` from 'Insert Mode'.
