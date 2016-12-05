@@ -35,10 +35,11 @@ This Vim configuration is purely subjective: I wrote it according to my needs. T
 - Highlight the current selection with `<Leader><CR>`.
 - Highlight the word under the cursor with `<Leader><CR>`.
 - Stop the highlighting with `<Leader><BS>`.
-- Vimgrep the highlight with `<Leader>v` (current file).
-- Vimgrep the highlight with `<Leader>V` (current directory).
-- Replace the highlight with `<Leader>r` (current file).
-- Replace the highlight with `<Leader>R` (all open buffers).
+- Vimgrep the highlight (current buffer) with `<Leader>v`.
+- Vimgrep the highlight (full project) with `<Leader>V`.
+- Replace the highlight (current buffer) with `<Leader>r`.
+- Replace the highlight (open buffers) with `<Leader>R`.
+- Open a lot of files (:args command) with `<Leader>a/A`.
 - Search, vimgrep and replace into the visual selection.
 - Navigate between vimgrep results with `<Leader>n/N`.
 - Open the menu of the plugin CtrlP with `<C-c>`.
@@ -47,8 +48,8 @@ This Vim configuration is purely subjective: I wrote it according to my needs. T
 - Open the plugin FZF - all files with `<Leader>z`.
 - Open the plugin FZF - commits with `<Leader>Z`.
 - Copy/paste from the clipboard with `<Leader>y/p`.
-- Select the text pasted from the clipboard with `<Leader>gV`.
-- Caps Lock is `<C-l>` from 'Insert Mode' (plugin).
+- Select the text pasted from the clipboard with `gV`.
+- Caps Lock is `<C-l>` from Insert mode (plugin).
 - Indent lines and selection using `<Tab>`and `<S-Tab>`.
 - Duplicate lines up and down with `<Leader>ds/df`.
 - Move lines up and down (even selected) with `<C-j>/<C-k>`.
