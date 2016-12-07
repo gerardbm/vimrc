@@ -6,7 +6,7 @@
 "  /_/ /_/\___/\____/|___/_/_/ /_/ /_/
 "
 "----------------------------------------------------------------
-"  Version : 1.6.0
+"  Version : 1.7.0
 "  License : MIT
 "  Author  : Gerard Bajona
 "  URL     : https://github.com/gerardbm/vimrc
@@ -36,8 +36,6 @@
 "----------------------------------------------------------------
 " Reload .vimrc
 nnoremap <F12> :so $MYVIMRC<CR>
-vnoremap <F12> <Esc>:so $MYVIMRC<CR>gv
-inoremap <F12> <C-O>:so $MYVIMRC<CR>
 
 " Lines of memory to remember
 set history=10000 " (default)
@@ -52,12 +50,8 @@ set timeoutlen=3000 ttimeoutlen=100
 " Update time
 set updatetime=250
 
-" Faster Escape key
-vnoremap <Leader><Leader> <Esc>
-inoremap <Leader><Leader> <Esc>
-
 " Trigger InsertLeave autocmd
-inoremap <C-C> <Esc>
+inoremap <C-c> <Esc>
 
 " No need for Ex mode
 nnoremap Q <NOP>
@@ -100,7 +94,6 @@ call plug#begin('~/.config/nvim/plugged')
 	Plug 'itspriddle/vim-jquery'
 	Plug 'pangloss/vim-javascript'
 	Plug 'ternjs/tern_for_vim', { 'do': 'npm install' }
-	Plug 'vim-scripts/a.vim'
 
 	" Autocomplete
 	Plug 'ervandew/supertab'
@@ -170,10 +163,11 @@ let g:gitgutter_diff_args             = '--ignore-space-at-eol'
 
 nmap <Leader>j <Plug>GitGutterNextHunkzz
 nmap <Leader>k <Plug>GitGutterPrevHunkzz
-nmap <silent> <C-P> :call <SID>ToggleGGPrev()<CR>zz
+nmap <silent> <C-p> :call <SID>ToggleGGPrev()<CR>zz
 
 " Fugitive settings
-nmap <Leader>g :<C-U>call <SID>ToggleGsPrev()<CR>
+nnoremap <Leader>g :<C-U>call <SID>ToggleGsPrev()<CR>
+nnoremap <Leader>G :Gvdiff<CR>
 
 " Vim-session settings
 let g:session_autosave = 'no'
@@ -188,10 +182,9 @@ let g:NERDCreateDefaultMappings = 0
 
 nnoremap <Leader>c :call NERDComment(0,'toggle')<CR>
 vnoremap <Leader>c :call NERDComment(0,"toggle")<CR>gv
-inoremap <Leader>c <C-O>:call NERDComment(0,"toggle")<CR>
 
 " NERDTree settings
-nnoremap <silent> <C-N> :call ToggleTree()<CR>
+nnoremap <silent> <C-n> :call ToggleTree()<CR>
 
 " Neomake settings
 autocmd! BufWritePost,BufEnter * Neomake
@@ -214,12 +207,7 @@ let g:neomake_info_sign = {
 	\ }
 
 nnoremap <Leader>h :lprevious<CR>zz
-vnoremap <Leader>h <Esc>:lprevious<CR>gvzz
-inoremap <Leader>h <C-O>:lprevious<CR>zz
-
 nnoremap <Leader>l :lnext<CR>zz
-vnoremap <Leader>l <Esc>:lnext<CR>gvzz
-inoremap <Leader>l <C-O>:lnext<CR>zz
 
 " Listtoggle settings
 let g:lt_location_list_toggle_map = '<leader>e'
@@ -227,11 +215,9 @@ let g:lt_quickfix_list_toggle_map = '<leader>q'
 
 " Tagbar toggle
 nnoremap <F4> :TagbarToggle<CR>
-vnoremap <F4> <Esc>:TagbarToggle<CR>gv
-inoremap <F4> <C-O>:TagbarToggle<CR>
 
 " CtrlP settings
-let g:ctrlp_map               = '<C-c>'
+let g:ctrlp_map               = '<C-s>'
 let g:ctrlp_working_path_mode = 'ra'
 let g:ctrlp_custom_ignore     = '\v[\/]\.(git|hg|svn)$'
 let g:ctrlp_prompt_mappings   = {
@@ -245,17 +231,10 @@ let g:ctrlp_prompt_mappings   = {
 let g:fzf_layout = { 'down': '~25%' }
 
 nnoremap <Leader>z :FZF<CR>
-vnoremap <Leader>z <Esc>:FZF<CR>gv
-inoremap <Leader>z <C-O>:FZF<CR>
-
 nnoremap <Leader>Z :Commits<CR>
-vnoremap <Leader>Z <Esc>:Commits<CR>gv
-inoremap <Leader>Z <C-O>:Commits<CR>
 
 " Gundo toggle
 nnoremap <Leader>u :GundoToggle<CR>
-vnoremap <Leader>u <Esc>:GundoToggle<CR>
-inoremap <Leader>u <C-O>:GundoToggle<CR>
 
 " Go settings
 let g:go_highlight_functions         = 1
@@ -313,9 +292,9 @@ let g:clang_use_library                = 1
 let g:SuperTabDefaultCompletionType = '<TAB>'
 
 " Neosnippet settings
-imap <C-D> <Plug>(neosnippet_expand_or_jump)
-smap <C-D> <Plug>(neosnippet_expand_or_jump)
-xmap <C-D> <Plug>(neosnippet_expand_target)
+imap <C-d> <Plug>(neosnippet_expand_or_jump)
+smap <C-d> <Plug>(neosnippet_expand_or_jump)
+xmap <C-d> <Plug>(neosnippet_expand_target)
 
 " Behaviour like SuperTab
 smap <expr><TAB>
@@ -330,7 +309,7 @@ endif
 autocmd InsertLeave * NeoSnippetClearMarkers
 
 " Vimshell settings
-nnoremap <C-Z> :VimShell<CR>
+nnoremap <C-z> :VimShellPop<CR>
 
 " Easy align settings
 xmap gi <Plug>(EasyAlign)
@@ -357,11 +336,11 @@ let g:surround_37 = "<% \r %>"
 let g:surround_61 = "<%= \r %>"
 
 " Caps Lock settings
-imap <expr><C-L> deoplete#smart_close_popup()."\<Plug>CapsLockToggle"
+imap <expr><C-l> deoplete#smart_close_popup()."\<Plug>CapsLockToggle"
 
 " Expand region settings
 vmap v <Plug>(expand_region_expand)
-vmap <C-V> <Plug>(expand_region_shrink)
+vmap <C-v> <Plug>(expand_region_shrink)
 
 " MatchTagAlways settings
 let g:mta_filetypes = {
@@ -385,8 +364,6 @@ let g:tmux_navigator_no_mappings = 1
 let g:instant_markdown_autostart = 0
 
 nnoremap <Leader>M :InstantMarkdownPreview<CR>
-vnoremap <Leader>M <Esc>:InstantMarkdownPreview<CR>gv
-inoremap <Leader>M <C-O>:InstantMarkdownPreview<CR>
 
 " Openbrowser settings
 nmap gl <Plug>(openbrowser-open)
@@ -495,7 +472,7 @@ colorscheme atomic
 nnoremap <S-F12> :call GetColorschemeName()<CR>
 
 " Show syntax highlighting groups
-nnoremap <C-S> :call <SID>SynStack()<CR>
+nnoremap <Leader>B :call <SID>SynStack()<CR>
 
 "----------------------------------------------------------------
 " 6. Files and backup
@@ -518,11 +495,6 @@ set autoread
 " Reload a file when it is changed from the outside
 let f5msg = "Buffer reloaded."
 nnoremap <F5> :e<CR>:echo f5msg<CR>
-vnoremap <F5> <Esc>:e<CR>:echo f5msg<CR>gv
-inoremap <F5> <C-O>:e<CR><C-O>:echo f5msg<CR>
-
-" Don't force filetype
-filetype off
 
 " Enable filetype plugins
 filetype plugin on
@@ -530,23 +502,15 @@ filetype indent on
 
 " Save the current buffer
 nnoremap <Leader>s :update<CR>
-vnoremap <Leader>s <Esc>:update<CR>gv
-inoremap <Leader>s <C-O>:update<CR>
 
 " Save all buffers
 nnoremap <Leader>S :bufdo update<CR>
-vnoremap <Leader>S <Esc>:bufdo update<CR>gv
-inoremap <Leader>S <C-O>:bufdo update<CR>
 
 " Rename file
 nnoremap <F2> :call RenameFile()<CR>
-vnoremap <F2> <Esc>:call RenameFile()<CR>
-inoremap <F2> <C-O>:call RenameFile()<CR>
 
 " Delete file
 nnoremap <Leader><Del>y :call DeleteFile()<CR>
-vnoremap <Leader><Del>y <Esc>:call DeleteFile()<CR>
-inoremap <Leader><Del>y <Esc>:call DeleteFile()<CR>
 
 " Work on all file, p.e:
 " - yaf (yank all file)
@@ -569,29 +533,17 @@ set hidden
 
 " Close the current buffer
 nnoremap <Leader>bd :Bclose<CR>
-vnoremap <Leader>bd <Esc>:Bclose<CR>
-inoremap <Leader>bd <Esc>:Bclose<CR>
 
 " Close all the buffers
 nnoremap <Leader>ba :1,1000 bd!<CR>
-vnoremap <Leader>ba <Esc>:1,1000 bd!<CR>
-inoremap <Leader>ba <Esc>:1,1000 bd!<CR>
 
 " Move between buffers
-nnoremap <C-H> :bprev<CR>
-vnoremap <C-H> <Esc>:bprev<CR>
-
-nnoremap <C-L> :bnext<CR>
-vnoremap <C-L> <Esc>:bnext<CR>
+nnoremap <C-h> :bprev<CR>
+nnoremap <C-l> :bnext<CR>
 
 " Edit and explore buffers
 nnoremap <Leader>bb :edit <C-R>=expand("%:p:h")<CR>/
-vnoremap <Leader>bb <Esc>:edit <C-R>=expand("%:p:h")<CR>/
-inoremap <Leader>bb <Esc>:edit <C-R>=expand("%:p:h")<CR>/
-
 nnoremap <Leader>bg :buffers<CR>:buffer<Space>
-vnoremap <Leader>bg <Esc>:buffers<CR>:buffer<Space>
-inoremap <Leader>bg <Esc>:buffers<CR>:buffer<Space>
 
 " Switch CWD to the directory of the current buffer
 nnoremap <Leader>bw :cd %:p:h<CR>:pwd<CR>
@@ -620,33 +572,21 @@ endtry
 "----------------------------------------------------------------
 " Create and close tabs
 nnoremap <Leader>td :tabclose<CR>
-vnoremap <Leader>td <Esc>:tabclose<CR>gv
-inoremap <Leader>td <Esc>:tabclose<CR>
-
 nnoremap <Leader>to :tabonly<CR>
-vnoremap <Leader>to <Esc>:tabonly<CR>gv
-inoremap <Leader>to <Esc>:tabonly<CR>
 
 " Open a new tab with the current buffer's path
 " Useful when editing files in the same directory
 nnoremap <Leader>tt :tabedit <C-R>=expand("%:p:h")<CR>/
-vnoremap <Leader>tt <Esc>:tabedit <C-R>=expand("%:p:h")<CR>/
-inoremap <Leader>tt <Esc>:tabedit <C-R>=expand("%:p:h")<CR>/
 
 " Move tabs position
 nnoremap <Leader>tr :execute 'silent! tabmove ' . (tabpagenr()-2)<CR>
-vnoremap <Leader>tr <Esc>:execute 'silent! tabmove ' . (tabpagenr()-2)<CR>gv
-inoremap <Leader>tr <C-O>:execute 'silent! tabmove ' . (tabpagenr()-2)<CR>
-
 nnoremap <Leader>ty :execute 'silent! tabmove ' . tabpagenr()<CR>
-vnoremap <Leader>ty <Esc>:execute 'silent! tabmove ' . tabpagenr()<CR>gv
-inoremap <Leader>ty <C-O>:execute 'silent! tabmove ' . tabpagenr()<CR>
 
 "----------------------------------------------------------------
 " 9. Multiple windows
 "----------------------------------------------------------------
 " Remap wincmd
-map <Leader>. <C-W>
+map <Leader>. <C-w>
 
 set winminheight=0
 set winminwidth=0
@@ -654,11 +594,11 @@ set splitbelow
 set splitright
 
 " Split windows
-map <C-W>- :split<CR>
-map <C-W>. :vsplit<CR>
-map <C-W><CR> :close<CR>
-map <C-W>x :q!<CR>
-map <C-W>, <C-W>=
+map <C-w>- :split<CR>
+map <C-w>. :vsplit<CR>
+map <C-w><CR> :close<CR>
+map <C-w>x :q!<CR>
+map <C-w>, <C-w>=
 
 " Resizing windows
 if bufwinnr(1)
@@ -670,16 +610,12 @@ endif
 
 " Toggle resize window
 nnoremap <silent> <F10> :ToggleResize<CR>
-vnoremap <silent> <F10> <Esc>:ToggleResize<CR>gv
-inoremap <silent> <F10> <C-O>:ToggleResize<CR>
 
-" Last window
-nnoremap <silent> <C-W>l :wincmd p<CR>:echo "Last window."<CR>
-
-" Previous and next windows
-nnoremap <silent> <C-W>p :wincmd w<CR>:echo "Previous window."<CR>
-nnoremap <silent> <C-W>n :wincmd W<CR>:echo "Next window."<CR>
-nnoremap <silent> <C-W>o :wincmd o<CR>:echo "Only one window."<CR>
+" Last, previous and next window; and only one window
+nnoremap <silent> <C-w>l :wincmd p<CR>:echo "Last window."<CR>
+nnoremap <silent> <C-w>p :wincmd w<CR>:echo "Previous window."<CR>
+nnoremap <silent> <C-w>n :wincmd W<CR>:echo "Next window."<CR>
+nnoremap <silent> <C-w>o :wincmd o<CR>:echo "Only one window."<CR>
 
 " Move between Vim windows and Tmux panes
 " - It requires the corresponding configuration into Tmux.
@@ -692,20 +628,8 @@ nnoremap <silent> <M-k> :TmuxNavigateUp<CR>
 nnoremap <silent> <M-l> :TmuxNavigateRight<CR>
 nnoremap <silent> <M-p> :TmuxNavigatePrevious<CR>
 
-vnoremap <silent> <M-h> <Esc>:TmuxNavigateLeft<CR>gv
-vnoremap <silent> <M-j> <Esc>:TmuxNavigateDown<CR>gv
-vnoremap <silent> <M-k> <Esc>:TmuxNavigateUp<CR>gv
-vnoremap <silent> <M-l> <Esc>:TmuxNavigateRight<CR>gv
-vnoremap <silent> <M-p> <Esc>:TmuxNavigatePrevious<CR>gv
-
-inoremap <silent> <M-h> <C-O>:TmuxNavigateLeft<CR>
-inoremap <silent> <M-j> <C-O>:TmuxNavigateDown<CR>
-inoremap <silent> <M-k> <C-O>:TmuxNavigateUp<CR>
-inoremap <silent> <M-l> <C-O>:TmuxNavigateRight<CR>
-inoremap <silent> <M-p> <C-O>:TmuxNavigatePrevious<CR>
-
 " Remove the Windows ^M - when the encodings gets messed up
-noremap <Leader>m mmHmt:%s/<C-V><CR>//ge<CR>'tzt`m
+noremap <Leader>m mmHmt:%s/<C-v><CR>//ge<CR>'tzt`m
 
 "----------------------------------------------------------------
 " 10. Indentation tabs
@@ -739,8 +663,6 @@ set list
 
 let f6msg = "Toggle list."
 nnoremap <F6> :set list!<CR>:echo f6msg<CR>
-vnoremap <F6> <Esc>:set list!<CR>:echo f6msg<CR>gv
-inoremap <F6> <C-O>:set list!<CR><C-O>:echo f6msg<CR>
 
 " Show tabs and end-of-lines
 set listchars=tab:│\ ,trail:·
@@ -774,8 +696,6 @@ set nomore
 " Color column
 let f9msg = "Toggle colorcolumn."
 nnoremap <silent> <F9> :call <SID>ToggleColorColumn()<CR>:echo f9msg<CR>
-vnoremap <silent> <F9> <Esc>:call <SID>ToggleColorColumn()<CR>:echo f9msg<CR>gv
-inoremap <silent> <F9> <C-O>:call <SID>ToggleColorColumn()<CR><C-O>:echo f9msg<CR>
 
 " Show line numbers
 set nonumber
@@ -783,16 +703,12 @@ set numberwidth=2
 
 let f3msg = "Toggle line numbers."
 nnoremap <silent> <F3> :set number!<CR>:echo f3msg<CR>
-vnoremap <silent> <F3> <Esc>:set number!<CR>:echo f3msg<CR>gv
-inoremap <silent> <F3> <C-O>:set number!<CR><C-O>:echo f3msg<CR>
 
 " Set relative line numbers
 set relativenumber
 
 let f4msg = "Toggle relative line numbers."
 nnoremap <silent> <S-F3> :set norelativenumber!<CR>:echo f4msg<CR>
-vnoremap <silent> <S-F3> <Esc>:set norelativenumber!<CR>:echo f4msg<CR>gv
-inoremap <silent> <S-F3> <C-O>:set norelativenumber!<CR><C-O>:echo f4msg<CR>
 
 " Navigate from Insert Mode
 inoremap <expr>@sh deoplete#smart_close_popup()."\<Left>"
@@ -822,22 +738,17 @@ nnoremap <silent> ñ :call <SID>ToggleCPosition()<CR>
 vnoremap <silent> ñ <Esc>:call <SID>VToggleCPosition()<CR>
 
 " Move lines
-nnoremap <C-K> :m .-2<CR>==
-vnoremap <C-K> :m '<-2<CR>gv=gv
-inoremap <C-K> <Esc>:m .-2<CR>==gi
+nnoremap <C-k> :m .-2<CR>==
+vnoremap <C-k> :m '<-2<CR>gv=gv
+inoremap <C-k> <Esc>:m .-2<CR>==gi
 
-nnoremap <C-J> :m .+1<CR>==
-vnoremap <C-J> :m '>+1<CR>gv=gv
-inoremap <C-J> <Esc>:m .+1<CR>==gi
+nnoremap <C-j> :m .+1<CR>==
+vnoremap <C-j> :m '>+1<CR>gv=gv
+inoremap <C-j> <Esc>:m .+1<CR>==gi
 
 " Duplicate a line
 nnoremap <Leader>ds yyP
-vnoremap <Leader>ds <Esc>yyPgv
-inoremap <Leader>ds <Esc>yyPi
-
 nnoremap <Leader>df yyp
-vnoremap <Leader>df <Esc>yypgv
-inoremap <Leader>df <Esc>yypi
 
 " Folding
 set foldmethod=manual
@@ -851,25 +762,25 @@ autocmd BufReadPost *
 " --- Readline commands ---
 "----------------------------------------------------------------
 " Move the cursor to the line start
-inoremap <C-A> <C-O>0
+inoremap <C-a> <C-O>0
 
 " Move the cursor to the line end
-inoremap <C-E> <C-O>$
+inoremap <C-e> <C-O>$
 
 " Moves the cursor back one character
-inoremap <expr><C-B> deoplete#smart_close_popup()."\<Left>"
+inoremap <expr><C-b> deoplete#smart_close_popup()."\<Left>"
 
 " Moves the cursor forward one character
-inoremap <expr><C-F> deoplete#smart_close_popup()."\<Right>"
+inoremap <expr><C-f> deoplete#smart_close_popup()."\<Right>"
 
 " Moves the cursor one character from Command Mode
 cnoremap @sh <Left>
 cnoremap @sl <Right>
 
-cnoremap <C-B> <Left>
-cnoremap <C-F> <Right>
-cnoremap <C-A> <Home>
-cnoremap <C-E> <End>
+cnoremap <C-b> <Left>
+cnoremap <C-f> <Right>
+cnoremap <C-a> <Home>
+cnoremap <C-e> <End>
 
 "----------------------------------------------------------------
 " 12. Paste mode improved
@@ -908,8 +819,6 @@ inoremap <special> <expr> <Esc>[200~ XTermPasteBegin()
 " Toggle Paste Mode manually
 let f7msg = "Toggle paste mode."
 nnoremap <F7> :setlocal paste!<CR>:echo f7msg<CR>
-vnoremap <F7> <Esc>:setlocal paste!<CR>:echo f7msg<CR>gv
-inoremap <F7> <C-O>:setlocal paste!<CR><C-O>:echo f7msg<CR>
 
 "----------------------------------------------------------------
 " 13. Search and vimgrep
@@ -939,6 +848,7 @@ set mmp=1000
 "----------------------------------------------------------------
 " Map <Space> to / (search)
 nnoremap <Space> /
+nnoremap <Leader><Space> ?
 
 " Highlight word under the cursor and don't jump to next
 nnoremap <silent> <Leader><CR> :let @/='\<<C-R>=expand("<cword>")<CR>\>'<CR>:set hls<CR>
@@ -948,8 +858,6 @@ vnoremap <silent> <Leader><CR> :<C-U>call <SID>VSetSearch()<CR>:set hls<CR>
 
 " Disable highlight
 nnoremap <Leader><BS> :noh<CR>
-vnoremap <Leader><BS> <Esc>:noh<CR>gv
-inoremap <Leader><BS> <C-O>:noh<CR>
 
 " Search into a Visual selection
 vnoremap <silent> <Space> :<C-U>call RangeSearch('/')<CR>
@@ -1000,19 +908,14 @@ nnoremap <Leader>A :args **/*.
 "----------------------------------------------------------------
 " Toggle case
 nnoremap <Leader>< ~
-inoremap <Leader>< ~
 vnoremap <Leader>< y:call setreg('', ToggleCase(@"), getregtype(''))<CR>gv""Pgv
 
 " Toggle and untoggle spell checking
 let f8msg = "Toggle spell checking."
 nnoremap <silent> <F8> :setlocal spell!<CR>:echo f8msg<CR>
-vnoremap <silent> <F8> <Esc>:setlocal spell!<CR>:echo f8msg<CR>gv
-inoremap <silent> <F8> <C-O>:setlocal spell!<CR><C-O>:echo f8msg<CR>
 
 " Toggle spell dictionary
 nnoremap <silent> <S-F8> :call <SID>ToggleSpelllang()<CR>
-vnoremap <silent> <S-F8> <Esc>:call <SID>ToggleSpelllang()<CR>gv
-inoremap <silent> <S-F8> <C-O>:call <SID>ToggleSpelllang()<CR>
 
 " Move to next misspelled word
 nnoremap ç ]s
@@ -1034,7 +937,6 @@ vnoremap <Leader>y "+y<Esc>
 
 " Paste text from the clipboard
 nnoremap <Leader>p "+p
-inoremap <Leader>p <Esc>"+pa
 
 " Quickly select the text pasted from the clipboard
 nnoremap gV `[v`]
@@ -1076,8 +978,6 @@ set errorformat=%m\ in\ %f\ on\ line\ %l
 
 " Execute ':make' and show the result
 nnoremap <silent> <Leader><TAB> :update \| make<CR>
-vnoremap <silent> <Leader><TAB> <Esc>:update \| make<CR>gv
-inoremap <silent> <Leader><TAB> <C-O>:update \| make<CR>
 
 "----------------------------------------------------------------
 " 16. Filetype settings

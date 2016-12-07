@@ -1,5 +1,17 @@
 ## Changelog
 
+= 1.7.0 =
+* Removed all the `<Leader>` commands from Insert mode.
+* Removed most of the `<Leader>` commands from Visual mode.
+* Removed the fast Escape key (`<Leader><Leader>`).
+* The `<Esc>` function can be used with the triggered `<C-c>`.
+* Removed the plugin (a.vim), it was annoying and useless.
+* Added the nnoremap `<Leader>G` for the command `:Gvdiff`.
+* CtrlP map changed to `<C-s>` (`<C-c>` crashed in Visual mode).
+* The nnoremap `<C-s>` (show syntax groups) changed to `<Leader>B`.
+* Added the nnoremap `<Leader><Space>` to search backward (`?`).
+* Also, better notation for `^C` maps (letters in lowercase).
+
 = 1.6.0 =
 * Installed the plugin 'deoplete-go' (autocompletion).
 * Installed the plugin 'gocode' (autocompletion).

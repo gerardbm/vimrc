@@ -6,8 +6,7 @@ This Vim configuration is purely subjective: I wrote it according to my needs. T
 ## General settings:
 
 - `<Leader>` key is ",". It's really a good practice.
-- Then `<Leader><Leader>` escapes the current mode.
-- Three cursor shapes for Normal, Insert and Replace modes.
+- Three cursor shapes: Normal, Insert and Replace modes.
 - UTF8 is the default encoding for Vim and Neovim.
 - 256 colors for Vim and True Color for Neovim.
 - Backups and swap files are disabled. Use Git!
@@ -32,7 +31,8 @@ This Vim configuration is purely subjective: I wrote it according to my needs. T
 - Navigate between GitGutter hunks with `<Leader>j/k`.
 - Preview or hide the GitGutter hunks with `<C-p>`.
 - Open the git command `:Gstatus` with `<C-g>`.
-- Search in the current buffer with `<Space>`.
+- Search forward in the current buffer with `<Space>`.
+- Search backward in the current buffer with `<Leader><Space>`.
 - Highlight the current selection with `<Leader><CR>`.
 - Highlight the word under the cursor with `<Leader><CR>`.
 - Stop the highlighting with `<Leader><BS>`.
@@ -43,7 +43,7 @@ This Vim configuration is purely subjective: I wrote it according to my needs. T
 - Open a lot of files (:args command) with `<Leader>a/A`.
 - Search, vimgrep and replace into the visual selection.
 - Navigate between vimgrep results with `<Leader>n/N`.
-- Open the menu of the plugin CtrlP with `<C-c>`.
+- Open the menu of the plugin CtrlP with `<C-s>`.
 - Into CtrlP, switch files/mru/buffers with `<C-h>/<C-l>`.
 - Readline maps for Commands mode, Insert mode and CtrlP.
 - Open the plugin FZF - all files with `<Leader>z`.
@@ -63,7 +63,7 @@ This Vim configuration is purely subjective: I wrote it according to my needs. T
 - Toggle case a letter or a selection with `<Leader><`.
 - Test your code easily with `<Leader><Tab>`.
 - Autocompletion: C/C++, Go, Python, JS, PHP, HTML, CSS.
-- Show the syntax highlighting groups with `<C-s>`.
+- Show the syntax highlighting groups with `<Leader>B`.
 - Non intrusive configuration with the native keymaps.
 
 Vim and Neovim configurations are identical excepting little details. For example: Vim uses the plugins Syntastic, QuickRun and Neocomplete, while Neovim uses Neomake and Deoplete. Neovim is faster with these plugins —asynchronous architecture wins—; and Vim 8.0 will be fast as well, when someone writes asynchronous plugins for it.
@@ -103,7 +103,6 @@ Vim and Neovim configurations are identical excepting little details. For exampl
   - [vim-jquery](https://github.com/itspriddle/vim-jquery)
   - [vim-javascript](https://github.com/pangloss/vim-javascript)
   - [tern_for_vim](https://github.com/ternjs/tern_for_vim)
-  - [a.vim](https://github.com/vim-scripts/a.vim)
 
 - Autocomplete:
   - [supertab](https://github.com/ervandew/supertab)

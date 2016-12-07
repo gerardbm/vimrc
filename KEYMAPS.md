@@ -18,16 +18,13 @@
   - `<C-p>` previews the current GitGutter hunk.
   - `<C-n>` opens, focuses or closes NERDTree.
   - `<C-z>` goes to the `:VimShell`.
-  - `<C-c>` opens the CtrlP menu.
+  - `<C-s>` opens the CtrlP menu.
     - `<C-h>` toggles type (into CtrlP).
     - `<C-l>` toggles type (into CtrlP).
     - `<C-b>` goes to the left (into CtrlP).
     - `<C-f>` goes to the right (into CtrlP).
   - `<C-l>` toggles caps lock from 'Insert Mode'.
   - `<C-d>` expands neosnippet from 'Insert Mode'.
-
-- Misc:
-  - `<C-s>` shows syntax highlighting groups.
 
 #### \<A-{a-z}\> keymaps:
 
@@ -97,6 +94,8 @@
   - `<Leader>F` enters a new line up from 'Normal Mode'.
 
 - Search:
+  - `<Space>` searches forward for the pattern.
+  - `<Leader><Space>` searches backward for the pattern.
   - `<Leader><CR>` searches the word under the cursor.
   - `<Leader><CR>` also, searches the current selection!
   - `<Leader><BS>` disables highlight.
@@ -126,6 +125,9 @@
 - Clipboard:
   - `<Leader>y` copies text into the clipboard.
   - `<Leader>p` pastes text from the clipboard.
+
+- Misc:
+  - `<Leader>B` shows syntax highlighting groups.
 
 - Plugins related:
   - `<Leader><TAB>` runs the code of the current buffer.
