@@ -6,7 +6,7 @@
 "  (_)___/_/_/ /_/ /_/_/   \___/
 "
 "----------------------------------------------------------------
-"  Version : 1.5.7
+"  Version : 1.6.0
 "  License : MIT
 "  Author  : Gerard Bajona
 "  URL     : https://github.com/gerardbm/vimrc
@@ -99,7 +99,6 @@ call plug#begin('~/.vim/plugged')
 
 	" Languages
 	Plug 'fatih/vim-go'
-	Plug 'othree/html5.vim'
 	Plug 'JulesWang/css.vim'
 	Plug 'hail2u/vim-css3-syntax'
 	Plug 'itspriddle/vim-jquery'
@@ -108,11 +107,14 @@ call plug#begin('~/.vim/plugged')
 	Plug 'vim-scripts/a.vim'
 
 	" Autocomplete
-	Plug 'Shougo/neocomplete.vim'
-	Plug 'shawncplus/phpcomplete.vim'
-	Plug 'justmao945/vim-clang'
-	Plug 'davidhalter/jedi-vim'
 	Plug 'ervandew/supertab'
+	Plug 'Shougo/neocomplete.vim'
+	Plug 'nsf/gocode', { 'rtp': 'vim', 'do': '~/.vim/plugged/gocode/vim/symlink.sh' }
+	Plug 'davidhalter/jedi-vim'
+	Plug 'othree/jspc.vim'
+	Plug 'othree/html5.vim'
+	Plug 'm2mdas/phpcomplete-extended'
+	Plug 'Rip-Rip/clang_complete'
 
 	" Snippets
 	Plug 'Shougo/neosnippet'
@@ -128,10 +130,10 @@ call plug#begin('~/.vim/plugged')
 	Plug 'junegunn/vim-easy-align'
 	Plug 'godlygeek/tabular'
 	Plug 'jiangmiao/auto-pairs'
+	Plug 'alvan/vim-closetag'
 	Plug 'tpope/vim-surround'
 	Plug 'tpope/vim-repeat'
 	Plug 'tpope/vim-capslock'
-	Plug 'alvan/vim-closetag'
 	Plug 'wellle/targets.vim'
 	Plug 'christoomey/vim-sort-motion'
 	Plug 'terryma/vim-expand-region'
@@ -171,6 +173,9 @@ let g:gitgutter_diff_args             = '--ignore-space-at-eol'
 nmap <Leader>j <Plug>GitGutterNextHunkzz
 nmap <Leader>k <Plug>GitGutterPrevHunkzz
 nmap <silent> <C-P> :call <SID>ToggleGGPrev()<CR>zz
+
+" Fugitive settings
+nmap <Leader>g :<C-U>call <SID>ToggleGsPrev()<CR>
 
 " Vim-session settings
 let g:session_autosave = 'no'
@@ -227,6 +232,7 @@ inoremap <F4> <C-O>:TagbarToggle<CR>
 " CtrlP settings
 let g:ctrlp_map               = '<C-c>'
 let g:ctrlp_working_path_mode = 'ra'
+let g:ctrlp_custom_ignore     = '\v[\/]\.(git|hg|svn)$'
 let g:ctrlp_prompt_mappings   = {
 	\ 'ToggleType(1)'  : ['<c-h>', '<c-up>'],
 	\ 'ToggleType(-1)' : ['<c-l>', '<c-down>'],
@@ -278,18 +284,24 @@ let g:neocomplete#enable_smart_case = 1
 let g:neocomplete#sources#syntax#min_keyword_length = 3
 let g:neocomplete#lock_buffer_name_pattern = '\*ku\*'
 
+" Python autocompletion
+let g:jedi#auto_initialization = 1
+let g:jedi#popup_on_dot = 0
+
+" Clang autocompletion
+let g:clang_complete_auto              = 0
+let g:clang_auto_select                = 0
+let g:clang_omnicppcomplete_compliance = 0
+let g:clang_make_default_keymappings   = 0
+let g:clang_use_library                = 1
+
 " SuperTab settings
 let g:SuperTabDefaultCompletionType = '<TAB>'
 
 " Neosnippet settings
-imap <C-S> <Plug>(neosnippet_expand_or_jump)
-smap <C-S> <Plug>(neosnippet_expand_or_jump)
-xmap <C-S> <Plug>(neosnippet_expand_target)
-
-" Jedi settings
-let g:jedi#auto_initialization = 1
-let g:jedi#completions_command = "<C-D>"
-let g:jedi#popup_on_dot = 0
+imap <C-D> <Plug>(neosnippet_expand_or_jump)
+smap <C-D> <Plug>(neosnippet_expand_or_jump)
+xmap <C-D> <Plug>(neosnippet_expand_target)
 
 " Behaviour like SuperTab
 smap <expr><TAB>
@@ -310,20 +322,28 @@ let g:quickrun_no_default_key_mappings = 0
 nnoremap <C-Z> :VimShell<CR>
 
 " Easy align settings
-xmap <Leader>ga <Plug>(EasyAlign)
-nmap <Leader>ga <Plug>(EasyAlign)
+xmap gi <Plug>(EasyAlign)
+nmap gi <Plug>(EasyAlign)
 
 " Tabularize (e.g. /= or /:)
-vnoremap <Leader>ta :Tabularize /
+vnoremap <Leader>x :Tabularize /
 
 " Tabularize only the first match on the line (e.g. /=.*/)
-vnoremap <Leader>t1 :Tabularize /.*/<Left><Left><Left>
+vnoremap <Leader>X :Tabularize /.*/<Left><Left><Left>
 
 " Auto-apirs settings
 let g:AutoPairsFlyMode = 0
 
+" Closetag settings
+let g:closetag_filenames = "*.html,*.xhtml,*.phtml,*.xml"
+autocmd Filetype php iab <? <?php ?><Left><Left><Left>
+autocmd Filetype * iab <% <% %><Left><Left><Left>
+
 " Surround settings
-autocmd FileType php,html let b:surround_45 = "<?php \r ?>"
+" Use 'yss?', 'yss%' or 'yss=' to surround a line
+autocmd FileType php let b:surround_63 = "<?php \r ?>"
+let g:surround_37 = "<% \r %>"
+let g:surround_61 = "<%= \r %>"
 
 " Caps Lock settings
 imap <expr><C-L> neocomplete#smart_close_popup()."\<Plug>CapsLockToggle"
@@ -452,6 +472,14 @@ if &term =~ 'xterm\|tmux'
 		endif
 		let &t_EI = "\<Esc>]50;CursorShape=0\x7"
 	endif
+endif
+
+" Omni completion
+if has("autocmd") && exists("+omnifunc")
+autocmd Filetype *
+	\ if &omnifunc == "" |
+	\     setlocal omnifunc=syntaxcomplete#Complete |
+	\ endif
 endif
 
 "----------------------------------------------------------------
@@ -811,8 +839,9 @@ vnoremap <Leader>4 g$
 vnoremap <Home> g^
 vnoremap <End> g$
 
-" Toggle the cursor position start/end
-nnoremap <silent> ñ :<C-U>call <SID>ToggleCPosition()<CR>
+" Toggle the cursor position start/end of the line
+nnoremap <silent> ñ :call <SID>ToggleCPosition()<CR>
+vnoremap <silent> ñ <Esc>:call <SID>VToggleCPosition()<CR>
 
 " Move lines
 nnoremap <C-K> :m .-2<CR>==
@@ -1275,6 +1304,20 @@ function! s:ToggleCPosition()
 	endif
 endfunction
 
+" Replicated for the Visual mode
+function! s:VToggleCPosition()
+	normal! gv
+	if col(".") >= col("$") - 1
+		let s:togglecp = 1
+		norm! ^
+		echo "Start of the text: ^"
+	else
+		let s:togglecp = 0
+		norm! g_
+		echo "End of the text: g_"
+	endif
+endfunction
+
 " Execute ':make' and show the result
 function! MakeIt() abort
 	try
@@ -1296,6 +1339,17 @@ function! s:ToggleGGPrev()
 		else
 			echo "GitGutter preview."
 		endif
+	endif
+endfunction
+
+" Toggle GstatusPreview
+function! s:ToggleGsPrev()
+	if &pvw
+		echo "Gstatus closed."
+		pclose
+	else
+		echo "Gstatus preview."
+		Gstatus
 	endif
 endfunction
 

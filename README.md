@@ -31,6 +31,7 @@ This Vim configuration is purely subjective: I wrote it according to my needs. T
 - Navigate between Vim/Tmux panes with `<Alt-{hjkl}>`.
 - Navigate between GitGutter hunks with `<Leader>j/k`.
 - Preview or hide the GitGutter hunks with `<C-p>`.
+- Open the git command `:Gstatus` with `<C-g>`.
 - Search in the current buffer with `<Space>`.
 - Highlight the current selection with `<Leader><CR>`.
 - Highlight the word under the cursor with `<Leader><CR>`.
@@ -55,11 +56,13 @@ This Vim configuration is purely subjective: I wrote it according to my needs. T
 - Move lines up and down (even selected) with `<C-j>/<C-k>`.
 - Add new empty lines up and down with `<Leader>f/F`.
 - Isolate the current line with `<Leader>o`.
+- Tabularize a Visual selection with `<Leader>x/X`.
 - Toggle the cursor position start/end of line with `ñ`.
 - Rename the Tmux windows titles with the current buffer.
 - Resize the Vim windows with `-`, `+`, `<` and `>`.
 - Toggle case a letter or a selection with `<Leader><`.
-- Make settings for the most used languages.
+- Test your code easily with `<Leader><Tab>`.
+- Autocompletion: C/C++, Go, Python, JS, PHP, HTML, CSS.
 - Show the syntax highlighting groups with `<C-s>`.
 - Non intrusive configuration with the native keymaps.
 
@@ -95,7 +98,6 @@ Vim and Neovim configurations are identical excepting little details. For exampl
 
 - Languages:
   - [vim-go](https://github.com/fatih/vim-go)
-  - [html5.vim](https://github.com/othree/html5.vim)
   - [css.vim](https://github.com/JulesWang/css.vim)
   - [vim-css3-syntax](https://github.com/hail2u/vim-css3-syntax)
   - [vim-jquery](https://github.com/itspriddle/vim-jquery)
@@ -104,13 +106,18 @@ Vim and Neovim configurations are identical excepting little details. For exampl
   - [a.vim](https://github.com/vim-scripts/a.vim)
 
 - Autocomplete:
-  - [neocomplete.vim](https://github.com/Shougo/neocomplete.vim) (Vim)
-  - [deoplete](https://github.com/Shougo/deoplete) (Neovim)
-  - [phpcomplete.vim](https://github.com/shawncplus/phpcomplete.vim)
-  - [vim-clang](https://github.com/justmao945/vim-clang)
-  - [jedi-vim](https://github.com/davidhalter/jedi-vim) (Vim)
-  - [deoplete-jedi](https://github.com/zchee/deoplete-jedi) (Neovim)
   - [supertab](https://github.com/ervandew/supertab)
+  - [deoplete](https://github.com/Shougo/deoplete) (Neovim)
+  - [neocomplete.vim](https://github.com/Shougo/neocomplete.vim) (Vim)
+  - [deoplete-go](https://github.com/zchee/deoplete-go) (Neovim)
+  - [gocode](https://github.com/nsf/gocode)
+  - [deoplete-jedi](https://github.com/zchee/deoplete-jedi) (Neovim)
+  - [jedi-vim](https://github.com/davidhalter/jedi-vim) (Vim)
+  - [deoplete-ternjs](https://github.com/carlitux/deoplete-ternjs) (Neovim)
+  - [jspc.vim](https://github.com/othree/jspc.vim)
+  - [html5.vim](https://github.com/othree/html5.vim)
+  - [phpcomplete-extended](https://github.com/m2mdas/phpcomplete-extended)
+  - [clang_complete](https://github.com/Rip-Rip/clang_complete)
 
 - Snippets:
   - [neosnippet](https://github.com/Shougo/neosnippet)
@@ -127,10 +134,10 @@ Vim and Neovim configurations are identical excepting little details. For exampl
   - [vim-easy-align](https://github.com/junegunn/vim-easy-align)
   - [tabular](https://github.com/godlygeek/tabular)
   - [auto-pairs](https://github.com/jiangmiao/auto-pairs)
+  - [vim-closetag](https://github.com/alvan/vim-closetag)
   - [vim-surround](https://github.com/tpope/vim-surround)
   - [vim-repeat](https://github.com/tpope/vim-repeat)
   - [vim-capslock](https://github.com/tpope/vim-capslock)
-  - [vim-closetag](https://github.com/alvan/vim-closetag)
   - [targets.vim](https://github.com/wellle/targets.vim)
   - [vim-sort-motion](https://github.com/christoomey/vim-sort-motion)
   - [vim-expand-region](https://github.com/terryma/vim-expand-region)

@@ -6,7 +6,7 @@
 "  /_/ /_/\___/\____/|___/_/_/ /_/ /_/
 "
 "----------------------------------------------------------------
-"  Version : 1.5.7
+"  Version : 1.6.0
 "  License : MIT
 "  Author  : Gerard Bajona
 "  URL     : https://github.com/gerardbm/vimrc
@@ -95,7 +95,6 @@ call plug#begin('~/.config/nvim/plugged')
 
 	" Languages
 	Plug 'fatih/vim-go'
-	Plug 'othree/html5.vim'
 	Plug 'JulesWang/css.vim'
 	Plug 'hail2u/vim-css3-syntax'
 	Plug 'itspriddle/vim-jquery'
@@ -104,11 +103,16 @@ call plug#begin('~/.config/nvim/plugged')
 	Plug 'vim-scripts/a.vim'
 
 	" Autocomplete
-	Plug 'Shougo/deoplete.nvim'
-	Plug 'shawncplus/phpcomplete.vim'
-	Plug 'justmao945/vim-clang'
-	Plug 'zchee/deoplete-jedi'
 	Plug 'ervandew/supertab'
+	Plug 'Shougo/deoplete.nvim'
+	Plug 'zchee/deoplete-go', { 'do': 'make'}
+	Plug 'nsf/gocode', { 'rtp': 'nvim', 'do': '~/.config/nvim/plugged/gocode/nvim/symlink.sh' }
+	Plug 'zchee/deoplete-jedi'
+	Plug 'carlitux/deoplete-ternjs'
+	Plug 'othree/jspc.vim'
+	Plug 'othree/html5.vim'
+	Plug 'm2mdas/phpcomplete-extended'
+	Plug 'Rip-Rip/clang_complete'
 
 	" Snippets
 	Plug 'Shougo/neosnippet'
@@ -124,10 +128,10 @@ call plug#begin('~/.config/nvim/plugged')
 	Plug 'junegunn/vim-easy-align'
 	Plug 'godlygeek/tabular'
 	Plug 'jiangmiao/auto-pairs'
+	Plug 'alvan/vim-closetag'
 	Plug 'tpope/vim-surround'
 	Plug 'tpope/vim-repeat'
 	Plug 'tpope/vim-capslock'
-	Plug 'alvan/vim-closetag'
 	Plug 'wellle/targets.vim'
 	Plug 'christoomey/vim-sort-motion'
 	Plug 'terryma/vim-expand-region'
@@ -167,6 +171,9 @@ let g:gitgutter_diff_args             = '--ignore-space-at-eol'
 nmap <Leader>j <Plug>GitGutterNextHunkzz
 nmap <Leader>k <Plug>GitGutterPrevHunkzz
 nmap <silent> <C-P> :call <SID>ToggleGGPrev()<CR>zz
+
+" Fugitive settings
+nmap <Leader>g :<C-U>call <SID>ToggleGsPrev()<CR>
 
 " Vim-session settings
 let g:session_autosave = 'no'
@@ -226,6 +233,7 @@ inoremap <F4> <C-O>:TagbarToggle<CR>
 " CtrlP settings
 let g:ctrlp_map               = '<C-c>'
 let g:ctrlp_working_path_mode = 'ra'
+let g:ctrlp_custom_ignore     = '\v[\/]\.(git|hg|svn)$'
 let g:ctrlp_prompt_mappings   = {
 	\ 'ToggleType(1)'  : ['<c-h>', '<c-up>'],
 	\ 'ToggleType(-1)' : ['<c-l>', '<c-down>'],
@@ -271,16 +279,43 @@ let g:javascript_plugin_ngdoc = 1
 let g:javascript_plugin_flow  = 1
 
 " Deoplete settings
+" - «Deoplete requires Neovim with Python3 enabled»
+let g:python3_host_prog       = '/usr/bin/python3'
+let g:python3_host_skip_check = 1
+
+autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
 let g:deoplete#enable_at_startup = 1
 let g:deoplete#enable_smart_case = 1
+let g:deoplete#omni#functions    = {}
+
+" Go autocompletion
+let g:deoplete#sources#go#gocode_binary = $GOPATH.'/bin/gocode'
+let g:deoplete#sources#go#sort_class    = ['package', 'func', 'type', 'var', 'const']
+let g:deoplete#sources#go#use_cache     = 1
+
+" Python autocompletion
+let g:deoplete#sources#jedi#show_docstring = 1
+
+" Javascript autocompletion
+let g:deoplete#omni#functions.javascript = ['tern#Complete', 'jspc#omni']
+
+" PHP autocompletion
+let g:deoplete#omni#functions.php = 'phpcomplete_extended#CompletePHP'
+
+" Clang autocompletion
+let g:clang_complete_auto              = 0
+let g:clang_auto_select                = 0
+let g:clang_omnicppcomplete_compliance = 0
+let g:clang_make_default_keymappings   = 0
+let g:clang_use_library                = 1
 
 " SuperTab settings
 let g:SuperTabDefaultCompletionType = '<TAB>'
 
 " Neosnippet settings
-imap <C-S> <Plug>(neosnippet_expand_or_jump)
-smap <C-S> <Plug>(neosnippet_expand_or_jump)
-xmap <C-S> <Plug>(neosnippet_expand_target)
+imap <C-D> <Plug>(neosnippet_expand_or_jump)
+smap <C-D> <Plug>(neosnippet_expand_or_jump)
+xmap <C-D> <Plug>(neosnippet_expand_target)
 
 " Behaviour like SuperTab
 smap <expr><TAB>
@@ -298,20 +333,28 @@ autocmd InsertLeave * NeoSnippetClearMarkers
 nnoremap <C-Z> :VimShell<CR>
 
 " Easy align settings
-xmap <Leader>ga <Plug>(EasyAlign)
-nmap <Leader>ga <Plug>(EasyAlign)
+xmap gi <Plug>(EasyAlign)
+nmap gi <Plug>(EasyAlign)
 
 " Tabularize (e.g. /= or /:)
-vnoremap <Leader>ta :Tabularize /
+vnoremap <Leader>x :Tabularize /
 
 " Tabularize only the first match on the line (e.g. /=.*/)
-vnoremap <Leader>t1 :Tabularize /.*/<Left><Left><Left>
+vnoremap <Leader>X :Tabularize /.*/<Left><Left><Left>
 
 " Auto-apirs settings
 let g:AutoPairsFlyMode = 0
 
+" Closetag settings
+let g:closetag_filenames = "*.html,*.xhtml,*.phtml,*.xml"
+autocmd Filetype php iab <? <?php ?><Left><Left><Left>
+autocmd Filetype * iab <% <% %><Left><Left><Left>
+
 " Surround settings
-autocmd FileType php,html let b:surround_45 = "<?php \r ?>"
+" Use 'yss?', 'yss%' or 'yss=' to surround a line
+autocmd FileType php let b:surround_63 = "<?php \r ?>"
+let g:surround_37 = "<% \r %>"
+let g:surround_61 = "<%= \r %>"
 
 " Caps Lock settings
 imap <expr><C-L> deoplete#smart_close_popup()."\<Plug>CapsLockToggle"
@@ -424,6 +467,14 @@ set laststatus=2
 
 " Change the cursor shape in insert mode
 let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
+
+" Omni completion
+if has("autocmd") && exists("+omnifunc")
+autocmd Filetype *
+	\ if &omnifunc == "" |
+	\     setlocal omnifunc=syntaxcomplete#Complete |
+	\ endif
+endif
 
 "----------------------------------------------------------------
 " 5. Scheme and colors
@@ -766,8 +817,9 @@ vnoremap <Leader>4 g$
 vnoremap <Home> g^
 vnoremap <End> g$
 
-" Toggle the cursor position start/end
-nnoremap <silent> ñ :<C-U>call <SID>ToggleCPosition()<CR>
+" Toggle the cursor position start/end of the line
+nnoremap <silent> ñ :call <SID>ToggleCPosition()<CR>
+vnoremap <silent> ñ <Esc>:call <SID>VToggleCPosition()<CR>
 
 " Move lines
 nnoremap <C-K> :m .-2<CR>==
@@ -1223,7 +1275,21 @@ function! s:ToggleCPosition()
 	else
 		let s:togglecp = 0
 		norm! g_
-		echo "End of the text: $"
+		echo "End of the text: g_"
+	endif
+endfunction
+
+" Replicated for the Visual mode
+function! s:VToggleCPosition()
+	normal! gv
+	if col(".") >= col("$") - 1
+		let s:togglecp = 1
+		norm! ^
+		echo "Start of the text: ^"
+	else
+		let s:togglecp = 0
+		norm! g_
+		echo "End of the text: g_"
 	endif
 endfunction
 
@@ -1239,6 +1305,17 @@ function! s:ToggleGGPrev()
 		else
 			echo "GitGutter preview."
 		endif
+	endif
+endfunction
+
+" Toggle GstatusPreview
+function! s:ToggleGsPrev()
+	if &pvw
+		echo "Gstatus closed."
+		pclose
+	else
+		echo "Gstatus preview."
+		Gstatus
 	endif
 endfunction
 

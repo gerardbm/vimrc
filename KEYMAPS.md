@@ -24,8 +24,7 @@
     - `<C-b>` goes to the left (into CtrlP).
     - `<C-f>` goes to the right (into CtrlP).
   - `<C-l>` toggles caps lock from 'Insert Mode'.
-  - `<C-s>` expands neosnippet from 'Insert Mode'.
-  - `<C-d>` expands Jedi completions.
+  - `<C-d>` expands neosnippet from 'Insert Mode'.
 
 - Misc:
   - `<C-s>` shows syntax highlighting groups.
@@ -139,10 +138,10 @@
   - `<Leader>e` toggles the location list window.
   - `<Leader>z` toggles the plugin FZF (:Files).
   - `<Leader>Z` toggles the plugin FZF (:Commits).
+  - `<Leader>g` toggles the plugin fugitive (:Gstatus).
   - `<Leader>u` toggles the plugin Gundo.
-  - `<Leader>ga` inits easy align plugin.
-  - `<Leader>ta` inits tabularize plugin.
-  - `<Leader>t1` inits tabularize plugin (only the first match).
+  - `<Leader>x` inits tabularize plugin.
+  - `<Leader>X` inits tabularize plugin (only the first match).
   - `<Leader>W` inits ArgWrap plugin.
   - `<Leader>M` inits Markdown preview plugin.
 
@@ -158,6 +157,7 @@
 
 - Moving around lines:
   - `ñ` toggles the cursor position: start/end of the line.
+  - `gi` inits the plugin EasyAlign.
 
 #### Tab keymaps:
 

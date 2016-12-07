@@ -1,5 +1,32 @@
 ## Changelog
 
+= 1.6.0 =
+* Installed the plugin 'deoplete-go' (autocompletion).
+* Installed the plugin 'gocode' (autocompletion).
+* Installed the plugin 'deoplete-ternjs' (autocompletion).
+* Installed the plugin 'jspc' (autocompletion).
+* Installed the plugin 'phpcomplete-extended' (autocompletion).
+* Installed the plugin 'clang_complete' (autocompletion).
+* Removed the plugin 'phpcompletion'.
+* Removed the plugin 'vim-clang'.
+* Added the nnoremap `<Leader>g` to toggle `:Gstatus` (fugitive).
+* Added ignore git, hg and svn files for CtrlP plugin
+* Added more general settings for deoplete plugin.
+* Added settings for the plugin 'deoplete-go'.
+* Added settings for the plugin 'deoplete-jedi'.
+* Added settings for the plugin 'deoplete-ternjs'.
+* Added settings for the plugin 'phpcompletion-extended'.
+* Added settings for the plugin 'clang_complete'.
+* The maps `<C-s>` (expand neosnippet) changed to `<C-d>`.
+* The maps `<Leader>ga` (EasyAlign plugin) changed to `gi`.
+* The vnoremap `<Leader>ta` (tabularize) changed to `<Leader>x`.
+* The vnoremap `<Leader>t1` (tabularize first) changed to `<Leader>X`.
+* Added settings for the plugin 'closetag', also for PHP and Ruby.
+* Added settings for the plugin 'surround', also for PHP and Ruby.
+* Added «omnifunc» settings (better autocompletions).
+* Duplicated for Visual modes the function to toggle `^`/`g_`.
+
+
 = 1.5.7 =
 * Added the inoremaps `<Tab>` and `<S-Tab>`.
 * Better misspelled words navigation with `ç` and `Ç`.
