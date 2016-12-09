@@ -1,5 +1,8 @@
 ## Changelog
 
+= 1.7.1 =
+* The maps `<C-d>` (expand neosnippet) changed to `<C-s>`. Conflict fix.
+
 = 1.7.0 =
 * Removed all the `<Leader>` commands from Insert mode.
 * Removed most of the `<Leader>` commands from Visual mode.

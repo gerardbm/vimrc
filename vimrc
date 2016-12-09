@@ -278,9 +278,9 @@ let g:clang_use_library                = 1
 let g:SuperTabDefaultCompletionType = '<TAB>'
 
 " Neosnippet settings
-imap <C-d> <Plug>(neosnippet_expand_or_jump)
-smap <C-d> <Plug>(neosnippet_expand_or_jump)
-xmap <C-d> <Plug>(neosnippet_expand_target)
+imap <C-s> <Plug>(neosnippet_expand_or_jump)
+smap <C-s> <Plug>(neosnippet_expand_or_jump)
+xmap <C-s> <Plug>(neosnippet_expand_target)
 
 " Behaviour like SuperTab
 smap <expr><TAB>

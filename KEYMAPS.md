@@ -24,7 +24,7 @@
     - `<C-b>` goes to the left (into CtrlP).
     - `<C-f>` goes to the right (into CtrlP).
   - `<C-l>` toggles caps lock from 'Insert Mode'.
-  - `<C-d>` expands neosnippet from 'Insert Mode'.
+  - `<C-s>` expands neosnippet from 'Insert Mode'.
 
 #### \<A-{a-z}\> keymaps:
 
