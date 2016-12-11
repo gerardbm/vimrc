@@ -6,7 +6,7 @@
 "  /_/ /_/\___/\____/|___/_/_/ /_/ /_/
 "
 "----------------------------------------------------------------
-"  Version : 1.7.0
+"  Version : 1.7.2
 "  License : MIT
 "  Author  : Gerard Bajona
 "  URL     : https://github.com/gerardbm/vimrc
@@ -723,13 +723,9 @@ nnoremap <silent> <expr> j (v:count == 0 ? 'gj' : 'j')
 vnoremap <silent> <expr> k (v:count == 0 ? 'gk' : 'k')
 vnoremap <silent> <expr> j (v:count == 0 ? 'gj' : 'j')
 
-nnoremap <Leader>4 g$
-nnoremap <Leader>6 g^
 nnoremap <Home> g^
 nnoremap <End> g$
 
-vnoremap <Leader>6 g^
-vnoremap <Leader>4 g$
 vnoremap <Home> g^
 vnoremap <End> g$
 

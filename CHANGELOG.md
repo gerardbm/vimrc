@@ -1,5 +1,9 @@
 ## Changelog
 
+= 1.7.2 =
+* Removed the nnoremap and vnoremap `<Leader>4` to `g$`.
+* Removed the nnoremap and vnoremap `<Leader>6` to `g^`.
+
 = 1.7.1 =
 * The maps `<C-d>` (expand neosnippet) changed to `<C-s>`. Conflict fix.
 
