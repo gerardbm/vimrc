@@ -6,7 +6,7 @@
 "  (_)___/_/_/ /_/ /_/_/   \___/
 "
 "----------------------------------------------------------------
-"  Version : 1.7.3
+"  Version : 1.7.4
 "  License : MIT
 "  Author  : Gerard Bajona
 "  URL     : https://github.com/gerardbm/vimrc
@@ -256,6 +256,10 @@ augroup END
 let g:javascript_plugin_jsdoc = 1
 let g:javascript_plugin_ngdoc = 1
 let g:javascript_plugin_flow  = 1
+
+" Tern settings
+let g:tern#command = ["tern"]
+let g:tern#arguments = ["--persistent"]
 
 " Neocomplete settings
 let g:acp_enableAtStartup = 0

@@ -1,5 +1,8 @@
 ## Changelog
 
+= 1.7.4 =
+* Tern fix: do not create .tern-port file.
+
 = 1.7.3 =
 * Show hidden files into CtrlP menu.
 
