@@ -6,7 +6,7 @@
 "  /_/ /_/\___/\____/|___/_/_/ /_/ /_/
 "
 "----------------------------------------------------------------
-"  Version : 1.7.2
+"  Version : 1.7.3
 "  License : MIT
 "  Author  : Gerard Bajona
 "  URL     : https://github.com/gerardbm/vimrc
@@ -220,6 +220,7 @@ nnoremap <F4> :TagbarToggle<CR>
 let g:ctrlp_map               = '<C-s>'
 let g:ctrlp_working_path_mode = 'ra'
 let g:ctrlp_custom_ignore     = '\v[\/]\.(git|hg|svn)$'
+let g:ctrlp_show_hidden       = 1
 let g:ctrlp_prompt_mappings   = {
 	\ 'ToggleType(1)'  : ['<c-h>', '<c-up>'],
 	\ 'ToggleType(-1)' : ['<c-l>', '<c-down>'],

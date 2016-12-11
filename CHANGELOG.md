@@ -1,5 +1,8 @@
 ## Changelog
 
+= 1.7.3 =
+* Show hidden files into CtrlP menu.
+
 = 1.7.2 =
 * Removed the nnoremap and vnoremap `<Leader>4` to `g$`.
 * Removed the nnoremap and vnoremap `<Leader>6` to `g^`.
