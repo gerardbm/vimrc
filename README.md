@@ -112,7 +112,6 @@ Vim and Neovim configurations are identical excepting little details. For exampl
   - [gocode](https://github.com/nsf/gocode)
   - [deoplete-jedi](https://github.com/zchee/deoplete-jedi) (Neovim)
   - [jedi-vim](https://github.com/davidhalter/jedi-vim) (Vim)
-  - [deoplete-ternjs](https://github.com/carlitux/deoplete-ternjs) (Neovim)
   - [jspc.vim](https://github.com/othree/jspc.vim)
   - [html5.vim](https://github.com/othree/html5.vim)
   - [phpcomplete-extended](https://github.com/m2mdas/phpcomplete-extended)
