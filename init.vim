@@ -6,7 +6,7 @@
 "  /_/ /_/\___/\____/|___/_/_/ /_/ /_/
 "
 "----------------------------------------------------------------
-"  Version : 1.7.5
+"  Version : 1.7.6
 "  License : MIT
 "  Author  : Gerard Bajona
 "  URL     : https://github.com/gerardbm/vimrc
@@ -308,9 +308,9 @@ let g:clang_use_library                = 1
 
 " --- Snippets ---
 " Neosnippet settings
-imap <C-s> <Plug>(neosnippet_expand_or_jump)
-smap <C-s> <Plug>(neosnippet_expand_or_jump)
-xmap <C-s> <Plug>(neosnippet_expand_target)
+imap <C-z> <Plug>(neosnippet_expand_or_jump)
+smap <C-z> <Plug>(neosnippet_expand_or_jump)
+xmap <C-z> <Plug>(neosnippet_expand_target)
 
 " Behaviour like SuperTab
 smap <expr><TAB>

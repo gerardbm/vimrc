@@ -1,5 +1,8 @@
 ## Changelog
 
+= 1.7.6 =
+* Maps `<C-s>` (neosnippet) changed to `<C-d>`; had conflict with CtrlP maps.
+
 = 1.7.5 =
 * Autocompletion fixes.
 * Removed the plugin deoplete-ternjs because it has a .tern-port issue.
