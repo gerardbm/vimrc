@@ -1,5 +1,9 @@
 ## Changelog
 
+= 1.7.5 =
+* Autocompletion fixes.
+* Removed the plugin deoplete-ternjs because it has a .tern-port issue.
+
 = 1.7.4 =
 * Tern fix: do not create .tern-port file.
 

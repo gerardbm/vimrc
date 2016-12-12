@@ -6,7 +6,7 @@
 "  /_/ /_/\___/\____/|___/_/_/ /_/ /_/
 "
 "----------------------------------------------------------------
-"  Version : 1.7.4
+"  Version : 1.7.5
 "  License : MIT
 "  Author  : Gerard Bajona
 "  URL     : https://github.com/gerardbm/vimrc
@@ -65,7 +65,7 @@ cnoreabbrev help vert help
 " List of plugins installed
 call plug#begin('~/.config/nvim/plugged')
 
-	" Airline statusbar
+	" Statusbar
 	Plug 'vim-airline/vim-airline'
 	Plug 'vim-airline/vim-airline-themes'
 
@@ -101,7 +101,6 @@ call plug#begin('~/.config/nvim/plugged')
 	Plug 'zchee/deoplete-go', { 'do': 'make'}
 	Plug 'nsf/gocode', { 'rtp': 'nvim', 'do': '~/.config/nvim/plugged/gocode/nvim/symlink.sh' }
 	Plug 'zchee/deoplete-jedi'
-	Plug 'carlitux/deoplete-ternjs'
 	Plug 'othree/jspc.vim'
 	Plug 'othree/html5.vim'
 	Plug 'm2mdas/phpcomplete-extended'
@@ -145,6 +144,7 @@ call plug#end()
 "----------------------------------------------------------------
 " 3. Plugins settings
 "----------------------------------------------------------------
+" --- Statusbar ---
 " Airline settings
 let g:airline_theme                       = 'atomic'
 let g:airline_powerline_fonts             = 1
@@ -152,6 +152,7 @@ let g:airline#extensions#tabline#enabled  = 1
 let g:airline#extensions#tabline#fnamemod = ':t'
 call airline#parts#define_accent('mode', 'black')
 
+" --- Git tools ---
 " Gitgutter settings
 let g:gitgutter_max_signs             = 5000
 let g:gitgutter_sign_added            = '+'
@@ -169,10 +170,12 @@ nmap <silent> <C-p> :call <SID>ToggleGGPrev()<CR>zz
 nnoremap <Leader>g :<C-U>call <SID>ToggleGsPrev()<CR>
 nnoremap <Leader>G :Gvdiff<CR>
 
+" --- Sessions ---
 " Vim-session settings
 let g:session_autosave = 'no'
 let g:session_autoload = 'no'
 
+" --- Tools ---
 " NERDCommenter settings
 let g:NERDDefaultAlign          = 'left'
 let g:NERDSpaceDelims           = 1
@@ -237,6 +240,7 @@ nnoremap <Leader>Z :Commits<CR>
 " Gundo toggle
 nnoremap <Leader>u :GundoToggle<CR>
 
+" --- Languages ---
 " Go settings
 let g:go_highlight_functions         = 1
 let g:go_highlight_methods           = 1
@@ -259,8 +263,12 @@ let g:javascript_plugin_ngdoc = 1
 let g:javascript_plugin_flow  = 1
 
 " Tern settings
-let g:tern#command = ["tern"]
+let g:tern#command   = ["tern"]
 let g:tern#arguments = ["--persistent"]
+
+" --- Autocomplete ---
+" SuperTab settings
+let g:SuperTabDefaultCompletionType = '<TAB>'
 
 " Deoplete settings
 " - «Deoplete requires Neovim with Python3 enabled»
@@ -272,6 +280,8 @@ let g:deoplete#enable_at_startup = 1
 let g:deoplete#enable_smart_case = 1
 let g:deoplete#omni#functions    = {}
 
+inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+
 " Go autocompletion
 let g:deoplete#sources#go#gocode_binary = $GOPATH.'/bin/gocode'
 let g:deoplete#sources#go#sort_class    = ['package', 'func', 'type', 'var', 'const']
@@ -281,7 +291,10 @@ let g:deoplete#sources#go#use_cache     = 1
 let g:deoplete#sources#jedi#show_docstring = 1
 
 " Javascript autocompletion
-let g:deoplete#omni#functions.javascript = ['tern#Complete', 'jspc#omni']
+let g:deoplete#omni#functions.javascript = [
+	\ 'tern#Complete',
+	\ 'jspc#omni',
+	\ ]
 
 " PHP autocompletion
 let g:deoplete#omni#functions.php = 'phpcomplete_extended#CompletePHP'
@@ -293,9 +306,7 @@ let g:clang_omnicppcomplete_compliance = 0
 let g:clang_make_default_keymappings   = 0
 let g:clang_use_library                = 1
 
-" SuperTab settings
-let g:SuperTabDefaultCompletionType = '<TAB>'
-
+" --- Snippets ---
 " Neosnippet settings
 imap <C-s> <Plug>(neosnippet_expand_or_jump)
 smap <C-s> <Plug>(neosnippet_expand_or_jump)
@@ -313,9 +324,11 @@ endif
 
 autocmd InsertLeave * NeoSnippetClearMarkers
 
+" --- Run code ---
 " Vimshell settings
 nnoremap <C-z> :VimShellPop<CR>
 
+" --- Edition ---
 " Easy align settings
 xmap gi <Plug>(EasyAlign)
 nmap gi <Plug>(EasyAlign)
@@ -362,6 +375,7 @@ let g:argwrap_padded_braces = '[{'
 
 nnoremap <Leader>W :ArgWrap<CR>
 
+" --- Misc ---
 " Vim-tmux navigator settings
 let g:tmux_navigator_no_mappings = 1
 
