@@ -6,7 +6,7 @@
 "  (_)___/_/_/ /_/ /_/_/   \___/
 "
 "----------------------------------------------------------------
-"  Version : 1.7.6
+"  Version : 1.8.0
 "  License : MIT
 "  Author  : Gerard Bajona
 "  URL     : https://github.com/gerardbm/vimrc
@@ -98,16 +98,19 @@ call plug#begin('~/.vim/plugged')
 	Plug 'itspriddle/vim-jquery'
 	Plug 'pangloss/vim-javascript'
 	Plug 'ternjs/tern_for_vim', { 'do': 'npm install' }
+	Plug 'Shougo/neco-syntax'
 
 	" Autocomplete
 	Plug 'ervandew/supertab'
 	Plug 'Shougo/neocomplete.vim'
+	Plug 'Shougo/neopairs.vim'
 	Plug 'nsf/gocode', { 'rtp': 'vim', 'do': '~/.vim/plugged/gocode/vim/symlink.sh' }
 	Plug 'davidhalter/jedi-vim'
 	Plug 'othree/jspc.vim'
 	Plug 'othree/html5.vim'
 	Plug 'm2mdas/phpcomplete-extended'
 	Plug 'Rip-Rip/clang_complete'
+	Plug 'Shougo/neco-vim'
 
 	" Snippets
 	Plug 'Shougo/neosnippet'

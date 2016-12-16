@@ -1,5 +1,10 @@
 ## Changelog
 
+= 1.8.0 =
+* Added the plugin neco-vim.
+* Added the plugin neco-syntax.
+* Added the plugin neopairs.
+
 = 1.7.6 =
 * Maps `<C-s>` (neosnippet) changed to `<C-d>`; had conflict with CtrlP maps.
 
