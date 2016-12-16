@@ -6,7 +6,7 @@
 "  (_)___/_/_/ /_/ /_/_/   \___/
 "
 "----------------------------------------------------------------
-"  Version : 1.8.2
+"  Version : 1.9.0
 "  License : MIT
 "  Author  : Gerard Bajona
 "  URL     : https://github.com/gerardbm/vimrc
@@ -89,7 +89,7 @@ call plug#begin('~/.vim/plugged')
 	Plug 'ctrlpvim/ctrlp.vim'
 	Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 	Plug 'junegunn/fzf.vim'
-	Plug 'sjl/gundo.vim'
+	Plug 'mbbill/undotree'
 
 	" Languages
 	Plug 'fatih/vim-go'
@@ -241,8 +241,8 @@ let g:fzf_layout = { 'down': '~25%' }
 nnoremap <Leader>z :FZF<CR>
 nnoremap <Leader>Z :Commits<CR>
 
-" Gundo toggle
-nnoremap <Leader>u :GundoToggle<CR>
+" Undotree toggle
+nnoremap <Leader>u :UndotreeToggle<CR>
 
 " --- Languages ---
 " Go settings

@@ -142,7 +142,7 @@
   - `<Leader>z` toggles the plugin FZF (:Files).
   - `<Leader>Z` toggles the plugin FZF (:Commits).
   - `<Leader>g` toggles the plugin fugitive (:Gstatus).
-  - `<Leader>u` toggles the plugin Gundo.
+  - `<Leader>u` toggles the plugin Undotree.
   - `<Leader>x` inits tabularize plugin.
   - `<Leader>X` inits tabularize plugin (only the first match).
   - `<Leader>W` inits ArgWrap plugin.

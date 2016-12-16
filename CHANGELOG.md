@@ -1,5 +1,8 @@
 ## Changelog
 
+= 1.9.0 =
+* Switched the plugin Gundo to Undotree (tired of Python 2.4+ requirement).
+
 = 1.8.2 =
 * Fixed Neomake settings: `BufEnter` changed to `BufWinEnter`.
 * Added a function to close the quickfix window if it's the last window.

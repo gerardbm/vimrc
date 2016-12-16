@@ -94,7 +94,7 @@ Vim and Neovim configurations are identical excepting little details. For exampl
   - [ctrlp.vim](https://github.com/ctrlpvim/ctrlp.vim)
   - [fzf](https://github.com/junegunn/fzf)
   - [fzf.vim](https://github.com/junegunn/fzf.vim)
-  - [gundo.vim](https://github.com/sjl/gundo.vim)
+  - [undotree](https://github.com/mbbill/undotree)
 
 - Languages:
   - [vim-go](https://github.com/fatih/vim-go)
@@ -103,10 +103,12 @@ Vim and Neovim configurations are identical excepting little details. For exampl
   - [vim-jquery](https://github.com/itspriddle/vim-jquery)
   - [vim-javascript](https://github.com/pangloss/vim-javascript)
   - [tern_for_vim](https://github.com/ternjs/tern_for_vim)
+  - [neco-syntax](https://github.com/Shougo/neco-syntax)
 
 - Autocomplete:
   - [supertab](https://github.com/ervandew/supertab)
   - [deoplete](https://github.com/Shougo/deoplete) (Neovim)
+  - [neopairs.vim](https://github.com/Shougo/neopairs.vim)
   - [neocomplete.vim](https://github.com/Shougo/neocomplete.vim) (Vim)
   - [deoplete-go](https://github.com/zchee/deoplete-go) (Neovim)
   - [gocode](https://github.com/nsf/gocode)
@@ -116,6 +118,7 @@ Vim and Neovim configurations are identical excepting little details. For exampl
   - [html5.vim](https://github.com/othree/html5.vim)
   - [phpcomplete-extended](https://github.com/m2mdas/phpcomplete-extended)
   - [clang_complete](https://github.com/Rip-Rip/clang_complete)
+  - [neco-vim](https://github.com/Shougo/neco-vim)
 
 - Snippets:
   - [neosnippet](https://github.com/Shougo/neosnippet)
