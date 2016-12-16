@@ -1,5 +1,9 @@
 ## Changelog
 
+= 1.8.1 =
+* Added the nnoremap `<C-t>` to open the `:terminal` (only for Neovim).
+* Added the tnoremap `<C-c>` to switch `:terminal` to the last window.
+
 = 1.8.0 =
 * Added the plugin neco-vim.
 * Added the plugin neco-syntax.

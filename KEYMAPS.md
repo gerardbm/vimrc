@@ -3,6 +3,7 @@
 - Buffers:
   - `<C-h>` goes to the previous buffer.
   - `<C-l>` goes to the next buffer.
+  - `<C-t>` opens the `:terminal` (Neovim).
 
 - Text edition:
   - `<C-j>` moves lines down.
@@ -17,7 +18,7 @@
 - Plugins related:
   - `<C-p>` previews the current GitGutter hunk.
   - `<C-n>` opens, focuses or closes NERDTree.
-  - `<C-z>` goes to the `:VimShell`.
+  - `<C-z>` opens the `:VimShell` terminal.
   - `<C-s>` opens the CtrlP menu.
     - `<C-h>` toggles type (into CtrlP).
     - `<C-l>` toggles type (into CtrlP).

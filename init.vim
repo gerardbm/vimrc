@@ -6,7 +6,7 @@
 "  /_/ /_/\___/\____/|___/_/_/ /_/ /_/
 "
 "----------------------------------------------------------------
-"  Version : 1.8.0
+"  Version : 1.8.1
 "  License : MIT
 "  Author  : Gerard Bajona
 "  URL     : https://github.com/gerardbm/vimrc
@@ -58,6 +58,10 @@ nnoremap Q <NOP>
 
 " Open help in a vertical window
 cnoreabbrev help vert help
+
+" Terminal
+nnoremap <C-t> :below 10sp term://$SHELL<CR>i
+tnoremap <C-c> <C-\><C-n><Bar>:wincmd p<CR>
 
 "----------------------------------------------------------------
 " 2. Plugins (Plug)
