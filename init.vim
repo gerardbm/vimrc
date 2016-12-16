@@ -6,7 +6,7 @@
 "  /_/ /_/\___/\____/|___/_/_/ /_/ /_/
 "
 "----------------------------------------------------------------
-"  Version : 1.8.1
+"  Version : 1.8.2
 "  License : MIT
 "  Author  : Gerard Bajona
 "  URL     : https://github.com/gerardbm/vimrc
@@ -197,7 +197,7 @@ vnoremap <Leader>c :call NERDComment(0,"toggle")<CR>gv
 nnoremap <silent> <C-n> :call ToggleTree()<CR>
 
 " Neomake settings
-autocmd! BufWritePost,BufEnter * Neomake
+autocmd! BufWritePost,BufWinEnter * Neomake
 let g:neomake_javascript_enabled_makers = ['jshint']
 let g:neomake_error_sign = {
 	\ 'text': '✖',
@@ -216,6 +216,7 @@ let g:neomake_info_sign = {
 	\ 'texthl': 'NeomakeInfoSign',
 	\ }
 
+" Navigate between errors
 nnoremap <Leader>h :lprevious<CR>zz
 nnoremap <Leader>l :lnext<CR>zz
 
@@ -1095,6 +1096,16 @@ function! <SID>BufcloseCloseIt()
 
 	if buflisted(l:currentBufNum)
 		execute("bdelete! ".l:currentBufNum)
+	endif
+endfunction
+
+" Close quickfix if it's the last window
+autocmd BufEnter * call CloseLastQF()
+function! CloseLastQF()
+	if &buftype=="quickfix"
+		if winnr('$') < 2
+			quit!
+		endif
 	endif
 endfunction
 

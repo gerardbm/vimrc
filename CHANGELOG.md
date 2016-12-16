@@ -1,5 +1,9 @@
 ## Changelog
 
+= 1.8.2 =
+* Fixed Neomake settings: `BufEnter` changed to `BufWinEnter`.
+* Added a function to close the quickfix window if it's the last window.
+
 = 1.8.1 =
 * Added the nnoremap `<C-t>` to open the `:terminal` (only for Neovim).
 * Added the tnoremap `<C-c>` to switch `:terminal` to the last window.

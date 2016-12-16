@@ -6,7 +6,7 @@
 "  (_)___/_/_/ /_/ /_/_/   \___/
 "
 "----------------------------------------------------------------
-"  Version : 1.8.0
+"  Version : 1.8.2
 "  License : MIT
 "  Author  : Gerard Bajona
 "  URL     : https://github.com/gerardbm/vimrc
@@ -212,6 +212,7 @@ let g:syntastic_warning_symbol           = "⚠"
 let g:syntastic_style_error_symbol       = "S✖"
 let g:syntastic_style_warning_symbol     = "S⚠"
 
+" Navigate between errors
 nnoremap <Leader>h :lprevious<CR>zz
 nnoremap <Leader>l :lnext<CR>zz
 
@@ -1128,6 +1129,16 @@ function! <SID>BufcloseCloseIt()
 
 	if buflisted(l:currentBufNum)
 		execute("bdelete! ".l:currentBufNum)
+	endif
+endfunction
+
+" Close quickfix if it's the last window
+autocmd BufEnter * call CloseLastQF()
+function! CloseLastQF()
+	if &buftype=="quickfix"
+		if winnr('$') < 2
+			quit!
+		endif
 	endif
 endfunction
 
