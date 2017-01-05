@@ -40,3 +40,16 @@ set lines=36 columns=144
 
 " Disable mouse
 set mouse=c
+
+" Colorscheme settings
+" It is required to use the colorscheme Atomic
+" Source: https://github.com/gerardbm/atomic
+function! AtomicSwitcher()
+	if (strftime("%H") > 8) && (strftime("%H") < 20)
+		AtomicDark
+	else
+		AtomicNight
+	endif
+endfunction
+
+call AtomicSwitcher()
