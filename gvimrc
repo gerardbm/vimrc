@@ -53,3 +53,6 @@ function! AtomicSwitcher()
 endfunction
 
 call AtomicSwitcher()
+
+" Paste ('p') from the clipboard
+set clipboard=unnamedplus
