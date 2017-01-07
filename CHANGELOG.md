@@ -1,5 +1,8 @@
 ## Changelog
 
+= 1.10.0 =
+* Added the plugin goyo.
+
 = 1.9.0 =
 * Switched the plugin Gundo to Undotree (tired of Python 2.4+ requirement).
 

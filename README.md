@@ -151,6 +151,7 @@ Vim and Neovim configurations are identical excepting little details. For exampl
   - [vim-instant-markdown](https://github.com/suan/vim-instant-markdown)
   - [vim-characterize](https://github.com/tpope/vim-characterize)
   - [open-browser.vim](https://github.com/tyru/open-browser.vim)
+  - [goyo.vim](https://github.com/junegunn/goyo.vim)
   - [webapi-vim](https://github.com/mattn/webapi-vim)
   - [emmet-vim](https://github.com/mattn/emmet-vim)
 

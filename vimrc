@@ -6,7 +6,7 @@
 "  (_)___/_/_/ /_/ /_/_/   \___/
 "
 "----------------------------------------------------------------
-"  Version : 1.9.0
+"  Version : 1.10.0
 "  License : MIT
 "  Author  : Gerard Bajona
 "  URL     : https://github.com/gerardbm/vimrc
@@ -142,6 +142,7 @@ call plug#begin('~/.vim/plugged')
 	Plug 'suan/vim-instant-markdown'
 	Plug 'tpope/vim-characterize'
 	Plug 'tyru/open-browser.vim'
+	Plug 'junegunn/goyo.vim'
 	Plug 'mattn/webapi-vim'
 	Plug 'mattn/emmet-vim'
 
