@@ -24,7 +24,7 @@ set guioptions+=a
 " Typography
 if has("gui_running")
 	if has("gui_gtk2")
-		set guifont=DejaVu\ Sans\ Mono\ for\ Powerline\ 11
+		set guifont=Terminus\ 13
 	elseif has("gui_macvim")
 		set guifont=Menlo\ Regular:h14
 	elseif has("gui_win32")
