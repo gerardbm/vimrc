@@ -14,18 +14,27 @@
   - `<C-e>` moves the cursor to the line end.
   - `<C-b>` moves the cursor back one character.
   - `<C-f>` moves the cursor forward one character.
+  - `<C-s>` removes the last character.
+  - `<C-d>` removes the current character.
 
 - Plugins related:
-  - `<C-p>` previews the current GitGutter hunk.
+  - `<C-t>` opens the `:VimShell` (Vim).
+  - `<C-g>` previews the current GitGutter hunk.
   - `<C-n>` opens, focuses or closes NERDTree.
-  - `<C-z>` opens the `:VimShell` terminal.
-  - `<C-s>` opens the CtrlP menu.
+  - `<C-p>` opens the CtrlP menu buffers.
+    - `<C-p>` navigates history: previous (into CtrlP).
+    - `<C-n>` navigates history: next (into CtrlP).
     - `<C-h>` toggles type (into CtrlP).
     - `<C-l>` toggles type (into CtrlP).
-    - `<C-b>` goes to the left (into CtrlP).
-    - `<C-f>` goes to the right (into CtrlP).
+    - `<C-b>` moves cursor to the left (into CtrlP).
+    - `<C-f>` moves cursor to the right (into CtrlP).
+    - `<C-s>` removes the last character.
+    - `<C-d>` removes the current character.
+    - `<C-g>` runs the `ToggleByFname` function.
+  - `<C-s>` display a list of sessions to open.
   - `<C-l>` toggles caps lock from 'Insert Mode'.
   - `<C-z>` expands neosnippet from 'Insert Mode'.
+  - `<C-z>` toggles vim-fugitive-:Glog from 'Normal mode'.
 
 #### \<A-{a-z}\> keymaps:
 
@@ -114,8 +123,8 @@
   - `<Leader>A` opens files (`**/*.*`) of the subdirectories.
 
 - Text edition:
-  - `<Leader><` toggles the case of a character.
-  - `<leader><` toggles the case of a selection, as well.
+  - `<Leader>z` toggles the case of a character.
+  - `<leader>z` toggles the case of a selection, as well.
   - `ç` moves to the next misspelled word.
   - `Ç` moves to the previous misspelled word.
   - `<Leader>ç` suggests correctly spelled words.
@@ -139,22 +148,14 @@
   - `<Leader>l` goes to the next warning/error.
   - `<Leader>q` toggles the quickfix window.
   - `<Leader>e` toggles the location list window.
-  - `<Leader>z` toggles the plugin FZF (:Files).
-  - `<Leader>Z` toggles the plugin FZF (:Commits).
-  - `<Leader>g` toggles the plugin fugitive (:Gstatus).
+  - `<Leader>C` opens the plugin FZF (:Commits).
+  - `<Leader>g` toggles the plugin fugitive `:Gstatus`.
+  - `<Leader>G` starts the fugitive command `:Gvdiff`.
   - `<Leader>u` toggles the plugin Undotree.
   - `<Leader>x` inits tabularize plugin.
   - `<Leader>X` inits tabularize plugin (only the first match).
   - `<Leader>W` inits ArgWrap plugin.
   - `<Leader>M` inits Markdown preview plugin.
-
-#### \<Win-{a-z}\> keymaps:
-
-- 'Insert Mode' and 'Command Mode' (readline alternative):
-  - `<Win-h>` moves the cursor back one character.
-  - `<Win-j>` moves the cursor down one line.
-  - `<Win-k>` moves the cursor up one line.
-  - `<Win-l>` moves the cursor forward one character.
 
 #### {a-z} keymaps:
 

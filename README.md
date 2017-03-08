@@ -1,72 +1,17 @@
-# Veni, vidi, Vim
+# Vim configuration
 Gerard's **Vim** & **Neovim** configuration.
 
 This Vim configuration is purely subjective: I wrote it according to my needs. The goal of it is to feel comfort when programming.
 
 ## General settings:
 
-- `<Leader>` key is ",". It's really a good practice.
-- Three cursor shapes: Normal, Insert and Replace modes.
-- UTF8 is the default encoding for Vim and Neovim.
-- 256 colors for Vim and True Color for Neovim.
-- Backups and swap files are disabled. Use Git!
-- Rename files with `<F2>` without leaving Vim.
-- Toggle numbers and relative numbers with `<F3>/<S-F3>`
-- Display or hide the TagBar list (plugin) with `<F4>`.
-- Reload a buffer edited from outside with `<F5>`.
-- Display or hide unprintable characters with `<F6>`.
-- Toggle Paste mode to cut or copy in Vim with `<F7>`.
-- Also, auto-toggle Paste mode when pasting text.
-- Toggle spell and switch dictionaries with `<F8>/<S-F8>`.
-- Navigate between misspelled words with `ç/Ç`.
-- Display or hide the colorcolumn with `<F9>`.
-- Maximize and resize a Vim window with `<F10>`.
-- The key `<F11>` is reserved for some desktops.
-- Reload the Vim/Neovim configuration with `<F12>`.
-- Reload the current colorscheme with `<S-F12>`.
-- Save a buffer or all buffers with `<Leader>s/S`.
-- Delete the current file with `<Leader><Del>y`.
-- Navigate between buffers with `<C-h>/<C-l>`.
-- Navigate between Vim/Tmux panes with `<Alt-{hjkl}>`.
-- Navigate between GitGutter hunks with `<Leader>j/k`.
-- Preview or hide the GitGutter hunks with `<C-p>`.
-- Open the git command `:Gstatus` with `<C-g>`.
-- Search forward in the current buffer with `<Space>`.
-- Search backward in the current buffer with `<Leader><Space>`.
-- Highlight the current selection with `<Leader><CR>`.
-- Highlight the word under the cursor with `<Leader><CR>`.
-- Stop the highlighting with `<Leader><BS>`.
-- Vimgrep the highlight (current buffer) with `<Leader>v`.
-- Vimgrep the highlight (full project) with `<Leader>V`.
-- Replace the highlight (current buffer) with `<Leader>r`.
-- Replace the highlight (open buffers) with `<Leader>R`.
-- Open a lot of files (:args command) with `<Leader>a/A`.
-- Search, vimgrep and replace into the visual selection.
-- Navigate between vimgrep results with `<Leader>n/N`.
-- Open the menu of the plugin CtrlP with `<C-s>`.
-- Into CtrlP, switch files/mru/buffers with `<C-h>/<C-l>`.
-- Readline maps for Commands mode, Insert mode and CtrlP.
-- Open the plugin FZF - all files with `<Leader>z`.
-- Open the plugin FZF - commits with `<Leader>Z`.
-- Copy/paste from the clipboard with `<Leader>y/p`.
-- Select the text pasted from the clipboard with `gV`.
-- Caps Lock is `<C-l>` from Insert mode (plugin).
-- Indent lines and selection using `<Tab>`and `<S-Tab>`.
-- Duplicate lines up and down with `<Leader>ds/df`.
-- Move lines up and down (even selected) with `<C-j>/<C-k>`.
-- Add new empty lines up and down with `<Leader>f/F`.
-- Isolate the current line with `<Leader>o`.
-- Tabularize a Visual selection with `<Leader>x/X`.
-- Toggle the cursor position start/end of line with `ñ`.
-- Rename the Tmux windows titles with the current buffer.
-- Resize the Vim windows with `-`, `+`, `<` and `>`.
-- Toggle case a letter or a selection with `<Leader><`.
-- Test your code easily with `<Leader><Tab>`.
-- Autocompletion: C/C++, Go, Python, JS, PHP, HTML, CSS.
-- Show the syntax highlighting groups with `<Leader>B`.
-- Non intrusive configuration with the native keymaps.
+The `<Leader>` key is ",": it's enabled only in 'Normal mode' to avoid the delay time when typing it from 'Insert mode'. The map `<C-c>` is used as `<Escape>` from any mode. Three cursor shapes (█, ▏ and ▁) are defined for Vim and Neovim for the terminals URxvt and XTerm (even into tmux); it also works in gnome-terminal, terminator and termite. Default encoding is UTF-8. Color support: 256 colors for Vim and True Color for Neovim.
 
-Vim and Neovim configurations are identical excepting little details. For example: Vim uses the plugins Syntastic, QuickRun and Neocomplete, while Neovim uses Neomake and Deoplete. Neovim is faster with these plugins —asynchronous architecture wins—; and Vim 8.0 will be fast as well, when someone writes asynchronous plugins for it.
+Navigate easily between buffers, tabs, windows and tmux panes. Navigate between syntax warnings/errors, between misspelled words, between searches, between vimgrep results, between GitGutter hunks and between git history (using fugitive plugin).
+
+Easily highlight the word under the cursor or the current selection. A lot of commands have been defined to work with the highlighted text: vimgrep it (current buffer or full project directory) and replace it (current buffer or all open buffers). Also, search, vimgrep and replace into the visual selection only.
+
+Some useful tools have been integrated, like the plugins CtrlP (navigate between open buffers, MRU or directory files), NERDTree (tree files), fugitive (a lot of interesting git commands), undotree (history visualizer), syntastic and neomake (syntax linters), neocomplete and deoplete (autocompletion), neosnippet (code snippets), and much more.
 
 **More specific information:**
 - [Keymaps](https://github.com/gerardbm/vimrc/blob/master/KEYMAPS.md)
@@ -129,7 +74,7 @@ Vim and Neovim configurations are identical excepting little details. For exampl
   - [vim-quickrun](https://github.com/thinca/vim-quickrun) (Vim)
   - [neomake](https://github.com/neomake/neomake) (Neovim)
   - [vimproc.vim](https://github.com/Shougo/vimproc.vim)
-  - [vimshell.vim](https://github.com/Shougo/vimshell.vim)
+  - [vimshell.vim](https://github.com/Shougo/vimshell.vim) (Vim)
 
 - Edition:
   - [vim-easy-align](https://github.com/junegunn/vim-easy-align)

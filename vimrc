@@ -6,7 +6,7 @@
 "  (_)___/_/_/ /_/ /_/_/   \___/
 "
 "----------------------------------------------------------------
-"  Version : 1.10.0
+"  Version : 1.11.0
 "  License : MIT
 "  Author  : Gerard Bajona
 "  URL     : https://github.com/gerardbm/vimrc
@@ -171,16 +171,19 @@ let g:gitgutter_diff_args             = '--ignore-space-at-eol'
 
 nmap <Leader>j <Plug>GitGutterNextHunkzz
 nmap <Leader>k <Plug>GitGutterPrevHunkzz
-nmap <silent> <C-p> :call <SID>ToggleGGPrev()<CR>zz
+nmap <silent> <C-g> :call <SID>ToggleGGPrev()<CR>zz
 
 " Fugitive settings
 nnoremap <Leader>g :<C-U>call <SID>ToggleGsPrev()<CR>
-nnoremap <Leader>G :Gvdiff<CR>
+nnoremap <Leader>G :Gvdiff<CR>gg
+nnoremap <C-z> :call <SID>GlogToggle()<CR>
 
 " --- Sessions ---
 " Vim-session settings
 let g:session_autosave = 'no'
 let g:session_autoload = 'no'
+
+nnoremap <C-s> :OpenSession<CR>
 
 " --- Tools ---
 " NERDCommenter settings
@@ -194,7 +197,7 @@ nnoremap <Leader>c :call NERDComment(0,'toggle')<CR>
 vnoremap <Leader>c :call NERDComment(0,"toggle")<CR>gv
 
 " NERDTree settings
-nnoremap <silent> <C-n> :call ToggleTree()<CR>
+nnoremap <silent> <C-n> :call <SID>ToggleNTree()<CR>
 
 " Syntastic settings
 let g:syntastic_always_populate_loc_list = 1
@@ -225,22 +228,34 @@ let g:lt_quickfix_list_toggle_map = '<leader>q'
 nnoremap <F4> :TagbarToggle<CR>
 
 " CtrlP settings
-let g:ctrlp_map               = '<C-s>'
+let g:ctrlp_map               = '<C-p>'
+let g:ctrlp_cmd               = 'CtrlPBuffer'
 let g:ctrlp_working_path_mode = 'ra'
 let g:ctrlp_custom_ignore     = '\v[\/]\.(git|hg|svn)$'
 let g:ctrlp_show_hidden       = 1
 let g:ctrlp_prompt_mappings   = {
-	\ 'ToggleType(1)'  : ['<c-h>', '<c-up>'],
-	\ 'ToggleType(-1)' : ['<c-l>', '<c-down>'],
-	\ 'PrtCurLeft()'   : ['<c-b>', '<left>', '<c-^>'],
-	\ 'PrtCurRight()'  : ['<c-f>', '<right>'],
+	\ 'PrtHistory(1)'        : ['<C-p>'],
+	\ 'PrtHistory(-1)'       : ['<C-n>'],
+	\ 'ToggleType(1)'        : ['<C-l>', '<C-up>'],
+	\ 'ToggleType(-1)'       : ['<C-h>', '<C-down>'],
+	\ 'PrtCurLeft()'         : ['<C-b>', '<Left>'],
+	\ 'PrtCurRight()'        : ['<C-f>', '<Right>'],
+	\ 'PrtBS()'              : ['<C-s>', '<BS>'],
+	\ 'PrtDelete()'          : ['<C-d>', '<DEL>'],
+	\ 'PrtDeleteWord()'      : ['<C-w>'],
+	\ 'PrtClear()'           : ['<C-u>'],
+	\ 'ToggleByFname()'      : ['<C-g>'],
+	\ 'AcceptSelection("e")' : ['<C-m>', '<CR>'],
+	\ 'AcceptSelection("h")' : ['<C-x>'],
+	\ 'AcceptSelection("t")' : ['<C-t>'],
+	\ 'AcceptSelection("v")' : ['<C-v>'],
+	\ 'OpenMulti()'          : ['<C-o>'],
 	\ }
 
 " FZF settings
 let g:fzf_layout = { 'down': '~25%' }
 
-nnoremap <Leader>z :FZF<CR>
-nnoremap <Leader>Z :Commits<CR>
+nnoremap <Leader>C :Commits<CR>
 
 " Undotree toggle
 nnoremap <Leader>u :UndotreeToggle<CR>
@@ -332,7 +347,7 @@ autocmd InsertLeave * NeoSnippetClearMarkers
 let g:quickrun_no_default_key_mappings = 0
 
 " Vimshell settings
-nnoremap <C-z> :VimShellPop<CR>
+nnoremap <C-t> :VimShellPop<CR>
 
 " --- Edition ---
 " Easy align settings
@@ -471,19 +486,7 @@ set nocursorcolumn
 set laststatus=2
 
 " Change the cursor shape
-if &term =~ 'xterm\|tmux'
-	if exists('$TMUX')
-		let &t_SI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=1\x7\<Esc>\\"
-		let &t_SR = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=2\x7\<Esc>\\"
-		let &t_EI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=0\x7\<Esc>\\"
-	else
-		let &t_SI = "\<Esc>]50;CursorShape=1\x7"
-		let &t_SR = "\<Esc>]50;CursorShape=2\x7"
-		let &t_EI = "\<Esc>]50;CursorShape=0\x7"
-	endif
-endif
-
-if &term =~ 'rxvt\|tmux'
+if &term =~ 'rxvt\|xterm\|tmux'
 	if exists('$TMUX')
 		let &t_SI = "\<Esc>Ptmux;\<Esc>\<Esc>[6 q\<Esc>\\"
 		let &t_SR = "\<Esc>Ptmux;\<Esc>\<Esc>[4 q\<Esc>\\"
@@ -521,7 +524,7 @@ set background=dark
 colorscheme atomic
 
 " Reload the current colorscheme
-nnoremap <S-F12> :call GetColorschemeName()<CR>
+nnoremap <S-F12> :call ReloadColorscheme()<CR>
 
 " Show syntax highlighting groups
 nnoremap <Leader>B :call <SID>SynStack()<CR>
@@ -613,6 +616,7 @@ nnoremap <Leader>bw :cd %:p:h<CR>:pwd<CR>
 nnoremap <Leader>by :let @+=expand("%:p")<CR>
 
 " Expand '%%' to the path of the current buffer
+" TODO: fix → only works having one buffer loaded
 cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h').'/' : '%%'
 
 " Ignore case when autocompletes when browsing files
@@ -776,12 +780,6 @@ set relativenumber
 let f4msg = "Toggle relative line numbers."
 nnoremap <silent> <S-F3> :set norelativenumber!<CR>:echo f4msg<CR>
 
-" Navigate from Insert Mode
-inoremap <expr>@sh neocomplete#smart_close_popup()."\<Left>"
-inoremap <expr>@sj neocomplete#smart_close_popup()."\<Down>"
-inoremap <expr>@sk neocomplete#smart_close_popup()."\<Up>"
-inoremap <expr>@sl neocomplete#smart_close_popup()."\<Right>"
-
 " Treat long lines as break lines (useful when moving around in them)
 nnoremap <silent> <expr> k (v:count == 0 ? 'gk' : 'k')
 nnoremap <silent> <expr> j (v:count == 0 ? 'gj' : 'j')
@@ -835,14 +833,19 @@ inoremap <expr><C-b> neocomplete#smart_close_popup()."\<Left>"
 " Moves the cursor forward one character
 inoremap <expr><C-f> neocomplete#smart_close_popup()."\<Right>"
 
-" Moves the cursor one character from Command Mode
-cnoremap @sh <Left>
-cnoremap @sl <Right>
+" Remove one character
+inoremap <C-s> <BS>
+inoremap <C-d> <DEL>
 
+" Command Mode
 cnoremap <C-b> <Left>
 cnoremap <C-f> <Right>
 cnoremap <C-a> <Home>
 cnoremap <C-e> <End>
+cnoremap <C-s> <BS>
+cnoremap <C-d> <DEL>
+cnoremap <C-p> <Up>
+cnoremap <C-n> <Down>
 
 "----------------------------------------------------------------
 " 12. Paste mode improved
@@ -969,8 +972,9 @@ nnoremap <Leader>A :args **/*.
 " 14. Text edition
 "----------------------------------------------------------------
 " Toggle case
-nnoremap <Leader>< ~
-vnoremap <Leader>< y:call setreg('', ToggleCase(@"), getregtype(''))<CR>gv""Pgv
+nnoremap <Leader>z ~
+vnoremap <Leader>z y:call setreg('', ToggleCase(@"), getregtype(''))<CR>gv""Pgv
+vnoremap ~ y:call setreg('', ToggleCase(@"), getregtype(''))<CR>gv""Pgv
 
 " Toggle and untoggle spell checking
 let f8msg = "Toggle spell checking."
@@ -1084,7 +1088,7 @@ augroup end
 " 17. Helper functions
 "----------------------------------------------------------------
 " Reload the current colorscheme
-function! GetColorschemeName()
+function! ReloadColorscheme()
 	try
 		exec ':colorscheme ' . g:colors_name
 	catch /^Vim:E121/
@@ -1303,8 +1307,20 @@ function! s:ToggleGsPrev()
 	endif
 endfunction
 
+" Toggle vim-fugitive-:Glog (quickfix)
+function! s:GlogToggle()
+	if bufnr('%') == bufnr('^fugitive:') || &buftype == "quickfix"
+		cclose
+		if exists(':Glog') && !&modifiable
+			execute ":Bclose"
+		endif
+	else
+		execute ":silent! Glog | copen"
+	endif
+endfunction
+
 " Better toggle for NERDTree
-function! ToggleTree()
+function! s:ToggleNTree()
 	if (exists ("t:NERDTreeBufName") && (bufwinnr(t:NERDTreeBufName) != -1))
 		if &modifiable
 			execute ":NERDTreeFocus"
@@ -1320,7 +1336,10 @@ endfunction
 inoremap <silent> <Bar>   <Bar><Esc>:call <SID>align()<CR>a
 function! s:align()
 	let p = '^\s*|\s.*\s|\s*$'
-	if exists(':Tabularize') && getline('.') =~# '^\s*|' && (getline(line('.')-1) =~# p || getline(line('.')+1) =~# p)
+	if exists(':Tabularize')
+				\ && getline('.') =~# '^\s*|'
+				\ && (getline(line('.')-1) =~# p
+				\ || getline(line('.')+1) =~# p)
 		let column = strlen(substitute(getline('.')[0:col('.')],'[^|]','','g'))
 		let position = strlen(matchstr(getline('.')[0:col('.')],'.*|\s*\zs.*'))
 		Tabularize/|/l1

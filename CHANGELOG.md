@@ -1,5 +1,25 @@
 ## Changelog
 
+= 1.11.0 =
+* Removed Vimshell plugin from Neovim (unnecessary).
+* The nmap `<G-p>` (GitGutter preview) changed to `<C-g>`.
+* Improved the nnoremap `<Leader>G` (added `gg`).
+* The map `<C-s>` (CtrlP menu) changed to `<C-p>`.
+* Better prompt mappings (readline) for CtrlP plugin.
+* Added the nnoremap `<C-s>` to open `:OpenSession`.
+* The vnoremaps `<Leader><` (toggle case) changed to `<Leader>z`.
+* The nnoremap `<Leader>z` (`:FZF`) now toggles the caps.
+* The nnoremap `<Leader>Z` (`:Commits`) changed to `<Leader>C`.
+* Added new function to toggle vim-fugitive-:Glog with `<C-z>`.
+* Deleted the navigation maps from Insert mode `<expr>^X@sh`.
+* Deleted the navigation maps from Command mode `<expr>^X@sh`.
+* Added the inoremap `<C-s>` to delete the last character.
+* Added the inoremap `<C-d>` to delete the current character.
+* Added the cnoremap `<C-s>` to delete the last character.
+* Added the cnoremap `<C-d>` to delete the current character.
+* Extended the nnoremap `<C-t>` to vim (open `:Vimshell`).
+* Vim supports cursor shape only for `rxvt\|xterm\|tmux`.
+
 = 1.10.0 =
 * Added the plugin goyo.
 
