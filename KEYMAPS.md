@@ -169,4 +169,6 @@
   - `<Tab>` adds one tabulator.
   - `<S-Tab>` removes one tabulator.
 
-It's a generic explanation of the main commands. Some are only for a specific mode and most of them are usable from all the modes, so if you need more precise information, check the code.
+#### Commands
+
+- `:W` save the current buffer with sudo permissions.

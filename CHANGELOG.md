@@ -1,5 +1,8 @@
 ## Changelog
 
+= 1.12.0 =
+* Added the command `:W` to save a file with sudo permissions.
+
 = 1.11.0 =
 * Removed Vimshell plugin from Neovim (unnecessary).
 * The nmap `<G-p>` (GitGutter preview) changed to `<C-g>`.
