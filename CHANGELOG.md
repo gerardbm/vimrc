@@ -1,5 +1,10 @@
 ## Changelog
 
+= 1.12.1 =
+* Fixed the command `:W`. It was not well defined.
+* Added a workaround for ncurses 6.0 on Archlinux/nvim.
+* Yank the last pasted text automatically (`pgvy`).
+
 = 1.12.0 =
 * Added the command `:W` to save a file with sudo permissions.
 

@@ -6,7 +6,7 @@
 "  /_/ /_/\___/\____/|___/_/_/ /_/ /_/
 "
 "----------------------------------------------------------------
-"  Version : 1.12.0
+"  Version : 1.12.1
 "  License : MIT
 "  Author  : Gerard Bajona
 "  URL     : https://github.com/gerardbm/vimrc
@@ -546,7 +546,7 @@ nnoremap <Leader>S :bufdo update<CR>
 
 " :W sudo saves the file
 " (useful for handling the permission-denied error)
-command W w !sudo tee % > /dev/null
+cnoremap W w !sudo tee > /dev/null %
 
 " Rename file
 nnoremap <F2> :call RenameFile()<CR>
@@ -582,6 +582,11 @@ nnoremap <Leader>ba :1,1000 bd!<CR>
 " Move between buffers
 nnoremap <C-h> :bprev<CR>
 nnoremap <C-l> :bnext<CR>
+
+" This is a workaround for ncurses 6.0 (Archlinux)
+if has('nvim')
+	nnoremap <BS> :bprev<CR>
+endif
 
 " Edit and explore buffers
 nnoremap <Leader>bb :edit <C-R>=expand("%:p:h")<CR>/
@@ -982,6 +987,9 @@ nnoremap gV `[v`]
 
 " Yank everything from the cursor to the EOL
 nnoremap Y y$
+
+" Yank the last pasted text automatically
+vnoremap p pgvy
 
 " Retab the selected text
 vnoremap <Leader>tf :retab!<CR>
