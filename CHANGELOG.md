@@ -1,5 +1,11 @@
 ## Changelog
 
+= 1.12.2 = (only Neovim)
+* Added python2 path for deoplete. It's optional.
+* Added `mouse=a` because it's not a default in nvim 2.0.
+* Cursor shape options changed in nvim 2.0, so I updated them.
+* Disabled true colors for terminal (old option is ignored).
+
 = 1.12.1 =
 * Fixed the command `:W`. It was not well defined.
 * Added a workaround for ncurses 6.0 on Archlinux/nvim.

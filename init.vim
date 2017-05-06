@@ -6,7 +6,7 @@
 "  /_/ /_/\___/\____/|___/_/_/ /_/ /_/
 "
 "----------------------------------------------------------------
-"  Version : 1.12.1
+"  Version : 1.12.2
 "  License : MIT
 "  Author  : Gerard Bajona
 "  URL     : https://github.com/gerardbm/vimrc
@@ -295,6 +295,7 @@ let g:SuperTabDefaultCompletionType = '<TAB>'
 
 " Deoplete settings
 " - «Deoplete requires Neovim with Python3 enabled»
+let g:python_host_prog        = '/usr/bin/python2'
 let g:python3_host_prog       = '/usr/bin/python3'
 let g:python3_host_skip_check = 1
 
@@ -471,7 +472,7 @@ if exists('$TMUX')
 endif
 
 " Mouse
-set mousehide
+set mouse=a
 
 " Highlight cursor line and cursor column
 set cursorline
@@ -480,8 +481,10 @@ set nocursorcolumn
 " Always show the status line
 set laststatus=2
 
-" Change the cursor shape in insert mode
-let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
+" Config the cursor shape (nvim version > 2.0)
+set guicursor=n-v:block-Cursor/lCursor-blinkon0
+set guicursor+=i-ci-c:ver100-Cursor/lCursor-blinkon0
+set guicursor+=r-cr:hor100-Cursor/lCursor-blinkon0
 
 " Omni completion
 if has("autocmd") && exists("+omnifunc")
@@ -494,10 +497,10 @@ endif
 "----------------------------------------------------------------
 " 5. Scheme and colors
 "----------------------------------------------------------------
-" Enable true color
-let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+" True color (disabled ATM)
+" set termguicolors
 
-" Enable syntax highlighting
+" Syntax highlighting
 syntax enable
 
 " Use the dark scheme
