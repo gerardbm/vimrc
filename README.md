@@ -5,7 +5,7 @@ This Vim configuration is purely subjective: I wrote it according to my needs. T
 
 ## General settings:
 
-The `<Leader>` key is ",": it's enabled only in 'Normal mode' to avoid the delay time when typing it from 'Insert mode'. The map `<C-c>` is used as `<Escape>` from any mode. Three cursor shapes (block, vertical and horizontal) are defined for Vim and Neovim for the terminals URxvt and XTerm (even into tmux); it also works in gnome-terminal, terminator and termite. Default encoding is UTF-8. Color support: 256 colors for Vim and Neovim.
+The `<Leader>` key is ",": it's enabled only in 'Normal mode' to avoid the delay time when typing it from 'Insert mode'. The map `<C-c>` is used as `<Escape>` from any mode. Three cursor shapes (block, vertical and horizontal) are defined for Vim and Neovim for the terminals URxvt and XTerm (even into tmux); it also works in the last versions of gnome-terminal, terminator, termite and st. Default encoding is UTF-8. Color support: 256 colors for Vim and Neovim.
 
 Navigate easily between buffers, tabs, windows and tmux panes. Navigate between syntax warnings/errors, between misspelled words, between searches, between vimgrep results, between GitGutter hunks and between git history (using fugitive plugin).
 
@@ -101,3 +101,7 @@ Some useful tools have been integrated, like the plugins CtrlP (navigate between
   - [emmet-vim](https://github.com/mattn/emmet-vim)
 
 Read the [code](https://github.com/gerardbm/vimrc/blob/master/vimrc) directly to know more details.
+
+## Screenshot
+
+![Screenshot](https://github.com/gerardbm/vimrc/blob/master/img/vimrc.png)
