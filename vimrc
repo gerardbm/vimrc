@@ -6,7 +6,7 @@
 "  (_)___/_/_/ /_/ /_/_/   \___/
 "
 "----------------------------------------------------------------
-"  Version : 1.12.1
+"  Version : 1.12.3
 "  License : MIT
 "  Author  : Gerard Bajona
 "  URL     : https://github.com/gerardbm/vimrc
@@ -572,7 +572,7 @@ nnoremap <Leader>S :bufdo update<CR>
 
 " :W sudo saves the file
 " (useful for handling the permission-denied error)
-cnoremap W w !sudo tee > /dev/null %
+cnoremap WW w !sudo tee > /dev/null %
 
 " Rename file
 nnoremap <F2> :call RenameFile()<CR>

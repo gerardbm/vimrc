@@ -6,7 +6,7 @@
 "  /_/ /_/\___/\____/|___/_/_/ /_/ /_/
 "
 "----------------------------------------------------------------
-"  Version : 1.12.2
+"  Version : 1.12.3
 "  License : MIT
 "  Author  : Gerard Bajona
 "  URL     : https://github.com/gerardbm/vimrc
@@ -38,7 +38,7 @@
 nnoremap <F12> :so $MYVIMRC<CR>
 
 " Lines of memory to remember
-set history=10000 " (default)
+set history=10000
 
 " Leader key to add extra key combinations
 let mapleader = ","
@@ -60,8 +60,8 @@ nnoremap Q <NOP>
 cnoreabbrev help vert help
 
 " Terminal
-nnoremap <C-t> :below 10sp term://$SHELL<CR>i
-tnoremap <C-c> <C-\><C-n><Bar>:wincmd p<CR>
+nnoremap <silent> <C-t> :call <SID>ToggleTerminal()<CR>
+tnoremap <silent> <C-t> <C-\><C-n><Bar>:wincmd p<CR>
 
 "----------------------------------------------------------------
 " 2. Plugins (Plug)
@@ -549,7 +549,7 @@ nnoremap <Leader>S :bufdo update<CR>
 
 " :W sudo saves the file
 " (useful for handling the permission-denied error)
-cnoremap W w !sudo tee > /dev/null %
+cnoremap WW w !sudo tee > /dev/null %
 
 " Rename file
 nnoremap <F2> :call RenameFile()<CR>
@@ -1068,6 +1068,18 @@ augroup end
 "----------------------------------------------------------------
 " 17. Helper functions
 "----------------------------------------------------------------
+" Toggle Terminal
+function! s:ToggleTerminal()
+	let l:termwinnr = winnr()
+	if bufexists(str2nr('terminal'))
+		execute l:termwinnr + 1 . "wincmd w"
+		norm! i
+	else
+		execute ':below 10sp term://$SHELL'
+		norm! i
+	endif
+endfunction
+
 " Reload the current colorscheme
 function! ReloadColorscheme()
 	try

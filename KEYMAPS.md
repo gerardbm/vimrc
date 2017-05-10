@@ -3,7 +3,7 @@
 - Buffers:
   - `<C-h>` goes to the previous buffer.
   - `<C-l>` goes to the next buffer.
-  - `<C-t>` opens the `:terminal` (Neovim).
+  - `<C-t>` toggles the `:terminal` (Neovim).
 
 - Text edition:
   - `<C-j>` moves lines down.
@@ -171,4 +171,4 @@
 
 #### Commands
 
-- `:W` save the current buffer with sudo permissions.
+- `:WW` save the current buffer with sudo permissions.

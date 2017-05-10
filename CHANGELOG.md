@@ -1,5 +1,9 @@
 ## Changelog
 
+= 1.12.3 =
+* The command `:W` changed to :`WW`. It was in conflict.
+* Added a new function for Neovim: `ToggleTerminal`.
+
 = 1.12.2 = (only Neovim)
 * Added python2 path for deoplete. It's optional.
 * Added `mouse=a` because it's not a default in nvim 2.0.
