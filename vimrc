@@ -6,7 +6,7 @@
 "  (_)___/_/_/ /_/ /_/_/   \___/
 "
 "----------------------------------------------------------------
-"  Version : 1.12.3
+"  Version : 1.13.0
 "  License : MIT
 "  Author  : Gerard Bajona
 "  URL     : https://github.com/gerardbm/vimrc
@@ -75,6 +75,7 @@ call plug#begin('~/.vim/plugged')
 	" Git tools
 	Plug 'airblade/vim-gitgutter'
 	Plug 'tpope/vim-fugitive'
+	Plug 'junegunn/gv.vim'
 
 	" Sessions
 	Plug 'xolox/vim-session'
@@ -83,22 +84,21 @@ call plug#begin('~/.vim/plugged')
 	" Tools
 	Plug 'scrooloose/nerdcommenter'
 	Plug 'scrooloose/nerdtree'
-	Plug 'scrooloose/syntastic'
 	Plug 'valloric/listtoggle'
 	Plug 'majutsushi/tagbar'
 	Plug 'ctrlpvim/ctrlp.vim'
-	Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-	Plug 'junegunn/fzf.vim'
 	Plug 'mbbill/undotree'
+	Plug 'w0rp/ale'
 
 	" Languages
-	Plug 'fatih/vim-go'
+	Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries'  }
 	Plug 'JulesWang/css.vim'
 	Plug 'hail2u/vim-css3-syntax'
 	Plug 'itspriddle/vim-jquery'
 	Plug 'pangloss/vim-javascript'
 	Plug 'ternjs/tern_for_vim', { 'do': 'npm install' }
 	Plug 'Shougo/neco-syntax'
+	Plug 'vim-ruby/vim-ruby'
 
 	" Autocomplete
 	Plug 'ervandew/supertab'
@@ -119,8 +119,8 @@ call plug#begin('~/.vim/plugged')
 
 	" Run code
 	Plug 'thinca/vim-quickrun'
-	Plug 'Shougo/vimproc.vim', {'do' : 'make'}
 	Plug 'Shougo/vimshell.vim'
+	Plug 'Shougo/vimproc.vim', {'do' : 'make'}
 
 	" Edition
 	Plug 'junegunn/vim-easy-align'
@@ -176,7 +176,10 @@ nmap <silent> <C-g> :call <SID>ToggleGGPrev()<CR>zz
 " Fugitive settings
 nnoremap <Leader>g :<C-U>call <SID>ToggleGsPrev()<CR>
 nnoremap <Leader>G :Gvdiff<CR>gg
-nnoremap <C-z> :call <SID>GlogToggle()<CR>
+
+" GV settings
+nnoremap <silent> <C-z> :call <SID>PreventGV()<CR>
+vnoremap <silent> <C-z> :call <SID>PreventGV()<CR>
 
 " --- Sessions ---
 " Vim-session settings
@@ -199,22 +202,10 @@ vnoremap <Leader>c :call NERDComment(0,"toggle")<CR>gv
 " NERDTree settings
 nnoremap <silent> <C-n> :call <SID>ToggleNTree()<CR>
 
-" Syntastic settings
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list            = 0
-let g:syntastic_check_on_open            = 1
-let g:syntastic_check_on_wq              = 0
-let g:syntastic_aggregate_errors         = 1
-let g:syntastic_enable_perl_checker      = 1
-let g:syntastic_enable_signs             = 1
-let g:syntastic_echo_current_error       = 1
-let g:syntastic_go_checkers              = ['golint', 'govet']
-let g:syntastic_perl_checkers            = ['perl']
-let g:syntastic_javascript_checkers      = ['jshint']
-let g:syntastic_error_symbol             = "✖"
-let g:syntastic_warning_symbol           = "⚠"
-let g:syntastic_style_error_symbol       = "S✖"
-let g:syntastic_style_warning_symbol     = "S⚠"
+" ALE settings
+let g:ale_linters = {
+	\ 'javascript': ['jshint'],
+	\ }
 
 " Navigate between errors
 nnoremap <Leader>h :lprevious<CR>zz
@@ -230,7 +221,7 @@ nnoremap <F4> :TagbarToggle<CR>
 " CtrlP settings
 let g:ctrlp_map               = '<C-p>'
 let g:ctrlp_cmd               = 'CtrlPBuffer'
-let g:ctrlp_working_path_mode = 'ra'
+let g:ctrlp_working_path_mode = 'rc'
 let g:ctrlp_custom_ignore     = '\v[\/]\.(git|hg|svn)$'
 let g:ctrlp_show_hidden       = 1
 let g:ctrlp_prompt_mappings   = {
@@ -251,11 +242,6 @@ let g:ctrlp_prompt_mappings   = {
 	\ 'AcceptSelection("v")' : ['<C-v>'],
 	\ 'OpenMulti()'          : ['<C-o>'],
 	\ }
-
-" FZF settings
-let g:fzf_layout = { 'down': '~25%' }
-
-nnoremap <Leader>C :Commits<CR>
 
 " Undotree toggle
 nnoremap <Leader>u :UndotreeToggle<CR>
@@ -326,9 +312,9 @@ let g:clang_use_library                = 1
 
 " --- Snippets ---
 " Neosnippet settings
-imap <C-z> <Plug>(neosnippet_expand_or_jump)
-smap <C-z> <Plug>(neosnippet_expand_or_jump)
-xmap <C-z> <Plug>(neosnippet_expand_target)
+imap <C-q> <Plug>(neosnippet_expand_or_jump)
+smap <C-q> <Plug>(neosnippet_expand_or_jump)
+xmap <C-q> <Plug>(neosnippet_expand_target)
 
 " Behaviour like SuperTab
 smap <expr><TAB>
@@ -345,6 +331,32 @@ autocmd InsertLeave * NeoSnippetClearMarkers
 " --- Run code ---
 " QuickRun settings
 let g:quickrun_no_default_key_mappings = 0
+let g:quickrun_config = {
+	\ "_" : {
+		\ 'runner'                    : 'vimproc',
+		\ 'runner/vimproc/updatetime' : 60,
+		\ 'outputter'                 : 'quickfix',
+		\ },
+	\ }
+
+let g:quickrun_config.javascript = {
+	\ 'command' : 'node',
+	\ }
+
+let g:quickrun_config.go = {
+	\ 'command'   : 'go',
+	\ 'exec'      : '%c run %s',
+	\ 'outputter' : 'buffer',
+	\ }
+
+let g:quickrun_config.html = {
+	\ 'command' : 'w3m',
+	\ 'exec'    : 'tmux new-window %c %s',
+	\ }
+
+let g:quickrun_config.markdown = {
+	\ 'command' : 'qutebrowser',
+	\ }
 
 " Vimshell settings
 nnoremap <C-t> :VimShellPop<CR>
@@ -1036,24 +1048,24 @@ nnoremap <Leader>F maO<Esc>`a
 " If not, use 'makeprg'.
 
 " Set makeprg
-autocmd FileType sh setlocal makeprg=clear\ &&\ bash\ %
-autocmd FileType perl setlocal makeprg=clear\ &&\ perl\ %
-autocmd FileType python setlocal makeprg=clear\ &&\ python\ %
-autocmd FileType javascript setlocal makeprg=clear\ &&\ node\ %
-autocmd FileType php setlocal makeprg=clear\ &&\ php\ %
-autocmd FileType ruby setlocal makeprg=clear\ &&\ ruby\ %
-autocmd FileType go setlocal makeprg=clear\ &&\ go\ run\ %
+autocmd FileType sh setlocal makeprg=bash\ %
+autocmd FileType javascript setlocal makeprg=node\ %
+autocmd FileType python setlocal makeprg=python\ %
+autocmd FileType ruby setlocal makeprg=ruby\ %
+autocmd FileType perl setlocal makeprg=perl\ %
+autocmd FileType php setlocal makeprg=php\ %
+autocmd FileType go setlocal makeprg=go\ run\ %
 
 if !filereadable(expand("%:p:h")."/Makefile")
-	autocmd FileType c setlocal makeprg=clear\ &&\ gcc\ %\ &&\ ./a.out
-	autocmd FileType cpp setlocal makeprg=clear\ &&\ g++\ %\ &&\ ./a.out
+	autocmd FileType c setlocal makeprg=gcc\ %\ &&\ ./a.out
 endif
 
 " Go to the error line
 set errorformat=%m\ in\ %f\ on\ line\ %l
 
 " Execute ':make' and show the result
-nnoremap <silent> <Leader><TAB> :call MakeIt()<CR>
+nnoremap <silent> <Leader><TAB> :<C-u>QuickRun<CR>
+vnoremap <silent> <Leader><TAB> :<C-u>QuickRun<CR>
 
 "----------------------------------------------------------------
 " 16. Filetype settings
@@ -1279,15 +1291,6 @@ function! s:VToggleCPosition()
 	endif
 endfunction
 
-" Execute ':make' and show the result
-function! MakeIt() abort
-	try
-		QuickRun
-	catch
-		update | make
-	endtry
-endfunction
-
 " Toggle GitGutterPreviewHunk
 function! s:ToggleGGPrev()
 	if getwinvar(winnr("#"), "&pvw") == 1
@@ -1314,15 +1317,10 @@ function! s:ToggleGsPrev()
 	endif
 endfunction
 
-" Toggle vim-fugitive-:Glog (quickfix)
-function! s:GlogToggle()
-	if bufnr('%') == bufnr('^fugitive:') || &buftype == "quickfix"
-		cclose
-		if exists(':Glog') && !&modifiable
-			execute ":Bclose"
-		endif
-	else
-		execute ":silent! Glog | copen"
+" Execute GV only once
+function! s:PreventGV() abort
+	if &buftype != "nofile"
+		execute ":GV"
 	endif
 endfunction
 

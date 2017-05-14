@@ -11,7 +11,9 @@ Navigate easily between buffers, tabs, windows and tmux panes. Navigate between 
 
 Easily highlight the word under the cursor or the current selection. A lot of commands have been defined to work with the highlighted text: vimgrep it (current buffer or full project directory) and replace it (current buffer or all open buffers). Also, search, vimgrep and replace into the visual selection only.
 
-Some useful tools have been integrated, like the plugins CtrlP (navigate between open buffers, MRU or directory files), NERDTree (tree files), fugitive (a lot of interesting git commands), undotree (history visualizer), syntastic and neomake (syntax linters), neocomplete and deoplete (autocompletion), neosnippet (code snippets), and much more.
+Some useful tools have been integrated, like the plugins **CtrlP** (navigate between open buffers, MRU or directory files), **NERDTree** (tree files), **vim-fugitive** (a lot of interesting git commands), **GV** (navigate between commits), **undotree** (history visualizer), **ALE** (async syntax linter, and it works while you type), **neocomplete** and **deoplete** (autocompletion for Vim and Neovim), **neosnippet** (code snippets), **QuickRun** (it's awesome at running code), and much more.
+
+This configuration is focused on programming in C, Go, Python, Perl, Ruby, Bash, JavaScript and web development in general, with HTML5 and CSS3.
 
 **More specific information:**
 - [Keymaps](https://github.com/gerardbm/vimrc/blob/master/KEYMAPS.md)
@@ -25,6 +27,7 @@ Some useful tools have been integrated, like the plugins CtrlP (navigate between
 - Git tools:
   - [vim-gitgutter](https://github.com/airblade/vim-gitgutter)
   - [vim-fugitive](https://github.com/tpope/vim-fugitive)
+  - [gv.vim](https://github.com/junegunn/gv.vim)
 
 - Sessions:
   - [vim-session](https://github.com/xolox/vim-session)
@@ -33,13 +36,11 @@ Some useful tools have been integrated, like the plugins CtrlP (navigate between
 - Tools:
   - [nerdcommenter](https://github.com/scrooloose/nerdcommenter)
   - [nerdtree](https://github.com/scrooloose/nerdtree)
-  - [syntastic](https://github.com/scrooloose/syntastic) (Vim)
   - [listtoggle](https://github.com/valloric/listtoggle)
   - [tagbar](https://github.com/majutsushi/tagbar)
   - [ctrlp.vim](https://github.com/ctrlpvim/ctrlp.vim)
-  - [fzf](https://github.com/junegunn/fzf)
-  - [fzf.vim](https://github.com/junegunn/fzf.vim)
   - [undotree](https://github.com/mbbill/undotree)
+  - [ale](https://github.com/w0rp/ale)
 
 - Languages:
   - [vim-go](https://github.com/fatih/vim-go)
@@ -49,6 +50,7 @@ Some useful tools have been integrated, like the plugins CtrlP (navigate between
   - [vim-javascript](https://github.com/pangloss/vim-javascript)
   - [tern_for_vim](https://github.com/ternjs/tern_for_vim)
   - [neco-syntax](https://github.com/Shougo/neco-syntax)
+  - [vim-ruby](https://github.com/vim-ruby/vim-ruby)
 
 - Autocomplete:
   - [supertab](https://github.com/ervandew/supertab)
@@ -71,10 +73,9 @@ Some useful tools have been integrated, like the plugins CtrlP (navigate between
   - [context_filetype.vim](https://github.com/Shougo/context_filetype.vim)
 
 - Run code:
-  - [vim-quickrun](https://github.com/thinca/vim-quickrun) (Vim)
-  - [neomake](https://github.com/neomake/neomake) (Neovim)
-  - [vimproc.vim](https://github.com/Shougo/vimproc.vim)
+  - [vim-quickrun](https://github.com/thinca/vim-quickrun)
   - [vimshell.vim](https://github.com/Shougo/vimshell.vim) (Vim)
+  - [vimproc.vim](https://github.com/Shougo/vimproc.vim)
 
 - Edition:
   - [vim-easy-align](https://github.com/junegunn/vim-easy-align)
@@ -104,4 +105,4 @@ Read the [code](https://github.com/gerardbm/vimrc/blob/master/vimrc) directly to
 
 ## Screenshot
 
-![Screenshot](https://github.com/gerardbm/vimrc/blob/master/img/vimrc.png)
+![Screenshot](https://raw.githubusercontent.com/gerardbm/vimrc/master/img/vimrc.png)

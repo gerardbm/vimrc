@@ -33,8 +33,8 @@
     - `<C-g>` runs the `ToggleByFname` function.
   - `<C-s>` display a list of sessions to open.
   - `<C-l>` toggles caps lock from 'Insert Mode'.
-  - `<C-z>` expands neosnippet from 'Insert Mode'.
-  - `<C-z>` toggles vim-fugitive-:Glog from 'Normal mode'.
+  - `<C-q>` expands neosnippet from 'Insert Mode'.
+  - `<C-z>` opens a list of the last commits'.
 
 #### \<A-{a-z}\> keymaps:
 

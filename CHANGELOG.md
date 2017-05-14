@@ -1,5 +1,22 @@
 ## Changelog
 
+= 1.13.0 =
+* Remove Syntastic and Neomake from Vim/Neovim. Use ALE.
+  - Syntastic is not async.
+  - Syntastic and Neomake don't lint while coding.
+* Use QuickRun to run code in Neovim, with better settings.
+  - QuickRun can run the selected lines in 'Visual mode'.
+* Remove function for `:Glog`. Use the plugin GV.
+  - It does not populate the quickfix, so it's better for me.
+  - It is possible to track the changes in the selected lines.
+  - And it shows the last commits with a nicer format.
+* Finally, remove FZF plugins. I prefer CtrlP + GV combo.
+* So, remove the nnoremap `<Leader>C` to open `:Commits`.
+* Also, install the plugin vim-ruby. (Support for ruby).
+* Expand neosnippet with `<C-q>` instead of `<C-z>`.
+  - `<C-q>` is closer to `Tab` and avoid conflicts with GV.
+* Fix some makeprg settings, and drop cpp.
+
 = 1.12.3 =
 * The command `:W` changed to :`WW`. It was in conflict.
 * Added a new function for Neovim: `ToggleTerminal`.

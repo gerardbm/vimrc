@@ -6,7 +6,7 @@
 "  /_/ /_/\___/\____/|___/_/_/ /_/ /_/
 "
 "----------------------------------------------------------------
-"  Version : 1.12.3
+"  Version : 1.13.0
 "  License : MIT
 "  Author  : Gerard Bajona
 "  URL     : https://github.com/gerardbm/vimrc
@@ -76,6 +76,7 @@ call plug#begin('~/.config/nvim/plugged')
 	" Git tools
 	Plug 'airblade/vim-gitgutter'
 	Plug 'tpope/vim-fugitive'
+	Plug 'junegunn/gv.vim'
 
 	" Sessions
 	Plug 'xolox/vim-session'
@@ -87,18 +88,18 @@ call plug#begin('~/.config/nvim/plugged')
 	Plug 'valloric/listtoggle'
 	Plug 'majutsushi/tagbar'
 	Plug 'ctrlpvim/ctrlp.vim'
-	Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-	Plug 'junegunn/fzf.vim'
 	Plug 'mbbill/undotree'
+	Plug 'w0rp/ale'
 
 	" Languages
-	Plug 'fatih/vim-go'
+	Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries'  }
 	Plug 'JulesWang/css.vim'
 	Plug 'hail2u/vim-css3-syntax'
 	Plug 'itspriddle/vim-jquery'
 	Plug 'pangloss/vim-javascript'
 	Plug 'ternjs/tern_for_vim', { 'do': 'npm install' }
 	Plug 'Shougo/neco-syntax'
+	Plug 'vim-ruby/vim-ruby'
 
 	" Autocomplete
 	Plug 'ervandew/supertab'
@@ -119,7 +120,7 @@ call plug#begin('~/.config/nvim/plugged')
 	Plug 'Shougo/context_filetype.vim'
 
 	" Run code
-	Plug 'neomake/neomake'
+	Plug 'thinca/vim-quickrun'
 	Plug 'Shougo/vimproc.vim', {'do' : 'make'}
 
 	" Edition
@@ -176,7 +177,10 @@ nmap <silent> <C-g> :call <SID>ToggleGGPrev()<CR>zz
 " Fugitive settings
 nnoremap <Leader>g :<C-U>call <SID>ToggleGsPrev()<CR>
 nnoremap <Leader>G :Gvdiff<CR>gg
-nnoremap <silent> <C-z> :call <SID>GlogToggle()<CR>
+
+" GV settings
+nnoremap <silent> <C-z> :call <SID>PreventGV()<CR>
+vnoremap <silent> <C-z> :call <SID>PreventGV()<CR>
 
 " --- Sessions ---
 " Vim-session settings
@@ -199,24 +203,9 @@ vnoremap <Leader>c :call NERDComment(0,"toggle")<CR>gv
 " NERDTree settings
 nnoremap <silent> <C-n> :call <SID>ToggleNTree()<CR>
 
-" Neomake settings
-autocmd! BufWritePost,BufWinEnter * Neomake
-let g:neomake_javascript_enabled_makers = ['jshint']
-let g:neomake_error_sign = {
-	\ 'text': '✖',
-	\ 'texthl': 'NeomakeErrorSign',
-	\ }
-let g:neomake_warning_sign = {
-	\ 'text': '⚠',
-	\ 'texthl': 'NeomakeWarningSign',
-	\ }
-let g:neomake_message_sign = {
-	\ 'text': '➤',
-	\ 'texthl': 'NeomakeMessageSign',
-	\ }
-let g:neomake_info_sign = {
-	\ 'text': 'i',
-	\ 'texthl': 'NeomakeInfoSign',
+" ALE settings
+let g:ale_linters = {
+	\ 'javascript': ['jshint'],
 	\ }
 
 " Navigate between errors
@@ -233,7 +222,7 @@ nnoremap <F4> :TagbarToggle<CR>
 " CtrlP settings
 let g:ctrlp_map               = '<C-p>'
 let g:ctrlp_cmd               = 'CtrlPBuffer'
-let g:ctrlp_working_path_mode = 'ra'
+let g:ctrlp_working_path_mode = 'rc'
 let g:ctrlp_custom_ignore     = '\v[\/]\.(git|hg|svn)$'
 let g:ctrlp_show_hidden       = 1
 let g:ctrlp_prompt_mappings   = {
@@ -254,11 +243,6 @@ let g:ctrlp_prompt_mappings   = {
 	\ 'AcceptSelection("v")' : ['<C-v>'],
 	\ 'OpenMulti()'          : ['<C-o>'],
 	\ }
-
-" FZF settings
-let g:fzf_layout = { 'down': '~25%' }
-
-nnoremap <Leader>C :Commits<CR>
 
 " Undotree toggle
 nnoremap <Leader>u :UndotreeToggle<CR>
@@ -295,7 +279,6 @@ let g:SuperTabDefaultCompletionType = '<TAB>'
 
 " Deoplete settings
 " - «Deoplete requires Neovim with Python3 enabled»
-let g:python_host_prog        = '/usr/bin/python2'
 let g:python3_host_prog       = '/usr/bin/python3'
 let g:python3_host_skip_check = 1
 
@@ -332,9 +315,9 @@ let g:clang_use_library                = 1
 
 " --- Snippets ---
 " Neosnippet settings
-imap <C-z> <Plug>(neosnippet_expand_or_jump)
-smap <C-z> <Plug>(neosnippet_expand_or_jump)
-xmap <C-z> <Plug>(neosnippet_expand_target)
+imap <C-q> <Plug>(neosnippet_expand_or_jump)
+smap <C-q> <Plug>(neosnippet_expand_or_jump)
+xmap <C-q> <Plug>(neosnippet_expand_target)
 
 " Behaviour like SuperTab
 smap <expr><TAB>
@@ -347,6 +330,36 @@ if has('conceal')
 endif
 
 autocmd InsertLeave * NeoSnippetClearMarkers
+
+" --- Run code ---
+" QuickRun settings
+let g:quickrun_no_default_key_mappings = 0
+let g:quickrun_config = {
+	\ "_" : {
+		\ 'runner'                    : 'vimproc',
+		\ 'runner/vimproc/updatetime' : 60,
+		\ 'outputter'                 : 'quickfix',
+		\ },
+	\ }
+
+let g:quickrun_config.javascript = {
+	\ 'command' : 'node',
+	\ }
+
+let g:quickrun_config.go = {
+	\ 'command'   : 'go',
+	\ 'exec'      : '%c run %s',
+	\ 'outputter' : 'buffer',
+	\ }
+
+let g:quickrun_config.html = {
+	\ 'command' : 'w3m',
+	\ 'exec'    : 'tmux new-window %c %s',
+	\ }
+
+let g:quickrun_config.markdown = {
+	\ 'command' : 'qutebrowser',
+	\ }
 
 " --- Edition ---
 " Easy align settings
@@ -1011,23 +1024,23 @@ nnoremap <Leader>F maO<Esc>`a
 "----------------------------------------------------------------
 " Set makeprg
 autocmd FileType sh setlocal makeprg=bash\ %
-autocmd FileType perl setlocal makeprg=perl\ %
-autocmd FileType python setlocal makeprg=python\ %
 autocmd FileType javascript setlocal makeprg=node\ %
-autocmd FileType php setlocal makeprg=php\ %
+autocmd FileType python setlocal makeprg=python\ %
 autocmd FileType ruby setlocal makeprg=ruby\ %
+autocmd FileType perl setlocal makeprg=perl\ %
+autocmd FileType php setlocal makeprg=php\ %
 autocmd FileType go setlocal makeprg=go\ run\ %
 
 if !filereadable(expand("%:p:h")."/Makefile")
 	autocmd FileType c setlocal makeprg=gcc\ %\ &&\ ./a.out
-	autocmd FileType cpp setlocal makeprg=g++\ %\ &&\ ./a.out
 endif
 
 " Go to the error line
 set errorformat=%m\ in\ %f\ on\ line\ %l
 
 " Execute ':make' and show the result
-nnoremap <silent> <Leader><TAB> :update \| make<CR>
+nnoremap <silent> <Leader><TAB> :<C-u>QuickRun<CR>
+vnoremap <silent> <Leader><TAB> :<C-u>QuickRun<CR>
 
 "----------------------------------------------------------------
 " 16. Filetype settings
@@ -1291,15 +1304,10 @@ function! s:ToggleGsPrev()
 	endif
 endfunction
 
-" Toggle vim-fugitive-:Glog (quickfix)
-function! s:GlogToggle()
-	if bufnr('%') == bufnr('^fugitive:') || &buftype == "quickfix"
-		cclose
-		if exists(':Glog') && !&modifiable
-			execute ":Bclose"
-		endif
-	else
-		execute ":silent! Glog | copen"
+" Execute GV only once
+function! s:PreventGV() abort
+	if &buftype != "nofile"
+		execute ":GV"
 	endif
 endfunction
 
