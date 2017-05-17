@@ -1,5 +1,8 @@
 ## Changelog
 
+= 1.13.1 =
+* Fix vnoremap `<Leader><Tab>` to execute `:QuickRun`.
+
 = 1.13.0 =
 * Remove Syntastic and Neomake from Vim/Neovim. Use ALE.
   - Syntastic is not async.

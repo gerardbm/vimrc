@@ -6,7 +6,7 @@
 "  /_/ /_/\___/\____/|___/_/_/ /_/ /_/
 "
 "----------------------------------------------------------------
-"  Version : 1.13.0
+"  Version : 1.13.1
 "  License : MIT
 "  Author  : Gerard Bajona
 "  URL     : https://github.com/gerardbm/vimrc
@@ -1040,7 +1040,7 @@ set errorformat=%m\ in\ %f\ on\ line\ %l
 
 " Execute ':make' and show the result
 nnoremap <silent> <Leader><TAB> :<C-u>QuickRun<CR>
-vnoremap <silent> <Leader><TAB> :<C-u>QuickRun<CR>
+vnoremap <silent> <Leader><TAB> :QuickRun<CR>
 
 "----------------------------------------------------------------
 " 16. Filetype settings
