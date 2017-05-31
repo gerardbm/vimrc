@@ -16,6 +16,7 @@
   - `<C-f>` moves the cursor forward one character.
   - `<C-s>` removes the last character.
   - `<C-d>` removes the current character.
+  - `<C-z>` pastes the yanked text in command line.
 
 - Plugins related:
   - `<C-t>` opens the `:VimShell` (Vim).
@@ -34,7 +35,7 @@
   - `<C-s>` display a list of sessions to open.
   - `<C-l>` toggles caps lock from 'Insert Mode'.
   - `<C-q>` expands neosnippet from 'Insert Mode'.
-  - `<C-z>` opens a list of the last commits'.
+  - `<C-z>` opens a list of the last commits (GV)'.
 
 #### \<A-{a-z}\> keymaps:
 
@@ -143,12 +144,13 @@
   - `<Leader><TAB>` runs the code of the current buffer.
   - `<Leader>j` goes to the next GitGutter hunk.
   - `<Leader>k` goes to the previous GitGutter hunk.
+  - `<Leader>i` adds the line to the staging area (GitGutter).
+  - `<Leader>I` undoes the hunk (GitGutter).
   - `<Leader>c` toggles the commented code.
   - `<Leader>h` goes to the previous warning/error.
   - `<Leader>l` goes to the next warning/error.
   - `<Leader>q` toggles the quickfix window.
   - `<Leader>e` toggles the location list window.
-  - `<Leader>C` opens the plugin FZF (:Commits).
   - `<Leader>g` toggles the plugin fugitive `:Gstatus`.
   - `<Leader>G` starts the fugitive command `:Gvdiff`.
   - `<Leader>u` toggles the plugin Undotree.

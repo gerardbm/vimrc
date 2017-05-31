@@ -6,7 +6,7 @@
 "  /_/ /_/\___/\____/|___/_/_/ /_/ /_/
 "
 "----------------------------------------------------------------
-"  Version : 1.13.1
+"  Version : 1.14.0
 "  License : MIT
 "  Author  : Gerard Bajona
 "  URL     : https://github.com/gerardbm/vimrc
@@ -147,6 +147,9 @@ call plug#begin('~/.config/nvim/plugged')
 	Plug 'mattn/webapi-vim'
 	Plug 'mattn/emmet-vim'
 
+	" Color schemes
+	Plug 'gerardbm/vim-atomic'
+
 call plug#end()
 
 "----------------------------------------------------------------
@@ -177,6 +180,8 @@ nmap <silent> <C-g> :call <SID>ToggleGGPrev()<CR>zz
 " Fugitive settings
 nnoremap <Leader>g :<C-U>call <SID>ToggleGsPrev()<CR>
 nnoremap <Leader>G :Gvdiff<CR>gg
+nnoremap <Leader>i :GitGutterStageHunk<CR>
+nnoremap <Leader>I :GitGutterUndoHunk<CR>
 
 " GV settings
 nnoremap <silent> <C-z> :call <SID>PreventGV()<CR>
@@ -510,16 +515,13 @@ endif
 "----------------------------------------------------------------
 " 5. Scheme and colors
 "----------------------------------------------------------------
-" True color (disabled ATM)
+" True color
 " set termguicolors
 
 " Syntax highlighting
 syntax enable
 
-" Use the dark scheme
-set background=dark
-
-" Colorscheme colors
+" Color scheme
 colorscheme atomic
 
 " Reload the current colorscheme
@@ -598,11 +600,6 @@ nnoremap <Leader>ba :1,1000 bd!<CR>
 " Move between buffers
 nnoremap <C-h> :bprev<CR>
 nnoremap <C-l> :bnext<CR>
-
-" This is a workaround for ncurses 6.0 (Archlinux)
-if has('nvim')
-	nnoremap <BS> :bprev<CR>
-endif
 
 " Edit and explore buffers
 nnoremap <Leader>bb :edit <C-R>=expand("%:p:h")<CR>/
@@ -805,7 +802,7 @@ nnoremap <Leader>ds yyP
 nnoremap <Leader>df yyp
 
 " Folding
-set foldmethod=manual
+set foldmethod=marker
 
 " Return to last edit position when opening files
 autocmd BufReadPost *
@@ -840,6 +837,7 @@ cnoremap <C-s> <BS>
 cnoremap <C-d> <DEL>
 cnoremap <C-p> <Up>
 cnoremap <C-n> <Down>
+cnoremap <C-z> <C-R><C-W>
 
 "----------------------------------------------------------------
 " 12. Paste mode improved

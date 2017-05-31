@@ -1,5 +1,14 @@
 ## Changelog
 
+= 1.14.0 =
+* Install Atomic color scheme as plugin.
+* Add the nnoremap `<Leader>i` for `:GitGutterStageHunk`.
+* Add the nnoremap `<Leader>I` for `:GitGutterUndoHunk`.
+* Remove background setting. Color scheme manages it.
+* Remove the workaround for ncurses 6.0 on neovim.
+* Add the cnoremap `<C-z>` to paste yanked text (`<C-R><C-W>`).
+* Change foldmethod to marker.
+
 = 1.13.1 =
 * Fix vnoremap `<Leader><Tab>` to execute `:QuickRun`.
 

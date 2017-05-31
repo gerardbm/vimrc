@@ -6,7 +6,7 @@
 "  (_)___/_/_/ /_/ /_/_/   \___/
 "
 "----------------------------------------------------------------
-"  Version : 1.13.1
+"  Version : 1.14.0
 "  License : MIT
 "  Author  : Gerard Bajona
 "  URL     : https://github.com/gerardbm/vimrc
@@ -146,6 +146,9 @@ call plug#begin('~/.vim/plugged')
 	Plug 'mattn/webapi-vim'
 	Plug 'mattn/emmet-vim'
 
+	" Color schemes
+	Plug 'gerardbm/vim-atomic'
+
 call plug#end()
 
 "----------------------------------------------------------------
@@ -176,6 +179,8 @@ nmap <silent> <C-g> :call <SID>ToggleGGPrev()<CR>zz
 " Fugitive settings
 nnoremap <Leader>g :<C-U>call <SID>ToggleGsPrev()<CR>
 nnoremap <Leader>G :Gvdiff<CR>gg
+nnoremap <Leader>i :GitGutterStageHunk<CR>
+nnoremap <Leader>I :GitGutterUndoHunk<CR>
 
 " GV settings
 nnoremap <silent> <C-z> :call <SID>PreventGV()<CR>
@@ -521,18 +526,17 @@ endif
 "----------------------------------------------------------------
 " 5. Scheme and colors
 "----------------------------------------------------------------
-" Enable 256 colors
-if &term =~ '256color' || has('gui_running')
-	set t_Co=256
-endif
+" True color
+" if has("termguicolors")
+"     let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+"     let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+"     set termguicolors
+" endif
 
-" Enable syntax highlighting
+" Syntax highlighting
 syntax enable
 
-" Use the dark scheme
-set background=dark
-
-" Colorscheme colors
+" Color scheme
 colorscheme atomic
 
 " Reload the current colorscheme
@@ -827,7 +831,7 @@ nnoremap <Leader>ds yyP
 nnoremap <Leader>df yyp
 
 " Folding
-set foldmethod=manual
+set foldmethod=marker
 
 " Return to last edit position when opening files
 autocmd BufReadPost *
@@ -862,6 +866,7 @@ cnoremap <C-s> <BS>
 cnoremap <C-d> <DEL>
 cnoremap <C-p> <Up>
 cnoremap <C-n> <Down>
+cnoremap <C-z> <C-R><C-W>
 
 "----------------------------------------------------------------
 " 12. Paste mode improved

@@ -22,37 +22,39 @@ set guioptions+=i
 set guioptions+=a
 
 " Typography
-if has("gui_running")
-	if has("gui_gtk2")
-		set guifont=Terminus\ 13
-	elseif has("gui_macvim")
-		set guifont=Menlo\ Regular:h14
-	elseif has("gui_win32")
-		set guifont=Consolas:h11:cANSI
-	endif
+if has("gui_gtk2") || has("gui_gtk3")
+	set guifont=DejaVu\ Sans\ Mono\ for\ Powerline\ 11
+elseif has("gui_macvim")
+	set guifont=Menlo\ Regular:h14
+elseif has("gui_win32")
+	set guifont=Consolas:h11:cANSI
 endif
 
 " Toggle fullscreen
 map <silent> <S-F11> :call system("wmctrl -ir " . v:windowid . " -b toggle,fullscreen")<CR>
 
 " Set initial window size
-set lines=36 columns=144
+" set lines=36 columns=144
 
 " Disable mouse
-set mouse=c
+" set mouse=c
 
 " Colorscheme settings
 " It is required to use the colorscheme Atomic
 " Source: https://github.com/gerardbm/atomic
 function! AtomicSwitcher()
 	if (strftime("%H") > 8) && (strftime("%H") < 20)
-		AtomicDark
+		AtomicDarkBlueSoft
 	else
-		AtomicNight
+		AtomicNightRedHard
 	endif
 endfunction
 
 call AtomicSwitcher()
+
+" Shortcuts
+nnoremap <S-F9> :call CycleModes()<CR>:colorscheme atomic<CR>
+vnoremap <S-F9> :<C-u>call CycleModes()<CR>:colorscheme atomic<CR>gv
 
 " Paste ('p') from the clipboard
 set clipboard=unnamedplus
