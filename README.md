@@ -101,6 +101,9 @@ This configuration is focused on programming in C, Go, Python, Perl, Ruby, Bash,
   - [webapi-vim](https://github.com/mattn/webapi-vim)
   - [emmet-vim](https://github.com/mattn/emmet-vim)
 
+- Color schemes:
+  - [vim-atomic](https://github.com/gerardbm/vim-atomic)
+
 Read the [code](https://github.com/gerardbm/vimrc/blob/master/vimrc) directly to know more details.
 
 ## Screenshot
