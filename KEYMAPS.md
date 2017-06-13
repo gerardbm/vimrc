@@ -97,7 +97,7 @@
   - `<Leader>.o` closes all windows excepting the current.
 
 - About lines:
-  - `<Leader>m` removes the Windows ^M.
+  - `<Leader><BS>` removes the Windows ^M.
   - `<Leader>ds` duplicates a line up.
   - `<Leader>df` duplicates a line down.
   - `<Leader>o` isolates the current line.
@@ -109,7 +109,7 @@
   - `<Leader><Space>` searches backward for the pattern.
   - `<Leader><CR>` searches the word under the cursor.
   - `<Leader><CR>` also, searches the current selection!
-  - `<Leader><BS>` disables highlight.
+  - `<Leader>m` disables highlight.
 
 - Vimgrep:
   - `<Leader>v` vimgreps the highlight in the current file.
@@ -129,8 +129,6 @@
   - `ç` moves to the next misspelled word.
   - `Ç` moves to the previous misspelled word.
   - `<Leader>ç` suggests correctly spelled words.
-  - `<Leader>wg` adds the word under the cursor into the dictionary.
-  - `<Leader>ww` marks the word under the cursor as wrong.
   - `<Leader>tf` retabs the current selection.
 
 - Clipboard:

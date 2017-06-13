@@ -1,5 +1,13 @@
 ## Changelog
 
+= 1.14.1 =
+* Follow vimscript style guide.
+* Switch nnoremaps `<Leader><BS>` and `<Leader>m`.
+* Remove `\<` and `\>` from highlight the word under the cursor.
+* Remove nnoremaps `<Leader>ww` and `<Leader>wg` (spelling).
+* Add `g:markdown_fenced_languages` for some languages.
+* Fix `ToggleCPosition`, use `$` instead of `g_`.
+
 = 1.14.0 =
 * Install Atomic color scheme as plugin.
 * Add the nnoremap `<Leader>i` for `:GitGutterStageHunk`.

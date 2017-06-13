@@ -6,7 +6,7 @@
 "  (_)___/_/_/ /_/ /_/_/   \___/
 "
 "----------------------------------------------------------------
-"  Version : 1.14.0
+"  Version : 1.14.1
 "  License : MIT
 "  Author  : Gerard Bajona
 "  URL     : https://github.com/gerardbm/vimrc
@@ -41,11 +41,11 @@ set nocompatible
 nnoremap <F12> :so $MYVIMRC<CR>
 
 " Lines of memory to remember
-set history=1000
+set history=10000
 
 " Leader key to add extra key combinations
-let mapleader = ","
-let g:mapleader = ","
+let mapleader = ','
+let g:mapleader = ','
 
 " Time delay on <Leader> key
 set timeoutlen=3000 ttimeoutlen=100
@@ -259,8 +259,8 @@ let g:go_highlight_fields            = 1
 let g:go_highlight_types             = 1
 let g:go_highlight_operators         = 1
 let g:go_highlight_build_constraints = 1
-let g:go_bin_path                    = expand("~/.gotools")
-let g:go_list_type                   = "quickfix"
+let g:go_bin_path                    = expand('~/.gotools')
+let g:go_list_type                   = 'quickfix'
 
 " CSS3 settings
 augroup VimCSS3Syntax
@@ -274,8 +274,8 @@ let g:javascript_plugin_ngdoc = 1
 let g:javascript_plugin_flow  = 1
 
 " Tern_for_vim settings
-let g:tern#command   = ["tern"]
-let g:tern#arguments = ["--persistent"]
+let g:tern#command   = ['tern']
+let g:tern#arguments = ['--persistent']
 
 " --- Autocomplete ---
 " SuperTab settings
@@ -331,13 +331,15 @@ if has('conceal')
 	set conceallevel=2 concealcursor=niv
 endif
 
-autocmd InsertLeave * NeoSnippetClearMarkers
+augroup all
+	autocmd InsertLeave * NeoSnippetClearMarkers
+augroup end
 
 " --- Run code ---
 " QuickRun settings
 let g:quickrun_no_default_key_mappings = 0
 let g:quickrun_config = {
-	\ "_" : {
+	\ '_' : {
 		\ 'runner'                    : 'vimproc',
 		\ 'runner/vimproc/updatetime' : 60,
 		\ 'outputter'                 : 'quickfix',
@@ -381,15 +383,15 @@ vnoremap <Leader>X :Tabularize /.*/<Left><Left><Left>
 let g:AutoPairsFlyMode = 0
 
 " Closetag settings
-let g:closetag_filenames = "*.html,*.xhtml,*.phtml,*.xml"
+let g:closetag_filenames = '*.html,*.xhtml,*.phtml,*.xml'
 autocmd Filetype php iab <? <?php ?><Left><Left><Left>
-autocmd Filetype * iab <% <% %><Left><Left><Left>
+autocmd Filetype erb iab <% <% %><Left><Left><Left>
 
 " Surround settings
 " Use 'yss?', 'yss%' or 'yss=' to surround a line
-autocmd FileType php let b:surround_63 = "<?php \r ?>"
-let g:surround_37 = "<% \r %>"
-let g:surround_61 = "<%= \r %>"
+autocmd FileType php let b:surround_63 = '<?php \r ?>'
+let g:surround_37 = '<% \r %>'
+let g:surround_61 = '<%= \r %>'
 
 " Caps Lock settings
 imap <expr><C-l> neocomplete#smart_close_popup()."\<Plug>CapsLockToggle"
@@ -456,7 +458,7 @@ set lazyredraw
 set showmatch
 
 " How many tenths of a second to blink when matching brackets
-set mat=2
+set matchtime=2
 
 " No annoying sound on errors
 set noerrorbells
@@ -516,7 +518,7 @@ if &term =~ 'rxvt\|xterm\|tmux'
 endif
 
 " Omni completion
-if has("autocmd") && exists("+omnifunc")
+if has('autocmd') && exists('+omnifunc')
 autocmd Filetype *
 	\ if &omnifunc == "" |
 	\     setlocal omnifunc=syntaxcomplete#Complete |
@@ -561,14 +563,14 @@ set nowritebackup
 set encoding=utf8
 
 " Use Unix as the standard file type
-set ffs=unix,dos,mac
+set fileformats=unix,dos,mac
 
 " Autoread a file when it is changed from the outside
 set autoread
 
 " Reload a file when it is changed from the outside
-let f5msg = "Buffer reloaded."
-nnoremap <F5> :e<CR>:echo f5msg<CR>
+let g:f5msg = 'Buffer reloaded.'
+nnoremap <F5> :e<CR>:echo g:f5msg<CR>
 
 " Enable filetype plugins
 filetype plugin on
@@ -645,7 +647,7 @@ set fileignorecase
 " Specify the behavior when switching between buffers
 try
 	set switchbuf=useopen,usetab,newtab
-	set stal=2
+	set showtabline=2
 catch
 endtry
 
@@ -698,14 +700,14 @@ nnoremap <silent> <F10> :ToggleResize<CR>
 
 " Last, previous and next window; and only one window
 nnoremap <silent> <C-w>l :wincmd p<CR>:echo "Last window."<CR>
-nnoremap <silent> <C-W>p :wincmd w<CR>:echo "Previous window."<CR>
-nnoremap <silent> <C-W>n :wincmd W<CR>:echo "Next window."<CR>
-nnoremap <silent> <C-W>o :wincmd o<CR>:echo "Only one window."<CR>
+nnoremap <silent> <C-w>p :wincmd w<CR>:echo "Previous window."<CR>
+nnoremap <silent> <C-w>n :wincmd W<CR>:echo "Next window."<CR>
+nnoremap <silent> <C-w>o :wincmd o<CR>:echo "Only one window."<CR>
 
 " Move between Vim windows and Tmux panes
 " - It requires the corresponding configuration into Tmux.
 " - Check it at my .tmux.conf from my Atomic files repository.
-" - URL: https://github.com/gerardbm/atomic/blob/master/tmux/tmux.conf
+" - URL: https://github.com/gerardbm/dotfiles/blob/master/.tmux.conf
 " - Plugin required: https://github.com/christoomey/vim-tmux-navigator
 set <M-h>=h
 set <M-j>=j
@@ -719,7 +721,7 @@ nnoremap <silent> <M-l> :TmuxNavigateRight<CR>
 nnoremap <silent> <M-p> :TmuxNavigatePrevious<CR>
 
 " Remove the Windows ^M - when the encodings gets messed up
-noremap <Leader>m mmHmt:%s/<C-v><CR>//ge<CR>'tzt`m
+noremap <Leader><BS> mmHmt:%s/<C-v><CR>//ge<CR>'tzt`m
 
 "----------------------------------------------------------------
 " 10. Indentation tabs
@@ -751,8 +753,8 @@ inoremap <S-TAB> <C-d>
 " Don't show tabs
 set list
 
-let f6msg = "Toggle list."
-nnoremap <F6> :set list!<CR>:echo f6msg<CR>
+let g:f6msg = 'Toggle list.'
+nnoremap <F6> :set list!<CR>:echo g:f6msg<CR>
 
 " Show tabs and end-of-lines
 set listchars=tab:│\ ,trail:·
@@ -784,21 +786,21 @@ set colorcolumn=100
 set nomore
 
 " Color column
-let f9msg = "Toggle colorcolumn."
-nnoremap <silent> <F9> :call <SID>ToggleColorColumn()<CR>:echo f9msg<CR>
+let g:f9msg = 'Toggle colorcolumn.'
+nnoremap <silent> <F9> :call <SID>ToggleColorColumn()<CR>:echo g:f9msg<CR>
 
 " Show line numbers
 set nonumber
 set numberwidth=2
 
-let f3msg = "Toggle line numbers."
-nnoremap <silent> <F3> :set number!<CR>:echo f3msg<CR>
+let g:f3msg = 'Toggle line numbers.'
+nnoremap <silent> <F3> :set number!<CR>:echo g:f3msg<CR>
 
 " Set relative line numbers
 set relativenumber
 
-let f4msg = "Toggle relative line numbers."
-nnoremap <silent> <S-F3> :set norelativenumber!<CR>:echo f4msg<CR>
+let g:f4msg = 'Toggle relative line numbers.'
+nnoremap <silent> <S-F3> :set norelativenumber!<CR>:echo g:f4msg<CR>
 
 " Treat long lines as break lines (useful when moving around in them)
 nnoremap <silent> <expr> k (v:count == 0 ? 'gk' : 'k')
@@ -885,10 +887,10 @@ function! WrapForTmux(s)
 		return a:s
 	endif
 
-	let tmux_start = "\<Esc>Ptmux;"
-	let tmux_end = "\<Esc>\\"
+	let l:tmux_start = '\<Esc>Ptmux;'
+	let l:tmux_end = '\<Esc>\\'
 
-	return tmux_start . substitute(a:s, "\<Esc>", "\<Esc>\<Esc>", 'g') . tmux_end
+	return l:tmux_start . substitute(a:s, "\<Esc>", "\<Esc>\<Esc>", 'g') . l:tmux_end
 endfunction
 
 let &t_SI .= WrapForTmux("\<Esc>[?2004h")
@@ -897,14 +899,14 @@ let &t_EI .= WrapForTmux("\<Esc>[?2004l")
 function! XTermPasteBegin()
 	set pastetoggle=<Esc>[201~
 	set paste
-	return ""
+	return ''
 endfunction
 
 inoremap <special> <expr> <Esc>[200~ XTermPasteBegin()
 
 " Toggle Paste Mode manually
-let f7msg = "Toggle paste mode."
-nnoremap <F7> :setlocal paste!<CR>:echo f7msg<CR>
+let g:f7msg = 'Toggle paste mode.'
+nnoremap <F7> :setlocal paste!<CR>:echo g:f7msg<CR>
 
 "----------------------------------------------------------------
 " 13. Search and vimgrep
@@ -928,7 +930,7 @@ set smartcase
 set magic
 
 " Maximum amount of memory in Kbyte used for pattern matching
-set mmp=1000
+set maxmempattern=1000
 
 " --- Highlight ---
 "----------------------------------------------------------------
@@ -937,13 +939,13 @@ nnoremap <Space> /
 nnoremap <Leader><Space> ?
 
 " Highlight the word under the cursor and don't jump to next
-nnoremap <silent> <Leader><CR> :let @/='\<<C-R>=expand("<cword>")<CR>\>'<CR>:set hls<CR>
+nnoremap <silent> <Leader><CR> :let @/='<C-R>=expand("<cword>")<CR>'<CR>:set hls<CR>
 
 " Highlight the selected text and don't jump to next
 vnoremap <silent> <Leader><CR> :<C-U>call <SID>VSetSearch()<CR>:set hls<CR>
 
 " Disable highlight
-nnoremap <Leader><BS> :noh<CR>
+nnoremap <Leader>m :noh<CR>
 
 " Search into a Visual selection
 vnoremap <silent> <Space> :<C-U>call RangeSearch('/')<CR>
@@ -998,8 +1000,8 @@ vnoremap <Leader>z y:call setreg('', ToggleCase(@"), getregtype(''))<CR>gv""Pgv
 vnoremap ~ y:call setreg('', ToggleCase(@"), getregtype(''))<CR>gv""Pgv
 
 " Toggle and untoggle spell checking
-let f8msg = "Toggle spell checking."
-nnoremap <silent> <F8> :setlocal spell!<CR>:echo f8msg<CR>
+let g:f8msg = 'Toggle spell checking.'
+nnoremap <silent> <F8> :setlocal spell!<CR>:echo g:f8msg<CR>
 
 " Toggle spell dictionary
 nnoremap <silent> <S-F8> :call <SID>ToggleSpelllang()<CR>
@@ -1009,12 +1011,6 @@ nnoremap ç ]s
 
 " Find the misspelled word before the cursor
 nnoremap Ç [s
-
-" Add word under the cursor as a good word
-nnoremap <Leader>wa zg
-
-" Mark the word under the cursor as wrong
-nnoremap <Leader>wd zw
 
 " Suggest correctly spelled words
 nnoremap <Leader>ç z=
@@ -1061,7 +1057,7 @@ autocmd FileType perl setlocal makeprg=perl\ %
 autocmd FileType php setlocal makeprg=php\ %
 autocmd FileType go setlocal makeprg=go\ run\ %
 
-if !filereadable(expand("%:p:h")."/Makefile")
+if !filereadable(expand('%:p:h').'/Makefile')
 	autocmd FileType c setlocal makeprg=gcc\ %\ &&\ ./a.out
 endif
 
@@ -1077,9 +1073,9 @@ vnoremap <silent> <Leader><TAB> :QuickRun<CR>
 "----------------------------------------------------------------
 " Delete trailing white space on save
 func! DeleteTrailing()
-	exe "normal mz"
+	exe 'normal mz'
 	%s/\s\+$//ge
-	exe "normal `z"
+	exe 'normal `z'
 endfunc
 autocmd BufWrite * :call DeleteTrailing() " All files
 
@@ -1093,13 +1089,27 @@ augroup Binary
 	au BufWritePre *.bin endif
 	au BufWritePost *.bin if &bin | %!xxd
 	au BufWritePost *.bin set nomod | endif
-augroup END
+augroup end
 
 " Markdown
 augroup markdown
 	au!
 	au FileType markdown setl spell
 augroup end
+
+let g:markdown_fenced_languages = [
+	\ 'c',
+	\ 'sh',
+	\ 'go',
+	\ 'perl',
+	\ 'python',
+	\ 'javascript',
+	\ 'ruby',
+	\ 'eruby',
+	\ 'php',
+	\ 'html',
+	\ 'css',
+	\ ]
 
 " Mail
 augroup mail
@@ -1122,7 +1132,7 @@ endfunction
 
 " Show syntax highlighting groups
 function! <SID>SynStack()
-	if !exists("*synstack")
+	if !exists('*synstack')
 		return
 	endif
 	echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')
@@ -1130,18 +1140,18 @@ endfunction
 
 " Rename file
 function! RenameFile()
-	let old_name = expand('%')
-	let new_name = input('New file name: ', expand('%'), 'file')
-	if new_name != '' && new_name != old_name
-		exec ':saveas ' . new_name
-		exec ':silent !rm ' . old_name
+	let l:old_name = expand('%')
+	let l:new_name = input('New file name: ', expand('%'), 'file')
+	if l:new_name !=# '' && l:new_name !=# l:old_name
+		exec ':saveas ' . l:new_name
+		exec ':silent !rm ' . l:old_name
 		redraw!
 	endif
 endfunction
 
 " Delete file
 function! DeleteFile()
-	if (&filetype == 'help')
+	if (&filetype ==# 'help')
 		echo "It's a help buffer. Don't delete it."
 	else
 		call delete(expand('%')) | bdelete!
@@ -1151,8 +1161,8 @@ endfunction
 " Don't close window when deleting a buffer
 command! Bclose call <SID>BufcloseCloseIt()
 function! <SID>BufcloseCloseIt()
-	let l:currentBufNum = bufnr("%")
-	let l:alternateBufNum = bufnr("#")
+	let l:currentBufNum = bufnr('%')
+	let l:alternateBufNum = bufnr('#')
 
 	if buflisted(l:alternateBufNum)
 		buffer #
@@ -1160,19 +1170,19 @@ function! <SID>BufcloseCloseIt()
 		bnext
 	endif
 
-	if bufnr("%") == l:currentBufNum
+	if bufnr('%') == l:currentBufNum
 		new
 	endif
 
 	if buflisted(l:currentBufNum)
-		execute("bdelete! ".l:currentBufNum)
+		execute('bdelete! '.l:currentBufNum)
 	endif
 endfunction
 
 " Close quickfix if it's the last window
 autocmd BufEnter * call CloseLastQF()
 function! CloseLastQF()
-	if &buftype=="quickfix"
+	if &buftype ==# 'quickfix'
 		if winnr('$') < 2
 			quit!
 		endif
@@ -1184,13 +1194,13 @@ function! s:ToggleResize() abort
 	if exists('t:zoomed') && t:zoomed
 		execute t:zoom_winrestcmd
 		let t:zoomed = 0
-		echo "Windows resized."
+		echo 'Windows resized.'
 	else
 		let t:zoom_winrestcmd = winrestcmd()
 		resize
 		vertical resize
 		let t:zoomed = 1
-		echo "Window maximized."
+		echo 'Window maximized.'
 	endif
 endfunction
 command! ToggleResize call s:ToggleResize()
@@ -1213,30 +1223,30 @@ endfunction
 " Source: https://github.com/nelstrom/vim-visual-star-search
 " (You can install it as a plugin)
 function! s:VSetSearch()
-	let temp = @@
+	let l:temp = @@
 	norm! gvy
 	let @/ = '\V' . substitute(escape(@@, '\'), '\n', '\\n', 'g')
-	let @@ = temp
+	let @@ = l:temp
 endfunction
 
 " Toggle case
 function! ToggleCase(str)
 	if a:str ==# toupper(a:str)
-		let result = tolower(a:str)
+		let l:result = tolower(a:str)
 	elseif a:str ==# tolower(a:str)
-		let result = substitute(a:str,'\(\<\w\+\>\)', '\u\1', 'g')
+		let l:result = substitute(a:str,'\(\<\w\+\>\)', '\u\1', 'g')
 	else
-		let result = toupper(a:str)
+		let l:result = toupper(a:str)
 	endif
-	return result
+	return l:result
 endfunction
 
 " Toggle spell dictionary
 function! <SID>ToggleSpelllang()
-	if (&spelllang =~ 'en')
+	if (&spelllang =~# 'en')
 		set spelllang=ca
 		echo 'Català'
-	elseif (&spelllang == 'ca')
+	elseif (&spelllang ==# 'ca')
 		set spelllang=es
 		echo 'Castellano'
 	else
@@ -1251,8 +1261,8 @@ endfunction
 " - Use 'Windo' instead of 'windo' to avoid it
 command! -nargs=+ -complete=command Windo
 	\ let s:currentWindow = winnr() |
-	\ execute "windo <args>" |
-	\ exe s:currentWindow . "wincmd w"
+	\ execute 'windo <args>' |
+	\ exe s:currentWindow . 'wincmd w'
 
 " Toggle colorcolumn
 let s:color_column_old = 0
@@ -1271,89 +1281,89 @@ endfunction
 let s:togglecp = 0
 
 function! s:ToggleCPosition()
-	if col(".") >= col("$") - 1
+	if col('.') >= col('$') - 1
 		let s:togglecp = 1
 		norm! ^
-		echo "Start of the text: ^"
+		echo 'SOT: ^'
 	else
 		let s:togglecp = 0
-		norm! g_
-		echo "End of the text: $"
+		norm! $
+		echo 'EOL: $'
 	endif
 endfunction
 
 " Replicated for the Visual mode
 function! s:VToggleCPosition()
 	normal! gv
-	if col(".") >= col("$") - 1
+	if col('.') >= col('$') - 1
 		let s:togglecp = 1
 		norm! ^
-		echo "Start of the text: ^"
+		echo 'SOT: ^'
 	else
 		let s:togglecp = 0
-		norm! g_
-		echo "End of the text: g_"
+		norm! $
+		echo 'EOL: $'
 	endif
 endfunction
 
 " Toggle GitGutterPreviewHunk
 function! s:ToggleGGPrev()
-	if getwinvar(winnr("#"), "&pvw") == 1
+	if getwinvar(winnr('#'), '&pvw') == 1
 		pclose
-		echo "GitGutter closed."
+		echo 'GitGutter closed.'
 	else
 		GitGutterPreviewHunk
-		if getwinvar(winnr("#"), "&pvw") == 0
-			echo "Nothing to show."
+		if getwinvar(winnr('#'), '&pvw') == 0
+			echo 'Nothing to show.'
 		else
-			echo "GitGutter preview."
+			echo 'GitGutter preview.'
 		endif
 	endif
 endfunction
 
 " Toggle GstatusPreview
 function! s:ToggleGsPrev()
-	if &pvw
-		echo "Gstatus closed."
+	if &previewwindow
+		echo 'Gstatus closed.'
 		pclose
 	else
-		echo "Gstatus preview."
+		echo 'Gstatus preview.'
 		Gstatus
 	endif
 endfunction
 
 " Execute GV only once
 function! s:PreventGV() abort
-	if &buftype != "nofile"
-		execute ":GV"
+	if &buftype !=# 'nofile'
+		execute ':GV'
 	endif
 endfunction
 
 " Better toggle for NERDTree
 function! s:ToggleNTree()
-	if (exists ("t:NERDTreeBufName") && (bufwinnr(t:NERDTreeBufName) != -1))
+	if (exists ('t:NERDTreeBufName') && (bufwinnr(t:NERDTreeBufName) != -1))
 		if &modifiable
-			execute ":NERDTreeFocus"
+			execute ':NERDTreeFocus'
 		else
-			execute ":NERDTreeClose"
+			execute ':NERDTreeClose'
 		endif
 	else
-		execute ":NERDTreeFind"
+		execute ':NERDTreeFind'
 	endif
 endfunction
 
 " Auto-tabularize a table while editing
 inoremap <silent> <Bar>   <Bar><Esc>:call <SID>align()<CR>a
 function! s:align()
-	let p = '^\s*|\s.*\s|\s*$'
+	let l:p = '^\s*|\s.*\s|\s*$'
 	if exists(':Tabularize')
 				\ && getline('.') =~# '^\s*|'
-				\ && (getline(line('.')-1) =~# p
-				\ || getline(line('.')+1) =~# p)
-		let column = strlen(substitute(getline('.')[0:col('.')],'[^|]','','g'))
-		let position = strlen(matchstr(getline('.')[0:col('.')],'.*|\s*\zs.*'))
+				\ && (getline(line('.')-1) =~# l:p
+				\ || getline(line('.')+1) =~# l:p)
+		let l:column = strlen(substitute(getline('.')[0:col('.')],'[^|]','','g'))
+		let l:position = strlen(matchstr(getline('.')[0:col('.')],'.*|\s*\zs.*'))
 		Tabularize/|/l1
 		normal! 0
-		call search(repeat('[^|]*|',column).'\s\{-\}'.repeat('.',position),'ce',line('.'))
+		call search(repeat('[^|]*|',l:column).'\s\{-\}'.repeat('.',l:position),'ce',line('.'))
 	endif
 endfunction
