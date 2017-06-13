@@ -6,7 +6,7 @@
 "  /_/ /_/\___/\____/|___/_/_/ /_/ /_/
 "
 "----------------------------------------------------------------
-"  Version : 1.14.1
+"  Version : 1.15.0
 "  License : MIT
 "  Author  : Gerard Bajona
 "  URL     : https://github.com/gerardbm/vimrc
@@ -146,6 +146,7 @@ call plug#begin('~/.config/nvim/plugged')
 	Plug 'junegunn/goyo.vim'
 	Plug 'mattn/webapi-vim'
 	Plug 'mattn/emmet-vim'
+	Plug 'vimwiki/vimwiki', { 'branch': 'dev' }
 
 	" Color schemes
 	Plug 'gerardbm/vim-atomic'
@@ -424,8 +425,22 @@ let g:instant_markdown_autostart = 0
 
 nnoremap <Leader>M :InstantMarkdownPreview<CR>
 
-" Openbrowser settings
+" Open-browser settings
+let g:openbrowser_browser_commands = [{
+	\ 'name': 'w3m',
+	\ 'args': 'tmux new-window w3m {uri}'
+	\ }]
+
 nmap gl <Plug>(openbrowser-open)
+
+" Vimwiki settings
+let g:vimwiki_list = [{
+	\ 'path': '~/DEV/vimwiki',
+	\ 'syntax': 'markdown',
+	\ }]
+
+nnoremap <Leader>we :VimwikiToggleListItem<CR>
+vnoremap <Leader>we :VimwikiToggleListItem<CR>
 
 "----------------------------------------------------------------
 " 4. User interface

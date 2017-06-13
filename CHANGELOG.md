@@ -1,5 +1,10 @@
 ## Changelog
 
+= 1.15.0 =
+* Add the plugin vimwiki.
+* Add the maps `<Leader>we` to `:VimwikiToggleListItem`.
+* Configure the plugin open-browser to use w3m into a tmux window.
+
 = 1.14.1 =
 * Follow vimscript style guide.
 * Switch nnoremaps `<Leader><BS>` and `<Leader>m`.

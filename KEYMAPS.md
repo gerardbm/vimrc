@@ -156,6 +156,8 @@
   - `<Leader>X` inits tabularize plugin (only the first match).
   - `<Leader>W` inits ArgWrap plugin.
   - `<Leader>M` inits Markdown preview plugin.
+  - `<Leader>gl` opens the URL under the cursor.
+  - `<Leader>we` toggles the status of a vimwiki list item.
 
 #### {a-z} keymaps:
 
