@@ -6,7 +6,7 @@
 "  /_/ /_/\___/\____/|___/_/_/ /_/ /_/
 "
 "----------------------------------------------------------------
-"  Version : 1.15.0
+"  Version : 1.15.1
 "  License : MIT
 "  Author  : Gerard Bajona
 "  URL     : https://github.com/gerardbm/vimrc
@@ -231,6 +231,7 @@ let g:ctrlp_cmd               = 'CtrlPBuffer'
 let g:ctrlp_working_path_mode = 'rc'
 let g:ctrlp_custom_ignore     = '\v[\/]\.(git|hg|svn)$'
 let g:ctrlp_show_hidden       = 1
+let g:ctrlp_follow_symlinks   = 1
 let g:ctrlp_prompt_mappings   = {
 	\ 'PrtHistory(1)'        : ['<C-p>'],
 	\ 'PrtHistory(-1)'       : ['<C-n>'],
@@ -873,8 +874,8 @@ function! WrapForTmux(s)
 		return a:s
 	endif
 
-	let l:tmux_start = '\<Esc>Ptmux;'
-	let l:tmux_end = '\<Esc>\\'
+	let l:tmux_start = "\<Esc>Ptmux;"
+	let l:tmux_end = "\<Esc>\\"
 
 	return l:tmux_start . substitute(a:s, "\<Esc>", "\<Esc>\<Esc>", 'g') . l:tmux_end
 endfunction
