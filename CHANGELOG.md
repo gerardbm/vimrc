@@ -1,5 +1,9 @@
 ## Changelog
 
+= 1.15.1 =
+* Allow plugin CtrlP to follow symlinks.
+* Fix double quotes in function `WrapForTmux(s)`.
+
 = 1.15.0 =
 * Add the plugin vimwiki.
 * Add the maps `<Leader>we` to `:VimwikiToggleListItem`.
