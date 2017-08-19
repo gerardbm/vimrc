@@ -1,5 +1,11 @@
 ## Changelog
 
+= 1.15.2 =
+* Remove the plugin Vimshell from vim.
+* Add a new function for Vim: `ToggleTerminal()`.
+* Improve the same function on Neovim.
+* Add the tnoremap `<Esc>` to `<C-\><C-n>`.
+
 = 1.15.1 =
 * Allow plugin CtrlP to follow symlinks.
 * Fix double quotes in function `WrapForTmux(s)`.

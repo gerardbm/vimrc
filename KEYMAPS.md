@@ -3,7 +3,7 @@
 - Buffers:
   - `<C-h>` goes to the previous buffer.
   - `<C-l>` goes to the next buffer.
-  - `<C-t>` toggles the `:terminal` (Neovim).
+  - `<C-t>` toggles the `:terminal`.
 
 - Text edition:
   - `<C-j>` moves lines down.
@@ -17,6 +17,10 @@
   - `<C-s>` removes the last character.
   - `<C-d>` removes the current character.
   - `<C-z>` pastes the yanked text in command line.
+
+- Terminal:
+  - `<C-t>t` returns to the last window (Vim).
+  - `<C-t>` returns to the last window (Neovim).
 
 - Plugins related:
   - `<C-t>` opens the `:VimShell` (Vim).

@@ -74,7 +74,6 @@ This configuration is focused on programming in C, Go, Python, Perl, Ruby, Bash,
 
 - Run code:
   - [vim-quickrun](https://github.com/thinca/vim-quickrun)
-  - [vimshell.vim](https://github.com/Shougo/vimshell.vim) (Vim)
   - [vimproc.vim](https://github.com/Shougo/vimproc.vim)
 
 - Edition:

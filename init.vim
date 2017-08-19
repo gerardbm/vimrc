@@ -6,7 +6,7 @@
 "  /_/ /_/\___/\____/|___/_/_/ /_/ /_/
 "
 "----------------------------------------------------------------
-"  Version : 1.15.1
+"  Version : 1.15.2
 "  License : MIT
 "  Author  : Gerard Bajona
 "  URL     : https://github.com/gerardbm/vimrc
@@ -62,6 +62,7 @@ cnoreabbrev help vert help
 " Terminal
 nnoremap <silent> <C-t> :call <SID>ToggleTerminal()<CR>
 tnoremap <silent> <C-t> <C-\><C-n><Bar>:wincmd p<CR>
+tnoremap <Esc> <C-\><C-n>
 
 "----------------------------------------------------------------
 " 2. Plugins (Plug)
@@ -1107,12 +1108,13 @@ augroup end
 "----------------------------------------------------------------
 " Toggle Terminal
 function! s:ToggleTerminal()
-	let l:termwinnr = winnr()
-	if bufexists(str2nr('terminal'))
-		execute l:termwinnr + 1 . 'wincmd w'
+	if bufexists('terminal')
+		call win_gotoid(s:winZsh)
 		norm! i
 	else
 		execute ':below 10sp term://$SHELL'
+		keepalt file terminal
+		let s:winZsh = win_getid()
 		norm! i
 	endif
 endfunction

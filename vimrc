@@ -6,7 +6,7 @@
 "  (_)___/_/_/ /_/ /_/_/   \___/
 "
 "----------------------------------------------------------------
-"  Version : 1.15.1
+"  Version : 1.15.2
 "  License : MIT
 "  Author  : Gerard Bajona
 "  URL     : https://github.com/gerardbm/vimrc
@@ -61,6 +61,11 @@ nnoremap Q <NOP>
 
 " Open help in a vertical window
 cnoreabbrev help vert help
+
+" Terminal
+nnoremap <silent> <C-t> :call <SID>ToggleTerminal()<CR>
+set termkey=<C-t>
+set termsize=10x0
 
 "----------------------------------------------------------------
 " 2. Plugins (Plug)
@@ -119,7 +124,6 @@ call plug#begin('~/.vim/plugged')
 
 	" Run code
 	Plug 'thinca/vim-quickrun'
-	Plug 'Shougo/vimshell.vim'
 	Plug 'Shougo/vimproc.vim', {'do' : 'make'}
 
 	" Edition
@@ -366,9 +370,6 @@ let g:quickrun_config.html = {
 let g:quickrun_config.markdown = {
 	\ 'command' : 'qutebrowser',
 	\ }
-
-" Vimshell settings
-nnoremap <C-t> :VimShellPop<CR>
 
 " --- Edition ---
 " Easy align settings
@@ -1137,6 +1138,17 @@ augroup end
 "----------------------------------------------------------------
 " 17. Helper functions
 "----------------------------------------------------------------
+" Toggle Terminal
+function! s:ToggleTerminal()
+	if bufexists('terminal')
+		call win_gotoid(s:winZsh)
+	else
+		execute ':term++close zsh'
+		keepalt file terminal
+		let s:winZsh = win_getid()
+	endif
+endfunction
+
 " Reload the current colorscheme
 function! ReloadColorscheme()
 	try
