@@ -49,6 +49,7 @@ This configuration is focused on programming in C, Go, Python, Perl, Ruby, Bash,
   - [vim-jquery](https://github.com/itspriddle/vim-jquery)
   - [vim-javascript](https://github.com/pangloss/vim-javascript)
   - [tern_for_vim](https://github.com/ternjs/tern_for_vim)
+  - [vim-jsbeautify](https://github.com/maksimr/vim-jsbeautify)
   - [neco-syntax](https://github.com/Shougo/neco-syntax)
   - [vim-ruby](https://github.com/vim-ruby/vim-ruby)
 

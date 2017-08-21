@@ -76,6 +76,7 @@
   - `<Leader>bb` opens the `:edit` command.
   - `<Leader>bg` opens a list of all the buffers.
   - `<Leader><Del>y` deletes the current buffer. Careful!
+  - `<Leader>bf` autoformat a buffer (sql, js, html, xml, css).
 
 - Filepath:
   - `<Leader>bw` switches CWD to the current filepath.
@@ -133,7 +134,7 @@
   - `ç` moves to the next misspelled word.
   - `Ç` moves to the previous misspelled word.
   - `<Leader>ç` suggests correctly spelled words.
-  - `<Leader>tf` retabs the current selection.
+  - `<Leader>tf` retabs the current buffer/selection.
 
 - Clipboard:
   - `<Leader>y` copies text into the clipboard.

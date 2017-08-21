@@ -6,7 +6,7 @@
 "  /_/ /_/\___/\____/|___/_/_/ /_/ /_/
 "
 "----------------------------------------------------------------
-"  Version : 1.15.2
+"  Version : 1.16.0
 "  License : MIT
 "  Author  : Gerard Bajona
 "  URL     : https://github.com/gerardbm/vimrc
@@ -99,6 +99,7 @@ call plug#begin('~/.config/nvim/plugged')
 	Plug 'itspriddle/vim-jquery'
 	Plug 'pangloss/vim-javascript'
 	Plug 'ternjs/tern_for_vim', { 'do': 'npm install' }
+	Plug 'maksimr/vim-jsbeautify'
 	Plug 'Shougo/neco-syntax'
 	Plug 'vim-ruby/vim-ruby'
 
@@ -280,6 +281,30 @@ let g:javascript_plugin_flow  = 1
 " Tern_for_vim settings
 let g:tern#command   = ['tern']
 let g:tern#arguments = ['--persistent']
+
+" JS-Beautify
+let g:config_Beautifier = {}
+let g:config_Beautifier['js'] = {}
+let g:config_Beautifier['js'].indent_style = 'tab'
+let g:config_Beautifier['jsx'] = {}
+let g:config_Beautifier['jsx'].indent_style = 'tab'
+let g:config_Beautifier['json'] = {}
+let g:config_Beautifier['json'].indent_style = 'tab'
+let g:config_Beautifier['css'] = {}
+let g:config_Beautifier['css'].indent_style = 'tab'
+let g:config_Beautifier['html'] = {}
+let g:config_Beautifier['html'].indent_style = 'tab'
+
+autocmd FileType javascript nnoremap <buffer> <Leader>bf :call JsBeautify()<cr>
+autocmd FileType javascript vnoremap <buffer> <Leader>bf :call RangeJsBeautify()<cr>
+autocmd FileType json nnoremap <buffer> <Leader>bf :call JsonBeautify()<cr>
+autocmd FileType json vnoremap <buffer> <Leader>bf :call RangeJsonBeautify()<cr>
+autocmd FileType jsx nnoremap <buffer> <Leader>bf :call JsxBeautify()<cr>
+autocmd FileType jsx vnoremap <buffer> <Leader>bf :call RangeJsxBeautify()<cr>
+autocmd FileType html nnoremap <buffer> <Leader>bf :call HtmlBeautify()<cr>
+autocmd FileType html vnoremap <buffer> <Leader>bf :call RangeHtmlBeautify()<cr>
+autocmd FileType css nnoremap <buffer> <Leader>bf :call CSSBeautify()<cr>
+autocmd FileType css vnoremap <buffer> <Leader>bf :call RangeCSSBeautify()<cr>
 
 " --- Autocomplete ---
 " SuperTab settings
@@ -1019,6 +1044,7 @@ nnoremap Y y$
 vnoremap p pgvy
 
 " Retab the selected text
+nnoremap <Leader>tf :retab!<CR>
 vnoremap <Leader>tf :retab!<CR>
 
 " Isolate the current line
@@ -1101,6 +1127,20 @@ augroup mail
 	au!
 	au FileType mail setl spell
 	au FileType mail setl spelllang=ca
+augroup end
+
+" SQL (it requires sqlparse)
+augroup sql
+	autocmd FileType sql nnoremap <Leader>bf
+				\ :%!sqlformat --reindent --keywords upper --identifiers upper -<CR>
+	autocmd FileType sql vnoremap <Leader>bf
+				\ :%!sqlformat --reindent --keywords upper --identifiers upper -<CR>
+augroup end
+
+" XML (it requires tidy)
+augroup xml
+	au FileType xml nnoremap <Leader>bf
+				\ :%!tidy -q -i -xml --show-errors 0 -wrap 0 --indent-spaces 4<CR>
 augroup end
 
 "----------------------------------------------------------------

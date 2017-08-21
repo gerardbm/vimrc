@@ -1,5 +1,10 @@
 ## Changelog
 
+= 1.16.0 =
+* Add the plugin js-beautify, mapped to `<Leader>bf`.
+* Add the maps `<Leader>bf` to autoformat SQL and XML.
+* Add the nnoremap `<Leader>tf` to `:retab` the buffer.
+
 = 1.15.2 =
 * Remove the plugin Vimshell from vim.
 * Add a new function for Vim: `ToggleTerminal()`.
