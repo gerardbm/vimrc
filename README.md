@@ -7,9 +7,9 @@ This Vim configuration is purely subjective: I wrote it according to my needs. T
 
 The `<Leader>` key is ",": it's enabled only in 'Normal mode' to avoid the delay time when typing it from 'Insert mode'. The map `<C-c>` is used as `<Escape>` from any mode. Three cursor shapes (block, vertical and horizontal) are defined for Vim and Neovim for the terminals URxvt and XTerm (even into tmux); it also works in the last versions of gnome-terminal, terminator, termite and st. Default encoding is UTF-8. Color support: 256 colors for Vim and Neovim.
 
-Navigate easily between buffers, tabs, windows and tmux panes. Navigate between syntax warnings/errors, between misspelled words, between searches, between vimgrep results, between GitGutter hunks and between git history (using fugitive plugin).
+Navigate easily between buffers, tabs, windows and tmux panes. Navigate between syntax warnings/errors, between misspelled words, between searches, between vimgrep and grep results, between GitGutter hunks and between git history (using fugitive plugin).
 
-Easily highlight the word under the cursor or the current selection. A lot of commands have been defined to work with the highlighted text: vimgrep it (current buffer or full project directory) and replace it (current buffer or all open buffers). Also, search, vimgrep and replace into the visual selection only.
+Easily highlight the word under the cursor or the current selection. A lot of commands have been defined to work with the highlighted text: vimgrep or grep it (current buffer, arglist, buffers loaded or current working directory) and replace it. Also, search and replace into the visual selection only.
 
 Some useful tools have been integrated, like the plugins **CtrlP** (navigate between open buffers, MRU or directory files), **NERDTree** (tree files), **vim-fugitive** (a lot of interesting git commands), **GV** (navigate between commits), **undotree** (history visualizer), **ALE** (async syntax linter, and it works while you type), **neocomplete** and **deoplete** (autocompletion for Vim and Neovim), **neosnippet** (code snippets), **QuickRun** (it's awesome at running code), and much more.
 
@@ -100,6 +100,7 @@ This configuration is focused on programming in C, Go, Python, Perl, Ruby, Bash,
   - [goyo.vim](https://github.com/junegunn/goyo.vim)
   - [webapi-vim](https://github.com/mattn/webapi-vim)
   - [emmet-vim](https://github.com/mattn/emmet-vim)
+  - [vimwiki](https://github.com/vimwiki/vimwiki)
 
 - Color schemes:
   - [vim-atomic](https://github.com/gerardbm/vim-atomic)
