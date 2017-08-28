@@ -1,5 +1,24 @@
 ## Changelog
 
+= 1.16.1 =
+* The nnoremap `<Leader>g` (Gstatus) changed to `<C-s>`.
+  - It's faster to toggle Gstatus having Ctrl pressed.
+* The nnoremap `<Leader>G` (Gvdiff) is now `<Leader>g`.
+  - It reduces one keystroke to make a Gvdiff (faster).
+* The nnoremap `<C-s>` (OpenSession) moved to `<C-q>`.
+  - It's normally used once at start, so I put it farther.
+* The nnoremap `<Leader>v` (vimgrep %) changed to `<Leader>vg`.
+* The nnoremap `<Leader>V` (vimgrep \*\*/\*.) changed to `<Leader>vf`.
+* Add the nnoremap `<Leader>vv`: grep the highlight (current buffer).
+* Add the nnoremap `<Leader>vb`: grep the highlight (loaded buffers).
+* Add the nnoremap `<Leader>vn`: grep the highlight (current directory).
+* Add the nnoremap `<Leader>vm`: addgrep the highlight (current buffer).
+* Add the nnoremap `<Leader>va`: grep the highlight (current arglist).
+* Add two functions: `QFCounter()` and `GrepWrapper()` for the last commands.
+* The nnoremap `<Leader>R` now uses `:bufdo` instead of `:argdo`.
+* Add the nnoremap `<Leader>Q`: replace the highlight to each quickfix entry.
+* Improve the function to toggle the cursor position (`ñ`).
+
 = 1.16.0 =
 * Add the plugin js-beautify, mapped to `<Leader>bf`.
 * Add the maps `<Leader>bf` to autoformat SQL and XML.

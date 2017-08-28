@@ -6,7 +6,7 @@
 "  (_)___/_/_/ /_/ /_/_/   \___/
 "
 "----------------------------------------------------------------
-"  Version : 1.16.0
+"  Version : 1.16.1
 "  License : MIT
 "  Author  : Gerard Bajona
 "  URL     : https://github.com/gerardbm/vimrc
@@ -183,8 +183,8 @@ nmap <Leader>k <Plug>GitGutterPrevHunkzz
 nmap <silent> <C-g> :call <SID>ToggleGGPrev()<CR>zz
 
 " Fugitive settings
-nnoremap <Leader>g :<C-U>call <SID>ToggleGsPrev()<CR>
-nnoremap <Leader>G :Gvdiff<CR>gg
+nnoremap <C-s> :<C-U>call <SID>ToggleGsPrev()<CR>
+nnoremap <Leader>g :Gvdiff<CR>gg
 nnoremap <Leader>i :GitGutterStageHunk<CR>
 nnoremap <Leader>I :GitGutterUndoHunk<CR>
 
@@ -197,7 +197,7 @@ vnoremap <silent> <C-z> :call <SID>PreventGV()<CR>
 let g:session_autosave = 'no'
 let g:session_autoload = 'no'
 
-nnoremap <C-s> :OpenSession<CR>
+nnoremap <C-q> :OpenSession<CR>
 
 " --- Tools ---
 " NERDCommenter settings
@@ -858,8 +858,8 @@ vnoremap <Home> g^
 vnoremap <End> g$
 
 " Toggle the cursor position start/end of the line
-nnoremap <silent> ñ :call <SID>ToggleCPosition()<CR>
-vnoremap <silent> ñ <Esc>:call <SID>VToggleCPosition()<CR>
+nnoremap <silent> ñ :call <SID>ToggleCPosition('')<CR>
+vnoremap <silent> ñ <Esc>:call <SID>ToggleCPosition('normal! gv')<CR>
 
 " Move lines
 nnoremap <C-k> :m .-2<CR>==
@@ -997,17 +997,34 @@ vnoremap <silent> ? :<C-U>call RangeSearch('?')<CR>
 	\ :if strlen(g:srchstr) > 0
 	\ \|exec '?'.g:srchstr\|endif<CR>N
 
-" --- Vimgrep ---
+" --- Vimgrep & grep ---
 "----------------------------------------------------------------
 " Vimgrep the highlight in the current file
-nnoremap <Leader>v :vimgrep /<C-R>//j % \| copen<CR>
-
-" Vimgrep the highlight in the visual selection
-vnoremap <Leader>v :vimgrep /\%V<C-R>/\%V/j % \| copen<CR>
+nnoremap <Leader>vg :vimgrep /<C-R>//j %<CR>
 
 " Vimgrep the highlight in the current directory and subdirectories
-nnoremap <Leader>V :vimgrep /<C-R>//j **/*. \| copen
-	\ <Left><Left><Left><Left><Left><Left><Left><Left><Left>
+nnoremap <Leader>vf :vimgrep /<C-R>//j **/*.
+
+autocmd QuickfixCmdPre make,grep,grepadd,vimgrep,vimgrepadd,helpgrep copen
+
+" Grep settings
+set grepprg=grep\ -nH
+
+" Current buffer
+nnoremap <Leader>vv :call GrepWrapper('grep!', '', '%')<CR>
+
+" All loaded buffers
+nnoremap <Leader>vb :call setqflist([]) \|
+			\ call GrepWrapper('bufdo grepadd!', '', '%')<CR>
+
+" Current working directory
+nnoremap <Leader>vn :call GrepWrapper('grep!', '-R', '')<CR>
+
+" Current buffer (grepadd)
+nnoremap <Leader>vm :call GrepWrapper('grepadd!', '', '%')<CR>
+
+" Current arglist
+nnoremap <Leader>va :call GrepWrapper('grep!', '', '##')<CR>
 
 " Navigate between vimgrep results
 nnoremap <Leader>n :cnext<CR>zz
@@ -1025,11 +1042,13 @@ nnoremap <Leader>r :%s/<C-R>///g<Left><Left>
 " Flag \%V --> Match only inside the visual selection
 vnoremap <Leader>r :s/\%V<C-R>/\%V//g<Left><Left>
 
-" Replace the highlight to all open buffers
-nnoremap <Leader>R :argdo %s/<C-R>///cge
-	\ \|up<Left><Left><Left><Left><Left><Left><Left><Left>
+" Replace the highlight to all loaded buffers and arglist
+nnoremap <Leader>R :bufdo %s/<C-R>///ge<Left><Left><Left>
 
-" Populate the argslist
+" Replace the highlight to each valid entry in the quickfix
+nnoremap <Leader>Q :cdo %s/<C-R>///ge<Left><Left><Left>
+
+" Populate the arglist
 nnoremap <Leader>a :args *.
 nnoremap <Leader>A :args **/*.
 
@@ -1088,9 +1107,6 @@ nnoremap <Leader>F maO<Esc>`a
 "----------------------------------------------------------------
 " 15. Make settings
 "----------------------------------------------------------------
-" If QuickRun is installed, first it will use the plugin.
-" If not, use 'makeprg'.
-
 " Set makeprg
 autocmd FileType sh setlocal makeprg=bash\ %
 autocmd FileType javascript setlocal makeprg=node\ %
@@ -1297,6 +1313,27 @@ function! s:VSetSearch()
 	let @@ = l:temp
 endfunction
 
+" Count grep matches
+function! QFCounter() abort
+	let l:results = len(filter(getqflist(), 'v:val.valid'))
+	if l:results > 0
+		copen
+	else
+		cclose
+	endif
+	echo "Found " . l:results . " matches."
+endfunction
+
+" Grep wrapper
+function! GrepWrapper(cmd, dir, scope) abort
+	cclose
+	let l:pattern = substitute(@/, '\\V', '', '')
+	silent execute a:cmd . ' ' . a:dir . ' "' . l:pattern . '" ' . a:scope
+	redraw!
+	set hls
+	call QFCounter()
+endfunction
+
 " Toggle case
 function! ToggleCase(str)
 	if a:str ==# toupper(a:str)
@@ -1348,21 +1385,8 @@ endfunction
 " Toggle the cursor position start/end
 let s:togglecp = 0
 
-function! s:ToggleCPosition()
-	if col('.') >= col('$') - 1
-		let s:togglecp = 1
-		norm! ^
-		echo 'SOT: ^'
-	else
-		let s:togglecp = 0
-		norm! $
-		echo 'EOL: $'
-	endif
-endfunction
-
-" Replicated for the Visual mode
-function! s:VToggleCPosition()
-	normal! gv
+function! s:ToggleCPosition(visual)
+	execute a:visual
 	if col('.') >= col('$') - 1
 		let s:togglecp = 1
 		norm! ^

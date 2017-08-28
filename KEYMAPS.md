@@ -36,7 +36,8 @@
     - `<C-s>` removes the last character.
     - `<C-d>` removes the current character.
     - `<C-g>` runs the `ToggleByFname` function.
-  - `<C-s>` display a list of sessions to open.
+  - `<C-q>` display a list of sessions to open.
+  - `<C-s>` toggles the plugin fugitive `:Gstatus`.
   - `<C-l>` toggles caps lock from 'Insert Mode'.
   - `<C-q>` expands neosnippet from 'Insert Mode'.
   - `<C-z>` opens a list of the last commits (GV)'.
@@ -117,14 +118,15 @@
   - `<Leader>m` disables highlight.
 
 - Vimgrep:
-  - `<Leader>v` vimgreps the highlight in the current file.
-  - `<Leader>V` vimgreps the highlight in the current directory.
+  - `<Leader>vg` vimgreps the highlight in the current buffer.
+  - `<Leader>vf` vimgreps the highlight in the current directory.
   - `<Leader>n` goes to the next vimgrep result.
   - `<Leader>N` goes to the previous vimgrep result.
 
 - Replace:
-  - `<Leader>r` replaces the highlight in the current file.
-  - `<Leader>R` replaces the highlight to all open buffers.
+  - `<Leader>r` replaces the highlight in the current buffer.
+  - `<Leader>R` replaces the highlight the loaded buffers.
+  - `<Leader>Q` replaces the highlight to each valid quickfix entry.
   - `<Leader>a` opens files (`*.*`) of the current directory.
   - `<Leader>A` opens files (`**/*.*`) of the subdirectories.
 
@@ -154,15 +156,18 @@
   - `<Leader>l` goes to the next warning/error.
   - `<Leader>q` toggles the quickfix window.
   - `<Leader>e` toggles the location list window.
-  - `<Leader>g` toggles the plugin fugitive `:Gstatus`.
-  - `<Leader>G` starts the fugitive command `:Gvdiff`.
+  - `<Leader>g` starts the fugitive command `:Gvdiff`.
   - `<Leader>u` toggles the plugin Undotree.
   - `<Leader>x` inits tabularize plugin.
   - `<Leader>X` inits tabularize plugin (only the first match).
   - `<Leader>W` inits ArgWrap plugin.
   - `<Leader>M` inits Markdown preview plugin.
-  - `<Leader>gl` opens the URL under the cursor.
   - `<Leader>we` toggles the status of a vimwiki list item.
+  - `<Leader>vv` vimgreps the highlight in the current buffer.
+  - `<Leader>vb` vimgreps the highlight in the loaded buffers.
+  - `<Leader>vn` vimgreps the highlight in the current directory.
+  - `<Leader>va` vimgreps the highlight in the current arglist.
+  - `<Leader>vm` grepadds the highlight of the current buffer.
 
 #### {a-z} keymaps:
 
