@@ -6,7 +6,7 @@
 "  /_/ /_/\___/\____/|___/_/_/ /_/ /_/
 "
 "----------------------------------------------------------------
-"  Version : 1.16.1
+"  Version : 1.16.2
 "  License : MIT
 "  Author  : Gerard Bajona
 "  URL     : https://github.com/gerardbm/vimrc
@@ -979,7 +979,7 @@ nnoremap <Leader>vf :vimgrep /<C-R>//j **/*.
 autocmd QuickfixCmdPre make,grep,grepadd,vimgrep,vimgrepadd,helpgrep copen
 
 " Grep settings
-set grepprg=grep\ -nH
+set grepprg=grep\ -nHi
 
 " Current buffer
 nnoremap <Leader>vv :call GrepWrapper('grep!', '', '%')<CR>

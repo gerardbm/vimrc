@@ -1,7 +1,7 @@
 # Vim configuration
 Gerard's **Vim** & **Neovim** configuration.
 
-This Vim configuration is purely subjective: I wrote it according to my needs. The goal of it is to feel comfort when programming.
+This Vim configuration is purely subjective. The goal of it is to get comfortable while programming.
 
 ## General settings:
 
@@ -9,9 +9,9 @@ The `<Leader>` key is ",": it's enabled only in 'Normal mode' to avoid the delay
 
 Navigate easily between buffers, tabs, windows and tmux panes. Navigate between syntax warnings/errors, between misspelled words, between searches, between vimgrep and grep results, between GitGutter hunks and between git history (using fugitive plugin).
 
-Easily highlight the word under the cursor or the current selection. A lot of commands have been defined to work with the highlighted text: vimgrep or grep it (current buffer, arglist, buffers loaded or current working directory) and replace it. Also, search and replace into the visual selection only.
+Easily highlight the word under the cursor or the current selection. A lot of commands have been defined to work with the highlighted text: vimgrep, grep, (current buffer, arglist, buffers loaded or current working directory) and replace. Also, you can search and replace into the visual selection only.
 
-Some useful tools have been integrated, like the plugins **CtrlP** (navigate between open buffers, MRU or directory files), **NERDTree** (tree files), **vim-fugitive** (a lot of interesting git commands), **GV** (navigate between commits), **undotree** (history visualizer), **ALE** (async syntax linter, and it works while you type), **neocomplete** and **deoplete** (autocompletion for Vim and Neovim), **neosnippet** (code snippets), **QuickRun** (it's awesome at running code), and much more.
+Some useful tools have been integrated, like the plugins **CtrlP** (navigate between open buffers, MRU or directory files), **NERDTree** (tree files), **vim-fugitive** (git commands), **GV** (navigate between git commits), **undotree** (history visualizer), **ALE** (async syntax linter, and it works while you type), **neocomplete** and **deoplete** (autocompletion for Vim and Neovim), **neosnippet** (code snippets), **QuickRun** (it's awesome at running code), and much more.
 
 This configuration is focused on programming in C, Go, Python, Perl, Ruby, Bash, JavaScript and web development in general, with HTML5 and CSS3.
 

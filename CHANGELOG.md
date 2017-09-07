@@ -1,5 +1,8 @@
 ## Changelog
 
+= 1.16.2 =
+* Add the `--ignore-case` option to grepprg.
+
 = 1.16.1 =
 * The nnoremap `<Leader>g` (Gstatus) changed to `<C-s>`.
   - It's faster to toggle Gstatus having Ctrl pressed.
