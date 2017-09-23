@@ -1,5 +1,9 @@
 ## Changelog
 
+= 1.16.3 =
+* Change `g:ftplugin_sql_omni_key` to `<C-z>`.
+  - Default was `<C-c>` (it was in conflict).
+
 = 1.16.2 =
 * Add the `--ignore-case` option to grepprg.
 

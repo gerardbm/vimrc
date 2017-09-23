@@ -16,7 +16,12 @@
   - `<C-f>` moves the cursor forward one character.
   - `<C-s>` removes the last character.
   - `<C-d>` removes the current character.
-  - `<C-z>` pastes the yanked text in command line.
+
+- 'Insert Mode':
+  - `<C-z>` starts OMNI SQL Completion (only `ft_sql`).
+
+- 'Command Mode':
+  - `<C-z>` pastes the yanked text.
 
 - Terminal:
   - `<C-t>t` returns to the last window (Vim).
