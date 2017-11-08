@@ -11,9 +11,9 @@ Navigate easily between buffers, tabs, windows and tmux panes. Navigate between 
 
 Easily highlight the word under the cursor or the current selection. A lot of commands have been defined to work with the highlighted text: vimgrep, grep, (current buffer, arglist, buffers loaded or current working directory) and replace. Also, you can search and replace into the visual selection only.
 
-Some useful tools have been integrated, like the plugins **CtrlP** (navigate between open buffers, MRU or directory files), **NERDTree** (tree files), **vim-fugitive** (git commands), **GV** (navigate between git commits), **undotree** (history visualizer), **ALE** (async syntax linter, and it works while you type), **neocomplete** and **deoplete** (autocompletion for Vim and Neovim), **neosnippet** (code snippets), **QuickRun** (it's awesome at running code), and much more.
+Some useful tools have been integrated. Plugins: **CtrlP** (navigate between open buffers, MRU or directory files), **NERDTree** (tree files), **vim-fugitive** (git commands), **GV** (navigate between git commits), **undotree** (history visualizer), **ALE** (async syntax linter, it works while you type), **deoplete** (autocompletion for Vim and Neovim), **neosnippet** (code snippets), **QuickRun** (it's awesome at running code), and much more.
 
-This configuration is focused on programming in C, Go, Python, Perl, Ruby, Bash, JavaScript and web development in general, with HTML5 and CSS3.
+This configuration is focused on programming in Python, C, Go, Ruby, Bash, JavaScript and web development in general, with HTML5 and CSS3.
 
 **More specific information:**
 - [Keymaps](https://github.com/gerardbm/vimrc/blob/master/KEYMAPS.md)
@@ -55,18 +55,22 @@ This configuration is focused on programming in C, Go, Python, Perl, Ruby, Bash,
 
 - Autocomplete:
   - [supertab](https://github.com/ervandew/supertab)
-  - [deoplete](https://github.com/Shougo/deoplete) (Neovim)
+  - [deoplete](https://github.com/Shougo/deoplete)
   - [neopairs.vim](https://github.com/Shougo/neopairs.vim)
-  - [neocomplete.vim](https://github.com/Shougo/neocomplete.vim) (Vim)
-  - [deoplete-go](https://github.com/zchee/deoplete-go) (Neovim)
+  - [deoplete-jedi](https://github.com/zchee/deoplete-jedi)
+  - [deoplete-zsh](https://github.com/zchee/deoplete-zsh)
+  - [deoplete-go](https://github.com/zchee/deoplete-go)
   - [gocode](https://github.com/nsf/gocode)
-  - [deoplete-jedi](https://github.com/zchee/deoplete-jedi) (Neovim)
-  - [jedi-vim](https://github.com/davidhalter/jedi-vim) (Vim)
+  - [deoplete-ternjs](https://github.com/carlitux/deoplete-ternjs)
   - [jspc.vim](https://github.com/othree/jspc.vim)
   - [html5.vim](https://github.com/othree/html5.vim)
-  - [phpcomplete-extended](https://github.com/m2mdas/phpcomplete-extended)
+  - [neco-ghc](https://github.com/eagletmt/neco-ghc)
   - [clang_complete](https://github.com/Rip-Rip/clang_complete)
   - [neco-vim](https://github.com/Shougo/neco-vim)
+
+- Specific for Vim and Deoplete:
+  - [nvim-yarp](https://github.com/roxma/nvim-yarp)
+  - [vim-hug-neovim-rpc](https://github.com/roxma/vim-hug-neovim-rpc)
 
 - Snippets:
   - [neosnippet](https://github.com/Shougo/neosnippet)

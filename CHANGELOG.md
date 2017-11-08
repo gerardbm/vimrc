@@ -1,5 +1,24 @@
 ## Changelog
 
+= 1.17.0 =
+* Remove phpcomplete-extended plugin.
+* Remove neocomplete plugin from Vim8.
+* Remove jedi-vim plugin from Vim8.
+* Install deoplete plugin on Vim8.
+* Install nvim-yarp plugin (required to use deoplete on Vim8).
+* Install vim-hug-neovim-rpc plugin (required to use deoplete on Vim8).
+* Install deoplete-jedi plugin for Vim8 (Python autocomplete).
+* Install deoplete-ternjs plugin (javascript autocomplete).
+* Install deoplete-zsh plugin (zsh autocomplete).
+* Install neco-ghc plugin (Haskell autocomplete).
+* Update all settings for deoplete.
+* Add pylint (python linter).
+* Quickrun outputter uses vertical buffer instead of quickfix.
+* Vimwiki: avoid URL shortener (show full URL). Shortener was buggy.
+* Rename `CloseLastQF` function to `CloseLastBuffer`.
+* Function `CloseLastBuffer` closes 'nofile' `&buftype`.
+* Function `CloseLastBuffer` calls system to rename tmux window.
+
 = 1.16.3 =
 * Change `g:ftplugin_sql_omni_key` to `<C-z>`.
   - Default was `<C-c>` (it was in conflict).

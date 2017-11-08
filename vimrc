@@ -6,7 +6,7 @@
 "  (_)___/_/_/ /_/ /_/_/   \___/
 "
 "----------------------------------------------------------------
-"  Version : 1.16.3
+"  Version : 1.17.0
 "  License : MIT
 "  Author  : Gerard Bajona
 "  URL     : https://github.com/gerardbm/vimrc
@@ -24,7 +24,7 @@
 "  10. Indentation tabs
 "  11. Moving around lines
 "  12. Paste mode improved
-"  13. Search and vimgrep
+"  13. Search, grep and vimgrep
 "  14. Text edition
 "  15. Make settings
 "  16. Filetype settings
@@ -108,15 +108,22 @@ call plug#begin('~/.vim/plugged')
 
 	" Autocomplete
 	Plug 'ervandew/supertab'
-	Plug 'Shougo/neocomplete.vim'
+	Plug 'Shougo/deoplete.nvim'
 	Plug 'Shougo/neopairs.vim'
+	Plug 'zchee/deoplete-jedi'
+	Plug 'zchee/deoplete-zsh'
+	Plug 'zchee/deoplete-go', { 'do': 'make'}
 	Plug 'nsf/gocode', { 'rtp': 'vim', 'do': '~/.vim/plugged/gocode/vim/symlink.sh' }
-	Plug 'davidhalter/jedi-vim'
+	Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern' }
 	Plug 'othree/jspc.vim'
 	Plug 'othree/html5.vim'
-	Plug 'm2mdas/phpcomplete-extended'
+	Plug 'eagletmt/neco-ghc'
 	Plug 'Rip-Rip/clang_complete'
 	Plug 'Shougo/neco-vim'
+
+	" Deoplete, specific for Vim8
+	Plug 'roxma/nvim-yarp'
+	Plug 'roxma/vim-hug-neovim-rpc'
 
 	" Snippets
 	Plug 'Shougo/neosnippet'
@@ -215,7 +222,8 @@ nnoremap <silent> <C-n> :call <SID>ToggleNTree()<CR>
 
 " ALE settings
 let g:ale_linters = {
-	\ 'javascript': ['jshint'],
+	\ 'python'     : ['pylint'],
+	\ 'javascript' : ['jshint'],
 	\ }
 
 " Navigate between errors
@@ -312,32 +320,31 @@ autocmd FileType css vnoremap <buffer> <Leader>bf :call RangeCSSBeautify()<cr>
 " SuperTab settings
 let g:SuperTabDefaultCompletionType = '<TAB>'
 
-" Neocomplete settings
+" Deoplete settings
+" - «Deoplete requires Neovim with Python3 enabled»
+let g:python3_host_prog       = '/usr/bin/python3'
+let g:python3_host_skip_check = 1
+
 autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
-let g:acp_enableAtStartup                           = 0
-let g:neocomplete#enable_at_startup                 = 1
-let g:neocomplete#enable_smart_case                 = 1
-let g:neocomplete#sources#syntax#min_keyword_length = 3
-let g:neocomplete#enable_auto_select                = 0
-let g:neocomplete#sources#omni#functions            = {}
+let g:deoplete#enable_at_startup = 1
+let g:deoplete#enable_smart_case = 1
+let g:deoplete#omni#functions    = {}
 
 inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
 
-" Go autocompletion
-let g:neocomplete#sources#omni#functions.go = "go#complete#Complete"
-
 " Python autocompletion
-let g:jedi#auto_initialization = 1
-let g:jedi#popup_on_dot        = 0
+let g:deoplete#sources#jedi#show_docstring = 1
+
+" Go autocompletion
+let g:deoplete#sources#go#gocode_binary = $GOPATH.'/bin/gocode'
+let g:deoplete#sources#go#sort_class    = ['package', 'func', 'type', 'var', 'const']
+let g:deoplete#sources#go#use_cache     = 1
 
 " Javascript autocompletion
-let g:neocomplete#sources#omni#functions.javascript = [
+let g:deoplete#omni#functions.javascript = [
 	\ 'tern#Complete',
 	\ 'jspc#omni',
 	\ ]
-
-" PHP autocompletion
-let g:neocomplete#sources#omni#functions.php = 'phpcomplete_extended#CompletePHP'
 
 " Clang autocompletion
 let g:clang_complete_auto              = 0
@@ -371,9 +378,11 @@ augroup end
 let g:quickrun_no_default_key_mappings = 0
 let g:quickrun_config = {
 	\ '_' : {
-		\ 'runner'                    : 'vimproc',
-		\ 'runner/vimproc/updatetime' : 60,
-		\ 'outputter'                 : 'quickfix',
+		\ 'runner'                        : 'vimproc',
+		\ 'runner/vimproc/updatetime'     : 60,
+		\ 'outputter'                     : 'buffer',
+		\ 'outputter/buffer/split'        : 'vertical 32',
+		\ 'outputter/buffer/running_mark' : 'Running...',
 		\ },
 	\ }
 
@@ -422,7 +431,7 @@ let g:surround_37 = '<% \r %>'
 let g:surround_61 = '<%= \r %>'
 
 " Caps Lock settings
-imap <expr><C-l> neocomplete#smart_close_popup()."\<Plug>CapsLockToggle"
+imap <expr><C-l> deoplete#smart_close_popup()."\<Plug>CapsLockToggle"
 
 " Expand region settings
 vmap v <Plug>(expand_region_expand)
@@ -461,7 +470,8 @@ let g:openbrowser_browser_commands = [{
 nmap gl <Plug>(openbrowser-open)
 
 " Vimwiki settings
-let g:vimwiki_list = [{
+let g:vimwiki_url_maxsave = 0
+let g:vimwiki_list        = [{
 	\ 'path': '~/DEV/vimwiki',
 	\ 'syntax': 'markdown',
 	\ }]
@@ -892,10 +902,10 @@ inoremap <C-a> <C-O>0
 inoremap <C-e> <C-O>$
 
 " Moves the cursor back one character
-inoremap <expr><C-b> neocomplete#smart_close_popup()."\<Left>"
+inoremap <expr><C-b> deoplete#smart_close_popup()."\<Left>"
 
 " Moves the cursor forward one character
-inoremap <expr><C-f> neocomplete#smart_close_popup()."\<Right>"
+inoremap <expr><C-f> deoplete#smart_close_popup()."\<Right>"
 
 " Remove one character
 inoremap <C-s> <BS>
@@ -951,7 +961,7 @@ let g:f7msg = 'Toggle paste mode.'
 nnoremap <F7> :setlocal paste!<CR>:echo g:f7msg<CR>
 
 "----------------------------------------------------------------
-" 13. Search and vimgrep
+" 13. Search, grep and vimgrep
 "----------------------------------------------------------------
 " Highlight search results
 set hlsearch
@@ -1264,11 +1274,13 @@ function! <SID>BufcloseCloseIt()
 	endif
 endfunction
 
-" Close quickfix if it's the last window
-autocmd BufEnter * call CloseLastQF()
-function! CloseLastQF()
-	if &buftype ==# 'quickfix'
+" Close the last buffer if it's the last window
+" - For 'quickfix' and 'nofile'
+autocmd BufEnter * call CloseLastBuffer()
+function! CloseLastBuffer()
+	if &buftype ==# 'quickfix' || &buftype ==# 'nofile'
 		if winnr('$') < 2
+			call system("tmux setw automatic-rename")
 			quit!
 		endif
 	endif

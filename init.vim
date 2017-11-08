@@ -6,7 +6,7 @@
 "  /_/ /_/\___/\____/|___/_/_/ /_/ /_/
 "
 "----------------------------------------------------------------
-"  Version : 1.16.3
+"  Version : 1.17.0
 "  License : MIT
 "  Author  : Gerard Bajona
 "  URL     : https://github.com/gerardbm/vimrc
@@ -24,7 +24,7 @@
 "  10. Indentation tabs
 "  11. Moving around lines
 "  12. Paste mode improved
-"  13. Search and vimgrep
+"  13. Search, grep and vimgrep
 "  14. Text edition
 "  15. Make settings
 "  16. Filetype settings
@@ -105,14 +105,16 @@ call plug#begin('~/.config/nvim/plugged')
 
 	" Autocomplete
 	Plug 'ervandew/supertab'
-	Plug 'Shougo/deoplete.nvim'
+	Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 	Plug 'Shougo/neopairs.vim'
+	Plug 'zchee/deoplete-jedi'
+	Plug 'zchee/deoplete-zsh'
 	Plug 'zchee/deoplete-go', { 'do': 'make'}
 	Plug 'nsf/gocode', { 'rtp': 'nvim', 'do': '~/.config/nvim/plugged/gocode/nvim/symlink.sh' }
-	Plug 'zchee/deoplete-jedi'
+	Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern' }
 	Plug 'othree/jspc.vim'
 	Plug 'othree/html5.vim'
-	Plug 'm2mdas/phpcomplete-extended'
+	Plug 'eagletmt/neco-ghc'
 	Plug 'Rip-Rip/clang_complete'
 	Plug 'Shougo/neco-vim'
 
@@ -213,7 +215,8 @@ nnoremap <silent> <C-n> :call <SID>ToggleNTree()<CR>
 
 " ALE settings
 let g:ale_linters = {
-	\ 'javascript': ['jshint'],
+	\ 'python'     : ['pylint'],
+	\ 'javascript' : ['jshint'],
 	\ }
 
 " Navigate between errors
@@ -322,22 +325,19 @@ let g:deoplete#omni#functions    = {}
 
 inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
 
+" Python autocompletion
+let g:deoplete#sources#jedi#show_docstring = 1
+
 " Go autocompletion
 let g:deoplete#sources#go#gocode_binary = $GOPATH.'/bin/gocode'
 let g:deoplete#sources#go#sort_class    = ['package', 'func', 'type', 'var', 'const']
 let g:deoplete#sources#go#use_cache     = 1
-
-" Python autocompletion
-let g:deoplete#sources#jedi#show_docstring = 1
 
 " Javascript autocompletion
 let g:deoplete#omni#functions.javascript = [
 	\ 'tern#Complete',
 	\ 'jspc#omni',
 	\ ]
-
-" PHP autocompletion
-let g:deoplete#omni#functions.php = 'phpcomplete_extended#CompletePHP'
 
 " Clang autocompletion
 let g:clang_complete_auto              = 0
@@ -371,9 +371,11 @@ augroup end
 let g:quickrun_no_default_key_mappings = 0
 let g:quickrun_config = {
 	\ '_' : {
-		\ 'runner'                    : 'vimproc',
-		\ 'runner/vimproc/updatetime' : 60,
-		\ 'outputter'                 : 'quickfix',
+		\ 'runner'                        : 'vimproc',
+		\ 'runner/vimproc/updatetime'     : 60,
+		\ 'outputter'                     : 'buffer',
+		\ 'outputter/buffer/split'        : 'vertical 32',
+		\ 'outputter/buffer/running_mark' : 'Running...',
 		\ },
 	\ }
 
@@ -455,13 +457,14 @@ nnoremap <Leader>M :InstantMarkdownPreview<CR>
 " Open-browser settings
 let g:openbrowser_browser_commands = [{
 	\ 'name': 'w3m',
-	\ 'args': 'tmux new-window w3m {uri}'
+	\ 'args': 'tmux new-window w3m {uri}',
 	\ }]
 
 nmap gl <Plug>(openbrowser-open)
 
 " Vimwiki settings
-let g:vimwiki_list = [{
+let g:vimwiki_url_maxsave = 0
+let g:vimwiki_list        = [{
 	\ 'path': '~/DEV/vimwiki',
 	\ 'syntax': 'markdown',
 	\ }]
@@ -922,7 +925,7 @@ let g:f7msg = 'Toggle paste mode.'
 nnoremap <F7> :setlocal paste!<CR>:echo g:f7msg<CR>
 
 "----------------------------------------------------------------
-" 13. Search and vimgrep
+" 13. Search, grep and vimgrep
 "----------------------------------------------------------------
 " Highlight search results
 set hlsearch
@@ -1237,11 +1240,13 @@ function! <SID>BufcloseCloseIt()
 	endif
 endfunction
 
-" Close quickfix if it's the last window
-autocmd BufEnter * call CloseLastQF()
-function! CloseLastQF()
-	if &buftype ==# 'quickfix'
+" Close the last buffer if it's the last window
+" - For 'quickfix' and 'nofile'
+autocmd BufEnter * call CloseLastBuffer()
+function! CloseLastBuffer()
+	if &buftype ==# 'quickfix' || &buftype ==# 'nofile'
 		if winnr('$') < 2
+			call system("tmux setw automatic-rename")
 			quit!
 		endif
 	endif
