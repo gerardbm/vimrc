@@ -6,7 +6,7 @@
 "  /_/ /_/\___/\____/|___/_/_/ /_/ /_/
 "
 "----------------------------------------------------------------
-"  Version : 1.17.1
+"  Version : 1.17.2
 "  License : MIT
 "  Author  : Gerard Bajona
 "  URL     : https://github.com/gerardbm/vimrc
@@ -24,7 +24,7 @@
 "  10. Indentation tabs
 "  11. Moving around lines
 "  12. Paste mode improved
-"  13. Search, grep and vimgrep
+"  13. Search, vimgrep and grep
 "  14. Text edition
 "  15. Make settings
 "  16. Filetype settings
@@ -933,7 +933,7 @@ let g:f7msg = 'Toggle paste mode.'
 nnoremap <F7> :setlocal paste!<CR>:echo g:f7msg<CR>
 
 "----------------------------------------------------------------
-" 13. Search, grep and vimgrep
+" 13. Search, vimgrep and grep
 "----------------------------------------------------------------
 " Highlight search results
 set hlsearch
@@ -963,7 +963,7 @@ nnoremap <Space> /
 nnoremap <Leader><Space> ?
 
 " Highlight the word under the cursor and don't jump to next
-nnoremap <silent> <Leader><CR> :let @/='<C-R>=expand("<cword>")<CR>'<CR>:set hlsearch<CR>
+nnoremap <silent> <Leader><CR> :let @/='\<<C-R>=expand("<cword>")<CR>\>'<CR>:set hlsearch<CR>
 
 " Highlight the selected text and don't jump to next
 vnoremap <silent> <Leader><CR> :<C-U>call <SID>VSetSearch()<CR>:set hlsearch<CR>
@@ -979,7 +979,7 @@ vnoremap <silent> ? :<C-U>call RangeSearch('?')<CR>
 	\ :if strlen(g:srchstr) > 0
 	\ \|exec '?'.g:srchstr\|endif<CR>N
 
-" --- Vimgrep & grep ---
+" --- Vimgrep and grep ---
 "----------------------------------------------------------------
 " Vimgrep the highlight in the current file
 nnoremap <Leader>vg :vimgrep /<C-R>//j %<CR>
@@ -1000,7 +1000,7 @@ nnoremap <Leader>vb :call setqflist([]) \|
 			\ call GrepWrapper('bufdo grepadd!', '', '%')<CR>
 
 " Current working directory
-nnoremap <Leader>vn :call GrepWrapper('grep!', '-R', '')<CR>
+nnoremap <Leader>vn :call GrepWrapper('grep!', '-R --exclude-dir={.git,.svn} --exclude=LICENSE', '')<CR>
 
 " Current buffer (grepadd)
 nnoremap <Leader>vm :call GrepWrapper('grepadd!', '', '%')<CR>

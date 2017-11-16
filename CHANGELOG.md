@@ -1,5 +1,10 @@
 ## Changelog
 
+= 1.17.2 =
+* Add `\<` and `\>` to highlight the word under the cursor.
+  - Removed it in the version 1.14.1 (it's better with it).
+* Add options to `grep -R`: exclude CVS directories and LICENSE file.
+
 = 1.17.1 =
 * Add `g:NERDCustomDelimiters` for Python.
 * Remove the `gv` after toggle comment with `<Leader>c`.
