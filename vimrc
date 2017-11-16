@@ -6,7 +6,7 @@
 "  (_)___/_/_/ /_/ /_/_/   \___/
 "
 "----------------------------------------------------------------
-"  Version : 1.17.0
+"  Version : 1.17.1
 "  License : MIT
 "  Author  : Gerard Bajona
 "  URL     : https://github.com/gerardbm/vimrc
@@ -213,9 +213,12 @@ let g:NERDSpaceDelims           = 1
 let g:NERDCompactSexyComs       = 1
 let g:NERDCommentEmptyLines     = 0
 let g:NERDCreateDefaultMappings = 0
+let g:NERDCustomDelimiters      = {
+	\ 'python': {'left': '#'},
+	\ }
 
 nnoremap <Leader>c :call NERDComment(0,'toggle')<CR>
-vnoremap <Leader>c :call NERDComment(0,"toggle")<CR>gv
+vnoremap <Leader>c :call NERDComment(0,'toggle')<CR>
 
 " NERDTree settings
 nnoremap <silent> <C-n> :call <SID>ToggleNTree()<CR>
@@ -305,16 +308,19 @@ let g:config_Beautifier['css'].indent_style = 'tab'
 let g:config_Beautifier['html'] = {}
 let g:config_Beautifier['html'].indent_style = 'tab'
 
-autocmd FileType javascript nnoremap <buffer> <Leader>bf :call JsBeautify()<cr>
-autocmd FileType javascript vnoremap <buffer> <Leader>bf :call RangeJsBeautify()<cr>
-autocmd FileType json nnoremap <buffer> <Leader>bf :call JsonBeautify()<cr>
-autocmd FileType json vnoremap <buffer> <Leader>bf :call RangeJsonBeautify()<cr>
-autocmd FileType jsx nnoremap <buffer> <Leader>bf :call JsxBeautify()<cr>
-autocmd FileType jsx vnoremap <buffer> <Leader>bf :call RangeJsxBeautify()<cr>
-autocmd FileType html nnoremap <buffer> <Leader>bf :call HtmlBeautify()<cr>
-autocmd FileType html vnoremap <buffer> <Leader>bf :call RangeHtmlBeautify()<cr>
-autocmd FileType css nnoremap <buffer> <Leader>bf :call CSSBeautify()<cr>
-autocmd FileType css vnoremap <buffer> <Leader>bf :call RangeCSSBeautify()<cr>
+augroup beautify
+	autocmd!
+	autocmd FileType javascript nnoremap <buffer> <Leader>bf :call JsBeautify()<cr>
+	autocmd FileType javascript vnoremap <buffer> <Leader>bf :call RangeJsBeautify()<cr>
+	autocmd FileType json nnoremap <buffer> <Leader>bf :call JsonBeautify()<cr>
+	autocmd FileType json vnoremap <buffer> <Leader>bf :call RangeJsonBeautify()<cr>
+	autocmd FileType jsx nnoremap <buffer> <Leader>bf :call JsxBeautify()<cr>
+	autocmd FileType jsx vnoremap <buffer> <Leader>bf :call RangeJsxBeautify()<cr>
+	autocmd FileType html nnoremap <buffer> <Leader>bf :call HtmlBeautify()<cr>
+	autocmd FileType html vnoremap <buffer> <Leader>bf :call RangeHtmlBeautify()<cr>
+	autocmd FileType css nnoremap <buffer> <Leader>bf :call CSSBeautify()<cr>
+	autocmd FileType css vnoremap <buffer> <Leader>bf :call RangeCSSBeautify()<cr>
+augroup end
 
 " --- Autocomplete ---
 " SuperTab settings
@@ -470,8 +476,10 @@ let g:openbrowser_browser_commands = [{
 nmap gl <Plug>(openbrowser-open)
 
 " Vimwiki settings
-let g:vimwiki_url_maxsave = 0
-let g:vimwiki_list        = [{
+let g:vimwiki_hl_headers    = 1
+let g:vimwiki_hl_cb_checked = 1
+let g:vimwiki_url_maxsave   = 0
+let g:vimwiki_list          = [{
 	\ 'path': '~/DEV/vimwiki',
 	\ 'syntax': 'markdown',
 	\ }]
@@ -547,7 +555,7 @@ if exists('$TMUX')
 endif
 
 " Mouse
-set mousehide
+set mouse=a
 
 " Highlight cursor line and cursor column
 set cursorline
@@ -831,8 +839,8 @@ set showbreak=├——»
 " Stop automatic wrapping
 set textwidth=0
 
-" Column at 100 width
-set colorcolumn=100
+" Column at 80 width
+set colorcolumn=80
 
 " Listings don't pause
 set nomore
@@ -842,7 +850,7 @@ let g:f9msg = 'Toggle colorcolumn.'
 nnoremap <silent> <F9> :call <SID>ToggleColorColumn()<CR>:echo g:f9msg<CR>
 
 " Show line numbers
-set nonumber
+set number
 set numberwidth=2
 
 let g:f3msg = 'Toggle line numbers.'
@@ -991,10 +999,10 @@ nnoremap <Space> /
 nnoremap <Leader><Space> ?
 
 " Highlight the word under the cursor and don't jump to next
-nnoremap <silent> <Leader><CR> :let @/='<C-R>=expand("<cword>")<CR>'<CR>:set hls<CR>
+nnoremap <silent> <Leader><CR> :let @/='<C-R>=expand("<cword>")<CR>'<CR>:set hlsearch<CR>
 
 " Highlight the selected text and don't jump to next
-vnoremap <silent> <Leader><CR> :<C-U>call <SID>VSetSearch()<CR>:set hls<CR>
+vnoremap <silent> <Leader><CR> :<C-U>call <SID>VSetSearch()<CR>:set hlsearch<CR>
 
 " Disable highlight
 nnoremap <Leader>m :noh<CR>
@@ -1150,20 +1158,20 @@ autocmd BufWrite * :call DeleteTrailing() " All files
 
 " Binary
 augroup Binary
-	au!
-	au BufReadPre  *.bin let &bin=1
-	au BufReadPost *.bin if &bin | %!xxd
-	au BufReadPost *.bin set ft=xxd | endif
-	au BufWritePre *.bin if &bin | %!xxd -r
-	au BufWritePre *.bin endif
-	au BufWritePost *.bin if &bin | %!xxd
-	au BufWritePost *.bin set nomod | endif
+	autocmd!
+	autocmd BufReadPre  *.bin let &bin=1
+	autocmd BufReadPost *.bin if &bin | %!xxd
+	autocmd BufReadPost *.bin set ft=xxd | endif
+	autocmd BufWritePre *.bin if &bin | %!xxd -r
+	autocmd BufWritePre *.bin endif
+	autocmd BufWritePost *.bin if &bin | %!xxd
+	autocmd BufWritePost *.bin set nomod | endif
 augroup end
 
 " Markdown
 augroup markdown
-	au!
-	au FileType markdown setl spell
+	autocmd!
+	autocmd FileType markdown setl spell
 augroup end
 
 let g:markdown_fenced_languages = [
@@ -1182,9 +1190,9 @@ let g:markdown_fenced_languages = [
 
 " Mail
 augroup mail
-	au!
-	au FileType mail setl spell
-	au FileType mail setl spelllang=ca
+	autocmd!
+	autocmd FileType mail setl spell
+	autocmd FileType mail setl spelllang=ca
 augroup end
 
 " SQL (it requires sqlparse)
@@ -1198,8 +1206,18 @@ augroup end
 
 " XML (it requires tidy)
 augroup xml
-	au FileType xml nnoremap <Leader>bf
+	autocmd FileType xml nnoremap <Leader>bf
 				\ :%!tidy -q -i -xml --show-errors 0 -wrap 0 --indent-spaces 4<CR>
+augroup end
+
+" New file headers
+augroup headers
+	autocmd!
+	autocmd BufNewFile *.py 0put =\"#!/usr/bin/env python\<nl>\#
+				\ -*- coding: utf-8 -*-\<nl>\"|$
+	autocmd BufNewFile *.rb 0put =\"#!/usr/bin/env ruby\<nl>\"|$
+	autocmd BufNewFile *.pl 0put =\"#!/usr/bin/env perl\<nl>\"|$
+	autocmd BufNewFile *.sh 0put =\"#!/usr/bin/env bash\<nl>\"|$
 augroup end
 
 "----------------------------------------------------------------
@@ -1334,7 +1352,7 @@ function! QFCounter() abort
 	else
 		cclose
 	endif
-	echo "Found " . l:results . " matches."
+	echo 'Found ' . l:results . ' matches.'
 endfunction
 
 " Grep wrapper
@@ -1343,7 +1361,7 @@ function! GrepWrapper(cmd, dir, scope) abort
 	let l:pattern = substitute(@/, '\\V', '', '')
 	silent execute a:cmd . ' ' . a:dir . ' "' . l:pattern . '" ' . a:scope
 	redraw!
-	set hls
+	set hlsearch
 	call QFCounter()
 endfunction
 

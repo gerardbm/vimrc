@@ -11,7 +11,7 @@ Navigate easily between buffers, tabs, windows and tmux panes. Navigate between 
 
 Easily highlight the word under the cursor or the current selection. A lot of commands have been defined to work with the highlighted text: vimgrep, grep, (current buffer, arglist, buffers loaded or current working directory) and replace. Also, you can search and replace into the visual selection only.
 
-Some useful tools have been integrated. Plugins: **CtrlP** (navigate between open buffers, MRU or directory files), **NERDTree** (tree files), **vim-fugitive** (git commands), **GV** (navigate between git commits), **undotree** (history visualizer), **ALE** (async syntax linter, it works while you type), **deoplete** (autocompletion for Vim and Neovim), **neosnippet** (code snippets), **QuickRun** (it's awesome at running code), and much more.
+Some useful tools have been integrated. Plugins: **CtrlP** (navigate between open buffers, MRU or directory files), **NERDTree** (tree files), **vim-fugitive** (git commands), **GV** (navigate between git commits), **undotree** (history visualizer), **ALE** (async syntax linter, it works while you type), **deoplete** (autocompletion for Vim and Neovim), **neosnippet** (code snippets), **QuickRun** (it's awesome at running code), **Vimwiki** (organize notes, manage todo-lists...), and much more.
 
 This configuration is focused on programming in Python, C, Go, Ruby, Bash, JavaScript and web development in general, with HTML5 and CSS3.
 

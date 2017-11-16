@@ -1,5 +1,15 @@
 ## Changelog
 
+= 1.17.1 =
+* Add `g:NERDCustomDelimiters` for Python.
+* Remove the `gv` after toggle comment with `<Leader>c`.
+  - Tired of pressing `<C-c>` to return to Normal Mode.
+* Add highlights (headers and checkbox) for the Vimwiki.
+* Fix some vint warnings.
+* Add the setting `mouse=a` in Vim (like in Neovim).
+* I decided to adjust `colorcolumn=80` and `set number`.
+* Add file headers for Python, Ruby, Perl and Bash new files.
+
 = 1.17.0 =
 * Remove phpcomplete-extended plugin.
 * Remove neocomplete plugin from Vim8.
