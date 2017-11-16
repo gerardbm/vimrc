@@ -1,5 +1,9 @@
 ## Changelog
 
+= 1.17.3 =
+* Remove xterm-modifier-keys for tmux. It works well using URxvt.
+  - `$TERM` must be rxvt-unicode-256color (.Xresources and .tmux.conf).
+
 = 1.17.2 =
 * Add `\<` and `\>` to highlight the word under the cursor.
   - Removed it in the version 1.14.1 (it's better with it).
