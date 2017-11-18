@@ -1,5 +1,16 @@
 ## Changelog
 
+= 1.17.4 =
+* The nnoremap `<Leader>g` (Gvdiff) changed to `<Leader>gv`.
+* Add the nnoremap `<Leader>gh` to split horizontally (Gsdiff).
+* Add the nnoremap `<Leader>gb` to run the command Gblame.
+* The nnoremap `<Leader>i` (GitGutterStageHunk) change to `<Leader>ii`.
+* Add the nnoremap `<Leader>io` to run the command GitGutterUndoHunk.
+  - These maps are more intuitive.
+* The nmap `gl` (openbrowser) changed to `<Leader>gl`. Avoid conflict with Vimwiki.
+* The nnoremap `<Leader>bw` (switch CWD) changed to `<Leader>wd`.
+* Remove the cnoremap `%%` to expand the path of the current buffer.
+
 = 1.17.3 =
 * Remove xterm-modifier-keys for tmux. It works well using URxvt.
   - `$TERM` must be rxvt-unicode-256color (.Xresources and .tmux.conf).

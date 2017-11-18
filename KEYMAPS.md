@@ -85,7 +85,7 @@
   - `<Leader>bf` autoformat a buffer (sql, js, html, xml, css).
 
 - Filepath:
-  - `<Leader>bw` switches CWD to the current filepath.
+  - `<Leader>wd` switches CWD to the current filepath.
   - `<Leader>by` copies the filepath to the clipboard.
 
 - Tabs:
@@ -154,14 +154,16 @@
   - `<Leader><TAB>` runs the code of the current buffer.
   - `<Leader>j` goes to the next GitGutter hunk.
   - `<Leader>k` goes to the previous GitGutter hunk.
-  - `<Leader>i` adds the line to the staging area (GitGutter).
-  - `<Leader>I` undoes the hunk (GitGutter).
+  - `<Leader>ii` adds the line to the staging area (GitGutter).
+  - `<Leader>io` undoes the hunk (GitGutter).
   - `<Leader>c` toggles the commented code.
   - `<Leader>h` goes to the previous warning/error.
   - `<Leader>l` goes to the next warning/error.
   - `<Leader>q` toggles the quickfix window.
   - `<Leader>e` toggles the location list window.
-  - `<Leader>g` starts the fugitive command `:Gvdiff`.
+  - `<Leader>gv` starts the fugitive command `:Gvdiff`.
+  - `<Leader>gh` starts the fugitive command `:Gsdiff`.
+  - `<Leader>gb` starts the fugitive command `:Gblame`.
   - `<Leader>u` toggles the plugin Undotree.
   - `<Leader>x` inits tabularize plugin.
   - `<Leader>X` inits tabularize plugin (only the first match).
@@ -173,6 +175,7 @@
   - `<Leader>vn` vimgreps the highlight in the current directory.
   - `<Leader>va` vimgreps the highlight in the current arglist.
   - `<Leader>vm` grepadds the highlight of the current buffer.
+  - `<Leader>gl` opens the URL under the cursor in a browser.
 
 #### {a-z} keymaps:
 

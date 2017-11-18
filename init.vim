@@ -6,7 +6,7 @@
 "  /_/ /_/\___/\____/|___/_/_/ /_/ /_/
 "
 "----------------------------------------------------------------
-"  Version : 1.17.3
+"  Version : 1.17.4
 "  License : MIT
 "  Author  : Gerard Bajona
 "  URL     : https://github.com/gerardbm/vimrc
@@ -184,9 +184,11 @@ nmap <silent> <C-g> :call <SID>ToggleGGPrev()<CR>zz
 
 " Fugitive settings
 nnoremap <C-s> :<C-U>call <SID>ToggleGsPrev()<CR>
-nnoremap <Leader>g :Gvdiff<CR>gg
-nnoremap <Leader>i :GitGutterStageHunk<CR>
-nnoremap <Leader>I :GitGutterUndoHunk<CR>
+nnoremap <Leader>gh :Gsdiff<CR>gg
+nnoremap <Leader>gv :Gvdiff<CR>gg
+nnoremap <Leader>gb :Gblame<CR>
+nnoremap <Leader>ii :GitGutterStageHunk<CR>
+nnoremap <Leader>io :GitGutterUndoHunk<CR>
 
 " GV settings
 nnoremap <silent> <C-z> :call <SID>PreventGV()<CR>
@@ -466,7 +468,7 @@ let g:openbrowser_browser_commands = [{
 	\ 'args': 'tmux new-window w3m {uri}',
 	\ }]
 
-nmap gl <Plug>(openbrowser-open)
+nmap <Leader>gl <Plug>(openbrowser-open)
 
 " Vimwiki settings
 let g:vimwiki_hl_headers    = 1
@@ -634,14 +636,10 @@ nnoremap <Leader>bb :edit <C-R>=expand("%:p:h")<CR>/
 nnoremap <Leader>bg :buffers<CR>:buffer<Space>
 
 " Switch CWD to the directory of the current buffer
-nnoremap <Leader>bw :cd %:p:h<CR>:pwd<CR>
+nnoremap <Leader>wd :lcd %:p:h<CR>:pwd<CR>
 
 " Copy the filepath to clipboard
 nnoremap <Leader>by :let @+=expand("%:p")<CR>
-
-" Expand '%%' to the path of the current buffer
-" TODO: fix → only works having one buffer loaded
-cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h').'/' : '%%'
 
 " Ignore case when autocompletes when browsing files
 set fileignorecase
