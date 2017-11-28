@@ -63,7 +63,6 @@
 - `<F4>` toggles Tagbar (plugin).
 - `<F5>` reloads all open buffers.
 - `<F6>` toggles list.
-- `<F7>` toggles 'Paste Mode'.
 - `<F8>` toggles spell checking.
 - `<S-F8>` toggles spell dictionaries.
 - `<F9>` toggles colorcolumn.

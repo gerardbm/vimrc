@@ -6,7 +6,7 @@
 "  /_/ /_/\___/\____/|___/_/_/ /_/ /_/
 "
 "----------------------------------------------------------------
-"  Version : 1.17.4
+"  Version : 1.17.5
 "  License : MIT
 "  Author  : Gerard Bajona
 "  URL     : https://github.com/gerardbm/vimrc
@@ -23,7 +23,7 @@
 "   9. Multiple windows
 "  10. Indentation tabs
 "  11. Moving around lines
-"  12. Paste mode improved
+"  12. Paste mode
 "  13. Search, vimgrep and grep
 "  14. Text edition
 "  15. Make settings
@@ -706,8 +706,8 @@ nnoremap <silent> <C-w>o :wincmd o<CR>:echo "Only one window."<CR>
 
 " Move between Vim windows and Tmux panes
 " - It requires the corresponding configuration into Tmux.
-" - Check it at my .tmux.conf from my Atomic files repository.
-" - URL: https://github.com/gerardbm/dotfiles/blob/master/.tmux.conf
+" - Check it at my .tmux.conf from my dotfiles repository.
+" - URL: https://github.com/gerardbm/dotfiles/blob/master/tmux/.tmux.conf
 " - Plugin required: https://github.com/christoomey/vim-tmux-navigator
 nnoremap <silent> <M-h> :TmuxNavigateLeft<CR>
 nnoremap <silent> <M-j> :TmuxNavigateDown<CR>
@@ -866,42 +866,9 @@ cnoremap <C-n> <Down>
 cnoremap <C-z> <C-R><C-W>
 
 "----------------------------------------------------------------
-" 12. Paste mode improved
+" 12. Paste mode
 "----------------------------------------------------------------
-" When the 'paste' option is enabled:
-" - mapping in Insert mode and Command-line mode is disabled
-" - abbreviations are disabled
-" - etc. (see :help 'paste' for more information).
-
-" Enable auto-indenting for code paste
-set nopaste
-
-" Auto-toggle Paste Mode when pasting text
-function! WrapForTmux(s)
-	if !exists('$TMUX')
-		return a:s
-	endif
-
-	let l:tmux_start = "\<Esc>Ptmux;"
-	let l:tmux_end = "\<Esc>\\"
-
-	return l:tmux_start . substitute(a:s, "\<Esc>", "\<Esc>\<Esc>", 'g') . l:tmux_end
-endfunction
-
-let &t_SI .= WrapForTmux("\<Esc>[?2004h")
-let &t_EI .= WrapForTmux("\<Esc>[?2004l")
-
-function! XTermPasteBegin()
-	set pastetoggle=<Esc>[201~
-	set paste
-	return ''
-endfunction
-
-inoremap <special> <expr> <Esc>[200~ XTermPasteBegin()
-
-" Toggle Paste Mode manually
-let g:f7msg = 'Toggle paste mode.'
-nnoremap <F7> :setlocal paste!<CR>:echo g:f7msg<CR>
+" Paste option is obsolete; bracketed-paste-mode is built-in.
 
 "----------------------------------------------------------------
 " 13. Search, vimgrep and grep

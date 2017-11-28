@@ -6,7 +6,7 @@
 "  (_)___/_/_/ /_/ /_/_/   \___/
 "
 "----------------------------------------------------------------
-"  Version : 1.17.4
+"  Version : 1.17.5
 "  License : MIT
 "  Author  : Gerard Bajona
 "  URL     : https://github.com/gerardbm/vimrc
@@ -23,7 +23,7 @@
 "   9. Multiple windows
 "  10. Indentation tabs
 "  11. Moving around lines
-"  12. Paste mode improved
+"  12. Paste mode
 "  13. Search, vimgrep and grep
 "  14. Text edition
 "  15. Make settings
@@ -527,6 +527,34 @@ set noerrorbells
 set novisualbell
 set t_vb=
 
+" Terminal keycodes
+if &term =~ 'screen'
+	set <F1>=[11~
+	set <F2>=[12~
+	set <F3>=[13~
+	set <F4>=[14~
+	set <F5>=[15~
+	set <F6>=[17~
+	set <F7>=[18~
+	set <F8>=[19~
+	set <F9>=[20~
+	set <F10>=[21~
+	set <F11>=[23~
+	set <F12>=[24~
+	set <S-F1>=[11;2~
+	set <S-F2>=[12;2~
+	set <S-F3>=[13;2~
+	set <S-F4>=[14;2~
+	set <S-F5>=[15;2~
+	set <S-F6>=[17;2~
+	set <S-F7>=[18;2~
+	set <S-F8>=[19;2~
+	set <S-F9>=[20;2~
+	set <S-F10>=[21;2~
+	set <S-F11>=[23;2~
+	set <S-F12>=[24;2~
+endif
+
 " Mouse
 set mouse=a
 
@@ -538,7 +566,7 @@ set nocursorcolumn
 set laststatus=2
 
 " Change the cursor shape
-if &term =~ 'rxvt\|xterm\|tmux'
+if &term =~ 'screen'
 	if exists('$TMUX')
 		let &t_SI = "\<Esc>Ptmux;\<Esc>\<Esc>[6 q\<Esc>\\"
 		let &t_SR = "\<Esc>Ptmux;\<Esc>\<Esc>[4 q\<Esc>\\"
@@ -735,8 +763,8 @@ nnoremap <silent> <C-w>o :wincmd o<CR>:echo "Only one window."<CR>
 
 " Move between Vim windows and Tmux panes
 " - It requires the corresponding configuration into Tmux.
-" - Check it at my .tmux.conf from my Atomic files repository.
-" - URL: https://github.com/gerardbm/dotfiles/blob/master/.tmux.conf
+" - Check it at my .tmux.conf from my dotfiles repository.
+" - URL: https://github.com/gerardbm/dotfiles/blob/master/tmux/.tmux.conf
 " - Plugin required: https://github.com/christoomey/vim-tmux-navigator
 set <M-h>=h
 set <M-j>=j
@@ -900,42 +928,18 @@ cnoremap <C-n> <Down>
 cnoremap <C-z> <C-R><C-W>
 
 "----------------------------------------------------------------
-" 12. Paste mode improved
+" 12. Paste mode
 "----------------------------------------------------------------
-" When the 'paste' option is enabled:
-" - mapping in Insert mode and Command-line mode is disabled
-" - abbreviations are disabled
-" - etc. (see :help 'paste' for more information).
-
-" Enable auto-indenting for code paste
-set nopaste
-
-" Auto-toggle Paste Mode when pasting text
-function! WrapForTmux(s)
-	if !exists('$TMUX')
-		return a:s
+" Bracketed paste mode
+" - Source: https://ttssh2.osdn.jp/manual/en/usage/tips/vim.html
+if has("patch-8.0.0238")
+	if &term =~ "screen"
+		let &t_BE = "\e[?2004h"
+		let &t_BD = "\e[?2004l"
+		exec "set t_PS=\e[200~"
+		exec "set t_PE=\e[201~"
 	endif
-
-	let l:tmux_start = "\<Esc>Ptmux;"
-	let l:tmux_end = "\<Esc>\\"
-
-	return l:tmux_start . substitute(a:s, "\<Esc>", "\<Esc>\<Esc>", 'g') . l:tmux_end
-endfunction
-
-let &t_SI .= WrapForTmux("\<Esc>[?2004h")
-let &t_EI .= WrapForTmux("\<Esc>[?2004l")
-
-function! XTermPasteBegin()
-	set pastetoggle=<Esc>[201~
-	set paste
-	return ''
-endfunction
-
-inoremap <special> <expr> <Esc>[200~ XTermPasteBegin()
-
-" Toggle Paste Mode manually
-let g:f7msg = 'Toggle paste mode.'
-nnoremap <F7> :setlocal paste!<CR>:echo g:f7msg<CR>
+endif
 
 "----------------------------------------------------------------
 " 13. Search, vimgrep and grep

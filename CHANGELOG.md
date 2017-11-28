@@ -1,5 +1,12 @@
 ## Changelog
 
+= 1.17.5 =
+* Add terminal keycodes on vim to make it compatible on rxvt.
+* Remove paste mode on nvim (bracketed-paste-mode is built-in).
+* Configure vim to use bracketed-paste-mode under 'screen' &term.
+* Remove the map `<F7>` to toggle between paste/nopaste. Obsolete.
+* Fix URL referencing my tmux config from dotfiles repository.
+
 = 1.17.4 =
 * The nnoremap `<Leader>g` (Gvdiff) changed to `<Leader>gv`.
 * Add the nnoremap `<Leader>gh` to split horizontally (Gsdiff).
