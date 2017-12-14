@@ -1,7 +1,23 @@
 ## Changelog
 
+= 1.17.6 =
+* Check if vim 8 has terminal.
+* The nnoremap `<Leader>ii` change to `<Leader>gs` (stage hunk).
+* The nnoremap `<Leader>io` change to `<Leader>gu` (unstage hunk).
+  - This change avoids staging hunks by error pressing double i.
+* Add the nnoremap `<Leader>gg` to search a string between commits (Glog).
+  - With this, I extended the function `GrepWrapper()`.
+* Add the path for the plugin vim-sessions.
+  - Neovim was using `~/.vim` path by default...
+* Add the path for the clang library.
+  - Deoplete couldn't find it on Debian. It worked fine on Arch, though.
+* The nnoremap `<C-W><CR>` (close the window) change to `<C-W>j`.
+* The nnoremap `<F10>` (fullscreen window) change to `<C-f>`.
+* The nnoremap `<Leader>bd` (close buffer) change to `<C-b>`.
+* Remove the nnoremap `<Leader>ba` (to close all buffers). Never used it.
+
 = 1.17.5 =
-* Add terminal keycodes on vim to make it compatible on rxvt.
+* Add terminal keycodes on vim to make it compatible with rxvt.
 * Remove paste mode on nvim (bracketed-paste-mode is built-in).
 * Configure vim to use bracketed-paste-mode under 'screen' &term.
 * Remove the map `<F7>` to toggle between paste/nopaste. Obsolete.

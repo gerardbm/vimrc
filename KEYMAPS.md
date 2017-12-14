@@ -3,7 +3,10 @@
 - Buffers:
   - `<C-h>` goes to the previous buffer.
   - `<C-l>` goes to the next buffer.
-  - `<C-t>` toggles the `:terminal`.
+  - `<C-b>` closes the current buffer.
+
+- Windows:
+  - `<C-f>` toggles maximize/minimize the current window.
 
 - Text edition:
   - `<C-j>` moves lines down.
@@ -66,7 +69,6 @@
 - `<F8>` toggles spell checking.
 - `<S-F8>` toggles spell dictionaries.
 - `<F9>` toggles colorcolumn.
-- `<F10>` toggles maximize/minimize the current window.
 - `<F11>` empty: desktops use it to toggle fullscreen.
 - `<F12>` reloads your Vim/Neovim configuration.
 - `<S-F12>` reloads the current colorscheme.
@@ -76,8 +78,6 @@
 - Buffers:
   - `<Leader>s` updates the buffer (saves if it has changes).
   - `<Leader>S` updates all the buffers.
-  - `<Leader>bd` closes the current buffer.
-  - `<Leader>ba` closes all the buffers.
   - `<Leader>bb` opens the `:edit` command.
   - `<Leader>bg` opens a list of all the buffers.
   - `<Leader><Del>y` deletes the current buffer. Careful!
@@ -153,8 +153,9 @@
   - `<Leader><TAB>` runs the code of the current buffer.
   - `<Leader>j` goes to the next GitGutter hunk.
   - `<Leader>k` goes to the previous GitGutter hunk.
-  - `<Leader>ii` adds the line to the staging area (GitGutter).
-  - `<Leader>io` undoes the hunk (GitGutter).
+  - `<Leader>gs` adds the line to the staging area (GitGutter).
+  - `<Leader>gu` undoes the hunk (GitGutter).
+  - `<Leader>gg` searches a string between commits (Glog).
   - `<Leader>c` toggles the commented code.
   - `<Leader>h` goes to the previous warning/error.
   - `<Leader>l` goes to the next warning/error.

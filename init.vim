@@ -6,7 +6,7 @@
 "  /_/ /_/\___/\____/|___/_/_/ /_/ /_/
 "
 "----------------------------------------------------------------
-"  Version : 1.17.5
+"  Version : 1.17.6
 "  License : MIT
 "  Author  : Gerard Bajona
 "  URL     : https://github.com/gerardbm/vimrc
@@ -180,15 +180,18 @@ let g:gitgutter_diff_args             = '--ignore-space-at-eol'
 
 nmap <Leader>j <Plug>GitGutterNextHunkzz
 nmap <Leader>k <Plug>GitGutterPrevHunkzz
-nmap <silent> <C-g> :call <SID>ToggleGGPrev()<CR>zz
+nnoremap <silent> <C-g> :call <SID>ToggleGGPrev()<CR>zz
+nnoremap <Leader>gs :GitGutterStageHunk<CR>
+nnoremap <Leader>gu :GitGutterUndoHunk<CR>
 
 " Fugitive settings
 nnoremap <C-s> :<C-U>call <SID>ToggleGsPrev()<CR>
-nnoremap <Leader>gh :Gsdiff<CR>gg
-nnoremap <Leader>gv :Gvdiff<CR>gg
+nnoremap <Leader>gh :Gsdiff<CR>
+nnoremap <Leader>gv :Gvdiff<CR>
 nnoremap <Leader>gb :Gblame<CR>
-nnoremap <Leader>ii :GitGutterStageHunk<CR>
-nnoremap <Leader>io :GitGutterUndoHunk<CR>
+
+" Searching for text added or removed by a commit
+nnoremap <Leader>gg :call <SID>GrepWrapper('Glog', '-i -S', '--')<CR>
 
 " GV settings
 nnoremap <silent> <C-z> :call <SID>PreventGV()<CR>
@@ -196,8 +199,9 @@ vnoremap <silent> <C-z> :call <SID>PreventGV()<CR>
 
 " --- Sessions ---
 " Vim-session settings
-let g:session_autosave = 'no'
-let g:session_autoload = 'no'
+let g:session_autosave  = 'no'
+let g:session_autoload  = 'no'
+let g:session_directory = '~/.config/nvim/sessions/'
 
 nnoremap <C-q> :OpenSession<CR>
 
@@ -353,6 +357,7 @@ let g:clang_auto_select                = 0
 let g:clang_omnicppcomplete_compliance = 0
 let g:clang_make_default_keymappings   = 0
 let g:clang_use_library                = 1
+let g:clang_library_path               = '/usr/lib/llvm-3.8/lib'
 
 " --- Snippets ---
 " Neosnippet settings
@@ -622,10 +627,7 @@ endif
 set hidden
 
 " Close the current buffer
-nnoremap <Leader>bd :Bclose<CR>
-
-" Close all the buffers
-nnoremap <Leader>ba :1,1000 bd!<CR>
+nnoremap <C-b> :call <SID>OnlyCloseBuffer()<CR>
 
 " Move between buffers
 nnoremap <C-h> :bprev<CR>
@@ -683,7 +685,7 @@ set splitright
 " Split windows
 map <C-w>- :split<CR>
 map <C-w>. :vsplit<CR>
-map <C-w><CR> :close<CR>
+map <C-w>j :close<CR>
 map <C-w>x :q!<CR>
 map <C-w>, <C-w>=
 
@@ -696,7 +698,7 @@ if bufwinnr(1)
 endif
 
 " Toggle resize window
-nnoremap <silent> <F10> :ToggleResize<CR>
+nnoremap <silent> <C-f> :ToggleResize<CR>
 
 " Last, previous and next window; and only one window
 nnoremap <silent> <C-w>l :wincmd p<CR>:echo "Last window."<CR>
@@ -931,20 +933,20 @@ autocmd QuickfixCmdPre make,grep,grepadd,vimgrep,vimgrepadd,helpgrep copen
 set grepprg=grep\ -nHi
 
 " Current buffer
-nnoremap <Leader>vv :call GrepWrapper('grep!', '', '%')<CR>
+nnoremap <Leader>vv :call <SID>GrepWrapper('grep!', '', '%')<CR>
 
 " All loaded buffers
 nnoremap <Leader>vb :call setqflist([]) \|
-			\ call GrepWrapper('bufdo grepadd!', '', '%')<CR>
+			\ call <SID>GrepWrapper('bufdo grepadd!', '', '%')<CR>
 
 " Current working directory
-nnoremap <Leader>vn :call GrepWrapper('grep!', '-R --exclude-dir={.git,.svn} --exclude=LICENSE', '')<CR>
+nnoremap <Leader>vn :call <SID>GrepWrapper('grep!', '-R --exclude-dir={.git,.svn} --exclude=LICENSE', '')<CR>
 
 " Current buffer (grepadd)
-nnoremap <Leader>vm :call GrepWrapper('grepadd!', '', '%')<CR>
+nnoremap <Leader>vm :call <SID>GrepWrapper('grepadd!', '', '%')<CR>
 
 " Current arglist
-nnoremap <Leader>va :call GrepWrapper('grep!', '', '##')<CR>
+nnoremap <Leader>va :call <SID>GrepWrapper('grep!', '', '##')<CR>
 
 " Navigate between vimgrep results
 nnoremap <Leader>n :cnext<CR>zz
@@ -1176,8 +1178,7 @@ function! DeleteFile()
 endfunction
 
 " Don't close window when deleting a buffer
-command! Bclose call <SID>BufcloseCloseIt()
-function! <SID>BufcloseCloseIt()
+function! s:OnlyCloseBuffer()
 	let l:currentBufNum = bufnr('%')
 	let l:alternateBufNum = bufnr('#')
 
@@ -1260,10 +1261,19 @@ function! QFCounter() abort
 endfunction
 
 " Grep wrapper
-function! GrepWrapper(cmd, dir, scope) abort
+function! s:GrepWrapper(cmd, dir, scope) abort
+	if a:cmd ==# 'Glog'
+		let l:pl = ' '
+		let l:pr = ' '
+	else
+		let l:pl = ' "'
+		let l:pr = '" '
+	endif
 	cclose
 	let l:pattern = substitute(@/, '\\V', '', '')
-	silent execute a:cmd . ' ' . a:dir . ' "' . l:pattern . '" ' . a:scope
+	let l:pattern = substitute(pattern, '\\<', '', '')
+	let l:pattern = substitute(pattern, '\\>', '', '')
+	silent execute a:cmd . ' ' . a:dir . l:pl . l:pattern . l:pr . a:scope
 	redraw!
 	set hlsearch
 	call QFCounter()
