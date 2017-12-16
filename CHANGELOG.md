@@ -1,5 +1,18 @@
 ## Changelog
 
+= 1.17.7 =
+* Remove `make` from the `autocmd QuickfixCmdPre`.
+* Add the function `Tmuxy()` to run code into a tmux window.
+* Add the nnoremap `<Leader>ii` to run the function `Tmuxy()`.
+* The nnoremap `<Leaer>M` (InstantMarkdownPreview) change to `<Leader>im`.
+* Redistribute some Fkeys and avoid the Shift + Fkeys:
+* - The nnoremap `<F4>` (toggle Tagbar) is now `<F7>`.
+* - The nnoremap `<S-F3>` (toggle relative numbers) is now `<F4>`.
+* - The nnoremap `<S-F8>` (toggle spell dictionaries) is now `<F9>`.
+* - The nnoremap `<F9>` (toggle colorcolumn) is now `<F10>`.
+* - The nnoremap `<S-F12>` (reload colorscheme) is now `<F11>`.
+  - (F7, F10 and F11 were available).
+
 = 1.17.6 =
 * Check if vim 8 has terminal.
 * The nnoremap `<Leader>ii` change to `<Leader>gs` (stage hunk).

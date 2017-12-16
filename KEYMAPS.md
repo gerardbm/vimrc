@@ -58,20 +58,19 @@
   - `<A-k>` goes to the window: up.
   - `<A-l>` goes to the window: right.
 
-#### \<F{1..12}\> and \<S-F{1-12}\> keymaps:
+#### \<F{1..12}\> keymaps:
 - `<F1>` it's the default help.
 - `<F2>` renames the current buffer.
 - `<F3>` toggles line numbers.
-- `<S-F3>` toggles relative numbers.
-- `<F4>` toggles Tagbar (plugin).
+- `<F4>` toggles relative numbers.
 - `<F5>` reloads all open buffers.
 - `<F6>` toggles list.
+- `<F7>` toggles Tagbar (plugin).
 - `<F8>` toggles spell checking.
-- `<S-F8>` toggles spell dictionaries.
-- `<F9>` toggles colorcolumn.
-- `<F11>` empty: desktops use it to toggle fullscreen.
+- `<F9>` toggles spell dictionaries.
+- `<F10>` toggles colorcolumn.
+- `<F11>` reloads the current colorscheme.
 - `<F12>` reloads your Vim/Neovim configuration.
-- `<S-F12>` reloads the current colorscheme.
 
 #### \<Leader\> keymaps:
 
@@ -98,7 +97,7 @@
   - `<Leader>.` it is `wincmd` to easily manage windows.
   - `<Leader>.-` splits window horizontally.
   - `<Leader>..` splits window vertically.
-  - `<Leader>.<CR>` closes the current window.
+  - `<Leader>.j` closes the current window.
   - `<Leader>.x` closes the current window forcing it.
   - `<Leader>.,` restores the proportional size of windows.
   - `<Leader>.l` returns to the last window.
@@ -147,6 +146,7 @@
   - `<Leader>p` pastes text from the clipboard.
 
 - Misc:
+  - `<Leader>ii` runs code into a tmux window.
   - `<Leader>B` shows syntax highlighting groups.
 
 - Plugins related:
@@ -155,7 +155,6 @@
   - `<Leader>k` goes to the previous GitGutter hunk.
   - `<Leader>gs` adds the line to the staging area (GitGutter).
   - `<Leader>gu` undoes the hunk (GitGutter).
-  - `<Leader>gg` searches a string between commits (Glog).
   - `<Leader>c` toggles the commented code.
   - `<Leader>h` goes to the previous warning/error.
   - `<Leader>l` goes to the next warning/error.
@@ -164,16 +163,17 @@
   - `<Leader>gv` starts the fugitive command `:Gvdiff`.
   - `<Leader>gh` starts the fugitive command `:Gsdiff`.
   - `<Leader>gb` starts the fugitive command `:Gblame`.
+  - `<Leader>gg` searches a string between commits (Glog).
   - `<Leader>u` toggles the plugin Undotree.
   - `<Leader>x` inits tabularize plugin.
   - `<Leader>X` inits tabularize plugin (only the first match).
   - `<Leader>W` inits ArgWrap plugin.
-  - `<Leader>M` inits Markdown preview plugin.
+  - `<Leader>im` inits Markdown preview plugin.
   - `<Leader>we` toggles the status of a vimwiki list item.
-  - `<Leader>vv` vimgreps the highlight in the current buffer.
-  - `<Leader>vb` vimgreps the highlight in the loaded buffers.
-  - `<Leader>vn` vimgreps the highlight in the current directory.
-  - `<Leader>va` vimgreps the highlight in the current arglist.
+  - `<Leader>vv` greps the highlight in the current buffer.
+  - `<Leader>vb` greps the highlight in the loaded buffers.
+  - `<Leader>vn` greps the highlight in the current directory.
+  - `<Leader>va` greps the highlight in the current arglist.
   - `<Leader>vm` grepadds the highlight of the current buffer.
   - `<Leader>gl` opens the URL under the cursor in a browser.
 

@@ -6,7 +6,7 @@
 "  (_)___/_/_/ /_/ /_/_/   \___/
 "
 "----------------------------------------------------------------
-"  Version : 1.17.6
+"  Version : 1.17.7
 "  License : MIT
 "  Author  : Gerard Bajona
 "  URL     : https://github.com/gerardbm/vimrc
@@ -246,7 +246,7 @@ let g:lt_location_list_toggle_map = '<leader>e'
 let g:lt_quickfix_list_toggle_map = '<leader>q'
 
 " Tagbar toggle
-nnoremap <F4> :TagbarToggle<CR>
+nnoremap <F7> :TagbarToggle<CR>
 
 " CtrlP settings
 let g:ctrlp_map               = '<C-p>'
@@ -474,7 +474,7 @@ let g:tmux_navigator_no_mappings = 1
 " Instant markdown settings
 let g:instant_markdown_autostart = 0
 
-nnoremap <Leader>M :InstantMarkdownPreview<CR>
+nnoremap <Leader>im :InstantMarkdownPreview<CR>
 
 " Open-browser settings
 let g:openbrowser_browser_commands = [{
@@ -610,7 +610,7 @@ syntax enable
 colorscheme atomic
 
 " Reload the current colorscheme
-nnoremap <S-F12> :call ReloadColorscheme()<CR>
+nnoremap <F11> :call ReloadColorscheme()<CR>
 
 " Show syntax highlighting groups
 nnoremap <Leader>B :call <SID>SynStack()<CR>
@@ -847,8 +847,8 @@ set colorcolumn=80
 set nomore
 
 " Color column
-let g:f9msg = 'Toggle colorcolumn.'
-nnoremap <silent> <F9> :call <SID>ToggleColorColumn()<CR>:echo g:f9msg<CR>
+let g:f10msg = 'Toggle colorcolumn.'
+nnoremap <silent> <F10> :call <SID>ToggleColorColumn()<CR>:echo g:f10msg<CR>
 
 " Show line numbers
 set number
@@ -861,7 +861,7 @@ nnoremap <silent> <F3> :set number!<CR>:echo g:f3msg<CR>
 set relativenumber
 
 let g:f4msg = 'Toggle relative line numbers.'
-nnoremap <silent> <S-F3> :set norelativenumber!<CR>:echo g:f4msg<CR>
+nnoremap <silent> <F4> :set norelativenumber!<CR>:echo g:f4msg<CR>
 
 " Treat long lines as break lines (useful when moving around in them)
 nnoremap <silent> <expr> k (v:count == 0 ? 'gk' : 'k')
@@ -1000,7 +1000,7 @@ nnoremap <Leader>vg :vimgrep /<C-R>//j %<CR>
 " Vimgrep the highlight in the current directory and subdirectories
 nnoremap <Leader>vf :vimgrep /<C-R>//j **/*.
 
-autocmd QuickfixCmdPre make,grep,grepadd,vimgrep,vimgrepadd,helpgrep copen
+autocmd QuickfixCmdPre grep,grepadd,vimgrep,vimgrepadd,helpgrep copen
 
 " Grep settings
 set grepprg=grep\ -nHi
@@ -1060,7 +1060,7 @@ let g:f8msg = 'Toggle spell checking.'
 nnoremap <silent> <F8> :setlocal spell!<CR>:echo g:f8msg<CR>
 
 " Toggle spell dictionary
-nnoremap <silent> <S-F8> :call <SID>ToggleSpelllang()<CR>
+nnoremap <silent> <F9> :call <SID>ToggleSpelllang()<CR>
 
 " Move to next misspelled word
 nnoremap ç ]s
@@ -1121,6 +1121,24 @@ set errorformat=%m\ in\ %f\ on\ line\ %l
 " Execute ':make' and show the result
 nnoremap <silent> <Leader><TAB> :<C-u>QuickRun<CR>
 vnoremap <silent> <Leader><TAB> :QuickRun<CR>
+
+" Run code into a tmux window
+function! Tmuxy(opt) abort
+	if exists('$TMUX')
+		if a:opt ==# 'python'
+			call system("tmux kill-window -t tmuxy")
+			call system("tmux new-window -n tmuxy python3 -ic \"exec(open('" .
+				\ expand("%:p") . "').read())\"")
+		endif
+	else
+		echo 'Tmux is not running.'
+	endif
+endfunction
+
+augroup Tmuxy
+	autocmd!
+	autocmd FileType python nnoremap <Leader>ii :call Tmuxy('python')<CR>
+augroup END
 
 "----------------------------------------------------------------
 " 16. Filetype settings
