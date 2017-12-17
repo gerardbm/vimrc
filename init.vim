@@ -6,7 +6,7 @@
 "  /_/ /_/\___/\____/|___/_/_/ /_/ /_/
 "
 "----------------------------------------------------------------
-"  Version : 1.17.7
+"  Version : 1.17.8
 "  License : MIT
 "  Author  : Gerard Bajona
 "  URL     : https://github.com/gerardbm/vimrc
@@ -1054,8 +1054,7 @@ function! Tmuxy(opt) abort
 	if exists('$TMUX')
 		if a:opt ==# 'python'
 			call system("tmux kill-window -t tmuxy")
-			call system("tmux new-window -n tmuxy python3 -ic \"exec(open('" .
-				\ expand("%:p") . "').read())\"")
+			call system("tmux new-window -n tmuxy python3 " . expand("%:p"))
 		endif
 	else
 		echo 'Tmux is not running.'

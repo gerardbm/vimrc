@@ -1,5 +1,8 @@
 ## Changelog
 
+= 1.17.8 =
+* Function `Tmuxy()` for python doesn't need to use the interactive mode.
+
 = 1.17.7 =
 * Remove `make` from the `autocmd QuickfixCmdPre`.
 * Add the function `Tmuxy()` to run code into a tmux window.
