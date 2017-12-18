@@ -1,5 +1,8 @@
 ## Changelog
 
+= 1.17.9 =
+* Add the cmap `<C-l>` to init CapsLock into the command-line.
+
 = 1.17.8 =
 * Function `Tmuxy()` for python doesn't need to use the interactive mode.
 

@@ -6,7 +6,7 @@
 "  (_)___/_/_/ /_/ /_/_/   \___/
 "
 "----------------------------------------------------------------
-"  Version : 1.17.8
+"  Version : 1.17.9
 "  License : MIT
 "  Author  : Gerard Bajona
 "  URL     : https://github.com/gerardbm/vimrc
@@ -447,6 +447,7 @@ let g:surround_61 = '<%= \r %>'
 
 " Caps Lock settings
 imap <expr><C-l> deoplete#smart_close_popup()."\<Plug>CapsLockToggle"
+cmap <silent> <C-l> <Plug>CapsLockToggle
 
 " Expand region settings
 vmap v <Plug>(expand_region_expand)

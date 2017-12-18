@@ -46,7 +46,7 @@
     - `<C-g>` runs the `ToggleByFname` function.
   - `<C-q>` display a list of sessions to open.
   - `<C-s>` toggles the plugin fugitive `:Gstatus`.
-  - `<C-l>` toggles caps lock from 'Insert Mode'.
+  - `<C-l>` toggles caps lock from 'Insert Mode' and command-line.
   - `<C-q>` expands neosnippet from 'Insert Mode'.
   - `<C-z>` opens a list of the last commits (GV)'.
 
