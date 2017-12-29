@@ -6,7 +6,7 @@
 "  (_)___/_/_/ /_/ /_/_/   \___/
 "
 "----------------------------------------------------------------
-"  Version : 1.17.9
+"  Version : 1.17.10
 "  License : MIT
 "  Author  : Gerard Bajona
 "  URL     : https://github.com/gerardbm/vimrc
@@ -225,8 +225,8 @@ let g:NERDCustomDelimiters      = {
 	\ 'python': {'left': '#'},
 	\ }
 
-nnoremap <Leader>c :call NERDComment(0,'toggle')<CR>
-vnoremap <Leader>c :call NERDComment(0,'toggle')<CR>
+nnoremap cc :call NERDComment(0,'toggle')<CR>
+vnoremap cc :call NERDComment(0,'toggle')<CR>
 
 " NERDTree settings
 nnoremap <silent> <C-n> :call <SID>ToggleNTree()<CR>
@@ -432,10 +432,14 @@ vnoremap <Leader>x :Tabularize /
 vnoremap <Leader>X :Tabularize /.*/<Left><Left><Left>
 
 " Auto-apirs settings
-let g:AutoPairsFlyMode = 0
+set <M-n>=n
+set <M-p>=p
+let g:AutoPairsFlyMode        = 0
+let g:AutoPairsShortcutJump   = '<M-n>'
+let g:AutoPairsShortcutToggle = '<M-p>'
 
 " Closetag settings
-let g:closetag_filenames = '*.html,*.xhtml,*.phtml,*.xml'
+let g:closetag_filenames = '*.html,*.xhtml,*.phtml,*.xml,*.html.erb'
 autocmd Filetype php iab <? <?php ?><Left><Left><Left>
 autocmd Filetype erb iab <% <% %><Left><Left><Left>
 
@@ -698,7 +702,7 @@ nnoremap <Leader>bb :edit <C-R>=expand("%:p:h")<CR>/
 nnoremap <Leader>bg :buffers<CR>:buffer<Space>
 
 " Switch CWD to the directory of the current buffer
-nnoremap <Leader>wd :lcd %:p:h<CR>:pwd<CR>
+nnoremap <Leader>bw :lcd %:p:h<CR>:pwd<CR>
 
 " Copy the filepath to clipboard
 nnoremap <Leader>by :let @+=expand("%:p")<CR>
@@ -741,6 +745,7 @@ set winminheight=0
 set winminwidth=0
 set splitbelow
 set splitright
+set fillchars+=stlnc:\/,vert:│,fold:―,diff:―
 
 " Split windows
 map <C-w>- :split<CR>
@@ -749,7 +754,7 @@ map <C-w>j :close<CR>
 map <C-w>x :q!<CR>
 map <C-w>, <C-w>=
 
-" Resizing windows
+" Resize windows
 if bufwinnr(1)
 	map + :resize +1<CR>
 	map - :resize -1<CR>
@@ -884,15 +889,13 @@ vnoremap <silent> ñ <Esc>:call <SID>ToggleCPosition('normal! gv')<CR>
 " Move lines
 nnoremap <C-k> :m .-2<CR>==
 vnoremap <C-k> :m '<-2<CR>gv=gv
-inoremap <C-k> <Esc>:m .-2<CR>==gi
 
 nnoremap <C-j> :m .+1<CR>==
 vnoremap <C-j> :m '>+1<CR>gv=gv
-inoremap <C-j> <Esc>:m .+1<CR>==gi
 
 " Duplicate a line
-nnoremap <Leader>ds yyP
-nnoremap <Leader>df yyp
+nnoremap cv yyP
+nnoremap cx yyp
 
 " Folding
 set foldmethod=marker
@@ -918,7 +921,6 @@ inoremap <expr><C-b> deoplete#smart_close_popup()."\<Left>"
 inoremap <expr><C-f> deoplete#smart_close_popup()."\<Right>"
 
 " Remove one character
-inoremap <C-s> <BS>
 inoremap <C-d> <DEL>
 
 " Command Mode
@@ -926,7 +928,6 @@ cnoremap <C-b> <Left>
 cnoremap <C-f> <Right>
 cnoremap <C-a> <Home>
 cnoremap <C-e> <End>
-cnoremap <C-s> <BS>
 cnoremap <C-d> <DEL>
 cnoremap <C-p> <Up>
 cnoremap <C-n> <Down>
@@ -1099,6 +1100,10 @@ nnoremap <Leader>f mao<Esc>`a
 
 " Enter a new line Up from 'Normal Mode'
 nnoremap <Leader>F maO<Esc>`a
+
+" Insert brackets faster (not English layout)
+inoremap ññ []<left>
+inoremap çç {}<left>
 
 "----------------------------------------------------------------
 " 15. Make settings

@@ -1,5 +1,29 @@
 ## Changelog
 
+= 1.17.10 =
+* The nnoremap `<Leader>cc` (toggle NERDCommenter) changes to `cc`.
+  - Faster to type.
+* Remove the inoremaps `<C-k>` and `<C-j>` to move lines from Insert Mode.
+  - These maps must be only for Normal and Visual modes.
+* Add the map `<M-n>` to jump to the next AutoPairs match.
+* Add the map `<M-p>` to toggle the plugin AutoPairs.
+* Add a workaround to fix an AutoPairs bug into nvim for `<M-">`.
+* Update `closetag_filenames` with `*.html.erb`.
+* Set fillchars with different unicode symbols.
+* The nnoremap `<Leader>df` changes to `cv`.
+  - Faster to type.
+* The nnoremap `<Leader>ds` changes to `cx`.
+  - Faster to type.
+* Add the inoremap `ññ` to insert `[]` faster.
+  - Faster to type.
+* Add the inoremap `çç` to insert `{}` faster.
+  - Faster to type.
+* The nnoremap `<Leader>wd` (switch CWD) changes to `<Leader>bw`.
+  - Back to the version 1.17.4.
+* Remove the inoremap `<C-s>` to delete the last character.
+* Remove the cnoremap `<C-s>` to delete the last character.
+* KEYMAPS.md file has been reorganized.
+
 = 1.17.9 =
 * Add the cmap `<C-l>` to init CapsLock into the command-line.
 
@@ -10,7 +34,7 @@
 * Remove `make` from the `autocmd QuickfixCmdPre`.
 * Add the function `Tmuxy()` to run code into a tmux window.
 * Add the nnoremap `<Leader>ii` to run the function `Tmuxy()`.
-* The nnoremap `<Leaer>M` (InstantMarkdownPreview) change to `<Leader>im`.
+* The nnoremap `<Leader>M` (InstantMarkdownPreview) changes to `<Leader>im`.
 * Redistribute some Fkeys and avoid the Shift + Fkeys:
 * - The nnoremap `<F4>` (toggle Tagbar) is now `<F7>`.
 * - The nnoremap `<S-F3>` (toggle relative numbers) is now `<F4>`.
@@ -21,8 +45,8 @@
 
 = 1.17.6 =
 * Check if vim 8 has terminal.
-* The nnoremap `<Leader>ii` change to `<Leader>gs` (stage hunk).
-* The nnoremap `<Leader>io` change to `<Leader>gu` (unstage hunk).
+* The nnoremap `<Leader>ii` changes to `<Leader>gs` (stage hunk).
+* The nnoremap `<Leader>io` changes to `<Leader>gu` (unstage hunk).
   - This change avoids staging hunks by error pressing double i.
 * Add the nnoremap `<Leader>gg` to search a string between commits (Glog).
   - With this, I extended the function `GrepWrapper()`.
@@ -30,9 +54,9 @@
   - Neovim was using `~/.vim` path by default...
 * Add the path for the clang library.
   - Deoplete couldn't find it on Debian. It worked fine on Arch, though.
-* The nnoremap `<C-W><CR>` (close the window) change to `<C-W>j`.
-* The nnoremap `<F10>` (fullscreen window) change to `<C-f>`.
-* The nnoremap `<Leader>bd` (close buffer) change to `<C-b>`.
+* The nnoremap `<C-W><CR>` (close the window) changes to `<C-W>j`.
+* The nnoremap `<F10>` (fullscreen window) changes to `<C-f>`.
+* The nnoremap `<Leader>bd` (close buffer) changes to `<C-b>`.
 * Remove the nnoremap `<Leader>ba` (to close all buffers). Never used it.
 
 = 1.17.5 =
