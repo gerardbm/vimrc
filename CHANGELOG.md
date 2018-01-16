@@ -1,5 +1,8 @@
 ## Changelog
 
+= 1.17.11 =
+* Change the workspace directory name (for vimwiki).
+
 = 1.17.10 =
 * The nnoremap `<Leader>cc` (toggle NERDCommenter) changes to `cc`.
   - Faster to type.

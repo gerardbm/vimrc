@@ -6,7 +6,7 @@
 "  (_)___/_/_/ /_/ /_/_/   \___/
 "
 "----------------------------------------------------------------
-"  Version : 1.17.10
+"  Version : 1.17.11
 "  License : MIT
 "  Author  : Gerard Bajona
 "  URL     : https://github.com/gerardbm/vimrc
@@ -494,7 +494,7 @@ let g:vimwiki_hl_headers    = 1
 let g:vimwiki_hl_cb_checked = 1
 let g:vimwiki_url_maxsave   = 0
 let g:vimwiki_list          = [{
-	\ 'path': '~/DEV/vimwiki',
+	\ 'path': '~/Workspace/vimwiki',
 	\ 'syntax': 'markdown',
 	\ }]
 
