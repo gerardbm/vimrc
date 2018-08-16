@@ -6,7 +6,7 @@
 "  /_/ /_/\___/\____/|___/_/_/ /_/ /_/
 "
 "----------------------------------------------------------------
-"  Version : 1.17.11
+"  Version : 1.17.12
 "  License : MIT
 "  Author  : Gerard Bajona
 "  URL     : https://github.com/gerardbm/vimrc
@@ -384,7 +384,6 @@ augroup end
 let g:quickrun_no_default_key_mappings = 0
 let g:quickrun_config = {
 	\ '_' : {
-		\ 'runner'                        : 'vimproc',
 		\ 'runner/vimproc/updatetime'     : 60,
 		\ 'outputter'                     : 'buffer',
 		\ 'outputter/buffer/split'        : 'vertical 32',
@@ -408,7 +407,9 @@ let g:quickrun_config.html = {
 	\ }
 
 let g:quickrun_config.markdown = {
-	\ 'command' : 'qutebrowser',
+	\ 'type': 'markdown/pandoc',
+	\ 'cmdopt': '-s',
+	\ 'outputter': 'browser'
 	\ }
 
 " --- Edition ---
@@ -466,7 +467,7 @@ nnoremap <Leader>W :ArgWrap<CR>
 
 " --- Misc ---
 " Vim-tmux navigator settings
-let g:tmux_navigator_no_mappings = 1
+let g:tmux_navigator_no_mappings = 0
 
 " Instant markdown settings
 let g:instant_markdown_autostart = 0

@@ -23,7 +23,7 @@ set guioptions+=a
 
 " Typography
 if has("gui_gtk2") || has("gui_gtk3")
-	set guifont=Terminess\ Powerline\ 12
+	set guifont=Terminess\ Powerline\ 13
 elseif has("gui_macvim")
 	set guifont=Menlo\ Regular:h14
 elseif has("gui_win32")
@@ -31,7 +31,7 @@ elseif has("gui_win32")
 endif
 
 " Toggle fullscreen
-" - Don't need it anymore. WM does it (Super+f).
+" - Don't need it anymore; i3wm does it (Super+f).
 " map <silent> <S-F11> :call system("wmctrl -ir " . v:windowid . " -b toggle,fullscreen")<CR>
 
 " Set initial window size

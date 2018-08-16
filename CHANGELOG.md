@@ -1,5 +1,9 @@
 ## Changelog
 
+= 1.17.12 =
+* Remove 'runner/vimproc' (vim-quickrun settings).
+* Improve markdown otuput for vim-quickrun.
+
 = 1.17.11 =
 * Change the workspace directory name (for vimwiki).
 
