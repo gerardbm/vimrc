@@ -6,7 +6,7 @@
 "  (_)___/_/_/ /_/ /_/_/   \___/
 "
 "----------------------------------------------------------------
-"  Version : 1.17.12
+"  Version : 1.17.13
 "  License : MIT
 "  Author  : Gerard Bajona
 "  URL     : https://github.com/gerardbm/vimrc
@@ -64,8 +64,8 @@ cnoreabbrev help vert help
 
 " Terminal
 if has("terminal")
-	nnoremap <silent> <C-t> :call <SID>ToggleTerminal()<CR>
-	set termkey=<C-t>
+	nnoremap <silent> <F7> :call <SID>ToggleTerminal()<CR>
+	set termkey=<F7>
 	set termsize=10x0
 endif
 
@@ -245,8 +245,11 @@ nnoremap <Leader>l :lnext<CR>zz
 let g:lt_location_list_toggle_map = '<leader>e'
 let g:lt_quickfix_list_toggle_map = '<leader>q'
 
-" Tagbar toggle
-nnoremap <F7> :TagbarToggle<CR>
+" Tagbar toggle (custom function)
+nnoremap <silent> <C-t> :call <SID>ToggleTagbar()<CR>
+let g:tagbar_autofocus        = 1
+let g:tagbar_show_linenumbers = 2
+let g:tagbar_sort             = 0
 
 " CtrlP settings
 let g:ctrlp_map               = '<C-p>'
@@ -1472,7 +1475,7 @@ function! s:PreventGV() abort
 endfunction
 
 " Better toggle for NERDTree
-function! s:ToggleNTree()
+function! s:ToggleNTree() abort
 	if (exists ('t:NERDTreeBufName') && (bufwinnr(t:NERDTreeBufName) != -1))
 		if &modifiable
 			execute ':NERDTreeFocus'
@@ -1481,6 +1484,29 @@ function! s:ToggleNTree()
 		endif
 	else
 		execute ':NERDTreeFind'
+	endif
+endfunction
+
+" Get Tagbar buffer name
+function! s:TagbarBufName() abort
+	if !exists('t:tagbar_buf_name')
+		let s:buffer_seqno += 1
+		let t:tagbar_buf_name = '__Tagbar__.' . s:buffer_seqno
+	endif
+	return t:tagbar_buf_name
+endfunction
+
+" Better toggle for Tagbar
+function! s:ToggleTagbar() abort
+	let tagbarwinnr = bufwinnr(s:TagbarBufName())
+	if tagbarwinnr != -1
+		if &modifiable
+			execute tagbarwinnr 'wincmd w'
+		else
+			execute ':TagbarClose'
+		endif
+	else
+		execute ':TagbarOpen'
 	endif
 endfunction
 

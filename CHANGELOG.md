@@ -1,5 +1,9 @@
 ## Changelog
 
+= 1.17.13 =
+* Switch nnoremaps `<F7>` (is now terminal) and `<C-t>` (is now Tagbar).
+* Create a custom function to have a better toggle for Tagbar.
+
 = 1.17.12 =
 * Remove 'runner/vimproc' (vim-quickrun settings).
 * Improve markdown otuput for vim-quickrun.

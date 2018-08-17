@@ -6,7 +6,7 @@
   - `<F4>` toggles relative numbers.
   - `<F5>` reloads all open buffers.
   - `<F6>` toggles list.
-  - `<F7>` toggles Tagbar (plugin).
+  - `<F7>` opens the `:terminal`.
   - `<F8>` toggles spell checking.
   - `<F9>` toggles spell dictionaries.
   - `<F10>` toggles colorcolumn.
@@ -180,6 +180,7 @@
   - `<C-n>` opens, focuses or closes NERDTree.
   - `<C-p>` opens the CtrlP menu buffers.
   - `<C-q>` display a list of sessions to open.
+  - `<C-t>` opens, focuses or closes Tagbar.
   - `<Leader>ii` runs code into a tmux window.
   - `<Leader><TAB>` runs the code of the current buffer.
   - `<Leader>B` shows syntax highlighting groups.
@@ -208,12 +209,9 @@
   - `<C-g>` runs the `ToggleByFname` function.
 
 ### Terminal
-- Normal mode
-  - `<C-t>` opens the `:terminal`.
-
 - Terminal mode
-  - `<C-t>` returns to the last window (Neovim).
-  - `<C-t>t` returns to the last window (Vim).
+  - `<F7>` returns to the last window (Neovim).
+  - `<F7>t` returns to the last window (Vim).
 
 ### Commands
 - Command mode
