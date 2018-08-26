@@ -109,7 +109,7 @@ This configuration is focused on programming in Python, C, Go, Ruby, Bash, JavaS
 - Color schemes:
   - [vim-atomic](https://github.com/gerardbm/vim-atomic)
 
-Read the [code](https://github.com/gerardbm/vimrc/blob/master/vimrc) directly to know more details.
+Read the [code](https://github.com/gerardbm/vimrc/blob/master/vim/.vimrc) directly to know more details.
 
 ## Screenshot
 
