@@ -1,5 +1,8 @@
 ## Changelog
 
+= 1.17.14 =
+* Fix italics issue (only in Vim).
+
 = 1.17.13 =
 * Switch nnoremaps `<F7>` (is now terminal) and `<C-t>` (is now Tagbar).
 * Create a custom function to have a better toggle for Tagbar.

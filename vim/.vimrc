@@ -6,7 +6,7 @@
 "  (_)___/_/_/ /_/ /_/_/   \___/
 "
 "----------------------------------------------------------------
-"  Version : 1.17.13
+"  Version : 1.17.14
 "  License : MIT
 "  Author  : Gerard Bajona
 "  URL     : https://github.com/gerardbm/vimrc
@@ -601,6 +601,10 @@ autocmd Filetype *
 	\     setlocal omnifunc=syntaxcomplete#Complete |
 	\ endif
 endif
+
+" Fix italics issue
+let &t_ZH="\e[3m"
+let &t_ZR="\e[23m"
 
 "----------------------------------------------------------------
 " 5. Scheme and colors
