@@ -2,6 +2,7 @@
 
 = 1.17.14 =
 * Fix italics issue (only in Vim).
+* Fix tmux-navigator setting introduced in v1.17.12 (only in Neovim).
 
 = 1.17.13 =
 * Switch nnoremaps `<F7>` (is now terminal) and `<C-t>` (is now Tagbar).

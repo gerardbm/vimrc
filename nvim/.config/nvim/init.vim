@@ -6,7 +6,7 @@
 "  /_/ /_/\___/\____/|___/_/_/ /_/ /_/
 "
 "----------------------------------------------------------------
-"  Version : 1.17.13
+"  Version : 1.17.14
 "  License : MIT
 "  Author  : Gerard Bajona
 "  URL     : https://github.com/gerardbm/vimrc
@@ -470,7 +470,7 @@ nnoremap <Leader>W :ArgWrap<CR>
 
 " --- Misc ---
 " Vim-tmux navigator settings
-let g:tmux_navigator_no_mappings = 0
+let g:tmux_navigator_no_mappings = 1
 
 " Instant markdown settings
 let g:instant_markdown_autostart = 0
