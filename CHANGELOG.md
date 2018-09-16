@@ -1,5 +1,18 @@
 ## Changelog
 
+= 1.18.0 =
+* Install the plugin vim-polyglot (better syntax support).
+* Install the plugin perlomni.vim (Perl support).
+* Install the plugin vim-ruby (Ruby support).
+* Install the plugin vim-rails (RoR support).
+* Install the plugin vim-endwise (end certain structures).
+* Install the plugin phpcomplete.vim (PHP support).
+* Install the plugin vim-racer (Rust support).
+* Remove the plugin neopairs.vim (using auto-pairs).
+* Remove the plugin vim-jquery (not used).
+* Remove the plugin vim-javascript (already into vim-polyglot).
+* Reformat plugins organization.
+
 = 1.17.14 =
 * Fix italics issue (only in Vim).
 * Fix tmux-navigator setting introduced in v1.17.12 (only in Neovim).

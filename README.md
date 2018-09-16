@@ -13,7 +13,7 @@ Easily highlight the word under the cursor or the current selection. A lot of co
 
 Some useful tools have been integrated. Plugins: **CtrlP** (navigate between open buffers, MRU or directory files), **NERDTree** (tree files), **vim-fugitive** (git commands), **GV** (navigate between git commits), **undotree** (history visualizer), **ALE** (async syntax linter, it works while you type), **deoplete** (autocompletion for Vim and Neovim), **neosnippet** (code snippets), **QuickRun** (it's awesome at running code), **Vimwiki** (organize notes, manage todo-lists...), and much more.
 
-This configuration is focused on programming in Python, C, Go, Ruby, Bash, JavaScript and web development in general, with HTML5 and CSS3.
+This configuration is focused on programming in C/C++, Go, Rust, Perl, Python, Ruby, PHP, Bash, JavaScript and web development in general, with HTML5 and CSS3.
 
 **More specific information:**
 - [Keymaps](https://github.com/gerardbm/vimrc/blob/master/KEYMAPS.md)
@@ -42,40 +42,66 @@ This configuration is focused on programming in Python, C, Go, Ruby, Bash, JavaS
   - [undotree](https://github.com/mbbill/undotree)
   - [ale](https://github.com/w0rp/ale)
 
-- Languages:
-  - [vim-go](https://github.com/fatih/vim-go)
-  - [css.vim](https://github.com/JulesWang/css.vim)
-  - [vim-css3-syntax](https://github.com/hail2u/vim-css3-syntax)
-  - [vim-jquery](https://github.com/itspriddle/vim-jquery)
-  - [vim-javascript](https://github.com/pangloss/vim-javascript)
-  - [tern_for_vim](https://github.com/ternjs/tern_for_vim)
-  - [vim-jsbeautify](https://github.com/maksimr/vim-jsbeautify)
-  - [neco-syntax](https://github.com/Shougo/neco-syntax)
-  - [vim-ruby](https://github.com/vim-ruby/vim-ruby)
-
-- Autocomplete:
-  - [supertab](https://github.com/ervandew/supertab)
-  - [deoplete](https://github.com/Shougo/deoplete)
-  - [neopairs.vim](https://github.com/Shougo/neopairs.vim)
-  - [deoplete-jedi](https://github.com/zchee/deoplete-jedi)
-  - [deoplete-zsh](https://github.com/zchee/deoplete-zsh)
-  - [deoplete-go](https://github.com/zchee/deoplete-go)
-  - [gocode](https://github.com/nsf/gocode)
-  - [deoplete-ternjs](https://github.com/carlitux/deoplete-ternjs)
-  - [jspc.vim](https://github.com/othree/jspc.vim)
-  - [html5.vim](https://github.com/othree/html5.vim)
-  - [neco-ghc](https://github.com/eagletmt/neco-ghc)
-  - [clang_complete](https://github.com/Rip-Rip/clang_complete)
-  - [neco-vim](https://github.com/Shougo/neco-vim)
-
 - Specific for Vim and Deoplete:
   - [nvim-yarp](https://github.com/roxma/nvim-yarp)
   - [vim-hug-neovim-rpc](https://github.com/roxma/vim-hug-neovim-rpc)
 
-- Snippets:
-  - [neosnippet](https://github.com/Shougo/neosnippet)
+- Autocomplete:
+  - [deoplete](https://github.com/Shougo/deoplete)
+  - [neosnippet.vim](https://github.com/Shougo/neosnippet.vim)
   - [neosnippet-snippets](https://github.com/Shougo/neosnippet-snippets)
   - [context_filetype.vim](https://github.com/Shougo/context_filetype.vim)
+  - [supertab](https://github.com/ervandew/supertab)
+
+- C/C++ support
+  - [clang_complete](https://github.com/Rip-Rip/clang_complete)
+
+- Go support
+  - [vim-go](https://github.com/fatih/vim-go)
+  - [gocode](https://github.com/nsf/gocode)
+  - [deoplete-go](https://github.com/zchee/deoplete-go)
+
+- Perl support
+  - [perlomni.vim](https://github.com/c9s/perlomni.vim)
+
+- Python support
+  - [deoplete-jedi](https://github.com/zchee/deoplete-jedi)
+
+- Ruby support
+  - [vim-ruby](https://github.com/vim-ruby/vim-ruby)
+  - [vim-rails](https://github.com/tpope/vim-rails)
+  - [vim-endwise](https://github.com/tpope/vim-endwise)
+
+- PHP support
+  - [phpcomplete.vim](https://github.com/shawncplus/phpcomplete.vim)
+
+- Haskell support
+  - [neco-ghc](https://github.com/eagletmt/neco-ghc)
+
+- Rust support
+  - [vim-racer](https://github.com/racer-rust/vim-racer)
+
+- Zsh support
+  - [deoplete-zsh](https://github.com/zchee/deoplete-zsh)
+
+- JavaScript support
+  - [tern_for_vim](https://github.com/ternjs/tern_for_vim)
+  - [deoplete-ternjs](https://github.com/carlitux/deoplete-ternjs)
+  - [jspc.vim](https://github.com/othree/jspc.vim)
+  - [vim-jsbeautify](https://github.com/maksimr/vim-jsbeautify)
+
+- CSS support
+  - [css.vim](https://github.com/JulesWang/css.vim)
+  - [vim-css3-syntax](https://github.com/hail2u/vim-css3-syntax)
+
+- HTML support
+  - [html5.vim](https://github.com/othree/html5.vim)
+
+- VimL support
+  - [neco-vim](https://github.com/Shougo/neco-vim)
+
+- Syntax files support:
+  - [neco-syntax](https://github.com/Shougo/neco-syntax)
 
 - Run code:
   - [vim-quickrun](https://github.com/thinca/vim-quickrun)
@@ -101,6 +127,7 @@ This configuration is focused on programming in Python, C, Go, Ruby, Bash, JavaS
   - [vim-instant-markdown](https://github.com/suan/vim-instant-markdown)
   - [vim-characterize](https://github.com/tpope/vim-characterize)
   - [open-browser.vim](https://github.com/tyru/open-browser.vim)
+  - [vim-polyglot](https://github.com/sheerun/vim-polyglot)
   - [goyo.vim](https://github.com/junegunn/goyo.vim)
   - [webapi-vim](https://github.com/mattn/webapi-vim)
   - [emmet-vim](https://github.com/mattn/emmet-vim)

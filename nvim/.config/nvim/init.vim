@@ -6,7 +6,7 @@
 "  /_/ /_/\___/\____/|___/_/_/ /_/ /_/
 "
 "----------------------------------------------------------------
-"  Version : 1.17.14
+"  Version : 1.18.0
 "  License : MIT
 "  Author  : Gerard Bajona
 "  URL     : https://github.com/gerardbm/vimrc
@@ -92,36 +92,62 @@ call plug#begin('~/.config/nvim/plugged')
 	Plug 'mbbill/undotree'
 	Plug 'w0rp/ale'
 
-	" Languages
-	Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries'  }
-	Plug 'JulesWang/css.vim'
-	Plug 'hail2u/vim-css3-syntax'
-	Plug 'itspriddle/vim-jquery'
-	Plug 'pangloss/vim-javascript'
-	Plug 'ternjs/tern_for_vim', { 'do': 'npm install' }
-	Plug 'maksimr/vim-jsbeautify'
-	Plug 'Shougo/neco-syntax'
-	Plug 'vim-ruby/vim-ruby'
-
 	" Autocomplete
-	Plug 'ervandew/supertab'
 	Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-	Plug 'Shougo/neopairs.vim'
-	Plug 'zchee/deoplete-jedi'
-	Plug 'zchee/deoplete-zsh'
-	Plug 'zchee/deoplete-go', { 'do': 'make'}
-	Plug 'nsf/gocode', { 'rtp': 'nvim', 'do': '~/.config/nvim/plugged/gocode/nvim/symlink.sh' }
-	Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern' }
-	Plug 'othree/jspc.vim'
-	Plug 'othree/html5.vim'
-	Plug 'eagletmt/neco-ghc'
-	Plug 'Rip-Rip/clang_complete'
-	Plug 'Shougo/neco-vim'
-
-	" Snippets
-	Plug 'Shougo/neosnippet'
+	Plug 'Shougo/neosnippet.vim'
 	Plug 'Shougo/neosnippet-snippets'
 	Plug 'Shougo/context_filetype.vim'
+	Plug 'ervandew/supertab'
+
+	" C/C++ support
+	Plug 'Rip-Rip/clang_complete'
+
+	" Go support
+	Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries'  }
+	Plug 'nsf/gocode', { 'rtp': 'nvim', 'do': '~/.config/nvim/plugged/gocode/nvim/symlink.sh' }
+	Plug 'zchee/deoplete-go', { 'do': 'make'}
+
+	" Perl support
+	Plug 'c9s/perlomni.vim'
+
+	" Python support
+	Plug 'zchee/deoplete-jedi'
+
+	" Ruby support
+	Plug 'vim-ruby/vim-ruby'
+	Plug 'tpope/vim-rails'
+	Plug 'tpope/vim-endwise'
+
+	" PHP support
+	Plug 'shawncplus/phpcomplete.vim'
+
+	" Haskell support
+	Plug 'eagletmt/neco-ghc'
+
+	" Rust support
+	Plug 'racer-rust/vim-racer'
+
+	" Zsh support
+	Plug 'zchee/deoplete-zsh'
+
+	" JavaScript support
+	Plug 'ternjs/tern_for_vim', { 'do': 'npm install' }
+	Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern' }
+	Plug 'othree/jspc.vim'
+	Plug 'maksimr/vim-jsbeautify'
+
+	" CSS support
+	Plug 'JulesWang/css.vim'
+	Plug 'hail2u/vim-css3-syntax'
+
+	" HTML support
+	Plug 'othree/html5.vim'
+
+	" VimL support
+	Plug 'Shougo/neco-vim'
+
+	" Syntax files support
+	Plug 'Shougo/neco-syntax'
 
 	" Run code
 	Plug 'thinca/vim-quickrun'
@@ -147,6 +173,7 @@ call plug#begin('~/.config/nvim/plugged')
 	Plug 'suan/vim-instant-markdown'
 	Plug 'tpope/vim-characterize'
 	Plug 'tyru/open-browser.vim'
+	Plug 'sheerun/vim-polyglot'
 	Plug 'junegunn/goyo.vim'
 	Plug 'mattn/webapi-vim'
 	Plug 'mattn/emmet-vim'
@@ -426,7 +453,7 @@ vnoremap <Leader>x :Tabularize /
 " Tabularize only the first match on the line (e.g. /=.*/)
 vnoremap <Leader>X :Tabularize /.*/<Left><Left><Left>
 
-" Auto-apirs settings
+" Auto-pairs settings
 let g:AutoPairsFlyMode        = 0
 let g:AutoPairsShortcutJump   = '<M-n>'
 let g:AutoPairsShortcutToggle = '<M-p>'
