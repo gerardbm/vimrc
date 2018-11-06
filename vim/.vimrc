@@ -6,7 +6,7 @@
 "  (_)___/_/_/ /_/ /_/_/   \___/
 "
 "----------------------------------------------------------------
-"  Version : 1.18.0
+"  Version : 1.18.1
 "  License : MIT
 "  Author  : Gerard Bajona
 "  URL     : https://github.com/gerardbm/vimrc
@@ -102,7 +102,7 @@ call plug#begin('~/.vim/plugged')
 	Plug 'roxma/vim-hug-neovim-rpc'
 
 	" Autocomplete
-	Plug 'Shougo/deoplete.nvim'
+	Plug 'Shougo/deoplete.nvim', { 'commit': '98ffe701a8c3b6b6371cd02c293fe03fbf86fb76' }
 	Plug 'Shougo/neosnippet.vim'
 	Plug 'Shougo/neosnippet-snippets'
 	Plug 'Shougo/context_filetype.vim'
@@ -262,6 +262,7 @@ nnoremap <silent> <C-n> :call <SID>ToggleNTree()<CR>
 let g:ale_linters = {
 	\ 'python'     : ['pylint'],
 	\ 'javascript' : ['jshint'],
+	\ 'css'        : ['csslint'],
 	\ }
 
 " Navigate between errors

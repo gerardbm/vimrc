@@ -1,5 +1,9 @@
 ## Changelog
 
+= 1.18.1 =
+* Downgrade deoplete.nvim (Vim only).
+* Add csslint in the ALE options.
+
 = 1.18.0 =
 * Install the plugin vim-polyglot (better syntax support).
 * Install the plugin perlomni.vim (Perl support).
