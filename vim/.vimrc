@@ -6,7 +6,7 @@
 "  (_)___/_/_/ /_/ /_/_/   \___/
 "
 "----------------------------------------------------------------
-"  Version : 1.18.1
+"  Version : 1.18.2
 "  License : MIT
 "  Author  : Gerard Bajona
 "  URL     : https://github.com/gerardbm/vimrc
@@ -520,6 +520,9 @@ let g:openbrowser_browser_commands = [{
 	\ }]
 
 nmap <Leader>gl <Plug>(openbrowser-open)
+
+" Polyglot
+let g:polyglot_disabled = ['markdown']
 
 " Vimwiki settings
 let g:vimwiki_hl_headers    = 1
@@ -1208,6 +1211,7 @@ augroup end
 augroup markdown
 	autocmd!
 	autocmd FileType markdown setl spell
+	nnoremap <silent> <Leader>ik :call <SID>Marky()<CR>
 augroup end
 
 let g:markdown_fenced_languages = [
@@ -1539,6 +1543,22 @@ function! s:ToggleTagbar() abort
 		endif
 	else
 		execute ':TagbarOpen'
+	endif
+endfunction
+
+" Convert MD to EPUB and preview with mupdf
+" Tools required: pandoc and mupdf
+function! s:Marky() abort
+	update
+	let l:expout = expand('%:r') . '.epub'
+	let l:expint = expand('%')
+	let l:sep = ' '
+	let l:checkps = system('lsof -a / | grep' .l:sep . l:expout . l:sep)
+	call system('pandoc -s -o ' . l:expout . l:sep . l:expint)
+	if l:checkps ==# ''
+		call system('mupdf ' . l:expout . l:sep . '&')
+	else
+		call system('pkill -HUP mupdf')
 	endif
 endfunction
 

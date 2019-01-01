@@ -181,7 +181,8 @@
   - `<C-p>` opens the CtrlP menu buffers.
   - `<C-q>` display a list of sessions to open.
   - `<C-t>` opens, focuses or closes Tagbar.
-  - `<Leader>ii` runs code into a tmux window.
+  - `<Leader>ii` runs Python code into a tmux window.
+  - `<Leader>ik` converts MD to EPUB and previews it with Mupdf.
   - `<Leader><TAB>` runs the code of the current buffer.
   - `<Leader>B` shows syntax highlighting groups.
   - `<Leader>u` toggles the plugin Undotree.

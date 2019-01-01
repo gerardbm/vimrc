@@ -1,5 +1,8 @@
 ## Changelog
 
+= 1.18.2 =
+* Function to convert MD to EPUB and preview it with Mupdf
+
 = 1.18.1 =
 * Downgrade deoplete.nvim (Vim only).
 * Add csslint in the ALE options.
