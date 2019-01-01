@@ -6,7 +6,7 @@
 "  /_/ /_/\___/\____/|___/_/_/ /_/ /_/
 "
 "----------------------------------------------------------------
-"  Version : 1.18.0
+"  Version : 1.18.1
 "  License : MIT
 "  Author  : Gerard Bajona
 "  URL     : https://github.com/gerardbm/vimrc
@@ -253,6 +253,7 @@ nnoremap <silent> <C-n> :call <SID>ToggleNTree()<CR>
 let g:ale_linters = {
 	\ 'python'     : ['pylint'],
 	\ 'javascript' : ['jshint'],
+	\ 'css'        : ['csslint'],
 	\ }
 
 " Navigate between errors
