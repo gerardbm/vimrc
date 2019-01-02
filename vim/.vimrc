@@ -6,7 +6,7 @@
 "  (_)___/_/_/ /_/ /_/_/   \___/
 "
 "----------------------------------------------------------------
-"  Version : 1.18.2
+"  Version : 1.18.3
 "  License : MIT
 "  Author  : Gerard Bajona
 "  URL     : https://github.com/gerardbm/vimrc
@@ -1211,7 +1211,9 @@ augroup end
 augroup markdown
 	autocmd!
 	autocmd FileType markdown setl spell
-	nnoremap <silent> <Leader>ik :call <SID>Marky()<CR>
+	nnoremap <silent> <Leader>ih :call <SID>Marky('.html')<CR>
+	nnoremap <silent> <Leader>ij :call <SID>Marky('.pdf')<CR>
+	nnoremap <silent> <Leader>ik :call <SID>Marky('.epub')<CR>
 augroup end
 
 let g:markdown_fenced_languages = [
@@ -1548,9 +1550,9 @@ endfunction
 
 " Convert MD to EPUB and preview with mupdf
 " Tools required: pandoc and mupdf
-function! s:Marky() abort
+function! s:Marky(format) abort
 	update
-	let l:expout = expand('%:r') . '.epub'
+	let l:expout = expand('%:r') . a:format
 	let l:expint = expand('%')
 	let l:sep = ' '
 	let l:checkps = system('lsof -a / | grep' .l:sep . l:expout . l:sep)

@@ -1,5 +1,8 @@
 ## Changelog
 
+= 1.18.3 =
+* Extend Marky function to export to PDF and HTML.
+
 = 1.18.2 =
 * Function to convert MD to EPUB and preview it with Mupdf
 
