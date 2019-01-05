@@ -6,7 +6,7 @@
 "  (_)___/_/_/ /_/ /_/_/   \___/
 "
 "----------------------------------------------------------------
-"  Version : 1.18.3
+"  Version : 1.18.4
 "  License : MIT
 "  Author  : Gerard Bajona
 "  URL     : https://github.com/gerardbm/vimrc
@@ -102,7 +102,7 @@ call plug#begin('~/.vim/plugged')
 	Plug 'roxma/vim-hug-neovim-rpc'
 
 	" Autocomplete
-	Plug 'Shougo/deoplete.nvim', { 'commit': '98ffe701a8c3b6b6371cd02c293fe03fbf86fb76' }
+	Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 	Plug 'Shougo/neosnippet.vim'
 	Plug 'Shougo/neosnippet-snippets'
 	Plug 'Shougo/context_filetype.vim'
@@ -221,7 +221,7 @@ nnoremap <Leader>gs :GitGutterStageHunk<CR>
 nnoremap <Leader>gu :GitGutterUndoHunk<CR>
 
 " Fugitive settings
-nnoremap <C-s> :<C-U>call <SID>ToggleGsPrev()<CR>
+nnoremap <C-s> :Gstatus<CR>
 nnoremap <Leader>gh :Gsdiff<CR>
 nnoremap <Leader>gv :Gvdiff<CR>
 nnoremap <Leader>gb :Gblame<CR>
@@ -1491,17 +1491,6 @@ function! s:ToggleGGPrev()
 		else
 			echo 'GitGutter preview.'
 		endif
-	endif
-endfunction
-
-" Toggle GstatusPreview
-function! s:ToggleGsPrev()
-	if &previewwindow
-		echo 'Gstatus closed.'
-		pclose
-	else
-		echo 'Gstatus preview.'
-		Gstatus
 	endif
 endfunction
 

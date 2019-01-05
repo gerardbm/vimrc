@@ -1,5 +1,9 @@
 ## Changelog
 
+= 1.18.4 =
+* Upgrade deoplete.nvim (Vim only). They fixed bugs.
+* Remove `ToggleGsPrev()`. Use `:Gstatus` directly.
+
 = 1.18.3 =
 * Extend Marky function to export to PDF and HTML.
 
