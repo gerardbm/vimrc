@@ -1,5 +1,12 @@
 ## Changelog
 
+= 1.19.0 =
+* The nnoremap `<C-b>` (close buffer) changes to `<Leader>bd`. Regression.
+* Install the plugin vim-notebook to use maxima into Vim.
+* Add the nnoremap `<Leader>ins` to run the command `:NotebookStart<CR>`.
+* Add the nnoremap `<Leader>inc` to run the command `:NotebookClose<CR>`.
+* Add the nnoremap `<Leader>inn` to run the command `:NotebookEvaluate<CR>`.
+
 = 1.18.4 =
 * Upgrade deoplete.nvim (Vim only). They fixed bugs.
 * Remove `ToggleGsPrev()`. Use `:Gstatus` directly.

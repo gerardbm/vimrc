@@ -6,7 +6,7 @@
 "  /_/ /_/\___/\____/|___/_/_/ /_/ /_/
 "
 "----------------------------------------------------------------
-"  Version : 1.18.4
+"  Version : 1.19.0
 "  License : MIT
 "  Author  : Gerard Bajona
 "  URL     : https://github.com/gerardbm/vimrc
@@ -173,6 +173,7 @@ call plug#begin('~/.config/nvim/plugged')
 	Plug 'suan/vim-instant-markdown'
 	Plug 'tpope/vim-characterize'
 	Plug 'tyru/open-browser.vim'
+	Plug 'baruchel/vim-notebook'
 	Plug 'sheerun/vim-polyglot'
 	Plug 'junegunn/goyo.vim'
 	Plug 'mattn/webapi-vim'
@@ -513,6 +514,14 @@ let g:openbrowser_browser_commands = [{
 
 nmap <Leader>gl <Plug>(openbrowser-open)
 
+ " Vim-notebook: use maxima into vim (markdown files)
+let g:notebook_cmd    = 'stdbuf -i0 -o0 -e0 /usr/bin/maxima'
+	\ . ' --disable-readline --very-quiet'
+let g:notebook_stop   = "quit();"
+let g:notebook_send0  = "\;"
+let g:notebook_send   = 'print(\"VIMMAXIMANOTEBOOK\")\$'
+let g:notebook_detect = 'VIMMAXIMANOTEBOOK '
+
 " Polyglot
 let g:polyglot_disabled = ['markdown']
 
@@ -668,7 +677,7 @@ endif
 set hidden
 
 " Close the current buffer
-nnoremap <C-b> :call <SID>OnlyCloseBuffer()<CR>
+nnoremap <Leader>bd :call <SID>OnlyCloseBuffer()<CR>
 
 " Move between buffers
 nnoremap <C-h> :bprev<CR>
@@ -1138,6 +1147,9 @@ augroup markdown
 	nnoremap <silent> <Leader>ih :call <SID>Marky('.html')<CR>
 	nnoremap <silent> <Leader>ij :call <SID>Marky('.pdf')<CR>
 	nnoremap <silent> <Leader>ik :call <SID>Marky('.epub')<CR>
+	nnoremap <silent> <Leader>ins :NotebookStart<CR>
+	nnoremap <silent> <Leader>inc :NotebookClose<CR>
+	nnoremap <silent> <Leader>inn :NotebookEvaluate<CR>
 augroup end
 
 let g:markdown_fenced_languages = [

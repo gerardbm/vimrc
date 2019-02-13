@@ -17,7 +17,7 @@
 - Normal mode
   - `<C-h>` goes to the previous buffer.
   - `<C-l>` goes to the next buffer.
-  - `<C-b>` closes the current buffer.
+  - `<Leader>bd` closes the current buffer.
   - `<Leader>s` updates the buffer (save).
   - `<Leader>S` updates all the buffers.
   - `<Leader>bb` opens the `:edit` command.
@@ -193,6 +193,9 @@
   - `<Leader>ww` opens the personal vimwiki.
   - `<Leader>we` toggles the status of a vimwiki list item.
   - `<Leader>gl` opens the URL under the cursor in a web browser.
+  - `<Leader>ins` runs the command `:NotebookStart<CR>`.
+  - `<Leader>inc` runs the command `:NotebookClose<CR>`.
+  - `<Leader>inn` runs the command `:NotebookEvaluate<CR>`.
   - `gi` inits the plugin EasyAlign.
 
 - Visual mode

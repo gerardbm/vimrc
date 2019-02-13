@@ -127,6 +127,7 @@ This configuration is focused on programming in C/C++, Go, Rust, Perl, Python, R
   - [vim-instant-markdown](https://github.com/suan/vim-instant-markdown)
   - [vim-characterize](https://github.com/tpope/vim-characterize)
   - [open-browser.vim](https://github.com/tyru/open-browser.vim)
+  - [vim-notebook](https://github.com/baruchel/vim-notebook)
   - [vim-polyglot](https://github.com/sheerun/vim-polyglot)
   - [goyo.vim](https://github.com/junegunn/goyo.vim)
   - [webapi-vim](https://github.com/mattn/webapi-vim)
