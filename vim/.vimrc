@@ -522,11 +522,11 @@ let g:openbrowser_browser_commands = [{
 
 nmap <Leader>gl <Plug>(openbrowser-open)
 
- " Vim-notebook: use maxima into vim (markdown files)
+" Vim-notebook: use maxima into vim (markdown files)
 let g:notebook_cmd    = 'stdbuf -i0 -o0 -e0 /usr/bin/maxima'
 	\ . ' --disable-readline --very-quiet'
-let g:notebook_stop   = "quit();"
-let g:notebook_send0  = "\;"
+let g:notebook_stop   = 'quit();'
+let g:notebook_send0  = '\;'
 let g:notebook_send   = 'print(\"VIMMAXIMANOTEBOOK\")\$'
 let g:notebook_detect = 'VIMMAXIMANOTEBOOK '
 
