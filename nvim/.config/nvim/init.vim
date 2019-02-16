@@ -6,7 +6,7 @@
 "  /_/ /_/\___/\____/|___/_/_/ /_/ /_/
 "
 "----------------------------------------------------------------
-"  Version : 1.19.0
+"  Version : 1.19.1
 "  License : MIT
 "  Author  : Gerard Bajona
 "  URL     : https://github.com/gerardbm/vimrc
@@ -1475,17 +1475,21 @@ function! s:ToggleTagbar() abort
 	endif
 endfunction
 
-" Convert MD to EPUB and preview with mupdf
-" Tools required: pandoc and mupdf
+" Convert MD to EPUB, PDF, HTML and preview with mupdf
+" Tools required: pandoc, mupdf and mathjax
 function! s:Marky(format) abort
 	update
+	if a:format ==# '.html'
+		let l:options = '--mathjax '
+	else
+		let l:options = ''
+	endif
 	let l:expout = expand('%:r') . a:format
 	let l:expint = expand('%')
-	let l:sep = ' '
-	let l:checkps = system('lsof -a / | grep' .l:sep . l:expout . l:sep)
-	call system('pandoc -s -o ' . l:expout . l:sep . l:expint)
+	let l:checkps = system('lsof -a / 2>/dev/null | grep ' . l:expout . ' ')
+	call system('pandoc -s ' . l:options . l:expint . ' -o ' . l:expout)
 	if l:checkps ==# ''
-		call system('mupdf ' . l:expout . l:sep . '&')
+		call system('mupdf ' . l:expout . ' &')
 	else
 		call system('pkill -HUP mupdf')
 	endif

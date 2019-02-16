@@ -1,5 +1,8 @@
 ## Changelog
 
+= 1.19.1 =
+* Improve Marky: use Mathjax for HTML, and fix "bug" on lsof command.
+
 = 1.19.0 =
 * The nnoremap `<C-b>` (close buffer) changes to `<Leader>bd`. Regression.
 * Install the plugin vim-notebook to use maxima into Vim.
