@@ -6,7 +6,7 @@
 "  (_)___/_/_/ /_/ /_/_/   \___/
 "
 "----------------------------------------------------------------
-"  Version : 1.19.1
+"  Version : 1.19.2
 "  License : MIT
 "  Author  : Gerard Bajona
 "  URL     : https://github.com/gerardbm/vimrc
@@ -179,7 +179,6 @@ call plug#begin('~/.vim/plugged')
 	" Misc
 	Plug 'christoomey/vim-tmux-navigator'
 	Plug 'joeytwiddle/sexy_scroller.vim'
-	Plug 'suan/vim-instant-markdown'
 	Plug 'tpope/vim-characterize'
 	Plug 'tyru/open-browser.vim'
 	Plug 'baruchel/vim-notebook'
@@ -413,7 +412,9 @@ smap <expr><TAB>
 
 " For conceal markers
 if has('conceal')
-	set conceallevel=2 concealcursor=niv
+	set conceallevel=0 concealcursor=niv
+	nnoremap coo :set conceallevel=0<CR>
+	nnoremap coi :set conceallevel=2<CR>
 endif
 
 augroup all
@@ -508,11 +509,6 @@ nnoremap <Leader>W :ArgWrap<CR>
 " --- Misc ---
 " Vim-tmux navigator settings
 let g:tmux_navigator_no_mappings = 1
-
-" Instant markdown settings
-let g:instant_markdown_autostart = 0
-
-nnoremap <Leader>im :InstantMarkdownPreview<CR>
 
 " Open-browser settings
 let g:openbrowser_browser_commands = [{
@@ -663,7 +659,7 @@ syntax enable
 colorscheme atomic
 
 " Reload the current colorscheme
-nnoremap <F11> :call ReloadColorscheme()<CR>
+nnoremap <F11> :call <SID>ReloadColorscheme()<CR>
 
 " Show syntax highlighting groups
 nnoremap <Leader>B :call <SID>SynStack()<CR>
@@ -714,10 +710,7 @@ nnoremap <Leader>S :bufdo update<CR>
 cnoremap WW w !sudo tee > /dev/null %
 
 " Rename file
-nnoremap <F2> :call RenameFile()<CR>
-
-" Delete file
-nnoremap <Leader><Del>y :call DeleteFile()<CR>
+nnoremap <F2> :call <SID>RenameFile()<CR>
 
 " Work on all file, p.e:
 " - yaf (yank all file)
@@ -725,12 +718,6 @@ nnoremap <Leader><Del>y :call DeleteFile()<CR>
 onoremap af :<C-U>normal! ggVG<Esc><C-O><C-O>
 onoremap aF :<C-U>normal! ggVG"+y<Esc><C-O><C-O>
 vnoremap af :<C-U>normal! ggVG<Esc>
-
-" Rename title of tmux tab with current filename
-if exists('$TMUX')
-	autocmd BufEnter * call system("tmux rename-window '" . expand("%:t") . "'")
-	autocmd VimLeave * call system("tmux setw automatic-rename")
-endif
 
 "----------------------------------------------------------------
 " 7. Buffers management
@@ -872,7 +859,7 @@ let g:f6msg = 'Toggle list.'
 nnoremap <F6> :set list!<CR>:echo g:f6msg<CR>
 
 " Show tabs and end-of-lines
-set listchars=tab:│\ ,trail:·
+set listchars=tab:│\ ,trail:¬
 
 "----------------------------------------------------------------
 " 11. Moving around lines
@@ -942,8 +929,8 @@ nnoremap <C-j> :m .+1<CR>==
 vnoremap <C-j> :m '>+1<CR>gv=gv
 
 " Duplicate a line
-nnoremap cv yyP
-nnoremap cx yyp
+nnoremap cx yyP
+nnoremap cv yyp
 
 " Folding
 set foldmethod=marker
@@ -1035,10 +1022,10 @@ vnoremap <silent> <Leader><CR> :<C-U>call <SID>VSetSearch()<CR>:set hlsearch<CR>
 nnoremap <Leader>m :noh<CR>
 
 " Search into a Visual selection
-vnoremap <silent> <Space> :<C-U>call RangeSearch('/')<CR>
+vnoremap <silent> <Space> :<C-U>call <SID>RangeSearch('/')<CR>
 	\ :if strlen(g:srchstr) > 0
 	\ \|exec '/'.g:srchstr\|endif<CR>n
-vnoremap <silent> ? :<C-U>call RangeSearch('?')<CR>
+vnoremap <silent> ? :<C-U>call <SID>RangeSearch('?')<CR>
 	\ :if strlen(g:srchstr) > 0
 	\ \|exec '?'.g:srchstr\|endif<CR>N
 
@@ -1151,7 +1138,7 @@ nnoremap <Leader>F maO<Esc>`a
 
 " Insert brackets faster (not English layout)
 inoremap ññ []<left>
-inoremap çç {}<left>
+inoremap ÑÑ {}<left>
 
 "----------------------------------------------------------------
 " 15. Make settings
@@ -1176,33 +1163,24 @@ set errorformat=%m\ in\ %f\ on\ line\ %l
 nnoremap <silent> <Leader><TAB> :<C-u>QuickRun<CR>
 vnoremap <silent> <Leader><TAB> :QuickRun<CR>
 
-" Run code into a tmux window
-function! Tmuxy(opt) abort
-	if exists('$TMUX')
-		if a:opt ==# 'python'
-			call system("tmux kill-window -t tmuxy")
-			call system("tmux new-window -n tmuxy python3 " . expand("%:p"))
-		endif
-	else
-		echo 'Tmux is not running.'
-	endif
-endfunction
-
 augroup Tmuxy
 	autocmd!
-	autocmd FileType python nnoremap <Leader>ii :call Tmuxy('python')<CR>
+	autocmd FileType python nnoremap <Leader>ii :call <SID>Tmuxy('python')<CR>
 augroup END
 
 "----------------------------------------------------------------
 " 16. Filetype settings
 "----------------------------------------------------------------
-" Delete trailing white space on save
-func! DeleteTrailing()
+" Delete trailing white spaces
+func! s:DeleteTrailing()
 	exe 'normal mz'
 	%s/\s\+$//ge
 	exe 'normal `z'
+	echo 'Trailing white spaces have been removed.'
+	noh
 endfunc
-autocmd BufWrite * :call DeleteTrailing() " All files
+
+nnoremap <silent> <Leader>wd :call <SID>DeleteTrailing()<CR>
 
 " Binary
 augroup Binary
@@ -1219,7 +1197,6 @@ augroup end
 " Markdown
 augroup markdown
 	autocmd!
-	autocmd FileType markdown setl spell
 	nnoremap <silent> <Leader>ih :call <SID>Marky('.html')<CR>
 	nnoremap <silent> <Leader>ij :call <SID>Marky('.pdf')<CR>
 	nnoremap <silent> <Leader>ik :call <SID>Marky('.epub')<CR>
@@ -1289,7 +1266,7 @@ function! s:ToggleTerminal()
 endfunction
 
 " Reload the current colorscheme
-function! ReloadColorscheme()
+function! s:ReloadColorscheme()
 	try
 		exec ':colorscheme ' . g:colors_name
 	catch /^Vim:E121/
@@ -1298,7 +1275,7 @@ function! ReloadColorscheme()
 endfunction
 
 " Show syntax highlighting groups
-function! <SID>SynStack()
+function! s:SynStack()
 	if !exists('*synstack')
 		return
 	endif
@@ -1306,22 +1283,13 @@ function! <SID>SynStack()
 endfunction
 
 " Rename file
-function! RenameFile()
+function! s:RenameFile()
 	let l:old_name = expand('%')
 	let l:new_name = input('New file name: ', expand('%'), 'file')
 	if l:new_name !=# '' && l:new_name !=# l:old_name
 		exec ':saveas ' . l:new_name
 		exec ':silent !rm ' . l:old_name
 		redraw!
-	endif
-endfunction
-
-" Delete file
-function! DeleteFile()
-	if (&filetype ==# 'help')
-		echo "It's a help buffer. Don't delete it."
-	else
-		call delete(expand('%')) | bdelete!
 	endif
 endfunction
 
@@ -1347,11 +1315,10 @@ endfunction
 
 " Close the last buffer if it's the last window
 " - For 'quickfix' and 'nofile'
-autocmd BufEnter * call CloseLastBuffer()
-function! CloseLastBuffer()
+autocmd BufEnter * call <SID>CloseLastBuffer()
+function! s:CloseLastBuffer()
 	if &buftype ==# 'quickfix' || &buftype ==# 'nofile'
 		if winnr('$') < 2
-			call system("tmux setw automatic-rename")
 			quit!
 		endif
 	endif
@@ -1374,7 +1341,7 @@ endfunction
 command! ToggleResize call s:ToggleResize()
 
 " Search into a Visual selection
-function! RangeSearch(direction)
+function! s:RangeSearch(direction)
 	call inputsave()
 	let g:srchstr = input(a:direction)
 	call inputrestore()
@@ -1549,6 +1516,18 @@ function! s:ToggleTagbar() abort
 	endif
 endfunction
 
+" Run code into a tmux window
+function! s:Tmuxy(opt) abort
+	if exists('$TMUX')
+		if a:opt ==# 'python'
+			call system("tmux kill-window -t tmuxy")
+			call system("tmux new-window -n tmuxy python3 " . expand("%:p"))
+		endif
+	else
+		echo 'Tmux is not running.'
+	endif
+endfunction
+
 " Convert MD to EPUB, PDF, HTML and preview with mupdf
 " Tools required: pandoc, mupdf and mathjax
 function! s:Marky(format) abort
@@ -1566,21 +1545,5 @@ function! s:Marky(format) abort
 		call system('mupdf ' . l:expout . ' &')
 	else
 		call system('pkill -HUP mupdf')
-	endif
-endfunction
-
-" Auto-tabularize a table while editing
-inoremap <silent> <Bar>   <Bar><Esc>:call <SID>align()<CR>a
-function! s:align()
-	let l:p = '^\s*|\s.*\s|\s*$'
-	if exists(':Tabularize')
-				\ && getline('.') =~# '^\s*|'
-				\ && (getline(line('.')-1) =~# l:p
-				\ || getline(line('.')+1) =~# l:p)
-		let l:column = strlen(substitute(getline('.')[0:col('.')],'[^|]','','g'))
-		let l:position = strlen(matchstr(getline('.')[0:col('.')],'.*|\s*\zs.*'))
-		Tabularize/|/l1
-		normal! 0
-		call search(repeat('[^|]*|',l:column).'\s\{-\}'.repeat('.',l:position),'ce',line('.'))
 	endif
 endfunction

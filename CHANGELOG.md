@@ -1,5 +1,18 @@
 ## Changelog
 
+= 1.19.2 =
+* Remove the plugin vim-instant-markdown. Marky has better workflow.
+* Remove the nnoremap `<Leader>im` for `InstantMarkdownPreview`.
+* Set the option `conceallevel` to 0.
+* Add the nnoremap `<Leader>coo` to set `conceallevel` to 0.
+* Add the nnoremap `<Leader>coi` to set `conceallevel` to 2.
+* Remove the nnoremap `<Leader><Del>y` to delete a file. Use other methods.
+* Stop removing automatically trailing whitespaces. Now is a command.
+* Add the nnoremap `<Leader>wd` to remove trailing white spaces.
+* Unset default spell for markdown files. It's annoying.
+* Stop renaming title of tmux tab with current filename.
+* Change the inoremap `çç` to `ÑÑ` to insert `{}` faster.
+
 = 1.19.1 =
 * Improve Marky: use Mathjax for HTML, and fix "bug" on lsof command.
 
