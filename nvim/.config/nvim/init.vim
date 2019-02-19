@@ -6,7 +6,7 @@
 "  /_/ /_/\___/\____/|___/_/_/ /_/ /_/
 "
 "----------------------------------------------------------------
-"  Version : 1.19.2
+"  Version : 1.19.3
 "  License : MIT
 "  Author  : Gerard Bajona
 "  URL     : https://github.com/gerardbm/vimrc
@@ -365,6 +365,7 @@ autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
 let g:deoplete#enable_at_startup = 1
 let g:deoplete#enable_smart_case = 1
 let g:deoplete#omni#functions    = {}
+call deoplete#custom#option('auto_complete_delay', 250)
 
 inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
 
@@ -1168,7 +1169,7 @@ augroup end
 " New file headers
 augroup headers
 	autocmd!
-	autocmd BufNewFile *.py 0put =\"#!/usr/bin/env python\<nl>\#
+	autocmd BufNewFile *.py 0put =\"#!/usr/bin/env python3\<nl>\#
 				\ -*- coding: utf-8 -*-\<nl>\"|$
 	autocmd BufNewFile *.rb 0put =\"#!/usr/bin/env ruby\<nl>\"|$
 	autocmd BufNewFile *.pl 0put =\"#!/usr/bin/env perl\<nl>\"|$

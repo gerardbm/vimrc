@@ -124,7 +124,6 @@ This configuration is focused on programming in C/C++, Go, Rust, Perl, Python, R
 - Misc:
   - [christoomey/vim-tmux-navigator](https://github.com/christoomey/vim-tmux-navigator)
   - [sexy_scroller.vim](https://github.com/joeytwiddle/sexy_scroller.vim)
-  - [vim-instant-markdown](https://github.com/suan/vim-instant-markdown)
   - [vim-characterize](https://github.com/tpope/vim-characterize)
   - [open-browser.vim](https://github.com/tyru/open-browser.vim)
   - [vim-notebook](https://github.com/baruchel/vim-notebook)

@@ -1,5 +1,9 @@
 ## Changelog
 
+= 1.19.3 =
+* Add `auto_complete_delay` for deoplete plugin.
+* Fix auto-shebang for new `*.py` files (use python3).
+
 = 1.19.2 =
 * Remove the plugin vim-instant-markdown. Marky has better workflow.
 * Remove the nnoremap `<Leader>im` for `InstantMarkdownPreview`.
