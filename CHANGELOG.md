@@ -1,5 +1,8 @@
 ## Changelog
 
+= 1.19.4 =
+* Add auto-shebang for new `*.js` files (node).
+
 = 1.19.3 =
 * Add `auto_complete_delay` for deoplete plugin.
 * Fix auto-shebang for new `*.py` files (use python3).

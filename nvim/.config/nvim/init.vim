@@ -6,7 +6,7 @@
 "  /_/ /_/\___/\____/|___/_/_/ /_/ /_/
 "
 "----------------------------------------------------------------
-"  Version : 1.19.3
+"  Version : 1.19.4
 "  License : MIT
 "  Author  : Gerard Bajona
 "  URL     : https://github.com/gerardbm/vimrc
@@ -1174,6 +1174,7 @@ augroup headers
 	autocmd BufNewFile *.rb 0put =\"#!/usr/bin/env ruby\<nl>\"|$
 	autocmd BufNewFile *.pl 0put =\"#!/usr/bin/env perl\<nl>\"|$
 	autocmd BufNewFile *.sh 0put =\"#!/usr/bin/env bash\<nl>\"|$
+	autocmd BufNewFile *.js 0put =\"#!/usr/bin/env node\<nl>\"|$
 augroup end
 
 "----------------------------------------------------------------
