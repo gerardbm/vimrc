@@ -1,5 +1,8 @@
 ## Changelog
 
+= 1.19.5 =
+* Downgrade deoplete, again (Vim).
+
 = 1.19.4 =
 * Add auto-shebang for new `*.js` files (node).
 
