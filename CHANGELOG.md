@@ -1,5 +1,9 @@
 ## Changelog
 
+= 1.19.6 =
+* Reduce markdown fenced languages (only sh and python).
+  - This change reduces de timeload of a markdown file.
+
 = 1.19.5 =
 * Downgrade deoplete, again (Vim).
 

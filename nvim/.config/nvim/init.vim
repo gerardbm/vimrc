@@ -6,7 +6,7 @@
 "  /_/ /_/\___/\____/|___/_/_/ /_/ /_/
 "
 "----------------------------------------------------------------
-"  Version : 1.19.5
+"  Version : 1.19.6
 "  License : MIT
 "  Author  : Gerard Bajona
 "  URL     : https://github.com/gerardbm/vimrc
@@ -1131,17 +1131,8 @@ augroup markdown
 augroup end
 
 let g:markdown_fenced_languages = [
-	\ 'c',
-	\ 'sh',
-	\ 'go',
-	\ 'perl',
 	\ 'python',
-	\ 'javascript',
-	\ 'ruby',
-	\ 'eruby',
-	\ 'php',
-	\ 'html',
-	\ 'css',
+	\ 'sh',
 	\ ]
 
 " Mail
