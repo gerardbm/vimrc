@@ -1,5 +1,9 @@
 ## Changelog
 
+= 1.19.7 =
+* Fix surround settings: double quotes required.
+* Remove closetag settings for php and erb.
+
 = 1.19.6 =
 * Reduce markdown fenced languages (only sh and python).
   - This change reduces de timeload of a markdown file.

@@ -6,7 +6,7 @@
 "  (_)___/_/_/ /_/ /_/_/   \___/
 "
 "----------------------------------------------------------------
-"  Version : 1.19.6
+"  Version : 1.19.7
 "  License : MIT
 "  Author  : Gerard Bajona
 "  URL     : https://github.com/gerardbm/vimrc
@@ -475,14 +475,12 @@ let g:AutoPairsShortcutToggle = '<M-p>'
 
 " Closetag settings
 let g:closetag_filenames = '*.html,*.xhtml,*.phtml,*.xml,*.html.erb'
-autocmd Filetype php iab <? <?php ?><Left><Left><Left>
-autocmd Filetype erb iab <% <% %><Left><Left><Left>
 
 " Surround settings
 " Use 'yss?', 'yss%' or 'yss=' to surround a line
-autocmd FileType php let b:surround_63 = '<?php \r ?>'
-let g:surround_37 = '<% \r %>'
-let g:surround_61 = '<%= \r %>'
+autocmd FileType php let b:surround_63 = "<?php \r ?>"
+let g:surround_37 = "<% \r %>"
+let g:surround_61 = "<%= \r %>"
 
 " Caps Lock settings
 imap <expr><C-l> deoplete#smart_close_popup()."\<Plug>CapsLockToggle"
