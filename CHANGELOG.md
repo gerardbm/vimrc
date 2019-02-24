@@ -1,5 +1,12 @@
 ## Changelog
 
+= 1.19.8 =
+* Fix markdown keymaps!
+* The nnoremap `<Leader>ins` (`:NotebookStart`) is now `<Leader>ims`.
+* The nnoremap `<Leader>inc` (`:NotebookClose`) is now `<Leader>imc`.
+* The nnoremap `<Leader>inn` (`:NotebookEvaluate`) is now `<Leader>imm`.
+* Add `--webtex` service to generate math formulas in EPUB.
+
 = 1.19.7 =
 * Fix surround settings: double quotes required.
 * Remove closetag settings for php and erb.
@@ -37,9 +44,9 @@
 = 1.19.0 =
 * The nnoremap `<C-b>` (close buffer) changes to `<Leader>bd`. Regression.
 * Install the plugin vim-notebook to use maxima into Vim.
-* Add the nnoremap `<Leader>ins` to run the command `:NotebookStart<CR>`.
-* Add the nnoremap `<Leader>inc` to run the command `:NotebookClose<CR>`.
-* Add the nnoremap `<Leader>inn` to run the command `:NotebookEvaluate<CR>`.
+* Add the nnoremap `<Leader>ins` to run the command `:NotebookStart`.
+* Add the nnoremap `<Leader>inc` to run the command `:NotebookClose`.
+* Add the nnoremap `<Leader>inn` to run the command `:NotebookEvaluate`.
 
 = 1.18.4 =
 * Upgrade deoplete.nvim (Vim only). They fixed bugs.

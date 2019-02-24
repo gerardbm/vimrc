@@ -195,9 +195,9 @@
   - `<Leader>ww` opens the personal vimwiki.
   - `<Leader>we` toggles the status of a vimwiki list item.
   - `<Leader>gl` opens the URL under the cursor in a web browser.
-  - `<Leader>ins` runs the command `:NotebookStart<CR>`.
-  - `<Leader>inc` runs the command `:NotebookClose<CR>`.
-  - `<Leader>inn` runs the command `:NotebookEvaluate<CR>`.
+  - `<Leader>ims` runs the command `:NotebookStart`.
+  - `<Leader>imc` runs the command `:NotebookClose`.
+  - `<Leader>imm` runs the command `:NotebookEvaluate`.
   - `gi` inits the plugin EasyAlign.
 
 - Visual mode

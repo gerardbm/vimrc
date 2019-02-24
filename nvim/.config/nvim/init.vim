@@ -6,7 +6,7 @@
 "  /_/ /_/\___/\____/|___/_/_/ /_/ /_/
 "
 "----------------------------------------------------------------
-"  Version : 1.19.7
+"  Version : 1.19.8
 "  License : MIT
 "  Author  : Gerard Bajona
 "  URL     : https://github.com/gerardbm/vimrc
@@ -1120,12 +1120,18 @@ augroup end
 " Markdown
 augroup markdown
 	autocmd!
-	nnoremap <silent> <Leader>ih :call <SID>Marky('.html')<CR>
-	nnoremap <silent> <Leader>ij :call <SID>Marky('.pdf')<CR>
-	nnoremap <silent> <Leader>ik :call <SID>Marky('.epub')<CR>
-	nnoremap <silent> <Leader>ins :NotebookStart<CR>
-	nnoremap <silent> <Leader>inc :NotebookClose<CR>
-	nnoremap <silent> <Leader>inn :NotebookEvaluate<CR>
+	autocmd FileType markdown nnoremap <silent> <Leader>ih 
+				\ :call <SID>Marky('.html')<CR>
+	autocmd FileType markdown nnoremap <silent> <Leader>ij 
+				\ :call <SID>Marky('.pdf')<CR>
+	autocmd FileType markdown nnoremap <silent> <Leader>ik 
+				\ :call <SID>Marky('.epub')<CR>
+	autocmd FileType markdown nnoremap <silent> <Leader>ims 
+				\ :NotebookStart<CR>
+	autocmd FileType markdown nnoremap <silent> <Leader>imc 
+				\ :NotebookClose<CR>
+	autocmd FileType markdown nnoremap <silent> <Leader>imm 
+				\ :NotebookEvaluate<CR>
 augroup end
 
 let g:markdown_fenced_languages = [
@@ -1451,6 +1457,8 @@ function! s:Marky(format) abort
 	update
 	if a:format ==# '.html'
 		let l:options = '--mathjax '
+	elseif a:format ==# '.epub'
+		let l:options = '-t epub2 --webtex '
 	else
 		let l:options = ''
 	endif
