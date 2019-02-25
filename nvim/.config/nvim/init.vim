@@ -6,7 +6,7 @@
 "  /_/ /_/\___/\____/|___/_/_/ /_/ /_/
 "
 "----------------------------------------------------------------
-"  Version : 1.19.8
+"  Version : 1.19.9
 "  License : MIT
 "  Author  : Gerard Bajona
 "  URL     : https://github.com/gerardbm/vimrc
@@ -1089,6 +1089,7 @@ vnoremap <silent> <Leader><TAB> :QuickRun<CR>
 augroup Tmuxy
 	autocmd!
 	autocmd FileType python nnoremap <Leader>ii :call <SID>Tmuxy('python')<CR>
+	autocmd FileType sh nnoremap <Leader>io :call <SID>Tmuxy('bash')<CR>
 augroup END
 
 "----------------------------------------------------------------
@@ -1120,17 +1121,17 @@ augroup end
 " Markdown
 augroup markdown
 	autocmd!
-	autocmd FileType markdown nnoremap <silent> <Leader>ih 
+	autocmd FileType markdown nnoremap <silent> <Leader>ih
 				\ :call <SID>Marky('.html')<CR>
-	autocmd FileType markdown nnoremap <silent> <Leader>ij 
+	autocmd FileType markdown nnoremap <silent> <Leader>ij
 				\ :call <SID>Marky('.pdf')<CR>
-	autocmd FileType markdown nnoremap <silent> <Leader>ik 
+	autocmd FileType markdown nnoremap <silent> <Leader>ik
 				\ :call <SID>Marky('.epub')<CR>
-	autocmd FileType markdown nnoremap <silent> <Leader>ims 
+	autocmd FileType markdown nnoremap <silent> <Leader>ims
 				\ :NotebookStart<CR>
-	autocmd FileType markdown nnoremap <silent> <Leader>imc 
+	autocmd FileType markdown nnoremap <silent> <Leader>imc
 				\ :NotebookClose<CR>
-	autocmd FileType markdown nnoremap <silent> <Leader>imm 
+	autocmd FileType markdown nnoremap <silent> <Leader>imm
 				\ :NotebookEvaluate<CR>
 augroup end
 
@@ -1445,6 +1446,9 @@ function! s:Tmuxy(opt) abort
 		if a:opt ==# 'python'
 			call system("tmux kill-window -t tmuxy")
 			call system("tmux new-window -n tmuxy python3 " . expand("%:p"))
+		elseif a:opt ==# 'bash'
+			call system("tmux kill-window -t tmuxy")
+			call system("tmux new-window -n tmuxy bash " . expand("%:p"))
 		endif
 	else
 		echo 'Tmux is not running.'
@@ -1459,15 +1463,18 @@ function! s:Marky(format) abort
 		let l:options = '--mathjax '
 	elseif a:format ==# '.epub'
 		let l:options = '-t epub2 --webtex '
-	else
-		let l:options = ''
+	elseif a:format ==# '.pdf'
+		let l:options = '-V fontsize=12pt
+					\ -V papersize=a4
+					\ -V geometry:margin=2.5cm '
 	endif
-	let l:expout = expand('%:r') . a:format
-	let l:expint = expand('%')
-	let l:checkps = system('lsof -a / 2>/dev/null | grep ' . l:expout . ' ')
-	call system('pandoc -s ' . l:options . l:expint . ' -o ' . l:expout)
+	let l:out = expand('%:r') . a:format
+	let l:inp = expand('%')
+	let l:dev = ' 2>/dev/null'
+	let l:checkps = system('ps -ef | grep -v grep | grep ' . l:out . l:dev)
+	call system('pandoc -s ' . l:options . l:inp . ' -o ' . l:out)
 	if l:checkps ==# ''
-		call system('mupdf ' . l:expout . ' &')
+		call system('mupdf ' . l:out . ' &')
 	else
 		call system('pkill -HUP mupdf')
 	endif

@@ -1,5 +1,10 @@
 ## Changelog
 
+= 1.19.9 =
+* Add the nnoremap `<Leader>io` to run bash in a tmux window.
+* Improve `Marky()` changing `lsof -a` to a good `ps -ef`filter.
+* Add options to convert to MD to PDF with better fontsize and margins.
+
 = 1.19.8 =
 * Fix markdown keymaps!
 * The nnoremap `<Leader>ins` (`:NotebookStart`) is now `<Leader>ims`.
