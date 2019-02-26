@@ -6,7 +6,7 @@
 "  (_)___/_/_/ /_/ /_/_/   \___/
 "
 "----------------------------------------------------------------
-"  Version : 1.19.9
+"  Version : 1.19.10
 "  License : MIT
 "  Author  : Gerard Bajona
 "  URL     : https://github.com/gerardbm/vimrc
@@ -1545,7 +1545,10 @@ function! s:Marky(format) abort
 	let l:out = expand('%:r') . a:format
 	let l:inp = expand('%')
 	let l:dev = ' 2>/dev/null'
-	let l:checkps = system('ps -ef | grep -v grep | grep ' . l:out . l:dev)
+	let l:checkps = system('ps -ef
+				\ | grep -v grep
+				\ | grep mupdf
+				\ | grep -o ' . l:out . l:dev)
 	call system('pandoc -s ' . l:options . l:inp . ' -o ' . l:out)
 	if l:checkps ==# ''
 		call system('mupdf ' . l:out . ' &')

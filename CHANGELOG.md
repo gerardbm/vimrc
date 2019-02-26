@@ -1,5 +1,8 @@
 ## Changelog
 
+= 1.19.10 =
+* Improve `Marky()` adding `grep mupdf`.
+
 = 1.19.9 =
 * Add the nnoremap `<Leader>io` to run bash in a tmux window.
 * Improve `Marky()` changing `lsof -a` to a good `ps -ef`filter.
@@ -407,7 +410,6 @@
 * Added settings for the plugin 'surround', also for PHP and Ruby.
 * Added «omnifunc» settings (better autocompletions).
 * Duplicated for Visual modes the function to toggle `^`/`g_`.
-
 
 = 1.5.7 =
 * Added the inoremaps `<Tab>` and `<S-Tab>`.
