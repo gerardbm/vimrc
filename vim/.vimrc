@@ -6,7 +6,7 @@
 "  (_)___/_/_/ /_/ /_/_/   \___/
 "
 "----------------------------------------------------------------
-"  Version : 1.19.10
+"  Version : 1.19.11
 "  License : MIT
 "  Author  : Gerard Bajona
 "  URL     : https://github.com/gerardbm/vimrc
@@ -1164,8 +1164,11 @@ vnoremap <silent> <Leader><TAB> :QuickRun<CR>
 
 augroup Tmuxy
 	autocmd!
-	autocmd FileType python nnoremap <Leader>ii :call <SID>Tmuxy('python')<CR>
-	autocmd FileType sh nnoremap <Leader>io :call <SID>Tmuxy('bash')<CR>
+	autocmd FileType sh nnoremap <buffer> <Leader>ii :call <SID>Tmuxy('bash')<CR>
+	autocmd FileType perl nnoremap <buffer> <Leader>ii :call <SID>Tmuxy('perl')<CR>
+	autocmd FileType ruby nnoremap <buffer> <Leader>ii :call <SID>Tmuxy('ruby')<CR>
+	autocmd FileType python nnoremap <buffer> <Leader>ii :call <SID>Tmuxy('python')<CR>
+	autocmd FileType javascript nnoremap <buffer> <Leader>ii :call <SID>Tmuxy('node')<CR>
 augroup END
 
 "----------------------------------------------------------------
@@ -1517,13 +1520,9 @@ endfunction
 " Run code into a tmux window
 function! s:Tmuxy(opt) abort
 	if exists('$TMUX')
-		if a:opt ==# 'python'
-			call system("tmux kill-window -t tmuxy")
-			call system("tmux new-window -n tmuxy python3 " . expand("%:p"))
-		elseif a:opt ==# 'bash'
-			call system("tmux kill-window -t tmuxy")
-			call system("tmux new-window -n tmuxy bash " . expand("%:p"))
-		endif
+		echo "Running a " . a:opt . " script..."
+		call system("tmux kill-window -t tmuxy")
+		call system("tmux new-window -n tmuxy " . a:opt . " " . expand("%:p"))
 	else
 		echo 'Tmux is not running.'
 	endif

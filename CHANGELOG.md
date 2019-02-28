@@ -1,5 +1,9 @@
 ## Changelog
 
+= 1.19.11 =
+* Use `<Leader>ii` with `<buffer>` to extend FileType.
+* Improve `Tmuxy()`: it wraps for any FileType.
+
 = 1.19.10 =
 * Improve `Marky()` adding `grep mupdf`.
 
