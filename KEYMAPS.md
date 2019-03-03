@@ -101,7 +101,6 @@
   - `<C-u>` deletes all characters before the cursor.
   - `<C-j>` enters a new line.
   - `<C-k>` enters a digraph.
-  - `<C-z>` starts OMNI SQL Completion (only `ft_sql`).
   - `<C-l>` toggles the CapsLock key.
   - `<C-q>` expands neosnippet.
   - `<C-x>` ins-completion.

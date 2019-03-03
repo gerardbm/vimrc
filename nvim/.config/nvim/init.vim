@@ -6,7 +6,7 @@
 "  /_/ /_/\___/\____/|___/_/_/ /_/ /_/
 "
 "----------------------------------------------------------------
-"  Version : 1.19.11
+"  Version : 1.19.12
 "  License : MIT
 "  Author  : Gerard Bajona
 "  URL     : https://github.com/gerardbm/vimrc
@@ -1152,7 +1152,7 @@ augroup end
 
 " SQL (it requires sqlparse)
 augroup sql
-	let g:ftplugin_sql_omni_key = '<C-z>'
+	let g:omni_sql_no_default_maps = 1
 	autocmd FileType sql nnoremap <Leader>bf
 				\ :%!sqlformat --reindent --keywords upper --identifiers upper -<CR>
 	autocmd FileType sql vnoremap <Leader>bf

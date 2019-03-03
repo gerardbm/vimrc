@@ -1,7 +1,11 @@
 ## Changelog
 
+= 1.19.12 =
+* Remove the nnoremap `<C-z>` (omni SQL completion). Deoplete is enough.
+* Disable omni SQL default maps with global variable.
+
 = 1.19.11 =
-* Use `<Leader>ii` with `<buffer>` to extend FileType.
+* Use `<Leader>ii` with `<buffer>` to extend `Tmuxy()`.
 * Improve `Tmuxy()`: it wraps for any FileType.
 
 = 1.19.10 =
