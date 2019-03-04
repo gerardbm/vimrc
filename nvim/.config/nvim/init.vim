@@ -6,7 +6,7 @@
 "  /_/ /_/\___/\____/|___/_/_/ /_/ /_/
 "
 "----------------------------------------------------------------
-"  Version : 1.19.12
+"  Version : 1.19.13
 "  License : MIT
 "  Author  : Gerard Bajona
 "  URL     : https://github.com/gerardbm/vimrc
@@ -444,6 +444,13 @@ let g:quickrun_config.markdown = {
 	\ 'type': 'markdown/pandoc',
 	\ 'cmdopt': '-s',
 	\ 'outputter': 'browser'
+	\ }
+
+let g:quickrun_config.plantuml = {
+	\ 'command': 'plantuml',
+	\ 'exec': ['%c %s', 'feh %s:p:r.png'],
+	\ 'outputter': 'null',
+	\ 'runner': 'vimproc'
 	\ }
 
 " --- Edition ---
@@ -1165,6 +1172,13 @@ augroup xml
 				\ :%!tidy -q -i -xml --show-errors 0 -wrap 0 --indent-spaces 4<CR>
 augroup end
 
+" UML
+augroup uml
+	autocmd!
+	autocmd FileType plantuml nnoremap <silent> <Leader>iu
+				\ :call <SID>Planty('.png')<CR>
+augroup end
+
 " New file headers
 augroup headers
 	autocmd!
@@ -1455,7 +1469,7 @@ function! s:Tmuxy(opt) abort
 endfunction
 
 " Convert MD to EPUB, PDF, HTML and preview with mupdf
-" Tools required: pandoc, mupdf and mathjax
+" Tools required: pandoc and mupdf
 function! s:Marky(format) abort
 	update
 	if a:format ==# '.html'
@@ -1469,14 +1483,29 @@ function! s:Marky(format) abort
 	endif
 	let l:out = expand('%:r') . a:format
 	let l:inp = expand('%')
+	call system('pandoc -s ' . l:options . l:inp . ' -o ' . l:out)
+	call <SID>Previewer(l:out)
+endfunction
+
+" UML converter
+" Tools required: plantuml and mupdf
+function! s:Planty(format) abort
+	update
+	let l:out = expand('%:r') . a:format
+	let l:inp = expand('%')
+	call system('plantuml ' . l:inp . ' ' . l:out)
+	call <SID>Previewer(l:out)
+endfunction
+
+" Preview outputs (EPUB, PDF, HTML, PNG) with mupdf
+function! s:Previewer(out) abort
 	let l:dev = ' 2>/dev/null'
 	let l:checkps = system('ps -ef
 				\ | grep -v grep
 				\ | grep mupdf
-				\ | grep -o ' . l:out . l:dev)
-	call system('pandoc -s ' . l:options . l:inp . ' -o ' . l:out)
+				\ | grep -o ' . a:out . l:dev)
 	if l:checkps ==# ''
-		call system('mupdf ' . l:out . ' &')
+		call system('mupdf ' . a:out . ' &')
 	else
 		call system('pkill -HUP mupdf')
 	endif

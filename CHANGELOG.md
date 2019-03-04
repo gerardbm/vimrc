@@ -1,5 +1,10 @@
 ## Changelog
 
+= 1.19.13 =
+* Add `Planty()` to generate PNG from UML using PlantUML and mupdf preview.
+* Add the nnoremap `<Leader>iu` to run `Planty()`.
+* Add plantuml output for vim-quickrun to preview with feh.
+
 = 1.19.12 =
 * Remove the nnoremap `<C-z>` (omni SQL completion). Deoplete is enough.
 * Disable omni SQL default maps with global variable.
