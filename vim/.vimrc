@@ -6,7 +6,7 @@
 "  (_)___/_/_/ /_/ /_/_/   \___/
 "
 "----------------------------------------------------------------
-"  Version : 1.19.13
+"  Version : 1.20.0
 "  License : MIT
 "  Author  : Gerard Bajona
 "  URL     : https://github.com/gerardbm/vimrc
@@ -161,6 +161,7 @@ call plug#begin('~/.vim/plugged')
 	" Run code
 	Plug 'thinca/vim-quickrun'
 	Plug 'Shougo/vimproc.vim', {'do' : 'make'}
+	Plug 'tpope/vim-dadbod'
 
 	" Edition
 	Plug 'junegunn/vim-easy-align'
@@ -461,6 +462,9 @@ let g:quickrun_config.plantuml = {
 	\ 'outputter': 'null',
 	\ 'runner': 'vimproc'
 	\ }
+
+" Vim-dadbod settings
+autocmd FileType sql nnoremap <silent> <Leader>is :call <SID>SQLExec()<CR>
 
 " --- Edition ---
 " Easy align settings
@@ -1583,4 +1587,15 @@ function! s:Previewer(out) abort
 	else
 		call system('pkill -HUP mupdf')
 	endif
+endfunction
+
+" Execute SQL query using vim-dadbod
+function! s:SQLExec() abort
+	norm! yy
+	if !exists('b:path')
+		let b:path = input('Database: ')
+	endif
+	let b:db = 'sqlite:' . b:path
+	exec 'DB ' . b:db . ' ' . @
+	echo 'SQL sentence executed!'
 endfunction

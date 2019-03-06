@@ -1,5 +1,9 @@
 ## Changelog
 
+= 1.20.0 =
+* Install the plugin vim-dadbod to use Vim as databases client.
+* Add the nnoremap `<Leader>is` to execute SQL queries (one by line).
+
 = 1.19.13 =
 * Add `Planty()` to generate PNG from UML using PlantUML and mupdf preview.
 * Add the nnoremap `<Leader>iu` to run `Planty()`.
