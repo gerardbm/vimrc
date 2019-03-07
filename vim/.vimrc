@@ -6,7 +6,7 @@
 "  (_)___/_/_/ /_/ /_/_/   \___/
 "
 "----------------------------------------------------------------
-"  Version : 1.20.0
+"  Version : 1.20.1
 "  License : MIT
 "  Author  : Gerard Bajona
 "  URL     : https://github.com/gerardbm/vimrc
@@ -464,7 +464,11 @@ let g:quickrun_config.plantuml = {
 	\ }
 
 " Vim-dadbod settings
-autocmd FileType sql nnoremap <silent> <Leader>is :call <SID>SQLExec()<CR>
+autocmd FileType sql nnoremap <silent> <Leader>ia :call <SID>SQLDatabase()<CR>
+autocmd FileType sql nnoremap <silent> <Leader>is
+			\ :call <SID>SQLExec('n')<CR>
+autocmd FileType sql vnoremap <silent> <Leader>is
+			\ :<C-U>call <SID>SQLExec('v')<CR>
 
 " --- Edition ---
 " Easy align settings
@@ -1589,13 +1593,22 @@ function! s:Previewer(out) abort
 	endif
 endfunction
 
-" Execute SQL query using vim-dadbod
-function! s:SQLExec() abort
-	norm! yy
-	if !exists('b:path')
-		let b:path = input('Database: ')
-	endif
+" Configure a database
+function! s:SQLDatabase() abort
+	let b:path = input('Database: ')
 	let b:db = 'sqlite:' . b:path
+endfunction
+
+" Execute SQL query using vim-dadbod
+function! s:SQLExec(opt) abort
+	if a:opt ==# 'n'
+		silent norm! yy
+	elseif a:opt ==# 'v'
+		silent norm! gvy
+	endif
+	if !exists('b:db')
+		call <SID>SQLDatabase()
+	endif
 	exec 'DB ' . b:db . ' ' . @
 	echo 'SQL sentence executed!'
 endfunction

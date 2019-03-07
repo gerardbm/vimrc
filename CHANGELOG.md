@@ -1,5 +1,9 @@
 ## Changelog
 
+= 1.20.1 =
+* Extend `SQLExec()` to execute SQL queries from the visual mode.
+* Add the nnoremap `<Leader>ia` to add/change the database path.
+
 = 1.20.0 =
 * Install the plugin vim-dadbod to use Vim as databases client.
 * Add the nnoremap `<Leader>is` to execute SQL queries (one by line).
