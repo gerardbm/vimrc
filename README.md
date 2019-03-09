@@ -13,6 +13,8 @@ Easily highlight the word under the cursor or the current selection. A lot of co
 
 Some useful tools have been integrated. Plugins: **CtrlP** (navigate between open buffers, MRU or directory files), **NERDTree** (tree files), **vim-fugitive** (git commands), **GV** (navigate between git commits), **undotree** (history visualizer), **ALE** (async syntax linter, it works while you type), **deoplete** (autocompletion for Vim and Neovim), **neosnippet** (code snippets), **QuickRun** (it's awesome at running code), **Vimwiki** (organize notes, manage todo-lists...), and much more.
 
+Additionally, run scripting code (Bash, Perl, Ruby, Python and JavaScript) into a separate tmux window, execute SQL queries from sqlite databases using the plugin **vim-dadbod**, convert UML files into PNG using *plantUML*, generate PDF, EPUB and HTML files from markdown with math support (LaTeX) and preview them with *MuPDF*, do symbolic math operations into a markdown file using *maxima* and open URLS into a tmux window with *w3m*.
+
 This configuration is focused on programming in C/C++, Go, Rust, Perl, Python, Ruby, PHP, Bash, JavaScript and web development in general, with HTML5 and CSS3.
 
 **More specific information:**
@@ -106,6 +108,7 @@ This configuration is focused on programming in C/C++, Go, Rust, Perl, Python, R
 - Run code:
   - [vim-quickrun](https://github.com/thinca/vim-quickrun)
   - [vimproc.vim](https://github.com/Shougo/vimproc.vim)
+  - [vim-dadbod](https://github.com/tpope/vim-dadbod)
 
 - Edition:
   - [vim-easy-align](https://github.com/junegunn/vim-easy-align)
