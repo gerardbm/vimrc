@@ -6,7 +6,7 @@
 "  (_)___/_/_/ /_/ /_/_/   \___/
 "
 "----------------------------------------------------------------
-"  Version : 1.20.1
+"  Version : 1.20.2
 "  License : MIT
 "  Author  : Gerard Bajona
 "  URL     : https://github.com/gerardbm/vimrc
@@ -812,7 +812,7 @@ if bufwinnr(1)
 endif
 
 " Toggle resize window
-nnoremap <silent> <C-f> :ToggleResize<CR>
+nnoremap <silent> <C-f> :call <SID>ToggleResize()<CR>
 
 " Last, previous and next window; and only one window
 nnoremap <silent> <C-w>l :wincmd p<CR>:echo "Last window."<CR>
@@ -1072,7 +1072,7 @@ nnoremap <Leader>vm :call <SID>GrepWrapper('grepadd!', '', '%')<CR>
 " Current arglist
 nnoremap <Leader>va :call <SID>GrepWrapper('grep!', '', '##')<CR>
 
-" Navigate between vimgrep results
+" Navigate between grep and vimgrep results
 nnoremap <Leader>n :cnext<CR>zz
 nnoremap <Leader>N :cprev<CR>zz
 
@@ -1349,19 +1349,21 @@ endfunction
 
 " Toggle maximize window and resize windows
 function! s:ToggleResize() abort
-	if exists('t:zoomed') && t:zoomed
-		execute t:zoom_winrestcmd
-		let t:zoomed = 0
-		echo 'Windows resized.'
-	else
-		let t:zoom_winrestcmd = winrestcmd()
-		resize
-		vertical resize
-		let t:zoomed = 1
-		echo 'Window maximized.'
+	if winnr('$') > 1
+		if exists('t:zoomed') && t:zoomed
+			execute t:zoom_winrestcmd
+			let t:zoomed = 0
+			echo 'Windows resized.'
+		else
+			let t:zoom_winrestcmd = winrestcmd()
+			resize
+			vertical resize
+			let t:zoomed = 1
+			echo 'Window maximized.'
+		endif
 	endif
 endfunction
-command! ToggleResize call s:ToggleResize()
+autocmd VimEnter * autocmd WinEnter * let t:zoomed = 0
 
 " Search into a Visual selection
 function! s:RangeSearch(direction)

@@ -1,5 +1,9 @@
 ## Changelog
 
+= 1.20.2 =
+* Improve `ToggleResize()` so it maximizes the window on WinEnter event.
+* Remove the command `ToggleResize`. The nnoremap `<C-f>` is enough and faster.
+
 = 1.20.1 =
 * Extend `SQLExec()` to execute SQL queries from the visual mode.
 * Add the nnoremap `<Leader>ia` to add/change the database path.
