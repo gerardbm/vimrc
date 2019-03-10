@@ -1,5 +1,9 @@
 ## Changelog
 
+= 1.20.3 =
+* Refactor `ToggleColorColumn()`.
+* Refactor `ToggleCPosition()`, and execute it silently.
+
 = 1.20.2 =
 * Improve `ToggleResize()` so it maximizes the window on WinEnter event.
 * Remove the command `ToggleResize`. The nnoremap `<C-f>` is enough and faster.

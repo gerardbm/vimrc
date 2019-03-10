@@ -6,7 +6,7 @@
 "  /_/ /_/\___/\____/|___/_/_/ /_/ /_/
 "
 "----------------------------------------------------------------
-"  Version : 1.20.2
+"  Version : 1.20.3
 "  License : MIT
 "  Author  : Gerard Bajona
 "  URL     : https://github.com/gerardbm/vimrc
@@ -1381,10 +1381,8 @@ command! -nargs=+ -complete=command Windo
 	\ exe s:currentWindow . 'wincmd w'
 
 " Toggle colorcolumn
-let s:color_column_old = 0
-
 function! s:ToggleColorColumn()
-	if s:color_column_old == 0
+	if !exists('s:color_column_old') || s:color_column_old == 0
 		let s:color_column_old = &colorcolumn
 		Windo let &colorcolumn = 0
 	else
@@ -1394,18 +1392,17 @@ function! s:ToggleColorColumn()
 endfunction
 
 " Toggle the cursor position start/end
-let s:togglecp = 0
-
-function! s:ToggleCPosition(visual)
-	execute a:visual
+function! s:ToggleCPosition(mode)
+	execute a:mode
+	if !exists('s:togglecp')
+		let s:togglecp = 0
+	endif
 	if col('.') >= col('$') - 1
 		let s:togglecp = 1
 		norm! ^
-		echo 'SOT: ^'
 	else
 		let s:togglecp = 0
 		norm! $
-		echo 'EOL: $'
 	endif
 endfunction
 
