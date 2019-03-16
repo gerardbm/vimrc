@@ -1,5 +1,8 @@
 ## Changelog
 
+= 1.20.5 =
+* Split vimwiki into subfolders based on categories.
+
 = 1.20.4 =
 * Check if sqlite database exists before running SQL queries.
 

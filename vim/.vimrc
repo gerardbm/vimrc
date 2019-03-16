@@ -6,7 +6,7 @@
 "  (_)___/_/_/ /_/ /_/_/   \___/
 "
 "----------------------------------------------------------------
-"  Version : 1.20.4
+"  Version : 1.20.5
 "  License : MIT
 "  Author  : Gerard Bajona
 "  URL     : https://github.com/gerardbm/vimrc
@@ -544,13 +544,18 @@ let g:notebook_detect = 'VIMMAXIMANOTEBOOK '
 let g:polyglot_disabled = ['markdown']
 
 " Vimwiki settings
-let g:vimwiki_hl_headers    = 1
-let g:vimwiki_hl_cb_checked = 1
 let g:vimwiki_url_maxsave   = 0
-let g:vimwiki_list          = [{
-	\ 'path': '~/Workspace/vimwiki',
-	\ 'syntax': 'markdown',
-	\ }]
+let g:vimwiki_syntax        = 'markdown'
+let g:vimwiki_list          = [
+	\ {'path': '~/Workspace/vimwiki'},
+	\ {'path': '~/Workspace/vimwiki/Articles'},
+	\ {'path': '~/Workspace/vimwiki/Codes'},
+	\ {'path': '~/Workspace/vimwiki/Notes'},
+	\ {'path': '~/Workspace/vimwiki/Projects'},
+	\ {'path': '~/Workspace/vimwiki/Studies'},
+	\ {'path': '~/Workspace/vimwiki/ToDos'},
+	\ {'path': '~/Workspace/vimwiki/Unix'}
+	\ ]
 
 nnoremap <Leader>we :VimwikiToggleListItem<CR>
 vnoremap <Leader>we :VimwikiToggleListItem<CR>
