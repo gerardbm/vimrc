@@ -1,5 +1,8 @@
 ## Changelog
 
+= 1.20.4 =
+* Check if sqlite database exists before running SQL queries.
+
 = 1.20.3 =
 * Refactor `ToggleColorColumn()`.
 * Refactor `ToggleCPosition()`, and execute it silently.

@@ -6,7 +6,7 @@
 "  /_/ /_/\___/\____/|___/_/_/ /_/ /_/
 "
 "----------------------------------------------------------------
-"  Version : 1.20.3
+"  Version : 1.20.4
 "  License : MIT
 "  Author  : Gerard Bajona
 "  URL     : https://github.com/gerardbm/vimrc
@@ -455,7 +455,7 @@ let g:quickrun_config.plantuml = {
 	\ }
 
 " Vim-dadbod settings
-autocmd FileType sql nnoremap <silent> <Leader>ia :call <SID>SQLDatabase()<CR>
+autocmd FileType sql nnoremap <silent> <Leader>ia :call <SID>SqliteDatabase()<CR>
 autocmd FileType sql nnoremap <silent> <Leader>is
 			\ :call <SID>SQLExec('n')<CR>
 autocmd FileType sql vnoremap <silent> <Leader>is
@@ -1519,9 +1519,15 @@ function! s:Previewer(out) abort
 endfunction
 
 " Configure a database
-function! s:SQLDatabase() abort
+function! s:SqliteDatabase() abort
 	let b:path = input('Database: ')
-	let b:db = 'sqlite:' . b:path
+	if filereadable(b:path)
+		let b:db = 'sqlite:' . b:path
+		return 1
+	else
+		echo "\nThis database does not exist!"
+		return 0
+	endif
 endfunction
 
 " Execute SQL query using vim-dadbod
@@ -1532,8 +1538,10 @@ function! s:SQLExec(opt) abort
 		silent norm! gvy
 	endif
 	if !exists('b:db')
-		call <SID>SQLDatabase()
+		let b:file = <SID>SqliteDatabase()
 	endif
-	exec 'DB ' . b:db . ' ' . @
-	echo 'SQL sentence executed!'
+	if exists('b:file') && b:file == 1
+		exec 'DB ' . b:db . ' ' . @
+		echo 'SQL sentence executed!'
+	endif
 endfunction
