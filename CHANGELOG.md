@@ -1,5 +1,8 @@
 ## Changelog
 
+= 1.20.7 =
+* Set properly the height of the window preview.
+
 = 1.20.6 =
 * Remove the plugin vim-dadbod.
 * Improve the function `SQLExec()` to handle sqlite natively.

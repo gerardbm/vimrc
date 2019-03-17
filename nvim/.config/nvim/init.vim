@@ -1557,8 +1557,8 @@ endfunction
 function! s:WinPreview() abort
 	silent! wincmd P
 	if !&previewwindow
-		new
-		setlocal previewwindow previewheight=10
+		exec '12new'
+		setlocal previewwindow
 		setlocal buftype=nowrite bufhidden=wipe
 		setlocal nobuflisted noswapfile nowrap
 	endif
