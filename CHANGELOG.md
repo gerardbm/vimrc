@@ -1,5 +1,14 @@
 ## Changelog
 
+= 1.20.6 =
+* Remove the plugin vim-dadbod.
+* Improve the function `SQLExec()` to handle sqlite natively.
+* Implement a function to create a temporary window preview.
+* Implement a function to send a command to the window preview.
+* Add the map `<Leader>.` to close the window preview faster.
+* The map for wincmd is now `<Leader>,` (faster to type).
+* Create the command `Commander` to preview shell commands.
+
 = 1.20.5 =
 * Split vimwiki into subfolders based on categories.
 

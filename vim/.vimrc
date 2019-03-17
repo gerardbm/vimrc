@@ -6,7 +6,7 @@
 "  (_)___/_/_/ /_/ /_/_/   \___/
 "
 "----------------------------------------------------------------
-"  Version : 1.20.5
+"  Version : 1.20.6
 "  License : MIT
 "  Author  : Gerard Bajona
 "  URL     : https://github.com/gerardbm/vimrc
@@ -161,7 +161,6 @@ call plug#begin('~/.vim/plugged')
 	" Run code
 	Plug 'thinca/vim-quickrun'
 	Plug 'Shougo/vimproc.vim', {'do' : 'make'}
-	Plug 'tpope/vim-dadbod'
 
 	" Edition
 	Plug 'junegunn/vim-easy-align'
@@ -462,13 +461,6 @@ let g:quickrun_config.plantuml = {
 	\ 'outputter': 'null',
 	\ 'runner': 'vimproc'
 	\ }
-
-" Vim-dadbod settings
-autocmd FileType sql nnoremap <silent> <Leader>ia :call <SID>SqliteDatabase()<CR>
-autocmd FileType sql nnoremap <silent> <Leader>is
-			\ :call <SID>SQLExec('n')<CR>
-autocmd FileType sql vnoremap <silent> <Leader>is
-			\ :<C-U>call <SID>SQLExec('v')<CR>
 
 " --- Edition ---
 " Easy align settings
@@ -793,7 +785,8 @@ nnoremap <Leader>ty :execute 'silent! tabmove ' . tabpagenr()<CR>
 " 9. Multiple windows
 "----------------------------------------------------------------
 " Remap wincmd
-map <Leader>. <C-w>
+map <Leader>, <C-w>
+map <silent> <Leader>. :pclose<CR>
 
 set winminheight=0
 set winminwidth=0
@@ -1253,6 +1246,12 @@ augroup sql
 				\ :%!sqlformat --reindent --keywords upper --identifiers upper -<CR>
 	autocmd FileType sql vnoremap <Leader>bf
 				\ :%!sqlformat --reindent --keywords upper --identifiers upper -<CR>
+	autocmd FileType sql nnoremap <silent> <Leader>ia
+				\ :call <SID>SqliteDatabase()<CR>
+	autocmd FileType sql nnoremap <silent> <Leader>is
+				\ :call <SID>SQLExec('n')<CR>
+	autocmd FileType sql vnoremap <silent> <Leader>is
+				\ :<C-U>call <SID>SQLExec('v')<CR>
 augroup end
 
 " XML (it requires tidy)
@@ -1599,9 +1598,8 @@ endfunction
 
 " Configure a database
 function! s:SqliteDatabase() abort
-	let b:path = input('Database: ')
-	if filereadable(b:path)
-		let b:db = 'sqlite:' . b:path
+	let t:path = input('Database: ')
+	if filereadable(t:path)
 		return 1
 	else
 		echo "\nThis database does not exist!"
@@ -1609,18 +1607,43 @@ function! s:SqliteDatabase() abort
 	endif
 endfunction
 
-" Execute SQL query using vim-dadbod
+" Execute SQL queries
 function! s:SQLExec(opt) abort
 	if a:opt ==# 'n'
 		silent norm! yy
 	elseif a:opt ==# 'v'
 		silent norm! gvy
 	endif
-	if !exists('b:db')
-		let b:file = <SID>SqliteDatabase()
+	if !exists('t:path')
+		let t:file = <SID>SqliteDatabase()
 	endif
-	if exists('b:file') && b:file == 1
-		exec 'DB ' . b:db . ' ' . @
-		echo 'SQL sentence executed!'
+	if exists('t:file') && t:file == 1
+		let t:sql = @
+		let t:sql = substitute(t:sql, '\n', ' ', 'g')
+		let t:format = " | column -t -s '|'"
+		let t:cmd = t:path . " '" . t:sql . "'" . t:format
+		let a:cmd = "sqlite3 -list -batch " . t:cmd
+		call <SID>Commander(a:cmd)
 	endif
 endfunction
+
+" Window previewer
+function! s:WinPreview() abort
+	silent! wincmd P
+	if !&previewwindow
+		new
+		setlocal previewwindow previewheight=10
+		setlocal buftype=nowrite bufhidden=wipe
+		setlocal nobuflisted noswapfile nowrap
+	endif
+endfunction
+
+" Commander
+function! s:Commander(cmd) abort
+	call <SID>WinPreview()
+	exec "%delete"
+	exec ":0read !" . a:cmd
+	wincmd p
+endfunction
+
+command! -nargs=1 Commander call <SID>Commander(<f-args>)

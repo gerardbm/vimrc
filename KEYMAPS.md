@@ -40,16 +40,17 @@
   - `<M-k>` goes to the window: up.
   - `<M-l>` goes to the window: right.
   - `<C-f>` toggles maximize/minimize the current window.
-  - `<Leader>.` it is `wincmd` to easily manage windows.
-  - `<Leader>.-` splits window horizontally.
-  - `<Leader>..` splits window vertically.
-  - `<Leader>.j` closes the current window.
-  - `<Leader>.x` closes the current window forcing it.
-  - `<Leader>.,` restores the proportional size of windows.
-  - `<Leader>.l` returns to the last window.
-  - `<Leader>.p` goes to the previous window.
-  - `<Leader>.n` goes to the next window.
-  - `<Leader>.o` closes all windows excepting the current.
+  - `<Leader>,` it is `wincmd` to easily manage windows.
+  - `<Leader>,-` splits window horizontally.
+  - `<Leader>,.` splits window vertically.
+  - `<Leader>,j` closes the current window.
+  - `<Leader>,x` closes the current window forcing it.
+  - `<Leader>,,` restores the proportional size of windows.
+  - `<Leader>,l` returns to the last window.
+  - `<Leader>,p` goes to the previous window.
+  - `<Leader>,n` goes to the next window.
+  - `<Leader>,o` closes all windows excepting the current.
+  - `<Leader>.` closes the window preview (`:pclose`).
 
 ### Edition
 - Normal mode
