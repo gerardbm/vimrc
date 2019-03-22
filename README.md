@@ -13,7 +13,7 @@ Easily highlight the word under the cursor or the current selection. A lot of co
 
 Some useful tools have been integrated. Plugins: **CtrlP** (navigate between open buffers, MRU or directory files), **NERDTree** (tree files with filesystem operations), **vim-fugitive** (git commands), **GV** (navigate between git commits), **undotree** (history visualizer), **ALE** (async syntax linter), **deoplete** (autocompletion for Vim and Neovim), **neosnippet** (code snippets), **QuickRun** (it's awesome at running code), **Vimwiki** (organize notes, manage todo-lists...) and manage sessions with **vim-session**.
 
-Additionally, run scripting code (Bash, Perl, Ruby, Python and JavaScript) into a separate tmux window, execute SQL queries from sqlite databases and get the output into a preview window, convert UML files into PNG using *plantUML*, generate PDF, EPUB and HTML files from markdown with math support (LaTeX) and preview them with *MuPDF*, do symbolic math operations into a markdown file using *maxima* and open URLS into a tmux window with *w3m*.
+Additionally, run scripting code (Bash, Perl, Ruby, Python and JavaScript) into a separate tmux window, execute SQL queries from sqlite databases and get the output into a preview window, convert UML files to PNG using *plantUML*, convert EUK files to PNG using *eukleides*, generate PDF, EPUB and HTML files from markdown with math support (LaTeX) and preview them with *MuPDF*, do symbolic math operations into a markdown file using *maxima*, and open URLS into a tmux window with *w3m*.
 
 This configuration is focused on programming in C/C++, Go, Rust, Perl, Python, Ruby, PHP, Bash, JavaScript and web development in general, with HTML5 and CSS3.
 

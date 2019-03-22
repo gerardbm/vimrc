@@ -6,7 +6,7 @@
 "  (_)___/_/_/ /_/ /_/_/   \___/
 "
 "----------------------------------------------------------------
-"  Version : 1.20.7
+"  Version : 1.20.8
 "  License : MIT
 "  Author  : Gerard Bajona
 "  URL     : https://github.com/gerardbm/vimrc
@@ -1267,6 +1267,13 @@ augroup uml
 				\ :call <SID>Planty('.png')<CR>
 augroup end
 
+" EUK
+augroup eukleides
+	autocmd!
+	autocmd BufRead,BufNewFile *.euk setfiletype euk
+	autocmd FileType euk nnoremap <silent> <Leader>ie :call <SID>Eucly()<CR>
+augroup end
+
 " New file headers
 augroup headers
 	autocmd!
@@ -1579,6 +1586,18 @@ function! s:Planty(format) abort
 	let l:out = expand('%:r') . a:format
 	let l:inp = expand('%')
 	call system('plantuml ' . l:inp . ' ' . l:out)
+	call <SID>Previewer(l:out)
+endfunction
+
+" Eukleides conversion
+" Tools required: eukleides, convert and mupdf
+function! s:Eucly() abort
+	update
+	let l:inp1 = expand('%')
+	let l:inp2 = expand('%:r') . '.eps'
+	let l:out = expand('%:r') . '.png'
+	call system('eukleides ' . l:inp1)
+	call system('convert ' . l:inp2 . ' ' . l:out)
 	call <SID>Previewer(l:out)
 endfunction
 

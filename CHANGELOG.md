@@ -1,5 +1,9 @@
 ## Changelog
 
+= 1.20.8 =
+* Add `Eucly()` to generate PNG from EUK using Eukleides and mupdf preview.
+* Add the nnoremap `<Leader>ie` to run `Eucly()`.
+
 = 1.20.7 =
 * Set properly the height of the window preview.
 
