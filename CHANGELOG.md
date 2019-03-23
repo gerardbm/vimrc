@@ -1,5 +1,8 @@
 ## Changelog
 
+= 1.20.10 =
+* Add `convert` options for the EUK to PNG conversion.
+
 = 1.20.9 =
 * Create a new configuration section: "External tools integration".
 

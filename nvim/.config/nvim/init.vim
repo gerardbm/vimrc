@@ -6,7 +6,7 @@
 "  /_/ /_/\___/\____/|___/_/_/ /_/ /_/
 "
 "----------------------------------------------------------------
-"  Version : 1.20.9
+"  Version : 1.20.10
 "  License : MIT
 "  Author  : Gerard Bajona
 "  URL     : https://github.com/gerardbm/vimrc
@@ -1526,8 +1526,10 @@ function! s:Eucly() abort
 	let l:inp1 = expand('%')
 	let l:inp2 = expand('%:r') . '.eps'
 	let l:out = expand('%:r') . '.png'
+	let l:optb = ' -density 150 '
+	let l:opta = ' -flatten -alpha off -colorspace hsl '
 	call system('eukleides ' . l:inp1)
-	call system('convert ' . l:inp2 . ' ' . l:out)
+	call system('convert' . l:optb . l:inp2 . l:opta . l:out)
 	call <SID>Previewer(l:out)
 endfunction
 
