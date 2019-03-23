@@ -1,5 +1,8 @@
 ## Changelog
 
+= 1.20.11 =
+* Improve `Eucly()` to echo syntax errors when it's required.
+
 = 1.20.10 =
 * Add `convert` options for the EUK to PNG conversion.
 

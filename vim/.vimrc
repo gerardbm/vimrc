@@ -6,7 +6,7 @@
 "  (_)___/_/_/ /_/ /_/_/   \___/
 "
 "----------------------------------------------------------------
-"  Version : 1.20.10
+"  Version : 1.20.11
 "  License : MIT
 "  Author  : Gerard Bajona
 "  URL     : https://github.com/gerardbm/vimrc
@@ -1599,12 +1599,16 @@ function! s:Eucly() abort
 	update
 	let l:inp1 = expand('%')
 	let l:inp2 = expand('%:r') . '.eps'
-	let l:out = expand('%:r') . '.png'
+	let l:out  = expand('%:r') . '.png'
 	let l:optb = ' -density 150 '
 	let l:opta = ' -flatten -alpha off -colorspace hsl '
-	call system('eukleides ' . l:inp1)
-	call system('convert' . l:optb . l:inp2 . l:opta . l:out)
-	call <SID>Previewer(l:out)
+	let l:msg  = system('eukleides ' . l:inp1)
+	if v:shell_error ==# 0
+		call system('convert' . l:optb . l:inp2 . l:opta . l:out)
+		call <SID>Previewer(l:out)
+	else
+		echo l:msg
+	endif
 endfunction
 
 " Preview outputs (EPUB, PDF, HTML, PNG) with mupdf
