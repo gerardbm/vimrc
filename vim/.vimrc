@@ -6,7 +6,7 @@
 "  (_)___/_/_/ /_/ /_/_/   \___/
 "
 "----------------------------------------------------------------
-"  Version : 1.20.8
+"  Version : 1.20.9
 "  License : MIT
 "  Author  : Gerard Bajona
 "  URL     : https://github.com/gerardbm/vimrc
@@ -29,6 +29,7 @@
 "  15. Make settings
 "  16. Filetype settings
 "  17. Helper functions
+"  18. External tools integration
 "----------------------------------------------------------------
 
 "----------------------------------------------------------------
@@ -1549,6 +1550,9 @@ function! s:ToggleTagbar() abort
 	endif
 endfunction
 
+"----------------------------------------------------------------
+" 18. External tools integration
+"----------------------------------------------------------------
 " Run code into a tmux window
 function! s:Tmuxy(opt) abort
 	if exists('$TMUX')
