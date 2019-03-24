@@ -1,5 +1,9 @@
 ## Changelog
 
+= 1.20.15 =
+* Improve the nnoremaps to work on bufer.
+* Fix an error in the SQL queries execution.
+
 = 1.20.14 =
 * Add the nnoremap `q` to close the temporary preview window from inside.
 

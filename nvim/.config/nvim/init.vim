@@ -6,7 +6,7 @@
 "  /_/ /_/\___/\____/|___/_/_/ /_/ /_/
 "
 "----------------------------------------------------------------
-"  Version : 1.20.14
+"  Version : 1.20.15
 "  License : MIT
 "  Author  : Gerard Bajona
 "  URL     : https://github.com/gerardbm/vimrc
@@ -653,12 +653,11 @@ cnoremap WW w !sudo tee > /dev/null %
 " Rename file
 nnoremap <F2> :call <SID>RenameFile()<CR>
 
-" Work on all file, p.e:
-" - yaf (yank all file)
-" - vaf (select all file)
-onoremap af :<C-U>normal! ggVG<Esc><C-O><C-O>
-onoremap aF :<C-U>normal! ggVG"+y<Esc><C-O><C-O>
-vnoremap af :<C-U>normal! ggVG<Esc>
+" Work on buffer
+nnoremap yab :%y<CR>
+nnoremap Yab :%y +<CR>
+nnoremap dab :%d<CR>
+nnoremap vab ggVG
 
 "----------------------------------------------------------------
 " 7. Buffers management
@@ -1570,15 +1569,9 @@ function! s:Previewer(out) abort
 	endif
 endfunction
 
-" Configure a database
+" Configure a sqlite database
 function! s:SqliteDatabase() abort
 	let t:path = input('Database: ')
-	if filereadable(t:path)
-		return 1
-	else
-		echo "\nThis database does not exist!"
-		return 0
-	endif
 endfunction
 
 " Execute SQL queries
@@ -1589,15 +1582,17 @@ function! s:SQLExec(opt) abort
 		silent norm! gvy
 	endif
 	if !exists('t:path')
-		let t:file = <SID>SqliteDatabase()
+		call <SID>SqliteDatabase()
 	endif
-	if exists('t:file') && t:file == 1
+	if filereadable(t:path)
 		let t:sql = @
 		let t:sql = substitute(t:sql, '\n', ' ', 'g')
 		let t:format = " | column -t -s '|'"
 		let t:cmd = t:path . " '" . t:sql . "'" . t:format
 		let a:cmd = "sqlite3 -list -batch " . t:cmd
 		call <SID>Commander(a:cmd)
+	else
+		echo "\nThis database does not exist!"
 	endif
 endfunction
 
