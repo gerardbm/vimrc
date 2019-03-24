@@ -6,7 +6,7 @@
 "  /_/ /_/\___/\____/|___/_/_/ /_/ /_/
 "
 "----------------------------------------------------------------
-"  Version : 1.20.12
+"  Version : 1.20.13
 "  License : MIT
 "  Author  : Gerard Bajona
 "  URL     : https://github.com/gerardbm/vimrc
@@ -173,7 +173,6 @@ call plug#begin('~/.config/nvim/plugged')
 	Plug 'joeytwiddle/sexy_scroller.vim'
 	Plug 'tpope/vim-characterize'
 	Plug 'tyru/open-browser.vim'
-	Plug 'baruchel/vim-notebook'
 	Plug 'sheerun/vim-polyglot'
 	Plug 'junegunn/goyo.vim'
 	Plug 'mattn/webapi-vim'
@@ -516,14 +515,6 @@ let g:openbrowser_browser_commands = [{
 	\ }]
 
 nmap <Leader>gl <Plug>(openbrowser-open)
-
-" Vim-notebook: use maxima into vim (markdown files)
-let g:notebook_cmd    = 'stdbuf -i0 -o0 -e0 /usr/bin/maxima'
-	\ . ' --disable-readline --very-quiet'
-let g:notebook_stop   = 'quit();'
-let g:notebook_send0  = '\;'
-let g:notebook_send   = 'print(\"VIMMAXIMANOTEBOOK\")\$'
-let g:notebook_detect = 'VIMMAXIMANOTEBOOK '
 
 " Polyglot
 let g:polyglot_disabled = ['markdown', 'csv']
@@ -1144,12 +1135,6 @@ augroup markdown
 				\ :call <SID>Marky('.pdf')<CR>
 	autocmd FileType markdown nnoremap <silent> <Leader>ik
 				\ :call <SID>Marky('.epub')<CR>
-	autocmd FileType markdown nnoremap <silent> <Leader>ims
-				\ :NotebookStart<CR>
-	autocmd FileType markdown nnoremap <silent> <Leader>imc
-				\ :NotebookClose<CR>
-	autocmd FileType markdown nnoremap <silent> <Leader>imm
-				\ :NotebookEvaluate<CR>
 augroup end
 
 let g:markdown_fenced_languages = [
@@ -1178,6 +1163,16 @@ augroup sql
 	autocmd FileType sql vnoremap <silent> <Leader>is
 				\ :<C-U>call <SID>SQLExec('v')<CR>
 augroup end
+
+" MAX
+augroup maxima
+	autocmd!
+	autocmd BufRead,BufNewFile *.max set filetype=maxima
+	autocmd FileType maxima nnoremap <silent> <Leader>im
+				\ :call <SID>MaximaExec('n')<CR>
+	autocmd FileType maxima vnoremap <silent> <Leader>im
+				\ :<C-U>call <SID>MaximaExec('v')<CR>
+augroup END
 
 " XML (it requires tidy)
 augroup xml
@@ -1604,6 +1599,21 @@ function! s:SQLExec(opt) abort
 		let a:cmd = "sqlite3 -list -batch " . t:cmd
 		call <SID>Commander(a:cmd)
 	endif
+endfunction
+
+" Execute Maxima instructions
+function! s:MaximaExec(opt) abort
+	if a:opt ==# 'n'
+		silent norm! yy
+	elseif a:opt ==# 'v'
+		silent norm! gvy
+	endif
+	let b:equ = @
+	let b:equ = substitute(b:equ, '\n', ' ', 'g')
+	let b:equ = substitute(b:equ, '\s$', '', 'g')
+	let b:equ = substitute(b:equ, '%', '\\%', 'g')
+	let a:cmd = 'maxima --very-quiet --batch-string "' . b:equ . '"'
+	call <SID>Commander(a:cmd)
 endfunction
 
 " Window previewer

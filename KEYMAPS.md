@@ -191,8 +191,9 @@
   - `<Leader>iu` converts UML (PlantUML) to PNG and previews it with Mupdf.
   - `<Leader>ie` converts EUK (Eukleides) to PNG and previews it with Mupdf.
   - `<Leader>ig` converts PLT (Gnuplot) to PNG and previews it with Mupdf.
-  - `<Leader>is` executes SQL (Sqlite3) and previews it in a split window.
   - `<Leader>ia` adds/changes the path of a database.
+  - `<Leader>is` executes SQL (Sqlite3) and previews it in a split window.
+  - `<Leader>im` executes Maxima and previews it in a split window.
   - `<Leader><TAB>` runs the code of the current buffer.
   - `<Leader>B` shows syntax highlighting groups.
   - `<Leader>u` toggles the plugin Undotree.
@@ -200,9 +201,6 @@
   - `<Leader>ww` opens the personal vimwiki.
   - `<Leader>we` toggles the status of a vimwiki list item.
   - `<Leader>gl` opens the URL under the cursor in a web browser.
-  - `<Leader>ims` runs the command `:NotebookStart`.
-  - `<Leader>imc` runs the command `:NotebookClose`.
-  - `<Leader>imm` runs the command `:NotebookEvaluate`.
   - `gi` inits the plugin EasyAlign.
 
 - Visual mode

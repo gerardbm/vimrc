@@ -1,5 +1,16 @@
 ## Changelog
 
+= 1.20.13 =
+* Remove the plugin vim-notebook.
+  - It needs blocks in markdown and the output writes same document.
+  - It requires to start the kernel first...
+* Implement a function to execute Maxima instructions, as in SQL queries.
+  - This solution is cleaner because it uses a temporary window preview.
+  - A second instruction overwrites the previous one (better workflow).
+  - It has synax enabled, using MAX files.
+  - It does not require extra commands to start a kernel.
+  - It executes one line or one selection instead of a markdown block.
+
 = 1.20.12 =
 * Exclude csv syntax from vim-polyglot.
 * Add `Plotty()` to generate 2D/3D graphs with Gnuplot and mupdf preview.
