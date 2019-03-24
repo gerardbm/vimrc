@@ -1,5 +1,9 @@
 ## Changelog
 
+= 1.20.12 =
+* Exclude csv syntax from vim-polyglot.
+* Add `Plotty()` to generate 2D/3D graphs with Gnuplot and mupdf preview.
+
 = 1.20.11 =
 * Improve `Eucly()` to echo syntax errors when it's required.
 

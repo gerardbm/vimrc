@@ -188,9 +188,10 @@
   - `<Leader>ih` converts MD to HTML and previews it with Mupdf.
   - `<Leader>ij` converts MD to PDF and previews it with Mupdf.
   - `<Leader>ik` converts MD to EPUB and previews it with Mupdf.
-  - `<Leader>iu` converts UML to PNG and previews it with Mupdf.
-  - `<Leader>ie` converts EUK to PNG and previews it with Mupdf.
-  - `<Leader>is` executes a SQL query (one by line).
+  - `<Leader>iu` converts UML (PlantUML) to PNG and previews it with Mupdf.
+  - `<Leader>ie` converts EUK (Eukleides) to PNG and previews it with Mupdf.
+  - `<Leader>ig` converts PLT (Gnuplot) to PNG and previews it with Mupdf.
+  - `<Leader>is` executes SQL (Sqlite3) and previews it in a split window.
   - `<Leader>ia` adds/changes the path of a database.
   - `<Leader><TAB>` runs the code of the current buffer.
   - `<Leader>B` shows syntax highlighting groups.

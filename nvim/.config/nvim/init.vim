@@ -6,7 +6,7 @@
 "  /_/ /_/\___/\____/|___/_/_/ /_/ /_/
 "
 "----------------------------------------------------------------
-"  Version : 1.20.11
+"  Version : 1.20.12
 "  License : MIT
 "  Author  : Gerard Bajona
 "  URL     : https://github.com/gerardbm/vimrc
@@ -526,7 +526,7 @@ let g:notebook_send   = 'print(\"VIMMAXIMANOTEBOOK\")\$'
 let g:notebook_detect = 'VIMMAXIMANOTEBOOK '
 
 " Polyglot
-let g:polyglot_disabled = ['markdown']
+let g:polyglot_disabled = ['markdown', 'csv']
 
 " Vimwiki settings
 let g:vimwiki_url_maxsave   = 0
@@ -1195,8 +1195,17 @@ augroup end
 " EUK
 augroup eukleides
 	autocmd!
-	autocmd BufRead,BufNewFile *.euk setfiletype euk
-	autocmd FileType euk nnoremap <silent> <Leader>ie :call <SID>Eucly()<CR>
+	autocmd BufRead,BufNewFile *.euk set filetype=eukleides
+	autocmd FileType eukleides nnoremap <silent> <Leader>ie
+				\ :call <SID>Eucly('.png')<CR>
+augroup end
+
+" PLT
+augroup gnuplot
+	autocmd!
+	autocmd BufRead,BufNewFile *.plt set filetype=gnuplot
+	autocmd FileType gnuplot nnoremap <silent> <Leader>ig
+				\ :call <SID>Plotty('.png')<CR>
 augroup end
 
 " New file headers
@@ -1521,16 +1530,31 @@ endfunction
 
 " Eukleides conversion
 " Tools required: eukleides, convert and mupdf
-function! s:Eucly() abort
+function! s:Eucly(format) abort
 	update
 	let l:inp1 = expand('%')
 	let l:inp2 = expand('%:r') . '.eps'
-	let l:out  = expand('%:r') . '.png'
+	let l:out  = expand('%:r') . a:format
 	let l:optb = ' -density 150 '
 	let l:opta = ' -flatten -alpha off -colorspace hsl '
 	let l:msg  = system('eukleides ' . l:inp1)
 	if v:shell_error ==# 0
 		call system('convert' . l:optb . l:inp2 . l:opta . l:out)
+		call <SID>Previewer(l:out)
+	else
+		echo l:msg
+	endif
+endfunction
+
+" Gnuplot conversion
+" Tools required: gnuplot and mupdf
+function! s:Plotty(format) abort
+	update
+	let l:inp = expand('%')
+	let l:out = expand('%:r') . a:format
+	let l:opt = ' -e "set terminal png; set output ''' . l:out . '''" '
+	let l:msg = system('gnuplot' . l:opt . l:inp)
+	if v:shell_error ==# 0
 		call <SID>Previewer(l:out)
 	else
 		echo l:msg
