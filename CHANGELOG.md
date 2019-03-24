@@ -1,13 +1,16 @@
 ## Changelog
 
+= 1.20.14 =
+* Add the nnoremap `q` to close the temporary preview window from inside.
+
 = 1.20.13 =
 * Remove the plugin vim-notebook.
   - It needs blocks in markdown and the output writes same document.
   - It requires to start the kernel first...
 * Implement a function to execute Maxima instructions, as in SQL queries.
-  - This solution is cleaner because it uses a temporary window preview.
+  - This solution is cleaner because it uses a temporary preview window.
   - A second instruction overwrites the previous one (better workflow).
-  - It has synax enabled, using MAX files.
+  - It has syntax enabled, using MAX files.
   - It does not require extra commands to start a kernel.
   - It executes one line or one selection instead of a markdown block.
 
@@ -29,14 +32,14 @@
 * Add the nnoremap `<Leader>ie` to run `Eucly()`.
 
 = 1.20.7 =
-* Set properly the height of the window preview.
+* Set properly the height of the preview window.
 
 = 1.20.6 =
 * Remove the plugin vim-dadbod.
 * Improve the function `SQLExec()` to handle sqlite natively.
-* Implement a function to create a temporary window preview.
-* Implement a function to send a command to the window preview.
-* Add the map `<Leader>.` to close the window preview faster.
+* Implement a function to create a temporary preview window.
+* Implement a function to send a command to the preview window.
+* Add the map `<Leader>.` to close the preview window faster.
 * The map for wincmd is now `<Leader>,` (faster to type).
 * Create the command `Commander` to preview shell commands.
 

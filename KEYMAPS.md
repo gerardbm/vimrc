@@ -50,7 +50,8 @@
   - `<Leader>,p` goes to the previous window.
   - `<Leader>,n` goes to the next window.
   - `<Leader>,o` closes all windows excepting the current.
-  - `<Leader>.` closes the window preview (`:pclose`).
+  - `<Leader>.` closes the preview window (`:pclose`) from anywhere.
+  - `q` closes the preview window (`:pclose`) from inside.
 
 ### Edition
 - Normal mode
