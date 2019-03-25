@@ -6,7 +6,7 @@
 "  /_/ /_/\___/\____/|___/_/_/ /_/ /_/
 "
 "----------------------------------------------------------------
-"  Version : 1.20.16
+"  Version : 1.20.17
 "  License : MIT
 "  Author  : Gerard Bajona
 "  URL     : https://github.com/gerardbm/vimrc
@@ -1619,7 +1619,7 @@ endfunction
 function! s:WinPreview() abort
 	silent! wincmd P
 	if !&previewwindow
-		exec '12new'
+		exec 'new'
 		setlocal previewwindow
 		setlocal buftype=nowrite bufhidden=wipe
 		setlocal nobuflisted noswapfile nowrap
@@ -1632,6 +1632,13 @@ function! s:Commander(cmd) abort
 	call <SID>WinPreview()
 	exec "%delete"
 	exec ":0read !" . a:cmd
+	let s:size = line('$')
+	if s:size < 11
+		exec "resize " . line('$')
+		norm! gg
+	else
+		exec "resize 10"
+	endif
 	wincmd p
 endfunction
 
