@@ -1,5 +1,9 @@
 ## Changelog
 
+= 1.20.16 =
+* Fix `ToggleSpelllang()`: better conditionals to check the language.
+* Fix `SQLExec()`: format queries only when it's a SQL `SELECT`.
+
 = 1.20.15 =
 * Improve the nnoremaps to work on bufer.
 * Fix an error in the SQL queries execution.

@@ -6,7 +6,7 @@
 "  /_/ /_/\___/\____/|___/_/_/ /_/ /_/
 "
 "----------------------------------------------------------------
-"  Version : 1.20.15
+"  Version : 1.20.16
 "  License : MIT
 "  Author  : Gerard Bajona
 "  URL     : https://github.com/gerardbm/vimrc
@@ -1374,13 +1374,13 @@ endfunction
 
 " Toggle spell dictionary
 function! <SID>ToggleSpelllang()
-	if (&spelllang =~# 'en')
+	if (&spelllang =~# '^en')
 		set spelllang=ca
 		echo 'Català'
-	elseif (&spelllang ==# 'ca')
+	elseif (&spelllang =~# '^ca')
 		set spelllang=es
 		echo 'Castellano'
-	else
+	elseif (&spelllang =~# '^es')
 		set spelllang=en_us,en_gb
 		echo 'English'
 	endif
@@ -1588,7 +1588,11 @@ function! s:SQLExec(opt) abort
 		let t:sql = @
 		let t:sql = substitute(t:sql, '\n', ' ', 'g')
 		let t:format = " | column -t -s '|'"
-		let t:cmd = t:path . " '" . t:sql . "'" . t:format
+		if t:sql =~? '^select'
+			let t:cmd = t:path . " '" . t:sql . "'" . t:format
+		else
+			let t:cmd = t:path . " '" . t:sql . "'"
+		endif
 		let a:cmd = "sqlite3 -list -batch " . t:cmd
 		call <SID>Commander(a:cmd)
 	else
