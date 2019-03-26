@@ -1,5 +1,8 @@
 ## Changelog
 
+= 1.20.18 =
+* Move the cursor to top in the preview window.
+
 = 1.20.17 =
 * Resize automatically the preview window.
 

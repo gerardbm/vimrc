@@ -6,7 +6,7 @@
 "  /_/ /_/\___/\____/|___/_/_/ /_/ /_/
 "
 "----------------------------------------------------------------
-"  Version : 1.20.17
+"  Version : 1.20.18
 "  License : MIT
 "  Author  : Gerard Bajona
 "  URL     : https://github.com/gerardbm/vimrc
@@ -1634,11 +1634,11 @@ function! s:Commander(cmd) abort
 	exec ":0read !" . a:cmd
 	let s:size = line('$')
 	if s:size < 11
-		exec "resize " . line('$')
-		norm! gg
+		exec 'resize ' . line('$')
 	else
-		exec "resize 10"
+		exec 'resize 10'
 	endif
+	norm! gg
 	wincmd p
 endfunction
 
