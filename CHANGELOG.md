@@ -1,5 +1,12 @@
 ## Changelog
 
+= 1.20.19 =
+* Remove the nnoremap `<M-p>` for `:TmuxNavigatePrevious`.
+* Add the nnoremap `<M-d>` to scroll down the preview window from another.
+* Add the nnoremap `<M-u>` to scroll up the preview window from another.
+* Remove the last empty line from the output of the `:Commander` function.
+* Remove the plugin sexy_scroller.
+
 = 1.20.18 =
 * Move the cursor to top in the preview window.
 

@@ -6,7 +6,7 @@
 "  /_/ /_/\___/\____/|___/_/_/ /_/ /_/
 "
 "----------------------------------------------------------------
-"  Version : 1.20.18
+"  Version : 1.20.19
 "  License : MIT
 "  Author  : Gerard Bajona
 "  URL     : https://github.com/gerardbm/vimrc
@@ -170,7 +170,6 @@ call plug#begin('~/.config/nvim/plugged')
 
 	" Misc
 	Plug 'christoomey/vim-tmux-navigator'
-	Plug 'joeytwiddle/sexy_scroller.vim'
 	Plug 'tpope/vim-characterize'
 	Plug 'tyru/open-browser.vim'
 	Plug 'sheerun/vim-polyglot'
@@ -715,7 +714,6 @@ nnoremap <Leader>ty :execute 'silent! tabmove ' . tabpagenr()<CR>
 "----------------------------------------------------------------
 " Remap wincmd
 map <Leader>, <C-w>
-map <silent> <Leader>. :pclose<CR>
 
 set winminheight=0
 set winminwidth=0
@@ -756,10 +754,19 @@ nnoremap <silent> <M-h> :TmuxNavigateLeft<CR>
 nnoremap <silent> <M-j> :TmuxNavigateDown<CR>
 nnoremap <silent> <M-k> :TmuxNavigateUp<CR>
 nnoremap <silent> <M-l> :TmuxNavigateRight<CR>
-nnoremap <silent> <M-p> :TmuxNavigatePrevious<CR>
 
 " Remove the Windows ^M - when the encodings gets messed up
 noremap <Leader><BS> mmHmt:%s/<C-v><CR>//ge<CR>'tzt`m
+
+" Close the preview window
+map <silent> <Leader>. :pclose<CR>
+
+" Scroll the preview window
+set <M-d>=d
+set <M-u>=u
+
+nnoremap <silent> <M-d> :wincmd P<CR>5<C-e>:wincmd p<CR>
+nnoremap <silent> <M-u> :wincmd P<CR>5<C-y>:wincmd p<CR>
 
 "----------------------------------------------------------------
 " 10. Indentation tabs
@@ -1630,8 +1637,9 @@ endfunction
 " Commander
 function! s:Commander(cmd) abort
 	call <SID>WinPreview()
-	exec "%delete"
-	exec ":0read !" . a:cmd
+	exec '%delete'
+	exec '0read !' . a:cmd
+	exec '$d'
 	let s:size = line('$')
 	if s:size < 11
 		exec 'resize ' . line('$')

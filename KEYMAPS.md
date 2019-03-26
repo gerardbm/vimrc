@@ -54,7 +54,9 @@
   - `<Leader>,p` goes to the previous window.
   - `<Leader>,n` goes to the next window.
   - `<Leader>,o` closes all windows excepting the current.
-  - `<Leader>.` closes the preview window (`:pclose`) from anywhere.
+  - `<M-d>.` scrolls down the preview window from another window.
+  - `<M-u>.` scrolls up the preview window from another window.
+  - `<Leader>.` closes the preview window from another window.
   - `q` closes the preview window (`:pclose`) from inside.
 
 ### Edition
