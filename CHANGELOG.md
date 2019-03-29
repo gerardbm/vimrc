@@ -1,5 +1,10 @@
 ## Changelog
 
+= 1.20.20 =
+* Add the function `Texy()` to convert LaTeX to PDF.
+* Add thte nnoremap `<Leader>ix` to convert LaTeX to PDF and preview it.
+* Add the linter `chktex` for LaTeX syntax checking.
+
 = 1.20.19 =
 * Remove the nnoremap `<M-p>` for `:TmuxNavigatePrevious`.
 * Add the nnoremap `<M-d>` to scroll down the preview window from another.

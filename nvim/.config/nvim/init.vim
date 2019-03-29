@@ -6,7 +6,7 @@
 "  /_/ /_/\___/\____/|___/_/_/ /_/ /_/
 "
 "----------------------------------------------------------------
-"  Version : 1.20.19
+"  Version : 1.20.20
 "  License : MIT
 "  Author  : Gerard Bajona
 "  URL     : https://github.com/gerardbm/vimrc
@@ -253,6 +253,7 @@ let g:ale_linters = {
 	\ 'python'     : ['pylint'],
 	\ 'javascript' : ['jshint'],
 	\ 'css'        : ['csslint'],
+	\ 'tex'        : ['chktex'],
 	\ }
 
 " Navigate between errors
@@ -1132,6 +1133,13 @@ augroup Binary
 	autocmd BufWritePost *.bin set nomod | endif
 augroup end
 
+" TEX
+augroup latex
+	autocmd!
+	autocmd FileType tex nnoremap <silent> <Leader>ix
+				\ :call <SID>Texy()<CR>
+augroup end
+
 " Markdown
 augroup markdown
 	autocmd!
@@ -1500,6 +1508,18 @@ function! s:Tmuxy(opt) abort
 	endif
 endfunction
 
+" Latex converter
+" Tools required: pdflatex and mupdf
+function! s:Texy() abort
+	update
+	let l:inp = expand('%')
+	let l:out = expand('%:r') . '.pdf'
+	let l:msg = system('pdflatex ' . l:inp)
+	if v:shell_error ==# 0
+		call <SID>Previewer(l:out)
+	endif
+endfunction
+
 " Convert MD to EPUB, PDF, HTML and preview with mupdf
 " Tools required: pandoc and mupdf
 function! s:Marky(format) abort
@@ -1513,8 +1533,8 @@ function! s:Marky(format) abort
 					\ -V papersize=a4
 					\ -V geometry:margin=2.5cm '
 	endif
-	let l:out = expand('%:r') . a:format
 	let l:inp = expand('%')
+	let l:out = expand('%:r') . a:format
 	call system('pandoc -s ' . l:options . l:inp . ' -o ' . l:out)
 	call <SID>Previewer(l:out)
 endfunction
@@ -1523,8 +1543,8 @@ endfunction
 " Tools required: plantuml and mupdf
 function! s:Planty(format) abort
 	update
-	let l:out = expand('%:r') . a:format
 	let l:inp = expand('%')
+	let l:out = expand('%:r') . a:format
 	call system('plantuml ' . l:inp . ' ' . l:out)
 	call <SID>Previewer(l:out)
 endfunction
