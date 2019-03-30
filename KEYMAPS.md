@@ -191,18 +191,18 @@
   - `<C-p>` opens the CtrlP menu buffers.
   - `<C-q>` display a list of sessions to open.
   - `<C-t>` opens, focuses or closes Tagbar.
-  - `<Leader>ii` runs a script into a tmux window.
-  - `<Leader>ix` converts LaTeX to PDF and previews it with Mupdf.
-  - `<Leader>ij` converts MD to PDF and previews it with Mupdf.
+  - `<Leader>ii` runs a script into a tmux window. Bash, perl, ruby, python, js.
+  - `<Leader>ii` converts LaTeX to PDF and previews it with Mupdf.
+  - `<Leader>ii` converts MD to PDF and previews it with Mupdf.
   - `<Leader>ih` converts MD to HTML and previews it with Mupdf.
-  - `<Leader>ik` converts MD to EPUB and previews it with Mupdf.
-  - `<Leader>iu` converts UML (PlantUML) to PNG and previews it with Mupdf.
-  - `<Leader>ie` converts EUK (Eukleides) to PNG and previews it with Mupdf.
-  - `<Leader>ig` converts PLT (Gnuplot) to PNG and previews it with Mupdf.
+  - `<Leader>ij` converts MD to EPUB and previews it with Mupdf.
+  - `<Leader>ii` converts UML (PlantUML) to PNG and previews it with Mupdf.
+  - `<Leader>ii` converts EUK (Eukleides) to PNG and previews it with Mupdf.
+  - `<Leader>ii` converts PLT (Gnuplot) to PNG and previews it with Mupdf.
   - `<Leader>ia` adds/changes the path of a database.
-  - `<Leader>is` executes SQL (Sqlite3) and previews it in a split window.
-  - `<Leader>im` executes Maxima and previews it in a split window.
-  - `<Leader><TAB>` runs the code of the current buffer.
+  - `<Leader>ii` executes SQL (Sqlite3) and previews it in a split window.
+  - `<Leader>ii` executes Maxima and previews it in a split window.
+  - `<Leader><TAB>` runs the code of the current buffer with `Quickrun`.
   - `<Leader>B` shows syntax highlighting groups.
   - `<Leader>u` toggles the plugin Undotree.
   - `<Leader>W` inits ArgWrap plugin.

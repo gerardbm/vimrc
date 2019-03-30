@@ -1,5 +1,9 @@
 ## Changelog
 
+= 1.20.21 =
+* Change all the nnoremaps to convert, generate or run to `<Leader>ii`.
+* Reorganize the configuration.
+
 = 1.20.20 =
 * Add the function `Texy()` to convert LaTeX to PDF.
 * Add thte nnoremap `<Leader>ix` to convert LaTeX to PDF and preview it.

@@ -6,7 +6,7 @@
 "  /_/ /_/\___/\____/|___/_/_/ /_/ /_/
 "
 "----------------------------------------------------------------
-"  Version : 1.20.20
+"  Version : 1.20.21
 "  License : MIT
 "  Author  : Gerard Bajona
 "  URL     : https://github.com/gerardbm/vimrc
@@ -1098,14 +1098,81 @@ set errorformat=%m\ in\ %f\ on\ line\ %l
 nnoremap <silent> <Leader><TAB> :<C-u>QuickRun<CR>
 vnoremap <silent> <Leader><TAB> :QuickRun<CR>
 
-augroup Tmuxy
+" Run scripts in a tmux window
+augroup tmuxy
 	autocmd!
-	autocmd FileType sh nnoremap <buffer> <Leader>ii :call <SID>Tmuxy('bash')<CR>
-	autocmd FileType perl nnoremap <buffer> <Leader>ii :call <SID>Tmuxy('perl')<CR>
-	autocmd FileType ruby nnoremap <buffer> <Leader>ii :call <SID>Tmuxy('ruby')<CR>
-	autocmd FileType python nnoremap <buffer> <Leader>ii :call <SID>Tmuxy('python')<CR>
-	autocmd FileType javascript nnoremap <buffer> <Leader>ii :call <SID>Tmuxy('node')<CR>
+	autocmd FileType sh nnoremap <silent> <buffer> <Leader>ii
+				\ :call <SID>Tmuxy('bash')<CR>
+	autocmd FileType perl nnoremap <silent> <buffer> <Leader>ii
+				\ :call <SID>Tmuxy('perl')<CR>
+	autocmd FileType ruby nnoremap <silent> <buffer> <Leader>ii
+				\ :call <SID>Tmuxy('ruby')<CR>
+	autocmd FileType python nnoremap <silent> <buffer> <Leader>ii
+				\ :call <SID>Tmuxy('python')<CR>
+	autocmd FileType javascript nnoremap <silent> <buffer> <Leader>ii
+				\ :call <SID>Tmuxy('node')<CR>
+augroup end
+
+" Convert LaTeX to PDF
+augroup latex
+	autocmd!
+	autocmd FileType tex nnoremap <silent> <buffer> <Leader>ii
+				\ :call <SID>Texy()<CR>
+augroup end
+
+" Convert markdown to PDF, HTML and EPUB
+augroup markdown
+	autocmd!
+	autocmd FileType markdown nnoremap <silent> <buffer> <Leader>ii
+				\ :call <SID>Marky('.pdf')<CR>
+	autocmd FileType markdown nnoremap <silent> <buffer> <Leader>ih
+				\ :call <SID>Marky('.html')<CR>
+	autocmd FileType markdown nnoremap <silent> <buffer> <Leader>ij
+				\ :call <SID>Marky('.epub')<CR>
+augroup end
+
+" Work with sqlite databases
+augroup sqlite
+	autocmd FileType sql nnoremap <silent> <Leader>ia
+				\ :call <SID>SqliteDatabase()<CR>
+	autocmd FileType sql nnoremap <silent> <buffer> <Leader>ii
+				\ :call <SID>SQLExec('n')<CR>
+	autocmd FileType sql vnoremap <silent> <buffer> <Leader>ii
+				\ :<C-U>call <SID>SQLExec('v')<CR>
+augroup end
+
+" Work with maxima (symbolic mathematics)
+augroup maxima
+	autocmd!
+	autocmd BufRead,BufNewFile *.max set filetype=maxima
+	autocmd FileType maxima nnoremap <silent> <buffer> <Leader>ii
+				\ :call <SID>MaximaExec('n')<CR>
+	autocmd FileType maxima vnoremap <silent> <buffer> <Leader>ii
+				\ :<C-U>call <SID>MaximaExec('v')<CR>
 augroup END
+
+" Draw with PlantUML
+augroup uml
+	autocmd!
+	autocmd FileType plantuml nnoremap <silent> <buffer> <Leader>ii
+				\ :call <SID>Planty('.png')<CR>
+augroup end
+
+" Draw with Eukleides
+augroup eukleides
+	autocmd!
+	autocmd BufRead,BufNewFile *.euk set filetype=eukleides
+	autocmd FileType eukleides nnoremap <silent> <buffer> <Leader>ii
+				\ :call <SID>Eucly('.png')<CR>
+augroup end
+
+" Draw with Gnuplot
+augroup gnuplot
+	autocmd!
+	autocmd BufRead,BufNewFile *.plt set filetype=gnuplot
+	autocmd FileType gnuplot nnoremap <silent> <buffer> <Leader>ii
+				\ :call <SID>Plotty('.png')<CR>
+augroup end
 
 "----------------------------------------------------------------
 " 16. Filetype settings
@@ -1122,7 +1189,7 @@ endfunc
 nnoremap <silent> <Leader>wd :call <SID>DeleteTrailing()<CR>
 
 " Binary
-augroup Binary
+augroup binary
 	autocmd!
 	autocmd BufReadPre  *.bin let &bin=1
 	autocmd BufReadPost *.bin if &bin | %!xxd
@@ -1133,24 +1200,7 @@ augroup Binary
 	autocmd BufWritePost *.bin set nomod | endif
 augroup end
 
-" TEX
-augroup latex
-	autocmd!
-	autocmd FileType tex nnoremap <silent> <Leader>ix
-				\ :call <SID>Texy()<CR>
-augroup end
-
 " Markdown
-augroup markdown
-	autocmd!
-	autocmd FileType markdown nnoremap <silent> <Leader>ih
-				\ :call <SID>Marky('.html')<CR>
-	autocmd FileType markdown nnoremap <silent> <Leader>ij
-				\ :call <SID>Marky('.pdf')<CR>
-	autocmd FileType markdown nnoremap <silent> <Leader>ik
-				\ :call <SID>Marky('.epub')<CR>
-augroup end
-
 let g:markdown_fenced_languages = [
 	\ 'python',
 	\ 'sh',
@@ -1170,51 +1220,12 @@ augroup sql
 				\ :%!sqlformat --reindent --keywords upper --identifiers upper -<CR>
 	autocmd FileType sql vnoremap <Leader>bf
 				\ :%!sqlformat --reindent --keywords upper --identifiers upper -<CR>
-	autocmd FileType sql nnoremap <silent> <Leader>ia
-				\ :call <SID>SqliteDatabase()<CR>
-	autocmd FileType sql nnoremap <silent> <Leader>is
-				\ :call <SID>SQLExec('n')<CR>
-	autocmd FileType sql vnoremap <silent> <Leader>is
-				\ :<C-U>call <SID>SQLExec('v')<CR>
 augroup end
-
-" MAX
-augroup maxima
-	autocmd!
-	autocmd BufRead,BufNewFile *.max set filetype=maxima
-	autocmd FileType maxima nnoremap <silent> <Leader>im
-				\ :call <SID>MaximaExec('n')<CR>
-	autocmd FileType maxima vnoremap <silent> <Leader>im
-				\ :<C-U>call <SID>MaximaExec('v')<CR>
-augroup END
 
 " XML (it requires tidy)
 augroup xml
 	autocmd FileType xml nnoremap <Leader>bf
 				\ :%!tidy -q -i -xml --show-errors 0 -wrap 0 --indent-spaces 4<CR>
-augroup end
-
-" UML
-augroup uml
-	autocmd!
-	autocmd FileType plantuml nnoremap <silent> <Leader>iu
-				\ :call <SID>Planty('.png')<CR>
-augroup end
-
-" EUK
-augroup eukleides
-	autocmd!
-	autocmd BufRead,BufNewFile *.euk set filetype=eukleides
-	autocmd FileType eukleides nnoremap <silent> <Leader>ie
-				\ :call <SID>Eucly('.png')<CR>
-augroup end
-
-" PLT
-augroup gnuplot
-	autocmd!
-	autocmd BufRead,BufNewFile *.plt set filetype=gnuplot
-	autocmd FileType gnuplot nnoremap <silent> <Leader>ig
-				\ :call <SID>Plotty('.png')<CR>
 augroup end
 
 " New file headers
