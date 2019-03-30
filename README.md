@@ -11,11 +11,11 @@ Navigate easily: between buffers, tabs, windows and tmux panes; between syntax w
 
 Easily highlight the word under the cursor or the current selection. A lot of commands have been defined to work with the highlighted text: the mentioned grep and vimgrep, and replace. Also, you can search and replace into the visual selection only.
 
-Some useful tools have been integrated. Plugins: **CtrlP** (navigate between open buffers, MRU or directory files), **NERDTree** (tree files with filesystem operations), **vim-fugitive** (git commands), **GV** (navigate between git commits), **undotree** (history visualizer), **ALE** (async syntax linter), **deoplete** (autocompletion for Vim and Neovim), **neosnippet** (code snippets), **QuickRun** (it's awesome at running code), **Vimwiki** (organize notes, manage todo-lists...) and manage sessions with **vim-session**.
+Some useful tools have been integrated. Plugins: **CtrlP** (navigate between open buffers, MRU or directory files), **NERDTree** (tree files with filesystem operations), **vim-fugitive** (git commands), **GV** (navigate between git commits), **undotree** (history visualizer), **ALE** (async syntax linter), **deoplete** (autocompletion for Vim and Neovim), **neosnippet** (code snippets), **Vimwiki** (organize notes, manage todo-lists...) and manage sessions with **vim-session**.
 
-Additionally, run scripting code (Bash, Perl, Ruby, Python and JavaScript) into a separate tmux window, execute SQL queries from *Sqlite* databases and get the output into a preview window, execute *Maxima* operations (symbolic maths), convert UML files to PNG using *plantUML*, draw elementary plane geometry using *eukleides*, generate 2D and 3D graphs using *Gnuplot*, generate PDF, EPUB and HTML files from markdown with math support (LaTeX) and preview them with *MuPDF*, and finally open URLS into a tmux window with *w3m*.
+Additionally, run scripting code (Bash, Perl, Ruby, Python and JavaScript) into a separate **tmux** window, execute SQL queries from **Sqlite** databases and get the output into a preview window, execute **Maxima** operations (symbolic maths), convert UML files to PNG using **plantUML**, draw elementary plane geometry using **eukleides**, generate 2D and 3D graphs using **Gnuplot**, convert **LaTeX** to PDF, and generate PDF, EPUB and HTML files from markdown with math support (LaTeX). Preview them with MuPDF.
 
-This configuration is focused on programming in C/C++, Go, Rust, Perl, Python, Ruby, PHP, Bash, JavaScript and web development in general, with HTML5 and CSS3.
+This configuration is focused on programming in C/C++, Go, Rust, Perl, Python, Ruby, PHP, Bash, JavaScript and web development in general, with HTML5 and CSS3. It's also focused on writing technical and academic documents with LaTeX and markdown.
 
 **More specific information:**
 - [Keymaps](https://github.com/gerardbm/vimrc/blob/master/KEYMAPS.md)
@@ -104,10 +104,6 @@ This configuration is focused on programming in C/C++, Go, Rust, Perl, Python, R
 
 - Syntax files support:
   - [neco-syntax](https://github.com/Shougo/neco-syntax)
-
-- Run code:
-  - [vim-quickrun](https://github.com/thinca/vim-quickrun)
-  - [vimproc.vim](https://github.com/Shougo/vimproc.vim)
 
 - Edition:
   - [vim-easy-align](https://github.com/junegunn/vim-easy-align)

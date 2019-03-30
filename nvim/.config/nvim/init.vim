@@ -6,7 +6,7 @@
 "  /_/ /_/\___/\____/|___/_/_/ /_/ /_/
 "
 "----------------------------------------------------------------
-"  Version : 1.20.21
+"  Version : 1.20.22
 "  License : MIT
 "  Author  : Gerard Bajona
 "  URL     : https://github.com/gerardbm/vimrc
@@ -149,10 +149,6 @@ call plug#begin('~/.config/nvim/plugged')
 
 	" Syntax files support
 	Plug 'Shougo/neco-syntax'
-
-	" Run code
-	Plug 'thinca/vim-quickrun'
-	Plug 'Shougo/vimproc.vim', {'do' : 'make'}
 
 	" Edition
 	Plug 'junegunn/vim-easy-align'
@@ -412,46 +408,6 @@ endif
 augroup all
 	autocmd InsertLeave * NeoSnippetClearMarkers
 augroup end
-
-" --- Run code ---
-" QuickRun settings
-let g:quickrun_no_default_key_mappings = 0
-let g:quickrun_config = {
-	\ '_' : {
-		\ 'runner/vimproc/updatetime'     : 60,
-		\ 'outputter'                     : 'buffer',
-		\ 'outputter/buffer/split'        : 'vertical 32',
-		\ 'outputter/buffer/running_mark' : 'Running...',
-		\ },
-	\ }
-
-let g:quickrun_config.javascript = {
-	\ 'command' : 'node',
-	\ }
-
-let g:quickrun_config.go = {
-	\ 'command'   : 'go',
-	\ 'exec'      : '%c run %s',
-	\ 'outputter' : 'buffer',
-	\ }
-
-let g:quickrun_config.html = {
-	\ 'command' : 'w3m',
-	\ 'exec'    : 'tmux new-window %c %s',
-	\ }
-
-let g:quickrun_config.markdown = {
-	\ 'type': 'markdown/pandoc',
-	\ 'cmdopt': '-s',
-	\ 'outputter': 'browser'
-	\ }
-
-let g:quickrun_config.plantuml = {
-	\ 'command': 'plantuml',
-	\ 'exec': ['%c %s', 'feh %s:p:r.png'],
-	\ 'outputter': 'null',
-	\ 'runner': 'vimproc'
-	\ }
 
 " --- Edition ---
 " Easy align settings
@@ -1094,10 +1050,6 @@ endif
 " Go to the error line
 set errorformat=%m\ in\ %f\ on\ line\ %l
 
-" Execute ':make' and show the result
-nnoremap <silent> <Leader><TAB> :<C-u>QuickRun<CR>
-vnoremap <silent> <Leader><TAB> :QuickRun<CR>
-
 " Run scripts in a tmux window
 augroup tmuxy
 	autocmd!
@@ -1107,8 +1059,9 @@ augroup tmuxy
 				\ :call <SID>Tmuxy('perl')<CR>
 	autocmd FileType ruby nnoremap <silent> <buffer> <Leader>ii
 				\ :call <SID>Tmuxy('ruby')<CR>
+	autocmd FileType python let b:pyv = <SID>PyShebang()
 	autocmd FileType python nnoremap <silent> <buffer> <Leader>ii
-				\ :call <SID>Tmuxy('python')<CR>
+				\ :call <SID>Tmuxy(b:pyv)<CR>
 	autocmd FileType javascript nnoremap <silent> <buffer> <Leader>ii
 				\ :call <SID>Tmuxy('node')<CR>
 augroup end
@@ -1505,15 +1458,27 @@ function! s:ToggleTagbar() abort
 	endif
 endfunction
 
+" Check the python version used in the shebang
+function! s:PyShebang() abort
+	if getline(1) =~# '^#!.*/bin/env\s\+python3\>'
+		return "python3"
+	else
+		return "python"
+	endif
+endfunction
+
 "----------------------------------------------------------------
 " 18. External tools integration
 "----------------------------------------------------------------
 " Run code into a tmux window
 function! s:Tmuxy(opt) abort
 	if exists('$TMUX')
-		echo "Running a " . a:opt . " script..."
-		call system("tmux kill-window -t tmuxy")
-		call system("tmux new-window -n tmuxy " . a:opt . " " . expand("%:p"))
+		let s:name = shellescape('...')
+		let s:cmdk = 'tmux kill-window -t ' . s:name
+		let s:cmdn = 'tmux new-window -n ' . s:name . ' '
+		let s:cmds = " '" . a:opt . " " . expand("%:p") . " ; read'"
+		call system(s:cmdk)
+		call system(s:cmdn . s:cmds)
 	else
 		echo 'Tmux is not running.'
 	endif

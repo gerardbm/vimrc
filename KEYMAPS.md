@@ -202,7 +202,6 @@
   - `<Leader>ia` adds/changes the path of a database.
   - `<Leader>ii` executes SQL (Sqlite3) and previews it in a split window.
   - `<Leader>ii` executes Maxima and previews it in a split window.
-  - `<Leader><TAB>` runs the code of the current buffer with `Quickrun`.
   - `<Leader>B` shows syntax highlighting groups.
   - `<Leader>u` toggles the plugin Undotree.
   - `<Leader>W` inits ArgWrap plugin.

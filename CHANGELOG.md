@@ -1,5 +1,11 @@
 ## Changelog
 
+= 1.20.22 =
+* Remove the plugin Quickrun, since I'm using own functions.
+* Remove the maps `<Leader><Tab>` to run Quickrun.
+* Add the function `PyShebang` to check the python version in the shebang.
+* Prevents `Tmuxy()` to don't close the tmux window until Enter is pressed.
+
 = 1.20.21 =
 * Change all the nnoremaps to convert, generate or run to `<Leader>ii`.
 * Reorganize the configuration.
