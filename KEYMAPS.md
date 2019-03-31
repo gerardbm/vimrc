@@ -191,7 +191,8 @@
   - `<C-p>` opens the CtrlP menu buffers.
   - `<C-q>` display a list of sessions to open.
   - `<C-t>` opens, focuses or closes Tagbar.
-  - `<Leader>ii` runs a script into a tmux window. Bash, perl, ruby, python, js.
+  - `<Leader>ii` runs a script and previews it in a split window.
+  - `<Leader>ij` runs a script into a tmux window.
   - `<Leader>ii` converts LaTeX to PDF and previews it with Mupdf.
   - `<Leader>ii` converts MD to PDF and previews it with Mupdf.
   - `<Leader>ih` converts MD to HTML and previews it with Mupdf.

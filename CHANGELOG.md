@@ -1,5 +1,12 @@
 ## Changelog
 
+= 1.20.23 =
+* Remove some makeprg settings.
+* The nnoremap to preview code in a tmux window changes to `<Leader>ij`.
+* Add the function `Scripty()` to output code in the preview window.
+* Add the nnoremap `<Leader>ii` to output code in the preview window.
+* Add the function `Runners()` to define commands for some languages.
+
 = 1.20.22 =
 * Remove the plugin Quickrun, since I'm using own functions.
 * Remove the maps `<Leader><Tab>` to run Quickrun.

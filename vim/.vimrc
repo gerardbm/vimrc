@@ -6,7 +6,7 @@
 "  (_)___/_/_/ /_/ /_/_/   \___/
 "
 "----------------------------------------------------------------
-"  Version : 1.20.22
+"  Version : 1.20.23
 "  License : MIT
 "  Author  : Gerard Bajona
 "  URL     : https://github.com/gerardbm/vimrc
@@ -1111,14 +1111,6 @@ inoremap ÑÑ {}<left>
 " 15. Make settings
 "----------------------------------------------------------------
 " Set makeprg
-autocmd FileType sh setlocal makeprg=bash\ %
-autocmd FileType javascript setlocal makeprg=node\ %
-autocmd FileType python setlocal makeprg=python\ %
-autocmd FileType ruby setlocal makeprg=ruby\ %
-autocmd FileType perl setlocal makeprg=perl\ %
-autocmd FileType php setlocal makeprg=php\ %
-autocmd FileType go setlocal makeprg=go\ run\ %
-
 if !filereadable(expand('%:p:h').'/Makefile')
 	autocmd FileType c setlocal makeprg=gcc\ %\ &&\ ./a.out
 endif
@@ -1126,20 +1118,18 @@ endif
 " Go to the error line
 set errorformat=%m\ in\ %f\ on\ line\ %l
 
-" Run scripts in a tmux window
+" Run code in a tmux window
 augroup tmuxy
-	autocmd!
-	autocmd FileType sh nnoremap <silent> <buffer> <Leader>ii
-				\ :call <SID>Tmuxy('bash')<CR>
-	autocmd FileType perl nnoremap <silent> <buffer> <Leader>ii
-				\ :call <SID>Tmuxy('perl')<CR>
-	autocmd FileType ruby nnoremap <silent> <buffer> <Leader>ii
-				\ :call <SID>Tmuxy('ruby')<CR>
-	autocmd FileType python let b:pyv = <SID>PyShebang()
-	autocmd FileType python nnoremap <silent> <buffer> <Leader>ii
-				\ :call <SID>Tmuxy(b:pyv)<CR>
-	autocmd FileType javascript nnoremap <silent> <buffer> <Leader>ii
-				\ :call <SID>Tmuxy('node')<CR>
+autocmd FileType javascript,perl,python,ruby,sh
+			\ nnoremap <silent> <buffer> <Leader>ij
+			\ :call <SID>Tmuxy()<CR>
+augroup end
+
+" Run code in the preview window
+augroup scripty
+autocmd FileType javascript,perl,python,ruby,sh
+			\ nnoremap <silent> <buffer> <Leader>ii
+			\ :call <SID>Scripty()<CR>
 augroup end
 
 " Convert LaTeX to PDF
@@ -1178,7 +1168,7 @@ augroup maxima
 				\ :call <SID>MaximaExec('n')<CR>
 	autocmd FileType maxima vnoremap <silent> <buffer> <Leader>ii
 				\ :<C-U>call <SID>MaximaExec('v')<CR>
-augroup END
+augroup end
 
 " Draw with PlantUML
 augroup uml
@@ -1532,29 +1522,55 @@ function! s:ToggleTagbar() abort
 	endif
 endfunction
 
+"----------------------------------------------------------------
+" 18. External tools integration
+"----------------------------------------------------------------
+" Run code into a tmux window
+function! s:Tmuxy() abort
+	if exists('$TMUX')
+		let s:runner = <SID>Runners()
+		let s:name = shellescape('...')
+		let s:cmdk = 'tmux kill-window -t ' . s:name
+		let s:cmdn = 'tmux new-window -n ' . s:name . ' '
+		let s:cmds = " '" . s:runner . " " . expand("%:p") . " ; read'"
+		call system(s:cmdk)
+		call system(s:cmdn . s:cmds)
+	else
+		echo 'Tmux is not running.'
+	endif
+endfunction
+
+" Run code in the preview window
+function! s:Scripty() abort
+	let s:runner = <SID>Runners()
+	let s:cmd = s:runner . " " . expand("%:p")
+	call <SID>Commander(s:cmd)
+endfunction
+
+" Define the runners
+function! s:Runners() abort
+	if &filetype =~# 'javascript'
+		let s:run = 'node'
+	elseif &filetype =~# 'perl'
+		let s:run = 'perl'
+	elseif &filetype =~# 'python'
+		let s:run = <SID>PyShebang()
+	elseif &filetype =~# 'ruby'
+		let s:run = 'ruby'
+	elseif &filetype =~# 'sh'
+		let s:run = 'bash'
+	else
+		let s:run = 'empty'
+	endif
+	return s:run
+endfunction
+
 " Check the python version used in the shebang
 function! s:PyShebang() abort
 	if getline(1) =~# '^#!.*/bin/env\s\+python3\>'
 		return "python3"
 	else
 		return "python"
-	endif
-endfunction
-
-"----------------------------------------------------------------
-" 18. External tools integration
-"----------------------------------------------------------------
-" Run code into a tmux window
-function! s:Tmuxy(opt) abort
-	if exists('$TMUX')
-		let s:name = shellescape('...')
-		let s:cmdk = 'tmux kill-window -t ' . s:name
-		let s:cmdn = 'tmux new-window -n ' . s:name . ' '
-		let s:cmds = " '" . a:opt . " " . expand("%:p") . " ; read'"
-		call system(s:cmdk)
-		call system(s:cmdn . s:cmds)
-	else
-		echo 'Tmux is not running.'
 	endif
 endfunction
 
@@ -1670,8 +1686,8 @@ function! s:SQLExec(opt) abort
 		else
 			let t:cmd = t:path . " '" . t:sql . "'"
 		endif
-		let a:cmd = "sqlite3 -list -batch " . t:cmd
-		call <SID>Commander(a:cmd)
+		let s:cmd = "sqlite3 -list -batch " . t:cmd
+		call <SID>Commander(s:cmd)
 	else
 		echo "\nThis database does not exist!"
 	endif
@@ -1688,8 +1704,8 @@ function! s:MaximaExec(opt) abort
 	let b:equ = substitute(b:equ, '\n', ' ', 'g')
 	let b:equ = substitute(b:equ, '\s$', '', 'g')
 	let b:equ = substitute(b:equ, '%', '\\%', 'g')
-	let a:cmd = 'maxima --very-quiet --batch-string "' . b:equ . '"'
-	call <SID>Commander(a:cmd)
+	let s:cmd = 'maxima --very-quiet --batch-string "' . b:equ . '"'
+	call <SID>Commander(s:cmd)
 endfunction
 
 " Window previewer

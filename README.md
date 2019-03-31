@@ -15,7 +15,9 @@ Some useful tools have been integrated. Plugins: **CtrlP** (navigate between ope
 
 Additionally, run scripting code (Bash, Perl, Ruby, Python and JavaScript) into a separate **tmux** window, execute SQL queries from **Sqlite** databases and get the output into a preview window, execute **Maxima** operations (symbolic maths), convert UML files to PNG using **plantUML**, draw elementary plane geometry using **eukleides**, generate 2D and 3D graphs using **Gnuplot**, convert **LaTeX** to PDF, and generate PDF, EPUB and HTML files from markdown with math support (LaTeX). Preview them with MuPDF.
 
-This configuration is focused on programming in C/C++, Go, Rust, Perl, Python, Ruby, PHP, Bash, JavaScript and web development in general, with HTML5 and CSS3. It's also focused on writing technical and academic documents with LaTeX and markdown.
+This configuration is focused on programming in C/C++, Go, Rust, Perl, Python, Ruby, PHP, Bash, JavaScript and web development in general, with HTML5 and CSS3. 
+
+It's also configured to write technical documents with LaTeX and markdown.
 
 **More specific information:**
 - [Keymaps](https://github.com/gerardbm/vimrc/blob/master/KEYMAPS.md)
