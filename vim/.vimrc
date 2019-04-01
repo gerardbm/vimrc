@@ -6,7 +6,7 @@
 "  (_)___/_/_/ /_/ /_/_/   \___/
 "
 "----------------------------------------------------------------
-"  Version : 1.20.23
+"  Version : 1.20.24
 "  License : MIT
 "  Author  : Gerard Bajona
 "  URL     : https://github.com/gerardbm/vimrc
@@ -1528,6 +1528,7 @@ endfunction
 " Run code into a tmux window
 function! s:Tmuxy() abort
 	if exists('$TMUX')
+		update
 		let s:runner = <SID>Runners()
 		let s:name = shellescape('...')
 		let s:cmdk = 'tmux kill-window -t ' . s:name
@@ -1542,6 +1543,7 @@ endfunction
 
 " Run code in the preview window
 function! s:Scripty() abort
+	update
 	let s:runner = <SID>Runners()
 	let s:cmd = s:runner . " " . expand("%:p")
 	call <SID>Commander(s:cmd)

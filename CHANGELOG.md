@@ -1,5 +1,8 @@
 ## Changelog
 
+= 1.20.24 =
+* Autoupdate buffer before running the script.
+
 = 1.20.23 =
 * Remove some makeprg settings.
 * The nnoremap to preview code in a tmux window changes to `<Leader>ij`.
