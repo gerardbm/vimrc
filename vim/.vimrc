@@ -6,7 +6,7 @@
 "  (_)___/_/_/ /_/ /_/_/   \___/
 "
 "----------------------------------------------------------------
-"  Version : 1.20.24
+"  Version : 1.20.25
 "  License : MIT
 "  Author  : Gerard Bajona
 "  URL     : https://github.com/gerardbm/vimrc
@@ -1530,9 +1530,8 @@ function! s:Tmuxy() abort
 	if exists('$TMUX')
 		update
 		let s:runner = <SID>Runners()
-		let s:name = shellescape('...')
-		let s:cmdk = 'tmux kill-window -t ' . s:name
-		let s:cmdn = 'tmux new-window -n ' . s:name . ' '
+		let s:cmdk = 'tmux kill-window -t run'
+		let s:cmdn = 'tmux new-window -n run'
 		let s:cmds = " '" . s:runner . " " . expand("%:p") . " ; read'"
 		call system(s:cmdk)
 		call system(s:cmdn . s:cmds)

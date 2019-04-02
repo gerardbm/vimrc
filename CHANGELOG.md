@@ -1,5 +1,8 @@
 ## Changelog
 
+= 1.20.25 =
+* Fix: delete tmux window when it's already open (rename tmux window).
+
 = 1.20.24 =
 * Autoupdate buffer before running the script.
 
