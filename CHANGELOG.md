@@ -1,5 +1,8 @@
 ## Changelog
 
+= 1.20.26 =
+* Add Lua and PHP commands in `Runners()` to execute them.
+
 = 1.20.25 =
 * Fix: delete tmux window when it's already open (rename tmux window).
 

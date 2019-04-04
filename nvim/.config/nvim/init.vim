@@ -6,7 +6,7 @@
 "  /_/ /_/\___/\____/|___/_/_/ /_/ /_/
 "
 "----------------------------------------------------------------
-"  Version : 1.20.25
+"  Version : 1.20.26
 "  License : MIT
 "  Author  : Gerard Bajona
 "  URL     : https://github.com/gerardbm/vimrc
@@ -1044,14 +1044,14 @@ set errorformat=%m\ in\ %f\ on\ line\ %l
 
 " Run code in a tmux window
 augroup tmuxy
-autocmd FileType javascript,perl,python,ruby,sh
+autocmd FileType javascript,lua,perl,php,python,ruby,sh
 			\ nnoremap <silent> <buffer> <Leader>ij
 			\ :call <SID>Tmuxy()<CR>
 augroup end
 
 " Run code in the preview window
 augroup scripty
-autocmd FileType javascript,perl,python,ruby,sh
+autocmd FileType javascript,lua,perl,php,python,ruby,sh
 			\ nnoremap <silent> <buffer> <Leader>ii
 			\ :call <SID>Scripty()<CR>
 augroup end
@@ -1478,8 +1478,12 @@ endfunction
 function! s:Runners() abort
 	if &filetype =~# 'javascript'
 		let s:run = 'node'
+	elseif &filetype =~# 'lua'
+		let s:run = 'lua'
 	elseif &filetype =~# 'perl'
 		let s:run = 'perl'
+	elseif &filetype =~# 'php'
+		let s:run = 'php'
 	elseif &filetype =~# 'python'
 		let s:run = <SID>PyShebang()
 	elseif &filetype =~# 'ruby'
