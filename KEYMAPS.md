@@ -193,16 +193,18 @@
   - `<C-t>` opens, focuses or closes Tagbar.
   - `<Leader>ii` runs a script and previews it in a split window.
   - `<Leader>ij` runs a script into a tmux window.
+  - `<Leader>ia` adds/changes the path of a database.
+  - `<Leader>ii` executes SQL (Sqlite3) and previews it in a split window.
+  - `<Leader>ii` executes Maxima and previews it in a split window.
   - `<Leader>ii` converts LaTeX to PDF and previews it with Mupdf.
   - `<Leader>ii` converts MD to PDF and previews it with Mupdf.
   - `<Leader>ih` converts MD to HTML and previews it with Mupdf.
   - `<Leader>ij` converts MD to EPUB and previews it with Mupdf.
   - `<Leader>ii` converts UML (PlantUML) to PNG and previews it with Mupdf.
   - `<Leader>ii` converts EUK (Eukleides) to PNG and previews it with Mupdf.
+  - `<Leader>ii` converts ASY (Asymptote) to PNG and previews it with Mupdf.
   - `<Leader>ii` converts PLT (Gnuplot) to PNG and previews it with Mupdf.
-  - `<Leader>ia` adds/changes the path of a database.
-  - `<Leader>ii` executes SQL (Sqlite3) and previews it in a split window.
-  - `<Leader>ii` executes Maxima and previews it in a split window.
+  - `<Leader>ii` renders POV (POV-Ray) to PNG and previews it with Mupdf.
   - `<Leader>B` shows syntax highlighting groups.
   - `<Leader>u` toggles the plugin Undotree.
   - `<Leader>W` inits ArgWrap plugin.

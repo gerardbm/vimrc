@@ -1,5 +1,13 @@
 ## Changelog
 
+= 1.20.27 =
+* Unify functions to generate images to only one: `Generator()`.
+* Remove the old five functions.
+* Add support to generate PNG images with Asymptote language.
+* Add support to images with POV-Ray.
+* Redirect the stderr to the preview window when generator fails.
+* Split `Commander()` function to `ResizeWinPreview()`.
+
 = 1.20.26 =
 * Add Lua and PHP commands in `Runners()` to execute them.
 

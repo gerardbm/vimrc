@@ -13,11 +13,19 @@ Easily highlight the word under the cursor or the current selection. A lot of co
 
 Some useful tools have been integrated. Plugins: **CtrlP** (navigate between open buffers, MRU or directory files), **NERDTree** (tree files with filesystem operations), **vim-fugitive** (git commands), **GV** (navigate between git commits), **undotree** (history visualizer), **ALE** (async syntax linter), **deoplete** (autocompletion for Vim and Neovim), **neosnippet** (code snippets), **Vimwiki** (organize notes, manage todo-lists...) and manage sessions with **vim-session**.
 
-Additionally, run scripting code (Bash, Perl, Ruby, Python and JavaScript) into a separate **tmux** window, execute SQL queries from **Sqlite** databases and get the output into a preview window, execute **Maxima** operations (symbolic maths), convert UML files to PNG using **plantUML**, draw elementary plane geometry using **eukleides**, generate 2D and 3D graphs using **Gnuplot**, convert **LaTeX** to PDF, and generate PDF, EPUB and HTML files from markdown with math support (LaTeX). Preview them with MuPDF.
+Additionally, run scripting code (Bash, Perl, Ruby, Python, Lua, PHP and JavaScript) into a separate **tmux** window or simply preview the output in the preview window, where you can also preview SQL queries from **Sqlite** databases and **Maxima** operations (symbolic maths) from a MAX file. Preview the output of any shell command using the command `:Commander`.
 
-This configuration is focused on programming in C/C++, Go, Rust, Perl, Python, Ruby, PHP, Bash, JavaScript and web development in general, with HTML5 and CSS3. 
+Instant preview with MuPDF after making the following conversions:
 
-It's also configured to write technical documents with LaTeX and markdown.
+- MD to PDF, EPUB and HTML using pandoc, with math support.
+- TEX to PDF using pdflatex.
+- UML to PNG using PlantUML (UML diagrams).
+- EUK to PNG using Eukleides and Convert (elementary plane geometry).
+- ASY to PNG using Asymptote and Convert (vector graphics language).
+- PLT to PNG using Gnuplot (2D and 3D graphics).
+- POV to PNG using POV-Ray (3D ray tracer).
+
+This configuration is focused on programming in C/C++, Go, Rust, Haskell, Perl, Python, Ruby, PHP, Bash, JavaScript and web development in general, with HTML5 and CSS3. It's also a good configuration to write technical and academic papers with LaTex and markdown.
 
 **More specific information:**
 - [Keymaps](https://github.com/gerardbm/vimrc/blob/master/KEYMAPS.md)

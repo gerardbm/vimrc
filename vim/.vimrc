@@ -6,7 +6,7 @@
 "  (_)___/_/_/ /_/ /_/_/   \___/
 "
 "----------------------------------------------------------------
-"  Version : 1.20.26
+"  Version : 1.20.27
 "  License : MIT
 "  Author  : Gerard Bajona
 "  URL     : https://github.com/gerardbm/vimrc
@@ -1132,24 +1132,6 @@ autocmd FileType javascript,lua,perl,php,python,ruby,sh
 			\ :call <SID>Scripty()<CR>
 augroup end
 
-" Convert LaTeX to PDF
-augroup latex
-	autocmd!
-	autocmd FileType tex nnoremap <silent> <buffer> <Leader>ii
-				\ :call <SID>Texy()<CR>
-augroup end
-
-" Convert markdown to PDF, HTML and EPUB
-augroup markdown
-	autocmd!
-	autocmd FileType markdown nnoremap <silent> <buffer> <Leader>ii
-				\ :call <SID>Marky('.pdf')<CR>
-	autocmd FileType markdown nnoremap <silent> <buffer> <Leader>ih
-				\ :call <SID>Marky('.html')<CR>
-	autocmd FileType markdown nnoremap <silent> <buffer> <Leader>ij
-				\ :call <SID>Marky('.epub')<CR>
-augroup end
-
 " Work with sqlite databases
 augroup sqlite
 	autocmd FileType sql nnoremap <silent> <Leader>ia
@@ -1170,11 +1152,29 @@ augroup maxima
 				\ :<C-U>call <SID>MaximaExec('v')<CR>
 augroup end
 
+" Convert LaTeX to PDF
+augroup latex
+	autocmd!
+	autocmd FileType tex nnoremap <silent> <buffer> <Leader>ii
+				\ :call <SID>Generator('.pdf', &ft)<CR>
+augroup end
+
+" Convert markdown to PDF, HTML and EPUB
+augroup markdown
+	autocmd!
+	autocmd FileType markdown nnoremap <silent> <buffer> <Leader>ii
+				\ :call <SID>Generator('.pdf', &ft)<CR>
+	autocmd FileType markdown nnoremap <silent> <buffer> <Leader>ih
+				\ :call <SID>Generator('.html', &ft)<CR>
+	autocmd FileType markdown nnoremap <silent> <buffer> <Leader>ij
+				\ :call <SID>Generator('.epub', &ft)<CR>
+augroup end
+
 " Draw with PlantUML
 augroup uml
 	autocmd!
 	autocmd FileType plantuml nnoremap <silent> <buffer> <Leader>ii
-				\ :call <SID>Planty('.png')<CR>
+				\ :call <SID>Generator('.png', &ft)<CR>
 augroup end
 
 " Draw with Eukleides
@@ -1182,7 +1182,15 @@ augroup eukleides
 	autocmd!
 	autocmd BufRead,BufNewFile *.euk set filetype=eukleides
 	autocmd FileType eukleides nnoremap <silent> <buffer> <Leader>ii
-				\ :call <SID>Eucly('.png')<CR>
+				\ :call <SID>Generator('.png', &ft)<CR>
+augroup end
+
+" Draw with Asymptote
+augroup asymptote
+	autocmd!
+	autocmd BufRead,BufNewFile *.asy set filetype=asy
+	autocmd FileType asy nnoremap <silent> <buffer> <Leader>ii
+				\ :call <SID>Generator('.png', &ft)<CR>
 augroup end
 
 " Draw with Gnuplot
@@ -1190,7 +1198,14 @@ augroup gnuplot
 	autocmd!
 	autocmd BufRead,BufNewFile *.plt set filetype=gnuplot
 	autocmd FileType gnuplot nnoremap <silent> <buffer> <Leader>ii
-				\ :call <SID>Plotty('.png')<CR>
+				\ :call <SID>Generator('.png', &ft)<CR>
+augroup end
+
+" Draw with POV-Ray
+augroup povray
+	autocmd!
+	autocmd FileType pov nnoremap <silent> <buffer> <Leader>ii
+				\ :call <SID>Generator('.png', &ft)<CR>
 augroup end
 
 "----------------------------------------------------------------
@@ -1579,78 +1594,56 @@ function! s:PyShebang() abort
 	endif
 endfunction
 
-" Latex converter
-" Tools required: pdflatex and mupdf
-function! s:Texy() abort
+" Generator function
+function! s:Generator(ext, ft) abort
 	update
 	let l:inp = expand('%')
-	let l:out = expand('%:r') . '.pdf'
-	let l:msg = system('pdflatex ' . l:inp)
-	if v:shell_error ==# 0
-		call <SID>Previewer(l:out)
+	let l:out = expand('%:r') . a:ext
+	if a:ft ==# 'tex'
+		let l:cmd = system('pdflatex ' . l:inp)
+	elseif a:ft ==# 'markdown'
+		if a:ext ==# '.html'
+			let l:opt = '--mathjax '
+		elseif a:ext ==# '.epub'
+			let l:opt = '-t epub2 --webtex '
+		elseif a:ext ==# '.pdf'
+			let l:opt = '-V fontsize=12pt
+						\ -V papersize=a4
+						\ -V geometry:margin=2.5cm '
+		endif
+		let l:cmd = system('pandoc -s ' . l:opt . l:inp . ' -o ' . l:out)
+	elseif a:ft ==# 'plantuml'
+		let l:cmd = system('plantuml ' . l:inp . ' ' . l:out)
+	elseif a:ft ==# 'eukleides'
+		let l:eps = expand('%:r') . '.eps'
+		let l:cmd = system('eukleides ' . l:inp)
+	elseif a:ft ==# 'asy'
+		let l:eps = expand('%:r') . '.eps'
+		let l:cmd = system('asy ' . l:inp)
+	elseif a:ft ==# 'gnuplot'
+		let l:opt = ' -e "set terminal png; set output ''' . l:out . '''" '
+		let l:cmd = system('gnuplot' . l:opt . l:inp)
+	elseif a:ft ==# 'pov'
+		let l:cmd = system('povray -D ' . l:inp)
 	endif
-endfunction
-
-" Convert MD to EPUB, PDF, HTML and preview with mupdf
-" Tools required: pandoc and mupdf
-function! s:Marky(format) abort
-	update
-	if a:format ==# '.html'
-		let l:options = '--mathjax '
-	elseif a:format ==# '.epub'
-		let l:options = '-t epub2 --webtex '
-	elseif a:format ==# '.pdf'
-		let l:options = '-V fontsize=12pt
-					\ -V papersize=a4
-					\ -V geometry:margin=2.5cm '
-	endif
-	let l:inp = expand('%')
-	let l:out = expand('%:r') . a:format
-	call system('pandoc -s ' . l:options . l:inp . ' -o ' . l:out)
-	call <SID>Previewer(l:out)
-endfunction
-
-" UML converter
-" Tools required: plantuml and mupdf
-function! s:Planty(format) abort
-	update
-	let l:inp = expand('%')
-	let l:out = expand('%:r') . a:format
-	call system('plantuml ' . l:inp . ' ' . l:out)
-	call <SID>Previewer(l:out)
-endfunction
-
-" Eukleides conversion
-" Tools required: eukleides, convert and mupdf
-function! s:Eucly(format) abort
-	update
-	let l:inp1 = expand('%')
-	let l:inp2 = expand('%:r') . '.eps'
-	let l:out  = expand('%:r') . a:format
-	let l:optb = ' -density 150 '
-	let l:opta = ' -flatten -alpha off -colorspace hsl '
-	let l:msg  = system('eukleides ' . l:inp1)
 	if v:shell_error ==# 0
-		call system('convert' . l:optb . l:inp2 . l:opta . l:out)
+		pclose
+		if a:ft =~# '\(eukleides\|asy\)'
+			call <SID>Converter(l:eps, l:out)
+		endif
 		call <SID>Previewer(l:out)
 	else
-		echo l:msg
+		call <SID>WinPreview()
+		exec '0put =l:cmd'
+		call <SID>ResizeWinPreview()
 	endif
 endfunction
 
-" Gnuplot conversion
-" Tools required: gnuplot and mupdf
-function! s:Plotty(format) abort
-	update
-	let l:inp = expand('%')
-	let l:out = expand('%:r') . a:format
-	let l:opt = ' -e "set terminal png; set output ''' . l:out . '''" '
-	let l:msg = system('gnuplot' . l:opt . l:inp)
-	if v:shell_error ==# 0
-		call <SID>Previewer(l:out)
-	else
-		echo l:msg
-	endif
+" Convert from EPS to PNG
+function! s:Converter(eps, out) abort
+		let l:opt_bef = ' -density 150 '
+		let l:opt_aft = ' -flatten -alpha off -colorspace hsl '
+		call system('convert' . l:opt_bef . a:eps . l:opt_aft . a:out)
 endfunction
 
 " Preview outputs (EPUB, PDF, HTML, PNG) with mupdf
@@ -1718,6 +1711,7 @@ function! s:WinPreview() abort
 	silent! wincmd P
 	if !&previewwindow
 		exec 'new'
+		exec '%delete'
 		setlocal previewwindow
 		setlocal buftype=nowrite bufhidden=wipe
 		setlocal nobuflisted noswapfile nowrap
@@ -1728,8 +1722,12 @@ endfunction
 " Commander
 function! s:Commander(cmd) abort
 	call <SID>WinPreview()
-	exec '%delete'
 	exec '0read !' . a:cmd
+	call <SID>ResizeWinPreview()
+endfunction
+
+" Resize the preview window
+function! s:ResizeWinPreview() abort
 	exec '$d'
 	let s:size = line('$')
 	if s:size < 11
