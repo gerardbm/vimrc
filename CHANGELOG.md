@@ -1,5 +1,8 @@
 ## Changelog
 
+= 1.20.28 =
+* Fix: delete the previous content in the preview window.
+
 = 1.20.27 =
 * Unify functions to generate images to only one: `Generator()`.
 * Remove the old five functions.

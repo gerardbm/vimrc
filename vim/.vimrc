@@ -6,7 +6,7 @@
 "  (_)___/_/_/ /_/ /_/_/   \___/
 "
 "----------------------------------------------------------------
-"  Version : 1.20.27
+"  Version : 1.20.28
 "  License : MIT
 "  Author  : Gerard Bajona
 "  URL     : https://github.com/gerardbm/vimrc
@@ -1711,12 +1711,12 @@ function! s:WinPreview() abort
 	silent! wincmd P
 	if !&previewwindow
 		exec 'new'
-		exec '%delete'
 		setlocal previewwindow
 		setlocal buftype=nowrite bufhidden=wipe
 		setlocal nobuflisted noswapfile nowrap
 		nnoremap <silent> <buffer> q :pclose<CR>
 	endif
+	exec '%delete'
 endfunction
 
 " Commander
