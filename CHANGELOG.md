@@ -1,5 +1,8 @@
 ## Changelog
 
+= 1.20.29 =
+* Cnoremap `<C-Z>` must paste yanked text instead of word under the cursor.
+
 = 1.20.28 =
 * Fix: delete the previous content in the preview window.
 

@@ -129,7 +129,7 @@
   - `<C-u>` deletes all characters before the cursor.
   - `<C-j>` enters a new line.
   - `<C-k>` enters a digraph.
-  - `<C-z>` pastes the yanked text (`<C-r><C-w>`).
+  - `<C-z>` pastes the yanked text (`<C-r>"`).
   - `<C-l>` toggles the CapsLock key.
   - `<C-n>` navigates command history: next.
   - `<C-p>` navigates command history: previous.
