@@ -6,7 +6,7 @@
 "  /_/ /_/\___/\____/|___/_/_/ /_/ /_/
 "
 "----------------------------------------------------------------
-"  Version : 1.20.29
+"  Version : 1.20.30
 "  License : MIT
 "  Author  : Gerard Bajona
 "  URL     : https://github.com/gerardbm/vimrc
@@ -866,7 +866,8 @@ cnoremap <C-e> <End>
 cnoremap <C-d> <DEL>
 cnoremap <C-p> <Up>
 cnoremap <C-n> <Down>
-cnoremap <C-z> <C-R>"
+cnoremap <C-z> <C-r>"
+cnoremap <C-q> <S-Right><C-w>
 
 "----------------------------------------------------------------
 " 12. Paste mode

@@ -1,7 +1,10 @@
 ## Changelog
 
+= 1.20.30 =
+* Add the cnoremap `<C-q>` to delete a word, forward; as I do in Zsh.
+
 = 1.20.29 =
-* Cnoremap `<C-Z>` must paste yanked text instead of word under the cursor.
+* Cnoremap `<C-z>` must paste yanked text instead of word under the cursor.
 
 = 1.20.28 =
 * Fix: delete the previous content in the preview window.

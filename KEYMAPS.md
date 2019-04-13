@@ -126,6 +126,8 @@
   - `<C-f>` moves the cursor forward one character.
   - `<C-h>` deletes the last character.
   - `<C-d>` deletes the current character.
+  - `<C-q>` deletes a word, forward.
+  - `<C-w>` deletes a word, backward.
   - `<C-u>` deletes all characters before the cursor.
   - `<C-j>` enters a new line.
   - `<C-k>` enters a digraph.
