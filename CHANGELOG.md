@@ -1,5 +1,8 @@
 ## Changelog
 
+= 1.20.31 =
+* Rename `Converter()` to `EPS2PNG()`.
+
 = 1.20.30 =
 * Add the cnoremap `<C-q>` to delete a word, forward; as I do in Zsh.
 

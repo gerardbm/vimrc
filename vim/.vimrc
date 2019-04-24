@@ -6,7 +6,7 @@
 "  (_)___/_/_/ /_/ /_/_/   \___/
 "
 "----------------------------------------------------------------
-"  Version : 1.20.30
+"  Version : 1.20.31
 "  License : MIT
 "  Author  : Gerard Bajona
 "  URL     : https://github.com/gerardbm/vimrc
@@ -1630,7 +1630,7 @@ function! s:Generator(ext, ft) abort
 	if v:shell_error ==# 0
 		pclose
 		if a:ft =~# '\(eukleides\|asy\)'
-			call <SID>Converter(l:eps, l:out)
+			call <SID>EPS2PNG(l:eps, l:out)
 		endif
 		call <SID>Previewer(l:out)
 	else
@@ -1641,7 +1641,7 @@ function! s:Generator(ext, ft) abort
 endfunction
 
 " Convert from EPS to PNG
-function! s:Converter(eps, out) abort
+function! s:EPS2PNG(eps, out) abort
 		let l:opt_bef = ' -density 150 '
 		let l:opt_aft = ' -flatten -alpha off -colorspace hsl '
 		call system('convert' . l:opt_bef . a:eps . l:opt_aft . a:out)
