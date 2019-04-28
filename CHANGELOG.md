@@ -1,5 +1,8 @@
 ## Changelog
 
+= 1.20.32 =
+* Change the maps `<C-q>` (neosnippet) to `<C-s>`.
+
 = 1.20.31 =
 * Rename `Converter()` to `EPS2PNG()`.
 

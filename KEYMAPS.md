@@ -95,7 +95,7 @@
   - `<Leader>y` copies the selection into the clipboard.
   - `<Leader>z` toggles the case of the selection.
   - `<Leader>tf` retabs the current selection.
-  - `<C-q>` expands neosnippet.
+  - `<C-s>` expands neosnippet.
   - `v` expands the region selected.
   - `<C-v>` shrinks the selection.
 
@@ -110,7 +110,7 @@
   - `<C-j>` enters a new line.
   - `<C-k>` enters a digraph.
   - `<C-l>` toggles the CapsLock key.
-  - `<C-q>` expands neosnippet.
+  - `<C-s>` expands neosnippet.
   - `<C-x>` ins-completion.
   - `<C-n>` keyword completion: next.
   - `<C-p>` keyword completion: previous.
