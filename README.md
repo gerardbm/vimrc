@@ -25,7 +25,7 @@ Instant preview with MuPDF after making the following conversions:
 - PLT to PNG using Gnuplot (2D and 3D graphics).
 - POV to PNG using POV-Ray (3D ray tracer).
 
-This configuration is focused on programming in C/C++, Go, Rust, Haskell, Perl, Python, Ruby, PHP, Bash, JavaScript and web development in general, with HTML5 and CSS3. It's also a good configuration to write technical and academic papers with LaTex and markdown.
+This configuration is focused on programming in C/C++, Go, Rust, Haskell, Perl, Python, Ruby, PHP, Bash, JavaScript and web development in general, with HTML5 and CSS3. It's also a good configuration to write technical and academic papers with LaTeX and markdown.
 
 **More specific information:**
 - [Keymaps](https://github.com/gerardbm/vimrc/blob/master/KEYMAPS.md)
