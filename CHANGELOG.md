@@ -1,5 +1,8 @@
 ## Changelog
 
+= 1.20.33 =
+* Set `nomodeline` to fix vulnerability.
+
 = 1.20.32 =
 * Change the maps `<C-q>` (neosnippet) to `<C-s>`.
 

@@ -6,7 +6,7 @@
 "  /_/ /_/\___/\____/|___/_/_/ /_/ /_/
 "
 "----------------------------------------------------------------
-"  Version : 1.20.32
+"  Version : 1.20.33
 "  License : MIT
 "  Author  : Gerard Bajona
 "  URL     : https://github.com/gerardbm/vimrc
@@ -35,6 +35,10 @@
 "----------------------------------------------------------------
 " 1. General settings
 "----------------------------------------------------------------
+" Fix vulnerability
+set modelines=0
+set nomodeline
+
 " Reload .vimrc
 nnoremap <F12> :so $MYVIMRC<CR>
 
