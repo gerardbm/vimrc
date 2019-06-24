@@ -6,7 +6,7 @@
 "  /_/ /_/\___/\____/|___/_/_/ /_/ /_/
 "
 "----------------------------------------------------------------
-"  Version : 1.20.33
+"  Version : 1.20.34
 "  License : MIT
 "  Author  : Gerard Bajona
 "  URL     : https://github.com/gerardbm/vimrc
@@ -361,7 +361,7 @@ let g:SuperTabDefaultCompletionType = '<TAB>'
 let g:python3_host_prog       = '/usr/bin/python3'
 let g:python3_host_skip_check = 1
 
-autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
+autocmd CompleteDone * if pumvisible() == 0 | pclose | endif
 let g:deoplete#enable_at_startup = 1
 let g:deoplete#enable_smart_case = 1
 let g:deoplete#omni#functions    = {}

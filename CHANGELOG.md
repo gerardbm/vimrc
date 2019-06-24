@@ -1,5 +1,8 @@
 ## Changelog
 
+= 1.20.34 =
+* Reduce automatic pclose to deoplete functionality.
+
 = 1.20.33 =
 * Set `nomodeline` to fix vulnerability.
 
