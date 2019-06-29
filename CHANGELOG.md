@@ -1,5 +1,8 @@
 ## Changelog
 
+= 1.20.35 =
+* Add semicolon to Maxima strings when it's needed.
+
 = 1.20.34 =
 * Reduce automatic pclose to deoplete functionality.
 

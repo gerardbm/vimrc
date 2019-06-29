@@ -6,7 +6,7 @@
 "  /_/ /_/\___/\____/|___/_/_/ /_/ /_/
 "
 "----------------------------------------------------------------
-"  Version : 1.20.34
+"  Version : 1.20.35
 "  License : MIT
 "  Author  : Gerard Bajona
 "  URL     : https://github.com/gerardbm/vimrc
@@ -1633,6 +1633,9 @@ function! s:MaximaExec(opt) abort
 	let b:equ = substitute(b:equ, '\n', ' ', 'g')
 	let b:equ = substitute(b:equ, '\s$', '', 'g')
 	let b:equ = substitute(b:equ, '%', '\\%', 'g')
+	if b:equ !~# ';$'
+		let b:equ = substitute(b:equ, '$', ';', 'g')
+	endif
 	let s:cmd = 'maxima --very-quiet --batch-string "' . b:equ . '"'
 	call <SID>Commander(s:cmd)
 endfunction
