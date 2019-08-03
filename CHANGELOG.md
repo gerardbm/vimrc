@@ -1,5 +1,8 @@
 ## Changelog
 
+= 1.20.36 =
+* The nnoremap `<Leader>wd` (`DeleteTrailing()`) changes to `<Leader>td`.
+
 = 1.20.35 =
 * Add semicolon to Maxima strings when it's needed.
 

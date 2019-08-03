@@ -6,7 +6,7 @@
 "  /_/ /_/\___/\____/|___/_/_/ /_/ /_/
 "
 "----------------------------------------------------------------
-"  Version : 1.20.35
+"  Version : 1.20.36
 "  License : MIT
 "  Author  : Gerard Bajona
 "  URL     : https://github.com/gerardbm/vimrc
@@ -1149,7 +1149,7 @@ func! s:DeleteTrailing()
 	noh
 endfunc
 
-nnoremap <silent> <Leader>wd :call <SID>DeleteTrailing()<CR>
+nnoremap <silent> <Leader>dt :call <SID>DeleteTrailing()<CR>
 
 " Binary
 augroup binary

@@ -76,7 +76,7 @@
   - `<Leader>F` enters a new line up from 'Normal Mode'.
   - `<Leader>ç` suggests correctly spelled words.
   - `<Leader>tf` retabs the current buffer.
-  - `<Leader>wd` removes trailing white spaces.
+  - `<Leader>dt` removes trailing white spaces.
   - `<Leader>p` pastes text from the clipboard.
   - `<Leader>coo` sets the conceallevel to 0.
   - `<Leader>coi` sets the conceallevel to 2.
