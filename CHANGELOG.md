@@ -1,5 +1,8 @@
 ## Changelog
 
+= 1.21.00 =
+* Get the keyword density with the nnoremap `<Leader>id`.
+
 = 1.20.36 =
 * The nnoremap `<Leader>wd` (`DeleteTrailing()`) changes to `<Leader>td`.
 

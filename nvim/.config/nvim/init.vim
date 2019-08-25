@@ -6,7 +6,7 @@
 "  /_/ /_/\___/\____/|___/_/_/ /_/ /_/
 "
 "----------------------------------------------------------------
-"  Version : 1.20.36
+"  Version : 1.21.00
 "  License : MIT
 "  Author  : Gerard Bajona
 "  URL     : https://github.com/gerardbm/vimrc
@@ -1674,3 +1674,29 @@ function! s:ResizeWinPreview() abort
 endfunction
 
 command! -nargs=1 Commander call <SID>Commander(<f-args>)
+
+" Keyword density checker
+function! s:KeywordDensity() abort
+	silent update
+
+	" Word count -w
+	let s:get_words = system('wc -w ' . expand('%'))
+	let s:int_words = str2nr(s:get_words)
+	let s:str_words = string(s:int_words)
+
+	" Highlight count
+	redir => match_count
+	silent exec '%s/' . @/ . '//gn'
+	redir END
+	let s:str_keys = split(match_count)[0]
+	let s:flt_keys = str2float(s:str_keys)
+
+	" Density
+	let s:flt_dens = (s:flt_keys/s:int_words)*100
+	let s:str_dens = string(s:flt_dens)
+
+	echo '> ' . s:str_keys . ' of ' . s:str_words . ' (' . s:str_dens . '%)'
+
+endfunction
+
+nnoremap <Leader>id :call <SID>KeywordDensity()<CR>
