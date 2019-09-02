@@ -6,7 +6,7 @@
 "  (_)___/_/_/ /_/ /_/_/   \___/
 "
 "----------------------------------------------------------------
-"  Version : 1.21.00
+"  Version : 1.22.00
 "  License : MIT
 "  Author  : Gerard Bajona
 "  URL     : https://github.com/gerardbm/vimrc
@@ -131,6 +131,7 @@ call plug#begin('~/.vim/plugged')
 	Plug 'vim-ruby/vim-ruby'
 	Plug 'tpope/vim-rails'
 	Plug 'tpope/vim-endwise'
+	Plug 'tpope/vim-liquid'
 
 	" PHP support
 	Plug 'shawncplus/phpcomplete.vim'

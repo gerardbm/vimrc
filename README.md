@@ -83,6 +83,7 @@ This configuration is focused on programming in C/C++, Go, Rust, Haskell, Perl, 
   - [vim-ruby](https://github.com/vim-ruby/vim-ruby)
   - [vim-rails](https://github.com/tpope/vim-rails)
   - [vim-endwise](https://github.com/tpope/vim-endwise)
+  - [vim-liquid](https://github.com/tpope/vim-liquid)
 
 - PHP support
   - [phpcomplete.vim](https://github.com/shawncplus/phpcomplete.vim)

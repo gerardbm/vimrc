@@ -1,5 +1,8 @@
 ## Changelog
 
+= 1.22.00 =
+* Install the plugin `vim-liquid`.
+
 = 1.21.00 =
 * Get the keyword density with the nnoremap `<Leader>id`.
 
