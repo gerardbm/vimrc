@@ -6,7 +6,7 @@
 "  (_)___/_/_/ /_/ /_/_/   \___/
 "
 "----------------------------------------------------------------
-"  Version : 1.22.00
+"  Version : 1.22.01
 "  License : MIT
 "  Author  : Gerard Bajona
 "  URL     : https://github.com/gerardbm/vimrc
@@ -1109,9 +1109,11 @@ nnoremap <Leader>f mao<Esc>`a
 " Enter a new line Up from 'Normal Mode'
 nnoremap <Leader>F maO<Esc>`a
 
-" Insert brackets faster (not English layout)
+" Insert brackets faster (not English keyboard layout)
 inoremap ññ []<left>
 inoremap ÑÑ {}<left>
+inoremap ÑP {%  %}<left><left><left>
+inoremap Ñ_ {%-  -%}<left><left><left><left>
 
 "----------------------------------------------------------------
 " 15. Make settings

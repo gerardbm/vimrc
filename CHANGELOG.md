@@ -1,5 +1,9 @@
 ## Changelog
 
+= 1.22.01 =
+* Add the inoremap `ÑP` to insert the liquid tags `{%  %}`.
+* Add the inoremap `Ñ-` to insert the liquid tags `{%-  -%}`.
+
 = 1.22.00 =
 * Install the plugin `vim-liquid`.
 

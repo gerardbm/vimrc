@@ -116,6 +116,8 @@
   - `<C-p>` keyword completion: previous.
   - `ññ` inserts `[]` faster.
   - `ÑÑ` inserts `{}` faster.
+  - `ÑP` inserts `{%  %}` faster.
+  - `Ñ_` inserts `{%-  -%}` faster.
   - `<M-n>` jumps to the next AutoPairs match.
   - `<M-p>` toggles AutoPairs plugin.
 
