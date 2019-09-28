@@ -1,5 +1,8 @@
 ## Changelog
 
+= 1.22.02 =
+* Fix for `GitGutterNextHunk` and `GitGutterPrevHunk`.
+
 = 1.22.01 =
 * Add the inoremap `ÑP` to insert the liquid tags `{%  %}`.
 * Add the inoremap `Ñ-` to insert the liquid tags `{%-  -%}`.

@@ -6,7 +6,7 @@
 "  (_)___/_/_/ /_/ /_/_/   \___/
 "
 "----------------------------------------------------------------
-"  Version : 1.22.01
+"  Version : 1.22.02
 "  License : MIT
 "  Author  : Gerard Bajona
 "  URL     : https://github.com/gerardbm/vimrc
@@ -214,8 +214,8 @@ let g:gitgutter_sign_modified_removed = '»╌'
 let g:gitgutter_map_keys              = 0
 let g:gitgutter_diff_args             = '--ignore-space-at-eol'
 
-nmap <Leader>j <Plug>GitGutterNextHunkzz
-nmap <Leader>k <Plug>GitGutterPrevHunkzz
+nmap <Leader>j <Plug>(GitGutterNextHunk)zz
+nmap <Leader>k <Plug>(GitGutterPrevHunk)zz
 nnoremap <silent> <C-g> :call <SID>ToggleGGPrev()<CR>zz
 nnoremap <Leader>gs :GitGutterStageHunk<CR>
 nnoremap <Leader>gu :GitGutterUndoHunk<CR>
