@@ -1,5 +1,11 @@
 ## Changelog
 
+= 1.23.00 =
+* Install the plugin vim-md-headings to add two new maps.
+  - Add the nnoremap `=` to increase markdown headings.
+  - Add the nnoremap `_` to decrease markdown headings.
+* Workaround to fix warning version of vim-go plugin (only vim).
+
 = 1.22.02 =
 * Fix for `GitGutterNextHunk` and `GitGutterPrevHunk`.
 

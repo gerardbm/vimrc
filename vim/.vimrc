@@ -6,7 +6,7 @@
 "  (_)___/_/_/ /_/ /_/_/   \___/
 "
 "----------------------------------------------------------------
-"  Version : 1.22.02
+"  Version : 1.23.00
 "  License : MIT
 "  Author  : Gerard Bajona
 "  URL     : https://github.com/gerardbm/vimrc
@@ -177,6 +177,7 @@ call plug#begin('~/.vim/plugged')
 	Plug 'terryma/vim-expand-region'
 	Plug 'Valloric/MatchTagAlways'
 	Plug 'FooSoft/vim-argwrap'
+	Plug 'gerardbm/vim-md-headings'
 
 	" Misc
 	Plug 'christoomey/vim-tmux-navigator'
@@ -319,6 +320,7 @@ let g:go_highlight_operators         = 1
 let g:go_highlight_build_constraints = 1
 let g:go_bin_path                    = expand('~/.gotools')
 let g:go_list_type                   = 'quickfix'
+let g:go_version_warning             = 0 " Keep it until version 8.0.1453
 
 " CSS3 settings
 augroup VimCSS3Syntax

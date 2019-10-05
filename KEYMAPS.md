@@ -90,6 +90,8 @@
   - `<S-Tab>` deletes one tabulator.
   - `<M-n>` jumps to the next AutoPairs match.
   - `<M-p>` toggles AutoPairs plugin.
+  - `=` increases a markdown heading.
+  - `_` decreases a markdown heading.
 
 - Visual mode
   - `<Leader>y` copies the selection into the clipboard.

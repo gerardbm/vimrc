@@ -129,6 +129,7 @@ This configuration is focused on programming in C/C++, Go, Rust, Haskell, Perl, 
   - [vim-expand-region](https://github.com/terryma/vim-expand-region)
   - [MatchTagAlways](https://github.com/Valloric/MatchTagAlways)
   - [vim-argwrap](https://github.com/FooSoft/vim-argwrap)
+  - [vim-md-headings](https://github.com/gerardbm/vim-md-headings)
 
 - Misc:
   - [christoomey/vim-tmux-navigator](https://github.com/christoomey/vim-tmux-navigator)

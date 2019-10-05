@@ -6,7 +6,7 @@
 "  /_/ /_/\___/\____/|___/_/_/ /_/ /_/
 "
 "----------------------------------------------------------------
-"  Version : 1.22.02
+"  Version : 1.23.00
 "  License : MIT
 "  Author  : Gerard Bajona
 "  URL     : https://github.com/gerardbm/vimrc
@@ -168,6 +168,7 @@ call plug#begin('~/.config/nvim/plugged')
 	Plug 'terryma/vim-expand-region'
 	Plug 'Valloric/MatchTagAlways'
 	Plug 'FooSoft/vim-argwrap'
+	Plug 'gerardbm/vim-md-headings'
 
 	" Misc
 	Plug 'christoomey/vim-tmux-navigator'
