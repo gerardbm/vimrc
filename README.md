@@ -20,6 +20,7 @@ Instant preview with MuPDF after making the following conversions:
 - MD to PDF, EPUB and HTML using pandoc, with math support.
 - TEX to PDF using pdflatex.
 - UML to PNG using PlantUML (UML diagrams).
+- DOT to PNG using Graphviz (graph drawing tools).
 - EUK to PNG using Eukleides and Convert (elementary plane geometry).
 - ASY to PNG using Asymptote and Convert (vector graphics language).
 - PLT to PNG using Gnuplot (2D and 3D graphics).

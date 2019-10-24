@@ -1,5 +1,9 @@
 ## Changelog
 
+= 1.23.01 =
+* Extend `Generator()` to generate PNG from DOT (Graphviz).
+* Change tab size to 2 instead of 4.
+
 = 1.23.00 =
 * Install the plugin vim-md-headings to add two new maps.
   - Add the nnoremap `=` to increase markdown headings.

@@ -6,7 +6,7 @@
 "  (_)___/_/_/ /_/ /_/_/   \___/
 "
 "----------------------------------------------------------------
-"  Version : 1.23.00
+"  Version : 1.23.01
 "  License : MIT
 "  Author  : Gerard Bajona
 "  URL     : https://github.com/gerardbm/vimrc
@@ -813,8 +813,8 @@ set noexpandtab
 set smarttab
 
 " Tab size (in spaces)
-set shiftwidth=4
-set tabstop=4
+set shiftwidth=2
+set tabstop=2
 
 " Remap indentation
 nnoremap <TAB> >>
@@ -1184,6 +1184,13 @@ augroup end
 augroup uml
 	autocmd!
 	autocmd FileType plantuml nnoremap <silent> <buffer> <Leader>ii
+				\ :call <SID>Generator('.png', &ft)<CR>
+augroup end
+
+" Draw with Graphviz
+augroup dot
+	autocmd!
+	autocmd FileType dot nnoremap <silent> <buffer> <Leader>ii
 				\ :call <SID>Generator('.png', &ft)<CR>
 augroup end
 
@@ -1624,6 +1631,8 @@ function! s:Generator(ext, ft) abort
 		let l:cmd = system('pandoc -s ' . l:opt . l:inp . ' -o ' . l:out)
 	elseif a:ft ==# 'plantuml'
 		let l:cmd = system('plantuml ' . l:inp . ' ' . l:out)
+	elseif a:ft ==# 'dot'
+		let l:cmd = system('dot -Tpng ' . l:inp . ' -o ' . l:out)
 	elseif a:ft ==# 'eukleides'
 		let l:eps = expand('%:r') . '.eps'
 		let l:cmd = system('eukleides ' . l:inp)
