@@ -1,5 +1,8 @@
 ## Changelog
 
+= 1.23.02 =
+* Add some shortcuts for vim-surround on markdown filetype.
+
 = 1.23.01 =
 * Extend `Generator()` to generate PNG from DOT (Graphviz).
 * Change tab size to 2 instead of 4.

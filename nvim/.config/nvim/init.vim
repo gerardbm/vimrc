@@ -6,7 +6,7 @@
 "  /_/ /_/\___/\____/|___/_/_/ /_/ /_/
 "
 "----------------------------------------------------------------
-"  Version : 1.23.01
+"  Version : 1.23.02
 "  License : MIT
 "  Author  : Gerard Bajona
 "  URL     : https://github.com/gerardbm/vimrc
@@ -439,9 +439,18 @@ let g:closetag_filenames = '*.html,*.xhtml,*.phtml,*.xml,*.html.erb'
 
 " Surround settings
 " Use 'yss?', 'yss%' or 'yss=' to surround a line
-autocmd FileType php let b:surround_63 = "<?php \r ?>"
-let g:surround_37 = "<% \r %>"
-let g:surround_61 = "<%= \r %>"
+autocmd FileType php let b:surround_{char2nr('p')} = "<?php \r ?>"
+autocmd FileType erb let b:surround_{char2nr('=')} = "<%= \r %>"
+autocmd FileType erb let b:surround_{char2nr('-')} = "<% \r %>"
+autocmd FileType html,markdown let b:surround_{char2nr('=')} = "{% \r %}"
+autocmd FileType html,markdown let b:surround_{char2nr('-')} = "{%- \r -%}"
+autocmd FileType markdown let b:surround_{char2nr('i')} = "_\r_"
+autocmd FileType markdown let b:surround_{char2nr('b')} = "**\r**"
+autocmd FileType markdown let b:surround_{char2nr('u')} = "<u>\r</u>"
+autocmd FileType markdown let b:surround_{char2nr('d')} = "<del>\r</del>"
+autocmd FileType markdown let b:surround_{char2nr('k')} = "<kbd>\r</kbd>"
+autocmd FileType markdown let b:surround_{char2nr('n')} = "<sub>\r</sub>"
+autocmd FileType markdown let b:surround_{char2nr('p')} = "<sup>\r</sup>"
 
 " Caps Lock settings
 imap <expr><C-l> deoplete#smart_close_popup()."\<Plug>CapsLockToggle"
