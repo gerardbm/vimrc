@@ -6,7 +6,7 @@
 "  (_)___/_/_/ /_/ /_/_/   \___/
 "
 "----------------------------------------------------------------
-"  Version : 1.23.02
+"  Version : 1.23.03
 "  License : MIT
 "  Author  : Gerard Bajona
 "  URL     : https://github.com/gerardbm/vimrc
@@ -108,7 +108,7 @@ call plug#begin('~/.vim/plugged')
 
 	" Autocomplete
 	Plug 'Shougo/deoplete.nvim', { 'commit': '17ffeb9' }
-	Plug 'Shougo/neosnippet.vim'
+	Plug 'Shougo/neosnippet.vim', { 'commit': '037b7a7' }
 	Plug 'Shougo/neosnippet-snippets'
 	Plug 'Shougo/context_filetype.vim'
 	Plug 'ervandew/supertab'

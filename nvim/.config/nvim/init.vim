@@ -6,7 +6,7 @@
 "  /_/ /_/\___/\____/|___/_/_/ /_/ /_/
 "
 "----------------------------------------------------------------
-"  Version : 1.23.02
+"  Version : 1.23.03
 "  License : MIT
 "  Author  : Gerard Bajona
 "  URL     : https://github.com/gerardbm/vimrc
@@ -98,8 +98,8 @@ call plug#begin('~/.config/nvim/plugged')
 	Plug 'w0rp/ale'
 
 	" Autocomplete
-	Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-	Plug 'Shougo/neosnippet.vim'
+	Plug 'Shougo/deoplete.nvim', { 'commit': '17ffeb9', 'do': 'UpdateRemotePlugins' }
+	Plug 'Shougo/neosnippet.vim', { 'commit': '037b7a7' }
 	Plug 'Shougo/neosnippet-snippets'
 	Plug 'Shougo/context_filetype.vim'
 	Plug 'ervandew/supertab'
@@ -311,6 +311,7 @@ let g:go_highlight_operators         = 1
 let g:go_highlight_build_constraints = 1
 let g:go_bin_path                    = expand('~/.gotools')
 let g:go_list_type                   = 'quickfix'
+let g:go_version_warning             = 0 " Keep it until version 3.2
 
 " CSS3 settings
 augroup VimCSS3Syntax
@@ -734,9 +735,6 @@ noremap <Leader><BS> mmHmt:%s/<C-v><CR>//ge<CR>'tzt`m
 map <silent> <Leader>. :pclose<CR>
 
 " Scroll the preview window
-set <M-d>=d
-set <M-u>=u
-
 nnoremap <silent> <M-d> :wincmd P<CR>5<C-e>:wincmd p<CR>
 nnoremap <silent> <M-u> :wincmd P<CR>5<C-y>:wincmd p<CR>
 
@@ -1046,8 +1044,8 @@ nnoremap <Leader>F maO<Esc>`a
 " Insert brackets faster (not English keyboard layout)
 inoremap ññ []<left>
 inoremap ÑÑ {}<left>
-inoremap ÑP {%  %}<left><left><left>
-inoremap Ñ_ {%-  -%}<left><left><left><left>
+autocmd FileType html,markdown inoremap ñp {%  %}<left><left><left>
+autocmd FileType html,markdown inoremap ñ- {%-  -%}<left><left><left><left>
 
 "----------------------------------------------------------------
 " 15. Make settings

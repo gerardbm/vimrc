@@ -118,8 +118,8 @@
   - `<C-p>` keyword completion: previous.
   - `ññ` inserts `[]` faster.
   - `ÑÑ` inserts `{}` faster.
-  - `ÑP` inserts `{%  %}` faster.
-  - `Ñ_` inserts `{%-  -%}` faster.
+  - `ñp` inserts `{%  %}` faster.
+  - `ñ-` inserts `{%-  -%}` faster.
   - `<M-n>` jumps to the next AutoPairs match.
   - `<M-p>` toggles AutoPairs plugin.
 
@@ -139,6 +139,17 @@
   - `<C-l>` toggles the CapsLock key.
   - `<C-n>` navigates command history: next.
   - `<C-p>` navigates command history: previous.
+
+- Surround maps for markdown
+  - `=` surrounds to `{% \r %}` (Liquid)
+  - `-` surrounds to `{%- \r -%}` (Liquid)
+  - `i` surrounds to `_\r_`
+  - `b` surrounds to `**\r**`
+  - `u` surrounds to `<u>\r</u>`
+  - `d` surrounds to `<del>\r</del>`
+  - `k` surrounds to `<kbd>\r</kbd>`
+  - `n` surrounds to `<sub>\r</sub>`
+  - `p` surrounds to `<sup>\r</sup>`
 
 ### Search
 - Normal mode

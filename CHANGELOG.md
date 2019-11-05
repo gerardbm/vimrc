@@ -1,5 +1,11 @@
 ## Changelog
 
+= 1.23.03 =
+* Add commit hash for plugin neosnippet.vim.
+* Add commit hash for plugin deoplete.nvim (only nvim).
+* Workaround to fix warning version of vim-go plugin (only nvim).
+* Clean code on init.vim.
+
 = 1.23.02 =
 * Add some shortcuts for vim-surround on markdown filetype.
 
