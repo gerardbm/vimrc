@@ -1,5 +1,7 @@
 ## Changelog
 
+= 1.23.04 =
+
 = 1.23.03 =
 * Add commit hash for plugin neosnippet.vim.
 * Add commit hash for plugin deoplete.nvim (only nvim).

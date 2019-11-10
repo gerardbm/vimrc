@@ -6,7 +6,7 @@
 "  (_)___/_/_/ /_/ /_/_/   \___/
 "
 "----------------------------------------------------------------
-"  Version : 1.23.03
+"  Version : 1.23.04
 "  License : MIT
 "  Author  : Gerard Bajona
 "  URL     : https://github.com/gerardbm/vimrc
@@ -318,7 +318,7 @@ let g:go_highlight_fields            = 1
 let g:go_highlight_types             = 1
 let g:go_highlight_operators         = 1
 let g:go_highlight_build_constraints = 1
-let g:go_bin_path                    = expand('~/.gotools')
+" let g:go_bin_path                    = expand('~/Workspace/goprojects/bin/')
 let g:go_list_type                   = 'quickfix'
 let g:go_version_warning             = 0 " Keep it until version 8.0.1453
 
@@ -593,17 +593,9 @@ set nocursorcolumn
 set laststatus=2
 
 " Change the cursor shape
-if &term =~ 'screen'
-	if exists('$TMUX')
-		let &t_SI = "\<Esc>Ptmux;\<Esc>\<Esc>[6 q\<Esc>\\"
-		let &t_SR = "\<Esc>Ptmux;\<Esc>\<Esc>[4 q\<Esc>\\"
-		let &t_EI = "\<Esc>Ptmux;\<Esc>\<Esc>[2 q\<Esc>\\"
-	else
-		let &t_SI = "\<Esc>[6 q"
-		let &t_SR = "\<Esc>[4 q"
-		let &t_EI = "\<Esc>[2 q"
-	endif
-endif
+let &t_SI = "\<Esc>[6 q"
+let &t_SR = "\<Esc>[4 q"
+let &t_EI = "\<Esc>[2 q"
 
 " Omni completion
 if has('autocmd') && exists('+omnifunc')
