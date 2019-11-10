@@ -1,6 +1,10 @@
 ## Changelog
 
+= 1.23.05 =
+* Use vim-go version v1.19 (it's more stable).
+
 = 1.23.04 =
+* Improve cursor shapes support.
 
 = 1.23.03 =
 * Add commit hash for plugin neosnippet.vim.

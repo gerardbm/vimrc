@@ -6,7 +6,7 @@
 "  (_)___/_/_/ /_/ /_/_/   \___/
 "
 "----------------------------------------------------------------
-"  Version : 1.23.04
+"  Version : 1.23.05
 "  License : MIT
 "  Author  : Gerard Bajona
 "  URL     : https://github.com/gerardbm/vimrc
@@ -117,7 +117,7 @@ call plug#begin('~/.vim/plugged')
 	Plug 'Rip-Rip/clang_complete'
 
 	" Go support
-	Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries'  }
+	Plug 'fatih/vim-go', { 'tag': 'v1.19', 'do': ':GoInstallBinaries'  }
 	Plug 'nsf/gocode', { 'rtp': 'vim', 'do': '~/.vim/plugged/gocode/vim/symlink.sh' }
 	Plug 'zchee/deoplete-go', { 'do': 'make'}
 
@@ -318,7 +318,7 @@ let g:go_highlight_fields            = 1
 let g:go_highlight_types             = 1
 let g:go_highlight_operators         = 1
 let g:go_highlight_build_constraints = 1
-" let g:go_bin_path                    = expand('~/Workspace/goprojects/bin/')
+let g:go_bin_path                    = expand('~/.gotools')
 let g:go_list_type                   = 'quickfix'
 let g:go_version_warning             = 0 " Keep it until version 8.0.1453
 

@@ -6,7 +6,7 @@
 "  /_/ /_/\___/\____/|___/_/_/ /_/ /_/
 "
 "----------------------------------------------------------------
-"  Version : 1.23.03
+"  Version : 1.23.05
 "  License : MIT
 "  Author  : Gerard Bajona
 "  URL     : https://github.com/gerardbm/vimrc
@@ -108,7 +108,7 @@ call plug#begin('~/.config/nvim/plugged')
 	Plug 'Rip-Rip/clang_complete'
 
 	" Go support
-	Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries'  }
+	Plug 'fatih/vim-go', { 'tag': 'v1.19', 'do': ':GoInstallBinaries'  }
 	Plug 'nsf/gocode', { 'rtp': 'nvim', 'do': '~/.config/nvim/plugged/gocode/nvim/symlink.sh' }
 	Plug 'zchee/deoplete-go', { 'do': 'make'}
 
