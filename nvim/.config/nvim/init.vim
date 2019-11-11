@@ -6,7 +6,7 @@
 "  /_/ /_/\___/\____/|___/_/_/ /_/ /_/
 "
 "----------------------------------------------------------------
-"  Version : 1.23.05
+"  Version : 1.23.06
 "  License : MIT
 "  Author  : Gerard Bajona
 "  URL     : https://github.com/gerardbm/vimrc
@@ -108,15 +108,15 @@ call plug#begin('~/.config/nvim/plugged')
 	Plug 'Rip-Rip/clang_complete'
 
 	" Go support
-	Plug 'fatih/vim-go', { 'tag': 'v1.19', 'do': ':GoInstallBinaries'  }
+	Plug 'fatih/vim-go', { 'tag': 'v1.19' }
 	Plug 'nsf/gocode', { 'rtp': 'nvim', 'do': '~/.config/nvim/plugged/gocode/nvim/symlink.sh' }
-	Plug 'zchee/deoplete-go', { 'do': 'make'}
+	Plug 'zchee/deoplete-go', { 'do': 'make', 'commit': 'fa73f06'}
 
 	" Perl support
 	Plug 'c9s/perlomni.vim'
 
 	" Python support
-	Plug 'zchee/deoplete-jedi'
+	Plug 'deoplete-plugins/deoplete-jedi', { 'commit': '46121d9' }
 
 	" Ruby support
 	Plug 'vim-ruby/vim-ruby'
@@ -134,7 +134,7 @@ call plug#begin('~/.config/nvim/plugged')
 	Plug 'racer-rust/vim-racer'
 
 	" Zsh support
-	Plug 'zchee/deoplete-zsh'
+	Plug 'zchee/deoplete-zsh', { 'commit': '12141ad' }
 
 	" JavaScript support
 	Plug 'ternjs/tern_for_vim', { 'do': 'npm install' }
@@ -150,10 +150,10 @@ call plug#begin('~/.config/nvim/plugged')
 	Plug 'othree/html5.vim'
 
 	" VimL support
-	Plug 'Shougo/neco-vim'
+	Plug 'Shougo/neco-vim', { 'commit' : '4c0203b' }
 
 	" Syntax files support
-	Plug 'Shougo/neco-syntax'
+	Plug 'Shougo/neco-syntax', { 'commit': '98cba4a' }
 
 	" Edition
 	Plug 'junegunn/vim-easy-align'

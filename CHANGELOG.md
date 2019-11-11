@@ -1,5 +1,8 @@
 ## Changelog
 
+= 1.23.06 =
+* Stop updates for some deoplete plugins. Unstable on Debian 9.
+
 = 1.23.05 =
 * Use vim-go version v1.19 (it's more stable).
 
