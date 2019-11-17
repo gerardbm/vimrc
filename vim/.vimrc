@@ -6,7 +6,7 @@
 "  (_)___/_/_/ /_/ /_/_/   \___/
 "
 "----------------------------------------------------------------
-"  Version : 1.23.06
+"  Version : 1.23.07
 "  License : MIT
 "  Author  : Gerard Bajona
 "  URL     : https://github.com/gerardbm/vimrc
@@ -119,7 +119,7 @@ call plug#begin('~/.vim/plugged')
 	" Go support
 	Plug 'fatih/vim-go', { 'tag': 'v1.19' }
 	Plug 'nsf/gocode', { 'rtp': 'vim', 'do': '~/.vim/plugged/gocode/vim/symlink.sh' }
-	Plug 'zchee/deoplete-go', { 'do': 'make', 'commit': 'fa73f06'}
+	Plug 'zchee/deoplete-go', { 'commit': 'fa73f06'}
 
 	" Perl support
 	Plug 'c9s/perlomni.vim'
@@ -791,7 +791,7 @@ nnoremap <silent> <M-l> :TmuxNavigateRight<CR>
 noremap <Leader><BS> mmHmt:%s/<C-v><CR>//ge<CR>'tzt`m
 
 " Close the preview window
-map <silent> <Leader>. :pclose<CR>
+nnoremap <silent> <Leader>. :pclose<CR>
 
 " Scroll the preview window
 set <M-d>=d

@@ -6,7 +6,7 @@
 "  /_/ /_/\___/\____/|___/_/_/ /_/ /_/
 "
 "----------------------------------------------------------------
-"  Version : 1.23.06
+"  Version : 1.23.07
 "  License : MIT
 "  Author  : Gerard Bajona
 "  URL     : https://github.com/gerardbm/vimrc
@@ -732,7 +732,7 @@ nnoremap <silent> <M-l> :TmuxNavigateRight<CR>
 noremap <Leader><BS> mmHmt:%s/<C-v><CR>//ge<CR>'tzt`m
 
 " Close the preview window
-map <silent> <Leader>. :pclose<CR>
+nnoremap <silent> <Leader>. :pclose<CR>
 
 " Scroll the preview window
 nnoremap <silent> <M-d> :wincmd P<CR>5<C-e>:wincmd p<CR>

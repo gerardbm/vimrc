@@ -1,5 +1,8 @@
 ## Changelog
 
+= 1.23.07 =
+* Fix the nnoremap for `:pclose`.
+
 = 1.23.06 =
 * Stop updates for some deoplete plugins. Unstable on Debian 9.
 
