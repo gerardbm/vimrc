@@ -47,7 +47,7 @@ function! AtomicSwitcher()
 	if (strftime("%H") > 8) && (strftime("%H") < 20)
 		AtomicDarkBlueSoft
 	else
-		AtomicNightRedHard
+		AtomicNightOrangeHard
 	endif
 endfunction
 
