@@ -6,7 +6,7 @@
 "  (_)___/_/_/ /_/ /_/_/   \___/
 "
 "----------------------------------------------------------------
-"  Version : 1.23.07
+"  Version : 1.23.08
 "  License : MIT
 "  Author  : Gerard Bajona
 "  URL     : https://github.com/gerardbm/vimrc
@@ -73,6 +73,9 @@ if has("terminal")
 	set termkey=<F7>
 	set termsize=10x0
 endif
+
+" Set inc/dec
+set nrformats-=octal
 
 "----------------------------------------------------------------
 " 2. Plugins (Plug)
@@ -1521,14 +1524,18 @@ endfunction
 
 " Better toggle for NERDTree
 function! s:ToggleNTree() abort
-	if (exists ('t:NERDTreeBufName') && (bufwinnr(t:NERDTreeBufName) != -1))
-		if &modifiable
-			execute ':NERDTreeFocus'
+	if bufname('%') != ""
+		if (exists ('t:NERDTreeBufName') && (bufwinnr(t:NERDTreeBufName) != -1))
+			if &modifiable
+				execute ':NERDTreeFocus'
+			else
+				execute ':NERDTreeClose'
+			endif
 		else
-			execute ':NERDTreeClose'
+			execute ':NERDTreeFind'
 		endif
 	else
-		execute ':NERDTreeFind'
+			execute ':NERDTreeToggleVCS'
 	endif
 endfunction
 

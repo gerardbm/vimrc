@@ -1,5 +1,9 @@
 ## Changelog
 
+= 1.23.08 =
+* Set `nrformats` to remove octal on increase/decrease.
+* Improve toggle function for NERDTree plugin.
+
 = 1.23.07 =
 * Fix the nnoremap for `:pclose`.
 
