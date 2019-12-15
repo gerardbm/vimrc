@@ -1,5 +1,9 @@
 ## Changelog
 
+= 1.23.09 =
+* Add new shortcuts for vim-surround on markdown.
+* Set `expandtab` for markdown files.
+
 = 1.23.08 =
 * Set `nrformats` to remove octal on increase/decrease.
 * Improve toggle function for NERDTree plugin.

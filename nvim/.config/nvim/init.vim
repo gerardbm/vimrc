@@ -6,7 +6,7 @@
 "  /_/ /_/\___/\____/|___/_/_/ /_/ /_/
 "
 "----------------------------------------------------------------
-"  Version : 1.23.08
+"  Version : 1.23.09
 "  License : MIT
 "  Author  : Gerard Bajona
 "  URL     : https://github.com/gerardbm/vimrc
@@ -455,6 +455,10 @@ autocmd FileType markdown let b:surround_{char2nr('d')} = "<del>\r</del>"
 autocmd FileType markdown let b:surround_{char2nr('k')} = "<kbd>\r</kbd>"
 autocmd FileType markdown let b:surround_{char2nr('n')} = "<sub>\r</sub>"
 autocmd FileType markdown let b:surround_{char2nr('p')} = "<sup>\r</sup>"
+autocmd FileType markdown let b:surround_{char2nr('h')} = "\[\r\]\(//\)"
+autocmd FileType markdown let b:surround_{char2nr('j')} = "\![\r\]\(/images/\){: .align-}"
+autocmd FileType markdown let b:surround_{char2nr('c')} = "“\r”"
+autocmd FileType markdown let b:surround_{char2nr('v')} = "‘\r’"
 
 " Caps Lock settings
 imap <expr><C-l> deoplete#smart_close_popup()."\<Plug>CapsLockToggle"
@@ -1210,6 +1214,11 @@ augroup end
 augroup xml
 	autocmd FileType xml nnoremap <Leader>bf
 				\ :%!tidy -q -i -xml --show-errors 0 -wrap 0 --indent-spaces 4<CR>
+augroup end
+
+" MD
+augroup yml
+	autocmd FileType markdown set expandtab
 augroup end
 
 " New file headers
