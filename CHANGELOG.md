@@ -1,5 +1,10 @@
 ## Changelog
 
+= 1.23.10 =
+* Vimwiki plugin: use the branch master.
+* Set `g:AutoPairsMultilineClose` to 0.
+* Fix the keyword density checker.
+
 = 1.23.09 =
 * Add new shortcuts for vim-surround on markdown.
 * Set `expandtab` for markdown files.

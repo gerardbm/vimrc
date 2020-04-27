@@ -6,7 +6,7 @@
 "  /_/ /_/\___/\____/|___/_/_/ /_/ /_/
 "
 "----------------------------------------------------------------
-"  Version : 1.23.09
+"  Version : 1.23.10
 "  License : MIT
 "  Author  : Gerard Bajona
 "  URL     : https://github.com/gerardbm/vimrc
@@ -181,7 +181,7 @@ call plug#begin('~/.config/nvim/plugged')
 	Plug 'junegunn/goyo.vim'
 	Plug 'mattn/webapi-vim'
 	Plug 'mattn/emmet-vim'
-	Plug 'vimwiki/vimwiki', { 'branch': 'dev' }
+	Plug 'vimwiki/vimwiki', { 'branch': 'master' }
 
 	" Color schemes
 	Plug 'gerardbm/vim-atomic'
@@ -432,6 +432,7 @@ vnoremap <Leader>X :Tabularize /.*/<Left><Left><Left>
 
 " Auto-pairs settings
 let g:AutoPairsFlyMode        = 0
+let g:AutoPairsMultilineClose = 0
 let g:AutoPairsShortcutJump   = '<M-n>'
 let g:AutoPairsShortcutToggle = '<M-p>'
 
@@ -1721,18 +1722,21 @@ function! s:KeywordDensity() abort
 	let s:str_words = string(s:int_words)
 
 	" Highlight count
-	redir => match_count
-	silent exec '%s/' . @/ . '//gn'
+	let s:match_count = ""
+	redir => s:match_count
+	silent exec '%s/' . @/ . '//gne'
 	redir END
-	let s:str_keys = split(match_count)[0]
-	let s:flt_keys = str2float(s:str_keys)
 
-	" Density
-	let s:flt_dens = (s:flt_keys/s:int_words)*100
-	let s:str_dens = string(s:flt_dens)
+	if ! empty(s:match_count)
+		let s:str_keys = split(s:match_count)[0]
+		let s:flt_keys = str2float(s:str_keys)
 
-	echo '> ' . s:str_keys . ' of ' . s:str_words . ' (' . s:str_dens . '%)'
+		" Density
+		let s:flt_dens = (s:flt_keys/s:int_words)*100
+		let s:str_dens = string(s:flt_dens)
 
+		echo '> ' . s:str_keys . ' of ' . s:str_words . ' (' . s:str_dens . '%)'
+	endif
 endfunction
 
-nnoremap <Leader>id :call <SID>KeywordDensity()<CR>
+nnoremap <silent> <Leader>id :call <SID>KeywordDensity()<CR>
