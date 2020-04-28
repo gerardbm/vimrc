@@ -1,5 +1,8 @@
 ## Changelog
 
+= 1.23.11 =
+* Improvements in the keyword density checker.
+
 = 1.23.10 =
 * Vimwiki plugin: use the branch master.
 * Set `g:AutoPairsMultilineClose` to 0.
