@@ -6,7 +6,7 @@
 "  (_)___/_/_/ /_/ /_/_/   \___/
 "
 "----------------------------------------------------------------
-"  Version : 1.23.11
+"  Version : 1.23.12
 "  License : MIT
 "  Author  : Gerard Bajona
 "  URL     : https://github.com/gerardbm/vimrc
@@ -1810,4 +1810,4 @@ function! s:KeywordDensity() abort
 	endif
 endfunction
 
-nnoremap <silent> <Leader>id :call <SID>KeywordDensity()<CR>
+nnoremap <silent> <Leader>ik :call <SID>KeywordDensity()<CR>

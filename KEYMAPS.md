@@ -222,7 +222,7 @@
   - `<Leader>ii` converts ASY (Asymptote) to PNG and previews it with Mupdf.
   - `<Leader>ii` converts PLT (Gnuplot) to PNG and previews it with Mupdf.
   - `<Leader>ii` renders POV (POV-Ray) to PNG and previews it with Mupdf.
-  - `<Leader>id` gets the keyword density of a text.
+  - `<Leader>ik` gets the keyword density of a text.
   - `<Leader>B` shows syntax highlighting groups.
   - `<Leader>u` toggles the plugin Undotree.
   - `<Leader>W` inits ArgWrap plugin.

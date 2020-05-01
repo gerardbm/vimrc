@@ -1,5 +1,8 @@
 ## Changelog
 
+= 1.23.12 =
+* Change the nnoremap `<Leader>id` (keyword density) to `<Leader>ik`.
+
 = 1.23.11 =
 * Improvements in the keyword density checker.
 
