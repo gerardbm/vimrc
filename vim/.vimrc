@@ -6,7 +6,7 @@
 "  (_)___/_/_/ /_/ /_/_/   \___/
 "
 "----------------------------------------------------------------
-"  Version : 1.23.12
+"  Version : 1.23.13
 "  License : MIT
 "  Author  : Gerard Bajona
 "  URL     : https://github.com/gerardbm/vimrc
@@ -465,6 +465,7 @@ autocmd FileType markdown let b:surround_{char2nr('k')} = "<kbd>\r</kbd>"
 autocmd FileType markdown let b:surround_{char2nr('n')} = "<sub>\r</sub>"
 autocmd FileType markdown let b:surround_{char2nr('p')} = "<sup>\r</sup>"
 autocmd FileType markdown let b:surround_{char2nr('h')} = "\[\r\]\(//\)"
+autocmd FileType markdown let b:surround_{char2nr('e')} = "\[\r\]\(\){:rel=\"nofollow noopener noreferrer\" target=\"_blank\"}"
 autocmd FileType markdown let b:surround_{char2nr('j')} = "\![\r\]\(/images/\){: .align-}"
 autocmd FileType markdown let b:surround_{char2nr('c')} = "“\r”"
 autocmd FileType markdown let b:surround_{char2nr('v')} = "‘\r’"

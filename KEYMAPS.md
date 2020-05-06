@@ -150,6 +150,11 @@
   - `k` surrounds to `<kbd>\r</kbd>`
   - `n` surrounds to `<sub>\r</sub>`
   - `p` surrounds to `<sup>\r</sup>`
+  - `h` surrounds to `[\r](//)`
+  - `e` surrounds to `[\r\](){:rel="nofollow noopener noreferrer" target="_blank"}`
+  - `j` surrounds to `![\r](/images/){: .align-}`
+  - `c` surrounds to `“\r”`
+  - `v` surrounds to `‘\r’`
 
 ### Search
 - Normal mode

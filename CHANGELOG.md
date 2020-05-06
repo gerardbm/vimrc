@@ -1,5 +1,8 @@
 ## Changelog
 
+= 1.23.13 =
+* Add a new shortcut for vim-surround on markdown.
+
 = 1.23.12 =
 * Change the nnoremap `<Leader>id` (keyword density) to `<Leader>ik`.
 
