@@ -1,5 +1,9 @@
 ## Changelog
 
+= 1.23.14 =
+* Load the plugin `vim-polyglot` first, so it can be overriden by other plugins.
+* Set `g:vimwiki_global_ext` to 0, so `vim-liquid` can set `liquid` ft on Jekyll posts.
+
 = 1.23.13 =
 * Add a new shortcut for vim-surround on markdown.
 

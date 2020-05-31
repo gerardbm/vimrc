@@ -6,7 +6,7 @@
 "  /_/ /_/\___/\____/|___/_/_/ /_/ /_/
 "
 "----------------------------------------------------------------
-"  Version : 1.23.13
+"  Version : 1.23.14
 "  License : MIT
 "  Author  : Gerard Bajona
 "  URL     : https://github.com/gerardbm/vimrc
@@ -77,6 +77,9 @@ set nrformats-=octal
 "----------------------------------------------------------------
 " List of plugins installed
 call plug#begin('~/.config/nvim/plugged')
+
+	" Load first
+	Plug 'sheerun/vim-polyglot'
 
 	" Statusbar
 	Plug 'vim-airline/vim-airline'
@@ -177,7 +180,6 @@ call plug#begin('~/.config/nvim/plugged')
 	Plug 'christoomey/vim-tmux-navigator'
 	Plug 'tpope/vim-characterize'
 	Plug 'tyru/open-browser.vim'
-	Plug 'sheerun/vim-polyglot'
 	Plug 'junegunn/goyo.vim'
 	Plug 'mattn/webapi-vim'
 	Plug 'mattn/emmet-vim'
@@ -502,6 +504,7 @@ let g:polyglot_disabled = ['markdown', 'csv']
 
 " Vimwiki settings
 let g:vimwiki_url_maxsave   = 0
+let g:vimwiki_global_ext    = 0
 let g:vimwiki_syntax        = 'markdown'
 let g:vimwiki_list          = [
 	\ {'path': '~/Workspace/vimwiki'},
