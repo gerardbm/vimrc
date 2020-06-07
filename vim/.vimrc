@@ -6,7 +6,7 @@
 "  (_)___/_/_/ /_/ /_/_/   \___/
 "
 "----------------------------------------------------------------
-"  Version : 1.23.14
+"  Version : 1.23.15
 "  License : MIT
 "  Author  : Gerard Bajona
 "  URL     : https://github.com/gerardbm/vimrc
@@ -1297,6 +1297,13 @@ augroup yml
 	autocmd FileType markdown set expandtab
 augroup end
 
+" Liquid
+augroup liquid
+	autocmd!
+	autocmd FileType liquid setlocal spell spelllang=es colorcolumn=0
+	autocmd FileType liquid nnoremap <Leader>ib :call <SID>ToggleBundle()<CR>
+augroup end
+
 " New file headers
 augroup headers
 	autocmd!
@@ -1815,3 +1822,14 @@ function! s:KeywordDensity() abort
 endfunction
 
 nnoremap <silent> <Leader>ik :call <SID>KeywordDensity()<CR>
+
+" Toggle bundle in the background
+function! s:ToggleBundle() abort
+	let l:checkps = system('lsof -i :4000')
+	if l:checkps ==# ''
+		silent exec "!(bundle exec jekyll serve &) > /dev/null"
+	else
+		silent exec "!(pkill bundle &) > /dev/null"
+	endif
+	redraw!
+endfunction

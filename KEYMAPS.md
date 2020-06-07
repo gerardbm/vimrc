@@ -228,6 +228,7 @@
   - `<Leader>ii` converts PLT (Gnuplot) to PNG and previews it with Mupdf.
   - `<Leader>ii` renders POV (POV-Ray) to PNG and previews it with Mupdf.
   - `<Leader>ik` gets the keyword density of a text.
+  - `<Leader>ib` runs/stops bundle in the background.
   - `<Leader>B` shows syntax highlighting groups.
   - `<Leader>u` toggles the plugin Undotree.
   - `<Leader>W` inits ArgWrap plugin.

@@ -1,5 +1,10 @@
 ## Changelog
 
+= 1.23.15 =
+* Automatically `setlocal spell!` and `spelllang` for `liquid` ft.
+* Disable `colorcolumn` for `liquid` ft.
+* Add a function to toggle `bundle exec jekyll serve` in the background.
+
 = 1.23.14 =
 * Load the plugin `vim-polyglot` first, so it can be overriden by other plugins.
 * Set `g:vimwiki_global_ext` to 0, so `vim-liquid` can set `liquid` ft on Jekyll posts.
