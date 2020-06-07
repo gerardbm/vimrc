@@ -1,5 +1,8 @@
 ## Changelog
 
+= 1.23.16 =
+* Reorganization of code.
+
 = 1.23.15 =
 * Automatically `setlocal spell!` and `spelllang` for `liquid` ft.
 * Disable `colorcolumn` for `liquid` ft.

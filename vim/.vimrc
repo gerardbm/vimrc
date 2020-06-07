@@ -6,7 +6,7 @@
 "  (_)___/_/_/ /_/ /_/_/   \___/
 "
 "----------------------------------------------------------------
-"  Version : 1.23.15
+"  Version : 1.23.16
 "  License : MIT
 "  Author  : Gerard Bajona
 "  URL     : https://github.com/gerardbm/vimrc
@@ -1293,8 +1293,10 @@ augroup xml
 augroup end
 
 " MD
-augroup yml
+augroup md
 	autocmd FileType markdown set expandtab
+	autocmd FileType markdown,liquid,text
+				\ nnoremap <silent> <Leader>ik :call <SID>KeywordDensity()<CR>
 augroup end
 
 " Liquid
@@ -1583,6 +1585,35 @@ function! s:ToggleTagbar() abort
 	endif
 endfunction
 
+" Keyword density checker
+function! s:KeywordDensity() abort
+	silent update
+
+	" Word count -w
+	let s:get_words = system('wc -w ' . expand('%'))
+	let s:int_words = str2nr(s:get_words)
+	let s:str_words = string(s:int_words)
+
+	" Highlight count
+	let s:match_count = ""
+	redir => s:match_count
+	silent exec '%s/' . @/ . '//gne'
+	redir END
+
+	if ! empty(s:match_count)
+		let s:str_keys = split(s:match_count)[0]
+		let s:flt_keys = str2float(s:str_keys)
+
+		" Density
+		let s:flt_dens = (s:flt_keys/s:int_words)*100
+		let s:str_dens = string(s:flt_dens)
+
+		echo '> ' . s:str_keys . ' of ' . s:str_words . ' (' . s:str_dens . '%)'
+	else
+		echo 'Pattern not found!'
+	endif
+endfunction
+
 "----------------------------------------------------------------
 " 18. External tools integration
 "----------------------------------------------------------------
@@ -1791,37 +1822,6 @@ function! s:ResizeWinPreview() abort
 endfunction
 
 command! -nargs=1 Commander call <SID>Commander(<f-args>)
-
-" Keyword density checker
-function! s:KeywordDensity() abort
-	silent update
-
-	" Word count -w
-	let s:get_words = system('wc -w ' . expand('%'))
-	let s:int_words = str2nr(s:get_words)
-	let s:str_words = string(s:int_words)
-
-	" Highlight count
-	let s:match_count = ""
-	redir => s:match_count
-	silent exec '%s/' . @/ . '//gne'
-	redir END
-
-	if ! empty(s:match_count)
-		let s:str_keys = split(s:match_count)[0]
-		let s:flt_keys = str2float(s:str_keys)
-
-		" Density
-		let s:flt_dens = (s:flt_keys/s:int_words)*100
-		let s:str_dens = string(s:flt_dens)
-
-		echo '> ' . s:str_keys . ' of ' . s:str_words . ' (' . s:str_dens . '%)'
-	else
-		echo 'Pattern not found!'
-	endif
-endfunction
-
-nnoremap <silent> <Leader>ik :call <SID>KeywordDensity()<CR>
 
 " Toggle bundle in the background
 function! s:ToggleBundle() abort
