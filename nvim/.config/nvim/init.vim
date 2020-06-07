@@ -6,7 +6,7 @@
 "  /_/ /_/\___/\____/|___/_/_/ /_/ /_/
 "
 "----------------------------------------------------------------
-"  Version : 1.23.16
+"  Version : 1.23.17
 "  License : MIT
 "  Author  : Gerard Bajona
 "  URL     : https://github.com/gerardbm/vimrc
@@ -1167,6 +1167,14 @@ augroup povray
 				\ :call <SID>Generator('.png', &ft)<CR>
 augroup end
 
+" Run bundle (liquid)
+augroup liquid
+	autocmd!
+	autocmd FileType liquid setlocal spell spelllang=es colorcolumn=0
+	autocmd FileType liquid nnoremap <silent> <buffer> <Leader>ii
+				\ :call <SID>ToggleBundle()<CR>
+augroup end
+
 "----------------------------------------------------------------
 " 16. Filetype settings
 "----------------------------------------------------------------
@@ -1226,13 +1234,6 @@ augroup md
 	autocmd FileType markdown set expandtab
 	autocmd FileType markdown,liquid,text
 				\ nnoremap <silent> <Leader>ik :call <SID>KeywordDensity()<CR>
-augroup end
-
-" Liquid
-augroup liquid
-	autocmd!
-	autocmd FileType liquid setlocal spell spelllang=es colorcolumn=0
-	autocmd FileType liquid nnoremap <Leader>ib :call <SID>ToggleBundle()<CR>
 augroup end
 
 " New file headers

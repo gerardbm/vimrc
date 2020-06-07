@@ -1,5 +1,8 @@
 ## Changelog
 
+= 1.23.17 =
+* Change the nnoremap `<Leader>ib` (toggle bundle) to `<Leader>ii`.
+
 = 1.23.16 =
 * Reorganization of code.
 
