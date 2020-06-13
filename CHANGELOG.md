@@ -1,5 +1,11 @@
 ## Changelog
 
+= 1.23.18 =
+* The function `ToggleBundle` is now `ToggleJekyll`.
+  - Better `system()` check, using `v:shell_error`.
+  - Create/remove a temporary file for i3status.
+  - Send system notifications with `notify-send`.
+
 = 1.23.17 =
 * Change the nnoremap `<Leader>ib` (toggle bundle) to `<Leader>ii`.
 

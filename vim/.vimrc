@@ -6,7 +6,7 @@
 "  (_)___/_/_/ /_/ /_/_/   \___/
 "
 "----------------------------------------------------------------
-"  Version : 1.23.17
+"  Version : 1.23.18
 "  License : MIT
 "  Author  : Gerard Bajona
 "  URL     : https://github.com/gerardbm/vimrc
@@ -1238,12 +1238,12 @@ augroup povray
 				\ :call <SID>Generator('.png', &ft)<CR>
 augroup end
 
-" Run bundle (liquid)
+" Run jekyll (liquid)
 augroup liquid
 	autocmd!
 	autocmd FileType liquid setlocal spell spelllang=es colorcolumn=0
 	autocmd FileType liquid nnoremap <silent> <buffer> <Leader>ii
-				\ :call <SID>ToggleBundle()<CR>
+				\ :call <SID>ToggleJekyll()<CR>
 augroup end
 
 "----------------------------------------------------------------
@@ -1824,13 +1824,17 @@ endfunction
 
 command! -nargs=1 Commander call <SID>Commander(<f-args>)
 
-" Toggle bundle in the background
-function! s:ToggleBundle() abort
-	let l:checkps = system('lsof -i :4000')
-	if l:checkps ==# ''
-		silent exec "!(bundle exec jekyll serve &) > /dev/null"
+" Toggle jekyll server in the background
+function! s:ToggleJekyll() abort
+	call system('lsof -i :4000')
+	if v:shell_error
+		silent exec "!(jekyll serve &) > /dev/null"
+		call system("touch /tmp/jekyll.ps")
+		call system("notify-send 'Executing Jekyll server...'")
 	else
-		silent exec "!(pkill bundle &) > /dev/null"
+		silent exec "!(pkill -f jekyll &) > /dev/null"
+		call system("rm /tmp/jekyll.ps")
+		call system("notify-send 'Jekyll server was stoped!'")
 	endif
 	redraw!
 endfunction
