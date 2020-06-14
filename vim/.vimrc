@@ -6,7 +6,7 @@
 "  (_)___/_/_/ /_/ /_/_/   \___/
 "
 "----------------------------------------------------------------
-"  Version : 1.23.18
+"  Version : 1.23.19
 "  License : MIT
 "  Author  : Gerard Bajona
 "  URL     : https://github.com/gerardbm/vimrc
@@ -1611,7 +1611,7 @@ function! s:KeywordDensity() abort
 
 		echo '> ' . s:str_keys . ' of ' . s:str_words . ' (' . s:str_dens . '%)'
 	else
-		echo 'Pattern not found!'
+		echo '> 0 of ' . s:str_words . ' (0%, pattern not found)'
 	endif
 endfunction
 

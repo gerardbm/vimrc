@@ -1,5 +1,8 @@
 ## Changelog
 
+= 1.23.19 =
+* Display words counter even when no patterns are found.
+
 = 1.23.18 =
 * The function `ToggleBundle` is now `ToggleJekyll`.
   - Better `system()` check, using `v:shell_error`.
