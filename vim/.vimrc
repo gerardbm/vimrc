@@ -6,7 +6,7 @@
 "  (_)___/_/_/ /_/ /_/_/   \___/
 "
 "----------------------------------------------------------------
-"  Version : 1.23.19
+"  Version : 1.23.20
 "  License : MIT
 "  Author  : Gerard Bajona
 "  URL     : https://github.com/gerardbm/vimrc
@@ -1241,6 +1241,8 @@ augroup end
 " Run jekyll (liquid)
 augroup liquid
 	autocmd!
+	autocmd FileType liquid set wildignore+=
+				\*/_site/*,*/images/*,*/timg/*,*/icons/*,*/logo/*,*/where/*
 	autocmd FileType liquid setlocal spell spelllang=es colorcolumn=0
 	autocmd FileType liquid nnoremap <silent> <buffer> <Leader>ii
 				\ :call <SID>ToggleJekyll()<CR>

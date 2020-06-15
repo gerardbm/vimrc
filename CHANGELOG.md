@@ -1,5 +1,8 @@
 ## Changelog
 
+= 1.23.20 =
+* Add custom wildignore for liquid files to skip `_site` and images.
+
 = 1.23.19 =
 * Display words counter even when no patterns are found.
 
