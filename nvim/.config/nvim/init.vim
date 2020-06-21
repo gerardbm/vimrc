@@ -6,7 +6,7 @@
 "  /_/ /_/\___/\____/|___/_/_/ /_/ /_/
 "
 "----------------------------------------------------------------
-"  Version : 1.23.20
+"  Version : 1.23.21
 "  License : MIT
 "  Author  : Gerard Bajona
 "  URL     : https://github.com/gerardbm/vimrc
@@ -1763,11 +1763,11 @@ function! s:ToggleJekyll() abort
 	if v:shell_error
 		silent exec "!(jekyll serve &) > /dev/null"
 		call system("touch /tmp/jekyll.ps")
-		call system("notify-send 'Executing Jekyll server...'")
+		call system("notify-send -t 2 'Executing Jekyll server...'")
 	else
 		silent exec "!(pkill -f jekyll &) > /dev/null"
-		call system("rm /tmp/jekyll.ps")
-		call system("notify-send 'Jekyll server was stoped!'")
+		call system("rm -f /tmp/jekyll.ps")
+		call system("notify-send -t 2 'Jekyll server was stoped!'")
 	endif
 	redraw!
 endfunction

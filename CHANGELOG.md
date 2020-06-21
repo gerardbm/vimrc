@@ -1,5 +1,8 @@
 ## Changelog
 
+= 1.23.21 =
+* Add some flags to the `ToggleJekyll()` function.
+
 = 1.23.20 =
 * Add custom wildignore for liquid files to skip `_site` and images.
 
