@@ -6,7 +6,7 @@
 "  (_)___/_/_/ /_/ /_/_/   \___/
 "
 "----------------------------------------------------------------
-"  Version : 1.23.21
+"  Version : 1.23.22
 "  License : MIT
 "  Author  : Gerard Bajona
 "  URL     : https://github.com/gerardbm/vimrc
@@ -228,8 +228,8 @@ nnoremap <Leader>gu :GitGutterUndoHunk<CR>
 
 " Fugitive settings
 nnoremap <C-s> :Gstatus<CR>
-nnoremap <Leader>gh :Gsdiff<CR>
-nnoremap <Leader>gv :Gvdiff<CR>
+nnoremap <Leader>gh :Gsdiff<CR>:windo set wrap<CR>
+nnoremap <Leader>gv :Gvdiff<CR>:windo set wrap<CR>
 nnoremap <Leader>gb :Gblame<CR>
 
 " Searching for text added or removed by a commit

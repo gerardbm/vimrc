@@ -1,5 +1,8 @@
 ## Changelog
 
+= 1.23.22 =
+* Set `wrap` after using `Gvdiff` and `Gsdiff`.
+
 = 1.23.21 =
 * Add some flags to the `ToggleJekyll()` function.
 
