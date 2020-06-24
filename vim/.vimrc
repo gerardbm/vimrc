@@ -6,7 +6,7 @@
 "  (_)___/_/_/ /_/ /_/_/   \___/
 "
 "----------------------------------------------------------------
-"  Version : 1.23.23
+"  Version : 1.23.24
 "  License : MIT
 "  Author  : Gerard Bajona
 "  URL     : https://github.com/gerardbm/vimrc
@@ -100,8 +100,8 @@ call plug#begin('~/.vim/plugged')
 	Plug 'xolox/vim-misc'
 
 	" Tools
-	Plug 'scrooloose/nerdcommenter'
-	Plug 'scrooloose/nerdtree'
+	Plug 'preservim/nerdcommenter'
+	Plug 'preservim/nerdtree'
 	Plug 'valloric/listtoggle'
 	Plug 'majutsushi/tagbar'
 	Plug 'ctrlpvim/ctrlp.vim'
@@ -262,7 +262,7 @@ nnoremap cc :call NERDComment(0,'toggle')<CR>
 vnoremap cc :call NERDComment(0,'toggle')<CR>
 
 " NERDTree settings
-nnoremap <silent> <C-n> :call <SID>ToggleNTree()<CR>
+nnoremap <silent> <C-n> :call <SID>ToggleNERDTree()<CR>
 
 " ALE settings
 let g:ale_linters = {
@@ -1529,15 +1529,12 @@ endfunction
 " Toggle GitGutterPreviewHunk
 function! s:ToggleGGPrev()
 	if getwinvar(winnr('#'), '&pvw') == 1
+				\ && exists('s:curr') && line(".") == s:curr
+				\ || gitgutter#hunk#in_hunk(line(".")) == 0
 		pclose
-		echo 'GitGutter closed.'
 	else
 		GitGutterPreviewHunk
-		if getwinvar(winnr('#'), '&pvw') == 0
-			echo 'Nothing to show.'
-		else
-			echo 'GitGutter preview.'
-		endif
+		let s:curr = line(".")
 	endif
 endfunction
 
@@ -1560,13 +1557,13 @@ function! s:ToggleGstatus() abort
 endfunction
 
 " Better toggle for NERDTree
-function! s:ToggleNTree() abort
+function! s:ToggleNERDTree() abort
 	if bufname('%') != ""
-		if (exists ('t:NERDTreeBufName') && (bufwinnr(t:NERDTreeBufName) != -1))
-			if &modifiable
-				execute ':NERDTreeFocus'
-			else
+		if exists("g:NERDTree") && g:NERDTree.IsOpen()
+			if &filetype ==# 'nerdtree'
 				execute ':NERDTreeClose'
+			else
+				execute ':NERDTreeFocus'
 			endif
 		else
 			execute ':NERDTreeFind'

@@ -1,13 +1,18 @@
 ## Changelog
 
-= 1.23.22 =
+= 1.23.24 =
+* Update Github path for some plugins.
+* Improve the function `ToggleNERDTree()`.
+* Improve the function `ToggleGGPrev()`.
+
+= 1.23.23 =
 * The nnoremap `<C-s>` can open and close the `Gstatus` window.
 
 = 1.23.22 =
 * Set `wrap` after using `Gvdiff` and `Gsdiff`.
 
 = 1.23.21 =
-* Add some flags to the `ToggleJekyll()` function.
+* Add some flags to the function `ToggleJekyll()`.
 
 = 1.23.20 =
 * Add custom wildignore for liquid files to skip `_site` and images.
