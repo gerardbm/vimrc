@@ -6,7 +6,7 @@
 "  (_)___/_/_/ /_/ /_/_/   \___/
 "
 "----------------------------------------------------------------
-"  Version : 1.23.24
+"  Version : 1.23.25
 "  License : MIT
 "  Author  : Gerard Bajona
 "  URL     : https://github.com/gerardbm/vimrc
@@ -100,8 +100,8 @@ call plug#begin('~/.vim/plugged')
 	Plug 'xolox/vim-misc'
 
 	" Tools
-	Plug 'preservim/nerdcommenter'
-	Plug 'preservim/nerdtree'
+	Plug 'scrooloose/nerdcommenter'
+	Plug 'scrooloose/nerdtree'
 	Plug 'valloric/listtoggle'
 	Plug 'majutsushi/tagbar'
 	Plug 'ctrlpvim/ctrlp.vim'

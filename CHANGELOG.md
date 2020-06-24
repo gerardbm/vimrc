@@ -1,5 +1,8 @@
 ## Changelog
 
+= 1.23.25 =
+* Fix for the last commit about path plugins.
+
 = 1.23.24 =
 * Update Github path for some plugins.
 * Improve the function `ToggleNERDTree()`.
