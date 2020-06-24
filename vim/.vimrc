@@ -6,7 +6,7 @@
 "  (_)___/_/_/ /_/ /_/_/   \___/
 "
 "----------------------------------------------------------------
-"  Version : 1.23.22
+"  Version : 1.23.23
 "  License : MIT
 "  Author  : Gerard Bajona
 "  URL     : https://github.com/gerardbm/vimrc
@@ -227,7 +227,7 @@ nnoremap <Leader>gs :GitGutterStageHunk<CR>
 nnoremap <Leader>gu :GitGutterUndoHunk<CR>
 
 " Fugitive settings
-nnoremap <C-s> :Gstatus<CR>
+nnoremap <C-s> :call <SID>ToggleGstatus()<CR>
 nnoremap <Leader>gh :Gsdiff<CR>:windo set wrap<CR>
 nnoremap <Leader>gv :Gvdiff<CR>:windo set wrap<CR>
 nnoremap <Leader>gb :Gblame<CR>
@@ -1546,6 +1546,17 @@ function! s:PreventGV() abort
 	if &buftype !=# 'nofile'
 		execute ':GV'
 	endif
+endfunction
+
+" Toggle Gstatus window
+function! s:ToggleGstatus() abort
+	for l:winnr in range(1, winnr('$'))
+		if !empty(getwinvar(l:winnr, 'fugitive_status'))
+			execute l:winnr.'close'
+		else
+			Gstatus
+		endif
+	endfor
 endfunction
 
 " Better toggle for NERDTree
