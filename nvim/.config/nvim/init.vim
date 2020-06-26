@@ -6,7 +6,7 @@
 "  /_/ /_/\___/\____/|___/_/_/ /_/ /_/
 "
 "----------------------------------------------------------------
-"  Version : 1.23.25
+"  Version : 1.23.26
 "  License : MIT
 "  Author  : Gerard Bajona
 "  URL     : https://github.com/gerardbm/vimrc
@@ -219,8 +219,8 @@ nnoremap <Leader>gu :GitGutterUndoHunk<CR>
 
 " Fugitive settings
 nnoremap <C-s> :call <SID>ToggleGstatus()<CR>
-nnoremap <Leader>gh :Gsdiff<CR>:windo set wrap<CR>
-nnoremap <Leader>gv :Gvdiff<CR>:windo set wrap<CR>
+nnoremap <Leader>gv :Gvdiffsplit<CR>:windo set wrap<CR>
+nnoremap <Leader>gh :Gvdiffsplit HEAD<CR>:windo set wrap<CR>
 nnoremap <Leader>gb :Gblame<CR>
 
 " Searching for text added or removed by a commit
@@ -1531,8 +1531,12 @@ endfunction
 function! s:KeywordDensity() abort
 	silent update
 
-	" Word count -w
-	let s:get_words = system('wc -w ' . expand('%'))
+	" Word count
+	" > Strip the front matter, HTML tags and count the words
+	let s:sfm = " | sed '1 { /^---/ { :a N; /\\n---/! ba; d }  }'"
+	let s:sht = " | sed 's/<[^>]*.//g'"
+	let s:wcw = " | wc -w"
+	let s:get_words = system("cat " . expand('%') . s:sfm . s:sht . s:wcw)
 	let s:int_words = str2nr(s:get_words)
 	let s:str_words = string(s:int_words)
 

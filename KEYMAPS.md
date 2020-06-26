@@ -195,8 +195,8 @@
   - `<Leader>k` goes to the previous GitGutter hunk.
   - `<Leader>gs` adds the line to the staging area (GitGutter).
   - `<Leader>gu` undoes the hunk (GitGutter).
-  - `<Leader>gv` starts the fugitive command `:Gvdiff`.
-  - `<Leader>gh` starts the fugitive command `:Gsdiff`.
+  - `<Leader>gv` starts the fugitive command `:Gvdiffsplit`.
+  - `<Leader>gh` starts the fugitive command `:Gvdiffsplit HEAD`.
   - `<Leader>gb` starts the fugitive command `:Gblame`.
   - `<Leader>gg` searches a string between commits (Glog).
 

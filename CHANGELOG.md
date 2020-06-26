@@ -1,5 +1,9 @@
 ## Changelog
 
+= 1.23.26 =
+* The nnoremap `<Leader>gh` now is `:Gvdiffsplit HEAD`.
+* Improve the word count tool: strip front matter and HTML tags.
+
 = 1.23.25 =
 * Fix for the last commit about path plugins.
 
