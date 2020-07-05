@@ -171,7 +171,6 @@
   - `<Leader>vg` vimgreps the highlight in the current buffer.
   - `<Leader>vf` vimgreps the highlight in the current directory.
   - `<Leader>vv` greps the highlight in the current buffer.
-  - `<Leader>vb` greps the highlight in the loaded buffers.
   - `<Leader>vn` greps the highlight in the current directory.
   - `<Leader>va` greps the highlight in the current arglist.
   - `<Leader>vm` grepadds the highlight of the current buffer.
@@ -183,8 +182,12 @@
   - `<Leader>r` replaces the highlight in the current buffer.
   - `<Leader>R` replaces the highlight the loaded buffers.
   - `<Leader>Q` replaces the highlight to each valid quickfix entry.
-  - `<Leader>a` opens files (`*.*`) of the current directory.
-  - `<Leader>A` opens files (`**/*.*`) of the subdirectories.
+
+### Arglist
+  - `<Leader>aa` adds files to the arglist with `:argadd`.
+  - `<Leader>ad` deletes files from the arglist with `:argdelete`.
+  - `<Leader>an` creates a new arglist starting with `:args **/*.`.
+  - `<Leader>al` displays the arglist vertically.
 
 ### Git
 - Normal mode

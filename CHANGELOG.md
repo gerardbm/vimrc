@@ -1,5 +1,18 @@
 ## Changelog
 
+= 1.23.27 =
+* Update `GrepWrapper` for `git log`, using `-G` instead of `-S`.
+* When deleting a buffer, do an `:argdelete` as well.
+* Remove the nnoremap `<Leader>vb`: grep in loaded buffers.
+* Remove teh nnormap `<Leader>a`: populate args with wildcards.
+* Remove teh nnormap `<Leader>A`: populate args with wildcards.
+* Add the nnoremap `<Leader>aa` for `:argadd`.
+* Add the nnoremap `<Leader>ad` for `:argadelete`.
+* Add the nnoremap `<Leader>an` for `:args **/*.`.
+* Add the nnoremap `<Leader>al` to display the arglist.
+* Fix the function `QFCounter()`.
+* Fix the function `GrepWrapper()`.
+
 = 1.23.26 =
 * The nnoremap `<Leader>gh` now is `:Gvdiffsplit HEAD`.
 * Improve the word count tool: strip front matter and HTML tags.

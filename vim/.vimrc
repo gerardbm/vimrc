@@ -6,7 +6,7 @@
 "  (_)___/_/_/ /_/ /_/_/   \___/
 "
 "----------------------------------------------------------------
-"  Version : 1.23.26
+"  Version : 1.23.27
 "  License : MIT
 "  Author  : Gerard Bajona
 "  URL     : https://github.com/gerardbm/vimrc
@@ -233,7 +233,7 @@ nnoremap <Leader>gh :Gvdiffsplit HEAD<CR>:windo set wrap<CR>
 nnoremap <Leader>gb :Gblame<CR>
 
 " Searching for text added or removed by a commit
-nnoremap <Leader>gg :call <SID>GrepWrapper('Glog', '-i -S', '--')<CR>
+nnoremap <Leader>gg :call <SID>GrepWrapper('Glog', '-i -G', '--')<CR>
 
 " GV settings
 nnoremap <silent> <C-z> :call <SID>PreventGV()<CR>
@@ -704,7 +704,7 @@ nnoremap vab ggVG
 set hidden
 
 " Close the current buffer
-nnoremap <Leader>bd :call <SID>OnlyCloseBuffer()<CR>
+nnoremap <Leader>bd :call <SID>CustomCloseBuffer()<CR>
 
 " Move between buffers
 nnoremap <C-h> :bprev<CR>
@@ -1033,10 +1033,6 @@ set grepprg=grep\ -nHi
 " Current buffer
 nnoremap <Leader>vv :call <SID>GrepWrapper('grep!', '', '%')<CR>
 
-" All loaded buffers
-nnoremap <Leader>vb :call setqflist([]) \|
-			\ call <SID>GrepWrapper('bufdo grepadd!', '', '%')<CR>
-
 " Current working directory
 nnoremap <Leader>vn :call <SID>GrepWrapper('grep!', '-R --exclude-dir={.git,.svn} --exclude=LICENSE', '')<CR>
 
@@ -1069,8 +1065,10 @@ nnoremap <Leader>R :bufdo %s/<C-R>///ge<Left><Left><Left>
 nnoremap <Leader>Q :cdo %s/<C-R>///ge<Left><Left><Left>
 
 " Populate the arglist
-nnoremap <Leader>a :args *.
-nnoremap <Leader>A :args **/*.
+nnoremap <Leader>aa :argadd
+nnoremap <Leader>ad :argdelete
+nnoremap <Leader>an :args **/*.
+nnoremap <Leader>al :call <SID>DisplayArglist()<CR>:argument<space>
 
 "----------------------------------------------------------------
 " 14. Text edition
@@ -1363,9 +1361,11 @@ function! s:RenameFile()
 endfunction
 
 " Don't close window when deleting a buffer
-function! s:OnlyCloseBuffer()
+" And delete the buffer from the arglist
+function! s:CustomCloseBuffer()
 	let l:currentBufNum = bufnr('%')
 	let l:alternateBufNum = bufnr('#')
+	exec ':argdelete! ' . expand('%')
 
 	if buflisted(l:alternateBufNum)
 		buffer #
@@ -1378,7 +1378,7 @@ function! s:OnlyCloseBuffer()
 	endif
 
 	if buflisted(l:currentBufNum)
-		execute('bdelete! '.l:currentBufNum)
+		exec ':bdelete! ' . l:currentBufNum
 	endif
 endfunction
 
@@ -1391,6 +1391,23 @@ function! s:CloseLastBuffer()
 			quit!
 		endif
 	endif
+endfunction
+
+" Display the arglist vertically
+function! s:DisplayArglist() abort
+	let l:argnum = 0
+	let l:lenargc = len(argc())
+	for l:arg in argv()
+		let l:argnum += 1
+		let l:filename = fnamemodify(l:arg, ':t')
+		let l:changed =
+					\ getbufinfo(bufname('^' . l:arg . '$'))[0].changed == 1
+					\ ? '+'
+					\ : ' '
+		let l:current = expand('%') ==# l:arg ? '%' : ' '
+		echo printf( '%-*d %s%s %s',
+					\ l:lenargc, l:argnum, l:current, l:changed, l:filename)
+	endfor
 endfunction
 
 " Toggle maximize window and resize windows
@@ -1437,7 +1454,7 @@ endfunction
 
 " Count grep matches
 function! QFCounter() abort
-	let l:results = len(filter(getqflist(), 'v:val.valid'))
+	let l:results = len(getqflist())
 	if l:results > 0
 		copen
 	else
@@ -1448,18 +1465,11 @@ endfunction
 
 " Grep wrapper
 function! s:GrepWrapper(cmd, dir, scope) abort
-	if a:cmd ==# 'Glog'
-		let l:pl = ' '
-		let l:pr = ' '
-	else
-		let l:pl = ' "'
-		let l:pr = '" '
-	endif
 	cclose
 	let l:pattern = substitute(@/, '\\V', '', '')
 	let l:pattern = substitute(pattern, '\\<', '', '')
 	let l:pattern = substitute(pattern, '\\>', '', '')
-	silent execute a:cmd . ' ' . a:dir . l:pl . l:pattern . l:pr . a:scope
+	silent execute a:cmd . ' ' . a:dir . ' "' . l:pattern . '" ' . a:scope
 	redraw!
 	set hlsearch
 	call QFCounter()
