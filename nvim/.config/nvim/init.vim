@@ -6,7 +6,7 @@
 "  /_/ /_/\___/\____/|___/_/_/ /_/ /_/
 "
 "----------------------------------------------------------------
-"  Version : 1.23.27
+"  Version : 1.23.28
 "  License : MIT
 "  Author  : Gerard Bajona
 "  URL     : https://github.com/gerardbm/vimrc
@@ -500,7 +500,7 @@ let g:openbrowser_browser_commands = [{
 nmap <Leader>gl <Plug>(openbrowser-open)
 
 " Polyglot
-let g:polyglot_disabled = ['markdown', 'csv']
+let g:polyglot_disabled = ['csv']
 
 " Vimwiki settings
 let g:vimwiki_url_maxsave   = 0

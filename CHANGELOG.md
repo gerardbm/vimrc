@@ -1,5 +1,8 @@
 ## Changelog
 
+= 1.23.28 =
+* Enable markdown for polyglot.
+
 = 1.23.27 =
 * Update `GrepWrapper` for `git log`, using `-G` instead of `-S`.
 * When deleting a buffer, do an `:argdelete` as well.
