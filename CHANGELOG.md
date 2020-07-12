@@ -1,5 +1,11 @@
 ## Changelog
 
+= 1.23.29 =
+* Disable markdown for polyglot, again.
+* Add `syn region` to conceal links in markdown.
+* Add the nnoremap `gl` to go to the next markdown link.
+* Add the nnoremap `gh` to go to the previous markdown link.
+
 = 1.23.28 =
 * Enable markdown for polyglot.
 

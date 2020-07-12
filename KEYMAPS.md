@@ -90,8 +90,10 @@
   - `<S-Tab>` deletes one tabulator.
   - `<M-n>` jumps to the next AutoPairs match.
   - `<M-p>` toggles AutoPairs plugin.
-  - `=` increases a markdown heading.
-  - `_` decreases a markdown heading.
+  - `=` increases a markdown heading (plugin `vim-md-headings`).
+  - `_` decreases a markdown heading (plugin `vim-md-headings`).
+  - `gl` goes to the next markdown link.
+  - `gh` goes to the previous markdown link.
 
 - Visual mode
   - `<Leader>y` copies the selection into the clipboard.

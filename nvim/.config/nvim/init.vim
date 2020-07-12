@@ -6,7 +6,7 @@
 "  /_/ /_/\___/\____/|___/_/_/ /_/ /_/
 "
 "----------------------------------------------------------------
-"  Version : 1.23.28
+"  Version : 1.23.29
 "  License : MIT
 "  Author  : Gerard Bajona
 "  URL     : https://github.com/gerardbm/vimrc
@@ -500,7 +500,7 @@ let g:openbrowser_browser_commands = [{
 nmap <Leader>gl <Plug>(openbrowser-open)
 
 " Polyglot
-let g:polyglot_disabled = ['csv']
+let g:polyglot_disabled = ['markdown', 'csv']
 
 " Vimwiki settings
 let g:vimwiki_url_maxsave   = 0
@@ -1234,6 +1234,13 @@ augroup md
 	autocmd FileType markdown set expandtab
 	autocmd FileType markdown,liquid,text
 				\ nnoremap <silent> <Leader>ik :call <SID>KeywordDensity()<CR>
+	autocmd FileType markdown,liquid,text
+				\ nnoremap <silent> gl :call search('\v\[[^]]*]\([^)]*\)')<CR>
+	autocmd FileType markdown,liquid,text
+				\ nnoremap <silent> gh :call search('\v\[[^]]*]\([^)]*\)', 'b')<CR>
+	autocmd Filetype markdown,liquid,text
+				\ syn region markdownLink matchgroup=markdownLinkDelimiter
+				\ start="(" end=")" keepend contained conceal contains=markdownUrl
 augroup end
 
 " New file headers
