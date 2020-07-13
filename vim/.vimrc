@@ -6,7 +6,7 @@
 "  (_)___/_/_/ /_/ /_/_/   \___/
 "
 "----------------------------------------------------------------
-"  Version : 1.23.29
+"  Version : 1.23.30
 "  License : MIT
 "  Author  : Gerard Bajona
 "  URL     : https://github.com/gerardbm/vimrc
@@ -1368,11 +1368,9 @@ function! s:RenameFile()
 endfunction
 
 " Don't close window when deleting a buffer
-" And delete the buffer from the arglist
 function! s:CustomCloseBuffer()
 	let l:currentBufNum = bufnr('%')
 	let l:alternateBufNum = bufnr('#')
-	exec ':argdelete! ' . expand('%')
 
 	if buflisted(l:alternateBufNum)
 		buffer #

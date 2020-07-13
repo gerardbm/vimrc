@@ -1,5 +1,8 @@
 ## Changelog
 
+= 1.23.30 =
+* Remove `:argdelete %` when deleting a buffer. No need to mix it.
+
 = 1.23.29 =
 * Disable markdown for polyglot, again.
 * Add `syn region` to conceal links in markdown.
