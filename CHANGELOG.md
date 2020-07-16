@@ -1,5 +1,8 @@
 ## Changelog
 
+= 1.23.31 =
+* Exclude some subdirectories for searches in the current directory.
+
 = 1.23.30 =
 * Remove `:argdelete %` when deleting a buffer. No need to mix it.
 

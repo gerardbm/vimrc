@@ -6,7 +6,7 @@
 "  /_/ /_/\___/\____/|___/_/_/ /_/ /_/
 "
 "----------------------------------------------------------------
-"  Version : 1.23.30
+"  Version : 1.23.31
 "  License : MIT
 "  Author  : Gerard Bajona
 "  URL     : https://github.com/gerardbm/vimrc
@@ -963,7 +963,9 @@ set grepprg=grep\ -nHi
 nnoremap <Leader>vv :call <SID>GrepWrapper('grep!', '', '%')<CR>
 
 " Current working directory
-nnoremap <Leader>vn :call <SID>GrepWrapper('grep!', '-R --exclude-dir={.git,.svn} --exclude=LICENSE', '')<CR>
+nnoremap <Leader>vn :call <SID>GrepWrapper('grep!', '-R
+			\ --exclude-dir={.git,.svn,.jekyll-cache,_site}
+			\ --exclude=LICENSE', '')<CR>
 
 " Current buffer (grepadd)
 nnoremap <Leader>vm :call <SID>GrepWrapper('grepadd!', '', '%')<CR>
