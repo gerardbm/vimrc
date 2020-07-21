@@ -1,5 +1,8 @@
 ## Changelog
 
+= 1.23.32 =
+* The function `KeywordDensity()` excludes comments on liquid files.
+
 = 1.23.31 =
 * Exclude some subdirectories for searches in the current directory.
 

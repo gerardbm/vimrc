@@ -6,7 +6,7 @@
 "  /_/ /_/\___/\____/|___/_/_/ /_/ /_/
 "
 "----------------------------------------------------------------
-"  Version : 1.23.31
+"  Version : 1.23.32
 "  License : MIT
 "  Author  : Gerard Bajona
 "  URL     : https://github.com/gerardbm/vimrc
@@ -1548,12 +1548,13 @@ endfunction
 function! s:KeywordDensity() abort
 	silent update
 
-	" Word count
-	" > Strip the front matter, HTML tags and count the words
-	let s:sfm = " | sed '1 { /^---/ { :a N; /\\n---/! ba; d }  }'"
-	let s:sht = " | sed 's/<[^>]*.//g'"
-	let s:wcw = " | wc -w"
-	let s:get_words = system("cat " . expand('%') . s:sfm . s:sht . s:wcw)
+	" Words count
+	" > Strip the front matter, comments, HTML tags and count the words
+	let s:sf = " | sed '1 { /^---/ { :a N; /\\n---/! ba; d }  }'"
+	let s:sc = " | sed 's/{% comment.*endcomment %}//g'"
+	let s:sh = " | sed 's/<[^>]*.//g'"
+	let s:wc = " | wc -w"
+	let s:get_words = system("cat " . expand('%') . s:sf. s:sc . s:sh . s:wc)
 	let s:int_words = str2nr(s:get_words)
 	let s:str_words = string(s:int_words)
 
