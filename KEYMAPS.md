@@ -157,6 +157,10 @@
   - `j` surrounds to `![\r](/images/){: .align-}`
   - `c` surrounds to `“\r”`
   - `v` surrounds to `‘\r’`
+  - `ñ` surrounds to `[\r]`
+  - `Ñ` surrounds to `{\r}`
+  - `dsñ` removes the surrounding `[]`.
+  - `dsÑ` removes the surrounding `{}`.
 
 ### Search
 - Normal mode

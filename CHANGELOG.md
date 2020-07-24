@@ -1,5 +1,8 @@
 ## Changelog
 
+= 1.23.33 =
+* Add new shortcuts for vim-surround on markdown.
+
 = 1.23.32 =
 * The function `KeywordDensity()` excludes comments on liquid files.
 

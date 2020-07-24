@@ -6,7 +6,7 @@
 "  (_)___/_/_/ /_/ /_/_/   \___/
 "
 "----------------------------------------------------------------
-"  Version : 1.23.32
+"  Version : 1.23.33
 "  License : MIT
 "  Author  : Gerard Bajona
 "  URL     : https://github.com/gerardbm/vimrc
@@ -471,6 +471,10 @@ autocmd FileType markdown let b:surround_{char2nr('e')} = "\[\r\]\(\){:rel=\"nof
 autocmd FileType markdown let b:surround_{char2nr('j')} = "\![\r\]\(/images/\){: .align-}"
 autocmd FileType markdown let b:surround_{char2nr('c')} = "“\r”"
 autocmd FileType markdown let b:surround_{char2nr('v')} = "‘\r’"
+autocmd FileType markdown let b:surround_{char2nr('ñ')} = "[\r]"
+autocmd FileType markdown let b:surround_{char2nr('Ñ')} = "{\r}"
+autocmd Filetype markdown nmap dsñ ds]
+autocmd Filetype markdown nmap dsÑ ds}
 
 " Caps Lock settings
 imap <expr><C-l> deoplete#smart_close_popup()."\<Plug>CapsLockToggle"
