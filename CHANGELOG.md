@@ -1,5 +1,8 @@
 ## Changelog
 
+= 1.23.34 =
+* Add nnoremap and vnoremap `<Leader>ij` to `<g_CTRL-G>` (word-count).
+
 = 1.23.33 =
 * Add new shortcuts for vim-surround on markdown.
 

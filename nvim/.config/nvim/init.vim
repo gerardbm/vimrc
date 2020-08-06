@@ -6,7 +6,7 @@
 "  /_/ /_/\___/\____/|___/_/_/ /_/ /_/
 "
 "----------------------------------------------------------------
-"  Version : 1.23.33
+"  Version : 1.23.34
 "  License : MIT
 "  Author  : Gerard Bajona
 "  URL     : https://github.com/gerardbm/vimrc
@@ -1240,6 +1240,8 @@ augroup md
 	autocmd FileType markdown set expandtab
 	autocmd FileType markdown,liquid,text
 				\ nnoremap <silent> <Leader>ik :call <SID>KeywordDensity()<CR>
+	autocmd FileType markdown,liquid,text nnoremap <silent> <Leader>ij g<C-g>
+	autocmd FileType markdown,liquid,text vnoremap <silent> <Leader>ij g<C-g>
 	autocmd FileType markdown,liquid,text
 				\ nnoremap <silent> gl :call search('\v\[[^]]*]\([^)]*\)')<CR>
 	autocmd FileType markdown,liquid,text

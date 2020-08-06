@@ -94,6 +94,7 @@
   - `_` decreases a markdown heading (plugin `vim-md-headings`).
   - `gl` goes to the next markdown link.
   - `gh` goes to the previous markdown link.
+  - `<Leader>ij` displays the cursor position and buffer word-count.
 
 - Visual mode
   - `<Leader>y` copies the selection into the clipboard.
@@ -102,6 +103,7 @@
   - `<C-s>` expands neosnippet.
   - `v` expands the region selected.
   - `<C-v>` shrinks the selection.
+  - `<Leader>ij` displays the cursor position and selection word-count.
 
 - Insert mode
   - `<C-a>` moves the cursor to the start of line (0).
