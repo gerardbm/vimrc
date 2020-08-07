@@ -1,5 +1,10 @@
 ## Changelog
 
+= 1.23.35 =
+* Change the nnoremap `<Leader>ik` (KeywordDenisty) to `<Leader>ck`.
+* Change the nnoremap `<Leader>ij` (word-count) to `<Leader>cj`.
+* Change the vnoremap `<Leader>ij` (word-count) to `<Leader>cj`.
+
 = 1.23.34 =
 * Add nnoremap and vnoremap `<Leader>ij` to `<g_CTRL-G>` (word-count).
 

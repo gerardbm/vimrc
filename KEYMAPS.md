@@ -94,7 +94,7 @@
   - `_` decreases a markdown heading (plugin `vim-md-headings`).
   - `gl` goes to the next markdown link.
   - `gh` goes to the previous markdown link.
-  - `<Leader>ij` displays the cursor position and buffer word-count.
+  - `<Leader>cj` displays the cursor position and buffer word-count.
 
 - Visual mode
   - `<Leader>y` copies the selection into the clipboard.
@@ -103,7 +103,7 @@
   - `<C-s>` expands neosnippet.
   - `v` expands the region selected.
   - `<C-v>` shrinks the selection.
-  - `<Leader>ij` displays the cursor position and selection word-count.
+  - `<Leader>cj` displays the cursor position and selection word-count.
 
 - Insert mode
   - `<C-a>` moves the cursor to the start of line (0).
@@ -239,7 +239,7 @@
   - `<Leader>ii` converts PLT (Gnuplot) to PNG and previews it with Mupdf.
   - `<Leader>ii` renders POV (POV-Ray) to PNG and previews it with Mupdf.
   - `<Leader>ii` runs/stops bundle in the background, for liquid files.
-  - `<Leader>ik` gets the keyword density of a text.
+  - `<Leader>ck` gets the keyword density of a text.
   - `<Leader>B` shows syntax highlighting groups.
   - `<Leader>u` toggles the plugin Undotree.
   - `<Leader>W` inits ArgWrap plugin.
