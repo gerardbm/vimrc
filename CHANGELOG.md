@@ -1,5 +1,18 @@
 ## Changelog
 
+= 1.23.36 =
+* Change the nnoremap `<Leader>ck` (KeywordDenisty) to `<Leader>cc`.
+* Change the nnoremap `<Leader>cj` (word-count) to `<Leader>dd`.
+* Change the vnoremap `<Leader>cj` (word-count) to `<Leader>dd`.
+  - Make them easier to type.
+* Update github path for ALE plugin.
+* Update github path for deoplete-go plugin.
+* Update github path for deoplete-zsh plugin.
+* Update github path for deoplete-clang plugin.
+  - Some paths changed.
+* Add clang to ALE linters list.
+* Update clang and libclang paths for deoplete.
+
 = 1.23.35 =
 * Change the nnoremap `<Leader>ik` (KeywordDenisty) to `<Leader>ck`.
 * Change the nnoremap `<Leader>ij` (word-count) to `<Leader>cj`.

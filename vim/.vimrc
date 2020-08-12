@@ -6,7 +6,7 @@
 "  (_)___/_/_/ /_/ /_/_/   \___/
 "
 "----------------------------------------------------------------
-"  Version : 1.23.35
+"  Version : 1.23.36
 "  License : MIT
 "  Author  : Gerard Bajona
 "  URL     : https://github.com/gerardbm/vimrc
@@ -106,7 +106,7 @@ call plug#begin('~/.vim/plugged')
 	Plug 'majutsushi/tagbar'
 	Plug 'ctrlpvim/ctrlp.vim'
 	Plug 'mbbill/undotree'
-	Plug 'w0rp/ale'
+	Plug 'dense-analysis/ale'
 
 	" Deoplete, specific for Vim8
 	Plug 'roxma/nvim-yarp'
@@ -120,12 +120,12 @@ call plug#begin('~/.vim/plugged')
 	Plug 'ervandew/supertab'
 
 	" C/C++ support
-	Plug 'Rip-Rip/clang_complete'
+	Plug 'deoplete-plugins/deoplete-clang', { 'commit': '30f17cb' }
 
 	" Go support
 	Plug 'fatih/vim-go', { 'tag': 'v1.19' }
 	Plug 'nsf/gocode', { 'rtp': 'vim', 'do': '~/.vim/plugged/gocode/vim/symlink.sh' }
-	Plug 'zchee/deoplete-go', { 'commit': 'fa73f06'}
+	Plug 'deoplete-plugins/deoplete-go', { 'commit': 'fa73f06'}
 
 	" Perl support
 	Plug 'c9s/perlomni.vim'
@@ -149,7 +149,7 @@ call plug#begin('~/.vim/plugged')
 	Plug 'racer-rust/vim-racer'
 
 	" Zsh support
-	Plug 'zchee/deoplete-zsh', { 'commit': '12141ad' }
+	Plug 'deoplete-plugins/deoplete-zsh', { 'commit': '12141ad' }
 
 	" JavaScript support
 	Plug 'ternjs/tern_for_vim', { 'do': 'npm install' }
@@ -266,6 +266,7 @@ nnoremap <silent> <C-n> :call <SID>ToggleNERDTree()<CR>
 
 " ALE settings
 let g:ale_linters = {
+	\ 'c'          : ['clang'],
 	\ 'python'     : ['pylint'],
 	\ 'javascript' : ['jshint'],
 	\ 'css'        : ['csslint'],
@@ -401,12 +402,8 @@ let g:deoplete#omni#functions.javascript = [
 	\ ]
 
 " Clang autocompletion
-let g:clang_complete_auto              = 0
-let g:clang_auto_select                = 0
-let g:clang_omnicppcomplete_compliance = 0
-let g:clang_make_default_keymappings   = 0
-let g:clang_use_library                = 1
-let g:clang_library_path               = '/usr/lib/llvm-3.8/lib'
+let g:deoplete#sources#clang#libclang_path = '/usr/lib/llvm-4.0/lib/libclang.so'
+let g:deoplete#sources#clang#clang_header = '/usr/lib/clang'
 
 " --- Snippets ---
 " Neosnippet settings
@@ -1310,9 +1307,9 @@ augroup end
 augroup md
 	autocmd FileType markdown set expandtab
 	autocmd FileType markdown,liquid,text
-				\ nnoremap <silent> <Leader>ck :call <SID>KeywordDensity()<CR>
-	autocmd FileType markdown,liquid,text nnoremap <silent> <Leader>cj g<C-g>
-	autocmd FileType markdown,liquid,text vnoremap <silent> <Leader>cj g<C-g>
+				\ nnoremap <silent> <Leader>cc :call <SID>KeywordDensity()<CR>
+	autocmd FileType markdown,liquid,text nnoremap <silent> <Leader>dd g<C-g>
+	autocmd FileType markdown,liquid,text vnoremap <silent> <Leader>dd g<C-g>
 	autocmd FileType markdown,liquid,text
 				\ nnoremap <silent> gl :call search('\v\[[^]]*]\([^)]*\)')<CR>
 	autocmd FileType markdown,liquid,text
