@@ -6,7 +6,7 @@
 "  /_/ /_/\___/\____/|___/_/_/ /_/ /_/
 "
 "----------------------------------------------------------------
-"  Version : 1.23.36
+"  Version : 1.23.37
 "  License : MIT
 "  Author  : Gerard Bajona
 "  URL     : https://github.com/gerardbm/vimrc
@@ -410,8 +410,10 @@ smap <expr><TAB>
 " For conceal markers
 if has('conceal')
 	set conceallevel=0 concealcursor=niv
-	nnoremap coo :set conceallevel=0<CR>
-	nnoremap coi :set conceallevel=2<CR>
+	nnoremap <silent> coi :set conceallevel=0<CR>:set concealcursor=niv<CR>
+	nnoremap <silent> coo :set conceallevel=2<CR>:set concealcursor=vc<CR>
+	nnoremap <silent> cop :set conceallevel=2<CR>:set concealcursor=niv<CR>
+	nnoremap <silent> com :set conceallevel=3<CR>:set concealcursor=niv<CR>
 endif
 
 augroup all
@@ -1243,9 +1245,6 @@ augroup md
 				\ nnoremap <silent> gl :call search('\v\[[^]]*]\([^)]*\)')<CR>
 	autocmd FileType markdown,liquid,text
 				\ nnoremap <silent> gh :call search('\v\[[^]]*]\([^)]*\)', 'b')<CR>
-	autocmd Filetype markdown,liquid,text
-				\ syn region markdownLink matchgroup=markdownLinkDelimiter
-				\ start="(" end=")" keepend contained conceal contains=markdownUrl
 augroup end
 
 " New file headers

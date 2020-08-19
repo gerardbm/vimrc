@@ -78,8 +78,10 @@
   - `<Leader>tf` retabs the current buffer.
   - `<Leader>dt` removes trailing white spaces.
   - `<Leader>p` pastes text from the clipboard.
-  - `<Leader>coo` sets the conceallevel to 0.
-  - `<Leader>coi` sets the conceallevel to 2.
+  - `coi` sets the conceallevel to 0, concealcursor to niv.
+  - `coo` sets the conceallevel to 2, concealcursor to vc.
+  - `cop` sets the conceallevel to 2, concealcursor to niv.
+  - `com` sets the conceallevel to 3, concealcursor to niv.
   - `ç` moves to the next misspelled word.
   - `Ç` moves to the previous misspelled word.
   - `ñ` toggles the cursor position: start of text/end of line.

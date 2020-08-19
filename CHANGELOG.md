@@ -1,5 +1,9 @@
 ## Changelog
 
+= 1.23.37 =
+* Change the nnoremap for conceallevel and concealcursor.
+* Add syntax definitions to `~/.vim/after/syntax/`.
+
 = 1.23.36 =
 * Change the nnoremap `<Leader>ck` (KeywordDenisty) to `<Leader>cc`.
 * Change the nnoremap `<Leader>cj` (word-count) to `<Leader>dd`.
