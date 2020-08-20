@@ -1,5 +1,8 @@
 ## Changelog
 
+= 2.0.0 =
+* Merge vim and nvim configs.
+
 = 1.23.37 =
 * Change the nnoremap for conceallevel and concealcursor.
 * Add syntax definitions to `~/.vim/after/syntax/`.

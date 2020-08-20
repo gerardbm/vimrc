@@ -6,7 +6,7 @@
 "  (_)___/_/_/ /_/ /_/_/   \___/
 "
 "----------------------------------------------------------------
-"  Version : 1.23.37
+"  Version : 2.0.0
 "  License : MIT
 "  Author  : Gerard Bajona
 "  URL     : https://github.com/gerardbm/vimrc
@@ -36,7 +36,9 @@
 " 1. General settings
 "----------------------------------------------------------------
 " Disable vi compatibility
-set nocompatible
+if !has("nvim")
+	set nocompatible
+endif
 
 " Fix vulnerability
 set modelines=0
@@ -67,11 +69,11 @@ nnoremap Q <NOP>
 " Open help in a vertical window
 cnoreabbrev help vert help
 
-" Terminal
-if has("terminal")
+" Terminal (nvim)
+if has("terminal") && has("nvim")
 	nnoremap <silent> <F7> :call <SID>ToggleTerminal()<CR>
-	set termkey=<F7>
-	set termsize=10x0
+	tnoremap <silent> <F7> <C-\><C-n><Bar>:wincmd p<CR>
+	tnoremap <Esc> <C-\><C-n>
 endif
 
 " Set inc/dec
@@ -109,8 +111,10 @@ call plug#begin('~/.vim/plugged')
 	Plug 'dense-analysis/ale'
 
 	" Deoplete, specific for Vim8
-	Plug 'roxma/nvim-yarp'
-	Plug 'roxma/vim-hug-neovim-rpc'
+	if !has("nvim")
+		Plug 'roxma/nvim-yarp'
+		Plug 'roxma/vim-hug-neovim-rpc'
+	endif
 
 	" Autocomplete
 	Plug 'Shougo/deoplete.nvim', { 'commit': '17ffeb9' }
@@ -326,7 +330,7 @@ let g:go_highlight_operators         = 1
 let g:go_highlight_build_constraints = 1
 let g:go_bin_path                    = expand('~/.gotools')
 let g:go_list_type                   = 'quickfix'
-let g:go_version_warning             = 0 " Keep it until version 8.0.1453
+let g:go_version_warning             = 0 " Keep until vim v8.0.1453, nvim v3.2
 
 " CSS3 settings
 augroup VimCSS3Syntax
@@ -441,12 +445,20 @@ vnoremap <Leader>x :Tabularize /
 vnoremap <Leader>X :Tabularize /.*/<Left><Left><Left>
 
 " Auto-pairs settings
-set <M-n>=n
-set <M-p>=p
+if !has("nvim")
+	set <M-n>=n
+	set <M-p>=p
+endif
+
 let g:AutoPairsFlyMode        = 0
 let g:AutoPairsMultilineClose = 0
 let g:AutoPairsShortcutJump   = '<M-n>'
 let g:AutoPairsShortcutToggle = '<M-p>'
+
+" Workaround to fix an Auto-pairs bug until it gets fixed
+if has("nvim")
+	autocmd VimEnter,BufEnter,BufWinEnter * silent! iunmap <buffer> <M-">
+endif
 
 " Closetag settings
 let g:closetag_filenames = '*.html,*.xhtml,*.phtml,*.xml,*.html.erb'
@@ -567,34 +579,37 @@ set matchtime=2
 " No annoying sound on errors
 set noerrorbells
 set novisualbell
-set t_vb=
 
-" Terminal keycodes
-if &term =~ 'screen'
-	set <F1>=[11~
-	set <F2>=[12~
-	set <F3>=[13~
-	set <F4>=[14~
-	set <F5>=[15~
-	set <F6>=[17~
-	set <F7>=[18~
-	set <F8>=[19~
-	set <F9>=[20~
-	set <F10>=[21~
-	set <F11>=[23~
-	set <F12>=[24~
-	set <S-F1>=[11;2~
-	set <S-F2>=[12;2~
-	set <S-F3>=[13;2~
-	set <S-F4>=[14;2~
-	set <S-F5>=[15;2~
-	set <S-F6>=[17;2~
-	set <S-F7>=[18;2~
-	set <S-F8>=[19;2~
-	set <S-F9>=[20;2~
-	set <S-F10>=[21;2~
-	set <S-F11>=[23;2~
-	set <S-F12>=[24;2~
+if !has("nvim")
+	set t_vb=
+
+	" Terminal keycodes
+	if &term =~ 'screen'
+		set <F1>=[11~
+		set <F2>=[12~
+		set <F3>=[13~
+		set <F4>=[14~
+		set <F5>=[15~
+		set <F6>=[17~
+		set <F7>=[18~
+		set <F8>=[19~
+		set <F9>=[20~
+		set <F10>=[21~
+		set <F11>=[23~
+		set <F12>=[24~
+		set <S-F1>=[11;2~
+		set <S-F2>=[12;2~
+		set <S-F3>=[13;2~
+		set <S-F4>=[14;2~
+		set <S-F5>=[15;2~
+		set <S-F6>=[17;2~
+		set <S-F7>=[18;2~
+		set <S-F8>=[19;2~
+		set <S-F9>=[20;2~
+		set <S-F10>=[21;2~
+		set <S-F11>=[23;2~
+		set <S-F12>=[24;2~
+	endif
 endif
 
 " Mouse
@@ -608,9 +623,15 @@ set nocursorcolumn
 set laststatus=2
 
 " Change the cursor shape
-let &t_SI = "\<Esc>[6 q"
-let &t_SR = "\<Esc>[4 q"
-let &t_EI = "\<Esc>[2 q"
+if !has("nvim")
+	let &t_SI = "\<Esc>[6 q"
+	let &t_SR = "\<Esc>[4 q"
+	let &t_EI = "\<Esc>[2 q"
+else
+	set guicursor=n-v:block-Cursor/lCursor-blinkon0
+	set guicursor+=i-ci-c:ver100-Cursor/lCursor-blinkon0
+	set guicursor+=r-cr:hor100-Cursor/lCursor-blinkon0
+endif
 
 " Omni completion
 if has('autocmd') && exists('+omnifunc')
@@ -621,17 +642,23 @@ autocmd Filetype *
 endif
 
 " Fix italics issue
-let &t_ZH="\e[3m"
-let &t_ZR="\e[23m"
+if !has("nvim")
+	let &t_ZH="\e[3m"
+	let &t_ZR="\e[23m"
+endif
 
 "----------------------------------------------------------------
 " 5. Scheme and colors
 "----------------------------------------------------------------
 " True color
-" if has("termguicolors")
-"     let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
-"     let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
-"     set termguicolors
+" if !has("nvim")
+"   if has("termguicolors")
+"       let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+"       let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+"       set termguicolors
+"   endif
+" else
+"   set termguicolors
 " endif
 
 " Syntax highlighting
@@ -676,10 +703,11 @@ filetype plugin on
 filetype indent on
 
 " Allow us to use Ctrl-s and Ctrl-q as keybinds
-silent !stty -ixon
-
 " Restore default behaviour when leaving Vim.
-autocmd VimLeave * silent !stty ixon
+if !has("nvim")
+	silent !stty -ixon
+	autocmd VimLeave * silent !stty ixon
+endif
 
 " Save the current buffer
 nnoremap <Leader>s :update<CR>
@@ -792,10 +820,12 @@ nnoremap <silent> <C-w>o :wincmd o<CR>:echo "Only one window."<CR>
 " - Check it at my .tmux.conf from my dotfiles repository.
 " - URL: https://github.com/gerardbm/dotfiles/blob/master/tmux/.tmux.conf
 " - Plugin required: https://github.com/christoomey/vim-tmux-navigator
-set <M-h>=h
-set <M-j>=j
-set <M-k>=k
-set <M-l>=l
+if !has("nvim")
+	set <M-h>=h
+	set <M-j>=j
+	set <M-k>=k
+	set <M-l>=l
+endif
 
 nnoremap <silent> <M-h> :TmuxNavigateLeft<CR>
 nnoremap <silent> <M-j> :TmuxNavigateDown<CR>
@@ -809,8 +839,10 @@ noremap <Leader><BS> mmHmt:%s/<C-v><CR>//ge<CR>'tzt`m
 nnoremap <silent> <Leader>. :pclose<CR>
 
 " Scroll the preview window
-set <M-d>=d
-set <M-u>=u
+if !has("nvim")
+	set <M-d>=d
+	set <M-u>=u
+endif
 
 nnoremap <silent> <M-d> :wincmd P<CR>5<C-e>:wincmd p<CR>
 nnoremap <silent> <M-u> :wincmd P<CR>5<C-y>:wincmd p<CR>
@@ -964,12 +996,14 @@ cnoremap <C-q> <S-Right><C-w>
 "----------------------------------------------------------------
 " Bracketed paste mode
 " - Source: https://ttssh2.osdn.jp/manual/en/usage/tips/vim.html
-if has("patch-8.0.0238")
-	if &term =~ "screen"
-		let &t_BE = "\e[?2004h"
-		let &t_BD = "\e[?2004l"
-		exec "set t_PS=\e[200~"
-		exec "set t_PE=\e[201~"
+if !has("nvim")
+	if has("patch-8.0.0238")
+		if &term =~ "screen"
+			let &t_BE = "\e[?2004h"
+			let &t_BD = "\e[?2004l"
+			exec "set t_PS=\e[200~"
+			exec "set t_PE=\e[201~"
+		endif
 	endif
 endif
 
@@ -1336,10 +1370,12 @@ augroup end
 function! s:ToggleTerminal()
 	if bufexists('terminal')
 		call win_gotoid(s:winZsh)
+		norm! i
 	else
-		execute ':term++close zsh'
+		execute ':below 10sp term://$SHELL'
 		keepalt file terminal
 		let s:winZsh = win_getid()
+		norm! i
 	endif
 endfunction
 
