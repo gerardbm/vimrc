@@ -6,7 +6,7 @@
 "  (_)___/_/_/ /_/ /_/_/   \___/
 "
 "----------------------------------------------------------------
-"  Version : 2.0.0
+"  Version : 2.0.1
 "  License : MIT
 "  Author  : Gerard Bajona
 "  URL     : https://github.com/gerardbm/vimrc
@@ -445,15 +445,10 @@ vnoremap <Leader>x :Tabularize /
 vnoremap <Leader>X :Tabularize /.*/<Left><Left><Left>
 
 " Auto-pairs settings
-if !has("nvim")
-	set <M-n>=n
-	set <M-p>=p
-endif
-
 let g:AutoPairsFlyMode        = 0
 let g:AutoPairsMultilineClose = 0
-let g:AutoPairsShortcutJump   = '<M-n>'
-let g:AutoPairsShortcutToggle = '<M-p>'
+let g:AutoPairsShortcutJump   = '<C-s>'
+let g:AutoPairsShortcutToggle = '<C-z>'
 
 " Workaround to fix an Auto-pairs bug until it gets fixed
 if has("nvim")

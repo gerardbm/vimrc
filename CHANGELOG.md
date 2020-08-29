@@ -1,5 +1,9 @@
 ## Changelog
 
+= 2.0.1 =
+* Change the map `<M-n>` to `<C-s>` (jump to the next AutoPairs match).
+* Change the map `<M-p>` to `<C-z>` (toggle the plugin AutoPairs).
+
 = 2.0.0 =
 * Merge vim and nvim configs.
 

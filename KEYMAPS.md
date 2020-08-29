@@ -90,8 +90,8 @@
   - `cv` duplicates a line down.
   - `<Tab>` adds one tabulator.
   - `<S-Tab>` deletes one tabulator.
-  - `<M-n>` jumps to the next AutoPairs match.
-  - `<M-p>` toggles AutoPairs plugin.
+  - `<C-s>` jumps to the next AutoPairs match.
+  - `<C-z>` toggles AutoPairs plugin.
   - `=` increases a markdown heading (plugin `vim-md-headings`).
   - `_` decreases a markdown heading (plugin `vim-md-headings`).
   - `gl` goes to the next markdown link.
