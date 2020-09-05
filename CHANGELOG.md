@@ -1,8 +1,20 @@
 ## Changelog
 
+= 2.0.2 =
+* Change the map `<C-s>` to `<C-g>` (jump to the next AutoPairs match).
+* Change the map `<C-z>` to `<C-q>` (toggle the plugin AutoPairs).
+  - Maps for normal and insert modes.
+* Change the nnoremap `<C-q>` to `<C-b>` (`:OpenSession`).
+* Change the nnoremap `ç` to `zl` (move to next misspelled word).
+* Change the nnoremap `Ç` to `zh` (move to previous misspelled word).
+* Change the nnoremap `<Leader>ç` to `zp` (suggest correctly spelled words).
+* Change the cnoremap `<C-z>` to `<C-v>` (paste yanked text).
+* Change CtrlP maps to close it with `<C-p>`, the same map to open it.
+
 = 2.0.1 =
 * Change the map `<M-n>` to `<C-s>` (jump to the next AutoPairs match).
 * Change the map `<M-p>` to `<C-z>` (toggle the plugin AutoPairs).
+  - Maps for normal and insert modes.
 
 = 2.0.0 =
 * Merge vim and nvim configs.

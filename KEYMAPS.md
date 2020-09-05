@@ -74,7 +74,6 @@
   - `<Leader>o` isolates the current line.
   - `<Leader>f` enters a new line down from 'Normal Mode'.
   - `<Leader>F` enters a new line up from 'Normal Mode'.
-  - `<Leader>ç` suggests correctly spelled words.
   - `<Leader>tf` retabs the current buffer.
   - `<Leader>dt` removes trailing white spaces.
   - `<Leader>p` pastes text from the clipboard.
@@ -82,16 +81,17 @@
   - `coo` sets the conceallevel to 2, concealcursor to vc.
   - `cop` sets the conceallevel to 2, concealcursor to niv.
   - `com` sets the conceallevel to 3, concealcursor to niv.
-  - `ç` moves to the next misspelled word.
-  - `Ç` moves to the previous misspelled word.
+  - `zl` moves to the next misspelled word.
+  - `zh` moves to the previous misspelled word.
+  - `zp` suggests correctly spelled words.
   - `ñ` toggles the cursor position: start of text/end of line.
   - `cc` toggles the commented code.
   - `cx` duplicates a line up.
   - `cv` duplicates a line down.
   - `<Tab>` adds one tabulator.
   - `<S-Tab>` deletes one tabulator.
-  - `<C-s>` jumps to the next AutoPairs match.
-  - `<C-z>` toggles AutoPairs plugin.
+  - `<C-q>` toggles AutoPairs plugin.
+  - `<C-g>` jumps to the next AutoPairs match.
   - `=` increases a markdown heading (plugin `vim-md-headings`).
   - `_` decreases a markdown heading (plugin `vim-md-headings`).
   - `gl` goes to the next markdown link.
@@ -141,7 +141,7 @@
   - `<C-u>` deletes all characters before the cursor.
   - `<C-j>` enters a new line.
   - `<C-k>` enters a digraph.
-  - `<C-z>` pastes the yanked text (`<C-r>"`).
+  - `<C-v>` pastes the yanked text (`<C-r>"`).
   - `<C-l>` toggles the CapsLock key.
   - `<C-n>` navigates command history: next.
   - `<C-p>` navigates command history: previous.
@@ -224,7 +224,7 @@
 - Normal mode
   - `<C-n>` opens, focuses or closes NERDTree.
   - `<C-p>` opens the CtrlP menu buffers.
-  - `<C-q>` display a list of sessions to open.
+  - `<C-b>` display a list of sessions to open (`:OpenSession`).
   - `<C-t>` opens, focuses or closes Tagbar.
   - `<Leader>ii` runs a script and previews it in a split window.
   - `<Leader>ij` runs a script into a tmux window.
@@ -255,8 +255,6 @@
   - `<Leader>X` inits tabularize plugin (only the first match).
 
 - CtrlP plugin (customized)
-  - `<C-p>` navigates history: previous (into CtrlP).
-  - `<C-n>` navigates history: next (into CtrlP).
   - `<C-h>` toggles type (into CtrlP).
   - `<C-l>` toggles type (into CtrlP).
   - `<C-b>` moves cursor to the left (into CtrlP).
@@ -265,6 +263,7 @@
   - `<C-d>` deletes the current character.
   - `<C-u>` deletes the entire line.
   - `<C-g>` runs the `ToggleByFname` function.
+  - `<C-p>` exits the plugin from inside.
 
 ### Terminal
 - Terminal mode

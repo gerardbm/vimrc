@@ -6,7 +6,7 @@
 "  (_)___/_/_/ /_/ /_/_/   \___/
 "
 "----------------------------------------------------------------
-"  Version : 2.0.1
+"  Version : 2.0.2
 "  License : MIT
 "  Author  : Gerard Bajona
 "  URL     : https://github.com/gerardbm/vimrc
@@ -249,7 +249,7 @@ let g:session_autosave  = 'no'
 let g:session_autoload  = 'no'
 let g:session_directory = '~/.vim/sessions/'
 
-nnoremap <C-q> :OpenSession<CR>
+nnoremap <C-b> :OpenSession<CR>
 
 " --- Tools ---
 " NERDCommenter settings
@@ -299,8 +299,8 @@ let g:ctrlp_custom_ignore     = '\v[\/]\.(git|hg|svn)$'
 let g:ctrlp_show_hidden       = 1
 let g:ctrlp_follow_symlinks   = 1
 let g:ctrlp_prompt_mappings   = {
-	\ 'PrtHistory(1)'        : ['<C-p>'],
-	\ 'PrtHistory(-1)'       : ['<C-n>'],
+	\ 'PrtHistory(1)'        : [''],
+	\ 'PrtHistory(-1)'       : [''],
 	\ 'ToggleType(1)'        : ['<C-l>', '<C-up>'],
 	\ 'ToggleType(-1)'       : ['<C-h>', '<C-down>'],
 	\ 'PrtCurLeft()'         : ['<C-b>', '<Left>'],
@@ -315,6 +315,7 @@ let g:ctrlp_prompt_mappings   = {
 	\ 'AcceptSelection("t")' : ['<C-t>'],
 	\ 'AcceptSelection("v")' : ['<C-v>'],
 	\ 'OpenMulti()'          : ['<C-o>'],
+  \ 'PrtExit()'            : ['<esc>', '<c-c>', '<c-p>'],
 	\ }
 
 " Undotree toggle
@@ -445,10 +446,11 @@ vnoremap <Leader>x :Tabularize /
 vnoremap <Leader>X :Tabularize /.*/<Left><Left><Left>
 
 " Auto-pairs settings
+" Maps for normal and insert modes
 let g:AutoPairsFlyMode        = 0
 let g:AutoPairsMultilineClose = 0
-let g:AutoPairsShortcutJump   = '<C-s>'
-let g:AutoPairsShortcutToggle = '<C-z>'
+let g:AutoPairsShortcutJump   = '<C-g>'
+let g:AutoPairsShortcutToggle = '<C-q>'
 
 " Workaround to fix an Auto-pairs bug until it gets fixed
 if has("nvim")
@@ -983,7 +985,7 @@ cnoremap <C-e> <End>
 cnoremap <C-d> <DEL>
 cnoremap <C-p> <Up>
 cnoremap <C-n> <Down>
-cnoremap <C-z> <C-r>"
+cnoremap <C-v> <C-r>"
 cnoremap <C-q> <S-Right><C-w>
 
 "----------------------------------------------------------------
@@ -1120,13 +1122,13 @@ nnoremap <silent> <F8> :setlocal spell!<CR>:echo g:f8msg<CR>
 nnoremap <silent> <F9> :call <SID>ToggleSpelllang()<CR>
 
 " Move to next misspelled word
-nnoremap ç ]s
+nnoremap zl ]s
 
 " Find the misspelled word before the cursor
-nnoremap Ç [s
+nnoremap zh [s
 
 " Suggest correctly spelled words
-nnoremap <Leader>ç z=
+nnoremap zp z=
 
 " Copy text into the clipboard
 vnoremap <Leader>y "+y<Esc>
