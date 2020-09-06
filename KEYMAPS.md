@@ -91,7 +91,7 @@
   - `<Tab>` adds one tabulator.
   - `<S-Tab>` deletes one tabulator.
   - `<C-q>` toggles AutoPairs plugin.
-  - `<C-g>` jumps to the next AutoPairs match.
+  - `<C-z>` jumps to the next AutoPairs match.
   - `=` increases a markdown heading (plugin `vim-md-headings`).
   - `_` decreases a markdown heading (plugin `vim-md-headings`).
   - `gl` goes to the next markdown link.
@@ -203,7 +203,6 @@
 - Normal mode
   - `<C-s>` toggles the plugin fugitive `:Gstatus`.
   - `<C-g>` previews the current GitGutter hunk.
-  - `<C-z>` opens a list of the last commits (GV)'.
   - `<Leader>j` goes to the next GitGutter hunk.
   - `<Leader>k` goes to the previous GitGutter hunk.
   - `<Leader>gs` adds the line to the staging area (GitGutter).
@@ -212,6 +211,7 @@
   - `<Leader>gh` starts the fugitive command `:Gvdiffsplit HEAD`.
   - `<Leader>gb` starts the fugitive command `:Gblame`.
   - `<Leader>gg` searches a string between commits (Glog).
+  - `<Leader gz>` opens a list of the last commits (GV)'.
 
 ### Errors
 - Normal mode

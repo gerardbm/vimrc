@@ -1,5 +1,13 @@
 ## Changelog
 
+= 2.0.3 =
+* Fix indentation.
+* Change the nnoremap `<C-g>` to `<C-z>` (jump to the next AutoPairs match).
+  - Fix a conflict introduced in the version 2.0.2.
+* Change the nnoremap `<C-z>` to `<Leader>gz` (plugin GV).
+* The plugin CtrlP now can scroll until 85 results (`g:ctrlp_match_window`).
+* Add `wildignore` for liquid, html and yml files (exclude `.jekyll-cache`).
+
 = 2.0.2 =
 * Change the map `<C-s>` to `<C-g>` (jump to the next AutoPairs match).
 * Change the map `<C-z>` to `<C-q>` (toggle the plugin AutoPairs).

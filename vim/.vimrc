@@ -6,7 +6,7 @@
 "  (_)___/_/_/ /_/ /_/_/   \___/
 "
 "----------------------------------------------------------------
-"  Version : 2.0.2
+"  Version : 2.0.3
 "  License : MIT
 "  Author  : Gerard Bajona
 "  URL     : https://github.com/gerardbm/vimrc
@@ -240,8 +240,8 @@ nnoremap <Leader>gb :Gblame<CR>
 nnoremap <Leader>gg :call <SID>GrepWrapper('Glog', '-i -G', '--')<CR>
 
 " GV settings
-nnoremap <silent> <C-z> :call <SID>PreventGV()<CR>
-vnoremap <silent> <C-z> :call <SID>PreventGV()<CR>
+nnoremap <silent> <Leader>gz :call <SID>PreventGV()<CR>
+vnoremap <silent> <Leader>gz :call <SID>PreventGV()<CR>
 
 " --- Sessions ---
 " Vim-session settings
@@ -296,6 +296,7 @@ let g:ctrlp_map               = '<C-p>'
 let g:ctrlp_cmd               = 'CtrlPBuffer'
 let g:ctrlp_working_path_mode = 'rc'
 let g:ctrlp_custom_ignore     = '\v[\/]\.(git|hg|svn)$'
+let g:ctrlp_match_window      = 'bottom,order:btt,min:1,max:10,results:85'
 let g:ctrlp_show_hidden       = 1
 let g:ctrlp_follow_symlinks   = 1
 let g:ctrlp_prompt_mappings   = {
@@ -315,7 +316,7 @@ let g:ctrlp_prompt_mappings   = {
 	\ 'AcceptSelection("t")' : ['<C-t>'],
 	\ 'AcceptSelection("v")' : ['<C-v>'],
 	\ 'OpenMulti()'          : ['<C-o>'],
-  \ 'PrtExit()'            : ['<esc>', '<c-c>', '<c-p>'],
+	\ 'PrtExit()'            : ['<esc>', '<c-c>', '<c-p>'],
 	\ }
 
 " Undotree toggle
@@ -449,7 +450,7 @@ vnoremap <Leader>X :Tabularize /.*/<Left><Left><Left>
 " Maps for normal and insert modes
 let g:AutoPairsFlyMode        = 0
 let g:AutoPairsMultilineClose = 0
-let g:AutoPairsShortcutJump   = '<C-g>'
+let g:AutoPairsShortcutJump   = '<C-z>'
 let g:AutoPairsShortcutToggle = '<C-q>'
 
 " Workaround to fix an Auto-pairs bug until it gets fixed
@@ -1275,7 +1276,7 @@ augroup end
 " Run jekyll (liquid)
 augroup liquid
 	autocmd!
-	autocmd FileType liquid set wildignore+=
+	autocmd FileType liquid,html,yml set wildignore+=*/.jekyll-cache/*,
 				\*/_site/*,*/images/*,*/timg/*,*/icons/*,*/logo/*,*/where/*
 	autocmd FileType liquid setlocal spell spelllang=es colorcolumn=0
 	autocmd FileType liquid nnoremap <silent> <buffer> <Leader>ii
