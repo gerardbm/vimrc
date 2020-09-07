@@ -1,5 +1,9 @@
 ## Changelog
 
+= 2.0.4 =
+* Set the ALE variable `g:ale_sign_column_always` to 1.
+  - This fixes an issue with the vim airline tabline, moving between buffers.
+
 = 2.0.3 =
 * Fix indentation.
 * Change the nnoremap `<C-g>` to `<C-z>` (jump to the next AutoPairs match).

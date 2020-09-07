@@ -6,7 +6,7 @@
 "  (_)___/_/_/ /_/ /_/_/   \___/
 "
 "----------------------------------------------------------------
-"  Version : 2.0.3
+"  Version : 2.0.4
 "  License : MIT
 "  Author  : Gerard Bajona
 "  URL     : https://github.com/gerardbm/vimrc
@@ -269,7 +269,8 @@ vnoremap cc :call NERDComment(0,'toggle')<CR>
 nnoremap <silent> <C-n> :call <SID>ToggleNERDTree()<CR>
 
 " ALE settings
-let g:ale_linters = {
+let g:ale_sign_column_always = 1
+let g:ale_linters            = {
 	\ 'c'          : ['clang'],
 	\ 'python'     : ['pylint'],
 	\ 'javascript' : ['jshint'],
