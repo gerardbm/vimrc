@@ -1,5 +1,8 @@
 ## Changelog
 
+= 2.0.5 =
+* Escape double quotes when executing SQL queries (`SQLExec()`).
+
 = 2.0.4 =
 * Set the ALE variable `g:ale_sign_column_always` to 1.
   - This fixes an issue with the vim airline tabline, moving between buffers.

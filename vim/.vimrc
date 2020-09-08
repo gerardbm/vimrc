@@ -6,7 +6,7 @@
 "  (_)___/_/_/ /_/ /_/_/   \___/
 "
 "----------------------------------------------------------------
-"  Version : 2.0.4
+"  Version : 2.0.5
 "  License : MIT
 "  Author  : Gerard Bajona
 "  URL     : https://github.com/gerardbm/vimrc
@@ -1829,9 +1829,9 @@ function! s:SQLExec(opt) abort
 		let t:sql = substitute(t:sql, '\n', ' ', 'g')
 		let t:format = " | column -t -s '|'"
 		if t:sql =~? '^select'
-			let t:cmd = t:path . " '" . t:sql . "'" . t:format
+			let t:cmd = t:path . ' "' . escape(t:sql, '"') . '"' . t:format
 		else
-			let t:cmd = t:path . " '" . t:sql . "'"
+			let t:cmd = t:path . ' "' . escape(t:sql, '"') . '"'
 		endif
 		let s:cmd = "sqlite3 -list -batch " . t:cmd
 		call <SID>Commander(s:cmd)
