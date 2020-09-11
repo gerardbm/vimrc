@@ -1,5 +1,8 @@
 ## Changelog
 
+= 2.0.6 =
+* Declare `g:polyglot_disabled` before polyglot is loaded.
+
 = 2.0.5 =
 * Escape double quotes when executing SQL queries (`SQLExec()`).
 

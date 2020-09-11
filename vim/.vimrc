@@ -6,7 +6,7 @@
 "  (_)___/_/_/ /_/ /_/_/   \___/
 "
 "----------------------------------------------------------------
-"  Version : 2.0.5
+"  Version : 2.0.6
 "  License : MIT
 "  Author  : Gerard Bajona
 "  URL     : https://github.com/gerardbm/vimrc
@@ -78,6 +78,9 @@ endif
 
 " Set inc/dec
 set nrformats-=octal
+
+" Polyglot
+let g:polyglot_disabled = ['markdown', 'csv']
 
 "----------------------------------------------------------------
 " 2. Plugins (Plug)
@@ -520,9 +523,6 @@ let g:openbrowser_browser_commands = [{
 	\ }]
 
 nmap <Leader>gl <Plug>(openbrowser-open)
-
-" Polyglot
-let g:polyglot_disabled = ['markdown', 'csv']
 
 " Vimwiki settings
 let g:vimwiki_url_maxsave   = 0
