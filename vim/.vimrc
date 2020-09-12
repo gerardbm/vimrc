@@ -6,7 +6,7 @@
 "  (_)___/_/_/ /_/ /_/_/   \___/
 "
 "----------------------------------------------------------------
-"  Version : 2.0.6
+"  Version : 2.1.0
 "  License : MIT
 "  Author  : Gerard Bajona
 "  URL     : https://github.com/gerardbm/vimrc
@@ -176,6 +176,8 @@ call plug#begin('~/.vim/plugged')
 
 	" Syntax files support
 	Plug 'Shougo/neco-syntax', { 'commit': '98cba4a' }
+	Plug 'gerardbm/asy.vim'
+	Plug 'gerardbm/eukleides.vim'
 
 	" Edition
 	Plug 'junegunn/vim-easy-align'

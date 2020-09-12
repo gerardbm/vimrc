@@ -1,5 +1,9 @@
 ## Changelog
 
+= 2.1.0 =
+* Add the plugin `asy.vim` (syntax for Asymptote).
+* Add the plugin `eukleides.vim` (syntax for Eukleides).
+
 = 2.0.6 =
 * Declare `g:polyglot_disabled` before polyglot is loaded.
 
