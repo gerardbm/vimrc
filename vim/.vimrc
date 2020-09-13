@@ -6,7 +6,7 @@
 "  (_)___/_/_/ /_/ /_/_/   \___/
 "
 "----------------------------------------------------------------
-"  Version : 2.1.0
+"  Version : 2.1.1
 "  License : MIT
 "  Author  : Gerard Bajona
 "  URL     : https://github.com/gerardbm/vimrc
@@ -39,10 +39,6 @@
 if !has("nvim")
 	set nocompatible
 endif
-
-" Fix vulnerability
-set modelines=0
-set nomodeline
 
 " Reload .vimrc
 nnoremap <F12> :so $MYVIMRC<CR>

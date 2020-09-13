@@ -1,5 +1,9 @@
 ## Changelog
 
+= 2.1.1 =
+* The workaround to fix the vulnerability CVE-2019-12735 can be removed.
+  - It was fixed in the patch 8.1.1365.
+
 = 2.1.0 =
 * Add the plugin `asy.vim` (syntax for Asymptote).
 * Add the plugin `eukleides.vim` (syntax for Eukleides).
