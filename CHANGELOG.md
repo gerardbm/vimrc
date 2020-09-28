@@ -1,5 +1,8 @@
 ## Changelog
 
+= 2.1.2 =
+* The function `GrepWrapper` must escape `"` and `%`.
+
 = 2.1.1 =
 * The workaround to fix the vulnerability CVE-2019-12735 can be removed.
   - It was fixed in the patch 8.1.1365.

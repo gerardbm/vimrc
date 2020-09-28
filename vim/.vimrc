@@ -6,7 +6,7 @@
 "  (_)___/_/_/ /_/ /_/_/   \___/
 "
 "----------------------------------------------------------------
-"  Version : 2.1.1
+"  Version : 2.1.2
 "  License : MIT
 "  Author  : Gerard Bajona
 "  URL     : https://github.com/gerardbm/vimrc
@@ -1511,6 +1511,8 @@ function! s:GrepWrapper(cmd, dir, scope) abort
 	let l:pattern = substitute(@/, '\\V', '', '')
 	let l:pattern = substitute(pattern, '\\<', '', '')
 	let l:pattern = substitute(pattern, '\\>', '', '')
+	let l:pattern = escape(pattern, '"')
+	let l:pattern = escape(pattern, '%')
 	silent execute a:cmd . ' ' . a:dir . ' "' . l:pattern . '" ' . a:scope
 	redraw!
 	set hlsearch
