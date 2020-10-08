@@ -6,7 +6,7 @@
 "  (_)___/_/_/ /_/ /_/_/   \___/
 "
 "----------------------------------------------------------------
-"  Version : 2.1.2
+"  Version : 2.1.3
 "  License : MIT
 "  Author  : Gerard Bajona
 "  URL     : https://github.com/gerardbm/vimrc
@@ -213,6 +213,10 @@ let g:airline_theme                       = 'atomic'
 let g:airline_powerline_fonts             = 1
 let g:airline#extensions#tabline#enabled  = 1
 let g:airline#extensions#tabline#fnamemod = ':t'
+let g:airline_section_z                   = airline#section#create([
+			\ '%1p%% ',
+			\ 'Ξ%l%',
+			\ '\⍿%c'])
 call airline#parts#define_accent('mode', 'black')
 
 " --- Git tools ---
@@ -471,7 +475,7 @@ autocmd FileType erb let b:surround_{char2nr('-')} = "<% \r %>"
 autocmd FileType html,markdown let b:surround_{char2nr('=')} = "{% \r %}"
 autocmd FileType html,markdown let b:surround_{char2nr('-')} = "{%- \r -%}"
 autocmd FileType markdown let b:surround_{char2nr('i')} = "_\r_"
-autocmd FileType markdown let b:surround_{char2nr('b')} = "**\r**"
+autocmd FileType markdown let b:surround_{char2nr('o')} = "**\r**"
 autocmd FileType markdown let b:surround_{char2nr('u')} = "<u>\r</u>"
 autocmd FileType markdown let b:surround_{char2nr('d')} = "<del>\r</del>"
 autocmd FileType markdown let b:surround_{char2nr('k')} = "<kbd>\r</kbd>"
@@ -482,10 +486,7 @@ autocmd FileType markdown let b:surround_{char2nr('e')} = "\[\r\]\(\){:rel=\"nof
 autocmd FileType markdown let b:surround_{char2nr('j')} = "\![\r\]\(/images/\){: .align-}"
 autocmd FileType markdown let b:surround_{char2nr('c')} = "“\r”"
 autocmd FileType markdown let b:surround_{char2nr('v')} = "‘\r’"
-autocmd FileType markdown let b:surround_{char2nr('ñ')} = "[\r]"
-autocmd FileType markdown let b:surround_{char2nr('Ñ')} = "{\r}"
-autocmd Filetype markdown nmap dsñ ds]
-autocmd Filetype markdown nmap dsÑ ds}
+autocmd FileType markdown let b:surround_{char2nr('x')} = "«\r»"
 
 " Caps Lock settings
 imap <expr><C-l> deoplete#smart_close_popup()."\<Plug>CapsLockToggle"
@@ -1159,8 +1160,9 @@ nnoremap <Leader>f mao<Esc>`a
 nnoremap <Leader>F maO<Esc>`a
 
 " Insert brackets faster (not English keyboard layout)
-inoremap ññ []<left>
-inoremap ÑÑ {}<left>
+inoremap ñr []<left>
+inoremap ñb ()<left>
+inoremap ñB {}<left>
 autocmd FileType html,markdown inoremap ñp {%  %}<left><left><left>
 autocmd FileType html,markdown inoremap ñ- {%-  -%}<left><left><left><left>
 

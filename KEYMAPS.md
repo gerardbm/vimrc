@@ -122,8 +122,9 @@
   - `<C-x>` ins-completion.
   - `<C-n>` keyword completion: next.
   - `<C-p>` keyword completion: previous.
-  - `ññ` inserts `[]` faster.
-  - `ÑÑ` inserts `{}` faster.
+  - `ñr` inserts `[]` faster.
+  - `ñb` inserts `()` faster.
+  - `ñB` inserts `{}` faster.
   - `ñp` inserts `{%  %}` faster.
   - `ñ-` inserts `{%-  -%}` faster.
   - `<M-n>` jumps to the next AutoPairs match.
@@ -150,7 +151,7 @@
   - `=` surrounds to `{% \r %}` (Liquid)
   - `-` surrounds to `{%- \r -%}` (Liquid)
   - `i` surrounds to `_\r_`
-  - `b` surrounds to `**\r**`
+  - `o` surrounds to `**\r**`
   - `u` surrounds to `<u>\r</u>`
   - `d` surrounds to `<del>\r</del>`
   - `k` surrounds to `<kbd>\r</kbd>`
@@ -161,10 +162,7 @@
   - `j` surrounds to `![\r](/images/){: .align-}`
   - `c` surrounds to `“\r”`
   - `v` surrounds to `‘\r’`
-  - `ñ` surrounds to `[\r]`
-  - `Ñ` surrounds to `{\r}`
-  - `dsñ` removes the surrounding `[]`.
-  - `dsÑ` removes the surrounding `{}`.
+  - `x` surrounds to `«\r»`
 
 ### Search
 - Normal mode

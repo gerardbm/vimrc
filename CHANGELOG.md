@@ -1,5 +1,15 @@
 ## Changelog
 
+= 2.1.3 =
+* Define section z for vim-airline.
+* Add a new surround shortcut: `x` to `«\r»`.
+* Change the surround shortcut `b` to `o` for the bold.
+* Remove other useless surround shortcuts, I'll use defaults.
+* Add the inoremap `ñb` to insert `()`.
+* Change the inoremap `ññ` to `ñr` insert `[]`.
+* Change the inoremap `ÑÑ` to `ñB` insert `{}`.
+* Add airline section z.
+
 = 2.1.2 =
 * The function `GrepWrapper` must escape `"` and `%`.
 
