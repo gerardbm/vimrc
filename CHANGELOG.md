@@ -1,5 +1,11 @@
 ## Changelog
 
+### 2.1.4
+* Remove the function to reload the colorscheme.
+* Change the nnoremap `<F11>` to toggle Goyo.
+* Add Goyo settings.
+* Update markdown.vim to include tex.vim for maths.
+
 ### 2.1.3
 * Define section z for vim-airline.
 * Add a new surround shortcut: `x` to `«\r»`.

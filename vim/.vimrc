@@ -6,7 +6,7 @@
 "  (_)___/_/_/ /_/ /_/_/   \___/
 "
 "----------------------------------------------------------------
-"  Version : 2.1.3
+"  Version : 2.1.4
 "  License : MIT
 "  Author  : Gerard Bajona
 "  URL     : https://github.com/gerardbm/vimrc
@@ -523,6 +523,13 @@ let g:openbrowser_browser_commands = [{
 
 nmap <Leader>gl <Plug>(openbrowser-open)
 
+" Goyo settings
+let g:goyo_width  = "80"
+let g:goyo_height = "100%"
+let g:goyo_linenr = 0
+
+nnoremap <F11> :Goyo<CR>
+
 " Vimwiki settings
 let g:vimwiki_url_maxsave   = 0
 let g:vimwiki_global_ext    = 0
@@ -664,9 +671,6 @@ syntax enable
 
 " Color scheme
 colorscheme atomic
-
-" Reload the current colorscheme
-nnoremap <F11> :call <SID>ReloadColorscheme()<CR>
 
 " Show syntax highlighting groups
 nnoremap <Leader>B :call <SID>SynStack()<CR>
@@ -1376,15 +1380,6 @@ function! s:ToggleTerminal()
 		let s:winZsh = win_getid()
 		norm! i
 	endif
-endfunction
-
-" Reload the current colorscheme
-function! s:ReloadColorscheme()
-	try
-		exec ':colorscheme ' . g:colors_name
-	catch /^Vim:E121/
-		exec ':colorscheme default'
-	endtry
 endfunction
 
 " Show syntax highlighting groups

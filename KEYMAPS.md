@@ -10,7 +10,7 @@
   - `<F8>` toggles spell checking.
   - `<F9>` toggles spell dictionaries.
   - `<F10>` toggles colorcolumn.
-  - `<F11>` reloads the current colorscheme.
+  - `<F11>` toggles Goyo plugin.
   - `<F12>` reloads your Vim/Neovim configuration.
 
 ### Buffers
