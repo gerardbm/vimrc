@@ -1,5 +1,8 @@
 ## Changelog
 
+### 2.1.5
+* Add `bundle exec` to the function `ToggleJekyll()`.
+
 ### 2.1.4
 * Remove the function to reload the colorscheme.
 * Change the nnoremap `<F11>` to toggle Goyo.
