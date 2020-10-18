@@ -6,7 +6,7 @@
 "  (_)___/_/_/ /_/ /_/_/   \___/
 "
 "----------------------------------------------------------------
-"  Version : 2.1.5
+"  Version : 2.2.0
 "  License : MIT
 "  Author  : Gerard Bajona
 "  URL     : https://github.com/gerardbm/vimrc
@@ -75,17 +75,11 @@ endif
 " Set inc/dec
 set nrformats-=octal
 
-" Polyglot
-let g:polyglot_disabled = ['markdown', 'csv']
-
 "----------------------------------------------------------------
 " 2. Plugins (Plug)
 "----------------------------------------------------------------
 " List of plugins installed
 call plug#begin('~/.vim/plugged')
-
-	" Load first
-	Plug 'sheerun/vim-polyglot'
 
 	" Statusbar
 	Plug 'vim-airline/vim-airline'
@@ -160,18 +154,17 @@ call plug#begin('~/.vim/plugged')
 	Plug 'othree/jspc.vim'
 	Plug 'maksimr/vim-jsbeautify'
 
-	" CSS support
-	Plug 'JulesWang/css.vim'
-	Plug 'hail2u/vim-css3-syntax'
-
-	" HTML support
-	Plug 'othree/html5.vim'
-
 	" VimL support
 	Plug 'Shougo/neco-vim', { 'commit' : '4c0203b' }
 
-	" Syntax files support
+	" Additional syntax files
+	Plug 'othree/html5.vim'
+	Plug 'vim-language-dept/css-syntax.vim'
+	Plug 'hail2u/vim-css3-syntax'
+	Plug 'pangloss/vim-javascript'
 	Plug 'Shougo/neco-syntax', { 'commit': '98cba4a' }
+	Plug 'mboughaba/i3config.vim'
+	Plug 'aklt/plantuml-syntax'
 	Plug 'gerardbm/asy.vim'
 	Plug 'gerardbm/eukleides.vim'
 
@@ -189,6 +182,7 @@ call plug#begin('~/.vim/plugged')
 	Plug 'Valloric/MatchTagAlways'
 	Plug 'FooSoft/vim-argwrap'
 	Plug 'gerardbm/vim-md-headings'
+	Plug 'matze/vim-move'
 
 	" Misc
 	Plug 'christoomey/vim-tmux-navigator'
@@ -472,21 +466,23 @@ let g:closetag_filenames = '*.html,*.xhtml,*.phtml,*.xml,*.html.erb'
 autocmd FileType php let b:surround_{char2nr('p')} = "<?php \r ?>"
 autocmd FileType erb let b:surround_{char2nr('=')} = "<%= \r %>"
 autocmd FileType erb let b:surround_{char2nr('-')} = "<% \r %>"
-autocmd FileType html,markdown let b:surround_{char2nr('=')} = "{% \r %}"
-autocmd FileType html,markdown let b:surround_{char2nr('-')} = "{%- \r -%}"
-autocmd FileType markdown let b:surround_{char2nr('i')} = "_\r_"
-autocmd FileType markdown let b:surround_{char2nr('o')} = "**\r**"
-autocmd FileType markdown let b:surround_{char2nr('u')} = "<u>\r</u>"
-autocmd FileType markdown let b:surround_{char2nr('d')} = "<del>\r</del>"
-autocmd FileType markdown let b:surround_{char2nr('k')} = "<kbd>\r</kbd>"
-autocmd FileType markdown let b:surround_{char2nr('n')} = "<sub>\r</sub>"
-autocmd FileType markdown let b:surround_{char2nr('p')} = "<sup>\r</sup>"
-autocmd FileType markdown let b:surround_{char2nr('h')} = "\[\r\]\(//\)"
-autocmd FileType markdown let b:surround_{char2nr('e')} = "\[\r\]\(\){:rel=\"nofollow noopener noreferrer\" target=\"_blank\"}"
-autocmd FileType markdown let b:surround_{char2nr('j')} = "\![\r\]\(/images/\){: .align-}"
-autocmd FileType markdown let b:surround_{char2nr('c')} = "“\r”"
-autocmd FileType markdown let b:surround_{char2nr('v')} = "‘\r’"
-autocmd FileType markdown let b:surround_{char2nr('x')} = "«\r»"
+autocmd FileType html,markdown,liquid let b:surround_{char2nr('=')} = "{% \r %}"
+autocmd FileType html,markdown,liquid let b:surround_{char2nr('-')} = "{%- \r -%}"
+autocmd FileType html,markdown,liquid let b:surround_{char2nr('u')} = "<u>\r</u>"
+autocmd FileType html,markdown,liquid let b:surround_{char2nr('d')} = "<del>\r</del>"
+autocmd FileType html,markdown,liquid let b:surround_{char2nr('k')} = "<kbd>\r</kbd>"
+autocmd FileType html,markdown,liquid let b:surround_{char2nr('n')} = "<sub>\r</sub>"
+autocmd FileType html,markdown,liquid let b:surround_{char2nr('p')} = "<sup>\r</sup>"
+autocmd FileType markdown,liquid let b:surround_{char2nr('i')} = "_\r_"
+autocmd FileType markdown,liquid let b:surround_{char2nr('o')} = "**\r**"
+autocmd FileType markdown,liquid let b:surround_{char2nr('h')} = "\[\r\]\(//\)"
+autocmd FileType markdown,liquid let b:surround_{char2nr('c')} = "“\r”"
+autocmd FileType markdown,liquid let b:surround_{char2nr('v')} = "‘\r’"
+autocmd FileType markdown,liquid let b:surround_{char2nr('x')} = "«\r»"
+autocmd FileType markdown,liquid let b:surround_{char2nr('e')} = "\[\r\]
+			\\(\){:rel=\"nofollow noopener noreferrer\" target=\"_blank\"}"
+autocmd FileType markdown,liquid let b:surround_{char2nr('j')} = "\![\r\]
+			\\(/images/\){: .align-}"
 
 " Caps Lock settings
 imap <expr><C-l> deoplete#smart_close_popup()."\<Plug>CapsLockToggle"
@@ -510,6 +506,9 @@ let g:argwrap_tail_comma    = 1
 let g:argwrap_padded_braces = '[{'
 
 nnoremap <Leader>W :ArgWrap<CR>
+
+" Vim-move settings. Use Shift
+let g:move_key_modifier = 'S'
 
 " --- Misc ---
 " Vim-tmux navigator settings
@@ -945,12 +944,9 @@ vnoremap <End> g$
 nnoremap <silent> ñ :call <SID>ToggleCPosition('')<CR>
 vnoremap <silent> ñ <Esc>:call <SID>ToggleCPosition('normal! gv')<CR>
 
-" Move lines
-nnoremap <C-k> :m .-2<CR>==
-vnoremap <C-k> :m '<-2<CR>gv=gv
-
-nnoremap <C-j> :m .+1<CR>==
-vnoremap <C-j> :m '>+1<CR>gv=gv
+" Join / split lines
+nnoremap <C-j> J
+nnoremap <C-k> i<CR><Esc>
 
 " Duplicate a line
 nnoremap cx yyP
@@ -1167,8 +1163,8 @@ nnoremap <Leader>F maO<Esc>`a
 inoremap ñr []<left>
 inoremap ñb ()<left>
 inoremap ñB {}<left>
-autocmd FileType html,markdown inoremap ñp {%  %}<left><left><left>
-autocmd FileType html,markdown inoremap ñ- {%-  -%}<left><left><left><left>
+autocmd FileType html,markdown,liquid inoremap ñp {%  %}<left><left><left>
+autocmd FileType html,markdown,liquid inoremap ñ- {%-  -%}<left><left><left><left>
 
 "----------------------------------------------------------------
 " 15. Make settings
@@ -1344,7 +1340,7 @@ augroup end
 
 " MD
 augroup md
-	autocmd FileType markdown set expandtab
+	autocmd FileType markdown,liquid,text set expandtab
 	autocmd FileType markdown,liquid,text
 				\ nnoremap <silent> <Leader>cc :call <SID>KeywordDensity()<CR>
 	autocmd FileType markdown,liquid,text nnoremap <silent> <Leader>dd g<C-g>

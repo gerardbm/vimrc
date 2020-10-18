@@ -1,5 +1,17 @@
 ## Changelog
 
+### 2.2.0
+* Extend some markdown maps to liquid syntax files.
+* Remove vim-polyglot. Too much conflicts all the time.
+* Reinstall some syntax files from the original source.
+* Install the plugin vim-move.
+* The nnoremap `J` (join lines) changed to `<C-j>`.
+* Add the nnoremap `<C-k>` (split lines).
+* The nnoremap `<C-j>` (move line down) changed to `J`.
+* The nnoremap `<C-k>` (move line up) changed to `K`.
+* Add the nnoremap `H` to move a character to the left.
+* Add the nnoremap `L` to move a character to the right.
+
 ### 2.1.5
 * Add `bundle exec` to the function `ToggleJekyll()`.
 

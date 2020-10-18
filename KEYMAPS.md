@@ -61,8 +61,12 @@
 
 ### Edition
 - Normal mode
-  - `<C-j>` moves lines down.
-  - `<C-k>` moves lines up.
+  - `J` moves lines down.
+  - `K` moves lines up.
+  - `H` moves character left.
+  - `L` moves character right.
+  - `<C-j>` joins lines.
+  - `<C-k>` splits lines.
   - `<C-a>` increases a number value.
   - `<C-x>` decreases a number value.
   - `<C-e>` scrolls the window down [count].
@@ -109,7 +113,7 @@
 
 - Insert mode
   - `<C-a>` moves the cursor to the start of line (0).
-  - `<C-e>` moves the cursor to the end of line ($).
+  - `<C-e>` moves the cursor to the end of line (&#36;).
   - `<C-b>` moves the cursor back one character.
   - `<C-f>` moves the cursor forward one character.
   - `<C-h>` deletes the last character.
@@ -132,7 +136,7 @@
 
 - Command mode
   - `<C-a>` moves the cursor to the start of line (0).
-  - `<C-e>` moves the cursor to the end of line ($).
+  - `<C-e>` moves the cursor to the end of line (&#36;).
   - `<C-b>` moves the cursor back one character.
   - `<C-f>` moves the cursor forward one character.
   - `<C-h>` deletes the last character.

@@ -26,7 +26,7 @@ Instant preview with MuPDF after making the following conversions:
 - PLT to PNG using Gnuplot (2D and 3D graphics).
 - POV to PNG using POV-Ray (3D ray tracer).
 
-This configuration is focused on programming in C/C++, Go, Rust, Haskell, Perl, Python, Ruby, PHP, Bash, JavaScript and web development in general, with HTML5 and CSS3. It's also a good configuration to write technical and academic papers with LaTeX and markdown.
+This configuration is focused on programming in C/C++, Go, Rust, Haskell, Perl, Python, Ruby, PHP, Bash, JavaScript, Liquid (Jekyll) and web development in general, with HTML5 and CSS3. It's also a good configuration to write technical and academic papers with LaTeX and markdown.
 
 **More specific information:**
 - [Keymaps](https://github.com/gerardbm/vimrc/blob/master/KEYMAPS.md)
@@ -67,7 +67,7 @@ This configuration is focused on programming in C/C++, Go, Rust, Haskell, Perl, 
   - [supertab](https://github.com/ervandew/supertab)
 
 - C/C++ support
-  - [clang_complete](https://github.com/Rip-Rip/clang_complete)
+  - [deoplete-clang](https://github.com/deoplete-plugins/deoplete-clang)
 
 - Go support
   - [vim-go](https://github.com/fatih/vim-go)
@@ -78,7 +78,7 @@ This configuration is focused on programming in C/C++, Go, Rust, Haskell, Perl, 
   - [perlomni.vim](https://github.com/c9s/perlomni.vim)
 
 - Python support
-  - [deoplete-jedi](https://github.com/zchee/deoplete-jedi)
+  - [deoplete-jedi](https://github.com/deoplete-plugins/deoplete-jedi)
 
 - Ruby support
   - [vim-ruby](https://github.com/vim-ruby/vim-ruby)
@@ -96,7 +96,7 @@ This configuration is focused on programming in C/C++, Go, Rust, Haskell, Perl, 
   - [vim-racer](https://github.com/racer-rust/vim-racer)
 
 - Zsh support
-  - [deoplete-zsh](https://github.com/zchee/deoplete-zsh)
+  - [deoplete-zsh](https://github.com/deoplete-plugins/deoplete-zsh)
 
 - JavaScript support
   - [tern_for_vim](https://github.com/ternjs/tern_for_vim)
@@ -104,18 +104,19 @@ This configuration is focused on programming in C/C++, Go, Rust, Haskell, Perl, 
   - [jspc.vim](https://github.com/othree/jspc.vim)
   - [vim-jsbeautify](https://github.com/maksimr/vim-jsbeautify)
 
-- CSS support
-  - [css.vim](https://github.com/JulesWang/css.vim)
-  - [vim-css3-syntax](https://github.com/hail2u/vim-css3-syntax)
-
-- HTML support
-  - [html5.vim](https://github.com/othree/html5.vim)
-
-- VimL support
+  - VimL support
   - [neco-vim](https://github.com/Shougo/neco-vim)
 
-- Syntax files support:
+- Additional syntax files:
+  - [html5.vim](https://github.com/othree/html5.vim)
+  - [css-syntax.vim](https://github.com/vim-language-dept/css-syntax.vim)
+  - [vim-css3-syntax](https://github.com/hail2u/vim-css3-syntax)
+  - [vim-javascript](https://github.com/pangloss/vim-javascript)
   - [neco-syntax](https://github.com/Shougo/neco-syntax)
+  - [i3config.vim](https://github.com/mboughaba/i3config.vim)
+  - [plantuml-syntax](https://github.com/aklt/plantuml-syntax)
+  - [asy.vim](https://github.com/gerardbm/asy.vim)
+  - [eukleides.vim](https://github.com/gerardbm/eukleides.vim)
 
 - Edition:
   - [vim-easy-align](https://github.com/junegunn/vim-easy-align)
@@ -131,12 +132,12 @@ This configuration is focused on programming in C/C++, Go, Rust, Haskell, Perl, 
   - [MatchTagAlways](https://github.com/Valloric/MatchTagAlways)
   - [vim-argwrap](https://github.com/FooSoft/vim-argwrap)
   - [vim-md-headings](https://github.com/gerardbm/vim-md-headings)
+  - [vim-move](https://github.com/gerardbm/vim-move)
 
 - Misc:
   - [christoomey/vim-tmux-navigator](https://github.com/christoomey/vim-tmux-navigator)
   - [vim-characterize](https://github.com/tpope/vim-characterize)
   - [open-browser.vim](https://github.com/tyru/open-browser.vim)
-  - [vim-polyglot](https://github.com/sheerun/vim-polyglot)
   - [goyo.vim](https://github.com/junegunn/goyo.vim)
   - [webapi-vim](https://github.com/mattn/webapi-vim)
   - [emmet-vim](https://github.com/mattn/emmet-vim)
