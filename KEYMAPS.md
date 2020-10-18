@@ -113,7 +113,7 @@
 
 - Insert mode
   - `<C-a>` moves the cursor to the start of line (0).
-  - `<C-e>` moves the cursor to the end of line (&#36;).
+  - `<C-e>` moves the cursor to the end of line ($).
   - `<C-b>` moves the cursor back one character.
   - `<C-f>` moves the cursor forward one character.
   - `<C-h>` deletes the last character.
@@ -136,7 +136,7 @@
 
 - Command mode
   - `<C-a>` moves the cursor to the start of line (0).
-  - `<C-e>` moves the cursor to the end of line (&#36;).
+  - `<C-e>` moves the cursor to the end of line ($).
   - `<C-b>` moves the cursor back one character.
   - `<C-f>` moves the cursor forward one character.
   - `<C-h>` deletes the last character.
