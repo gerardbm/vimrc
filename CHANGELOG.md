@@ -1,5 +1,10 @@
 ## Changelog
 
+### 2.2.1
+* Update CtrlP settings.
+* The function `GrepWrapper` must escape `#`.
+* Improve arglist commands.
+
 ### 2.2.0
 * Extend some markdown maps to liquid syntax files.
 * Remove vim-polyglot. Too much conflicts all the time.

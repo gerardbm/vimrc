@@ -6,7 +6,7 @@
 "  (_)___/_/_/ /_/ /_/_/   \___/
 "
 "----------------------------------------------------------------
-"  Version : 2.2.0
+"  Version : 2.2.1
 "  License : MIT
 "  Author  : Gerard Bajona
 "  URL     : https://github.com/gerardbm/vimrc
@@ -292,14 +292,15 @@ let g:tagbar_show_linenumbers = 2
 let g:tagbar_sort             = 0
 
 " CtrlP settings
-let g:ctrlp_map               = '<C-p>'
-let g:ctrlp_cmd               = 'CtrlPBuffer'
-let g:ctrlp_working_path_mode = 'rc'
-let g:ctrlp_custom_ignore     = '\v[\/]\.(git|hg|svn)$'
-let g:ctrlp_match_window      = 'bottom,order:btt,min:1,max:10,results:85'
-let g:ctrlp_show_hidden       = 1
-let g:ctrlp_follow_symlinks   = 1
-let g:ctrlp_prompt_mappings   = {
+let g:ctrlp_map                 = '<C-p>'
+let g:ctrlp_cmd                 = 'CtrlPBuffer'
+let g:ctrlp_working_path_mode   = 'rc'
+let g:ctrlp_custom_ignore       = '\v[\/]\.(git|hg|svn)$'
+let g:ctrlp_match_window        = 'bottom,order:btt,min:1,max:10,results:85'
+let g:ctrlp_show_hidden         = 1
+let g:ctrlp_follow_symlinks     = 1
+let g:ctrlp_open_multiple_files = '0i'
+let g:ctrlp_prompt_mappings     = {
 	\ 'PrtHistory(1)'        : [''],
 	\ 'PrtHistory(-1)'       : [''],
 	\ 'ToggleType(1)'        : ['<C-l>', '<C-up>'],
@@ -316,6 +317,7 @@ let g:ctrlp_prompt_mappings   = {
 	\ 'AcceptSelection("t")' : ['<C-t>'],
 	\ 'AcceptSelection("v")' : ['<C-v>'],
 	\ 'OpenMulti()'          : ['<C-o>'],
+	\ 'MarkToOpen()'         : ['<c-z>'],
 	\ 'PrtExit()'            : ['<esc>', '<c-c>', '<c-p>'],
 	\ }
 
@@ -1102,8 +1104,8 @@ nnoremap <Leader>R :bufdo %s/<C-R>///ge<Left><Left><Left>
 nnoremap <Leader>Q :cdo %s/<C-R>///ge<Left><Left><Left>
 
 " Populate the arglist
-nnoremap <Leader>aa :argadd
-nnoremap <Leader>ad :argdelete
+nnoremap <Leader>aa :argadd<space>
+nnoremap <Leader>ad :argdelete<space>
 nnoremap <Leader>an :args **/*.
 nnoremap <Leader>al :call <SID>DisplayArglist()<CR>:argument<space>
 
@@ -1506,6 +1508,7 @@ function! s:GrepWrapper(cmd, dir, scope) abort
 	let l:pattern = substitute(pattern, '\\>', '', '')
 	let l:pattern = escape(pattern, '"')
 	let l:pattern = escape(pattern, '%')
+	let l:pattern = escape(pattern, '#')
 	silent execute a:cmd . ' ' . a:dir . ' "' . l:pattern . '" ' . a:scope
 	redraw!
 	set hlsearch
