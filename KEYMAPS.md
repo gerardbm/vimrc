@@ -240,6 +240,7 @@
   - `<Leader>ii` converts UML (PlantUML) to PNG and previews it with Mupdf.
   - `<Leader>ii` converts EUK (Eukleides) to PNG and previews it with Mupdf.
   - `<Leader>ii` converts ASY (Asymptote) to PNG and previews it with Mupdf.
+  - `<Leader>ii` converts PP3 (Sky charts) to PNG and previews it with Mupdf.
   - `<Leader>ii` converts PLT (Gnuplot) to PNG and previews it with Mupdf.
   - `<Leader>ii` renders POV (POV-Ray) to PNG and previews it with Mupdf.
   - `<Leader>ii` runs/stops bundle in the background, for liquid files.

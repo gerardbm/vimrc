@@ -23,6 +23,7 @@ Instant preview with MuPDF after making the following conversions:
 - DOT to PNG using Graphviz (graph drawing tools).
 - EUK to PNG using Eukleides and Convert (elementary plane geometry).
 - ASY to PNG using Asymptote and Convert (vector graphics language).
+- PP3 to PNG using pp3 (Sky charts) and Convert (vector graphics language).
 - PLT to PNG using Gnuplot (2D and 3D graphics).
 - POV to PNG using POV-Ray (3D ray tracer).
 

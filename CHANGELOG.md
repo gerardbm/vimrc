@@ -1,5 +1,11 @@
 ## Changelog
 
+### 2.3.0
+* Add support to generate sky charts with pp3.
+
+### 2.2.2
+* Update `markdown.vim` for math equations (Latex).
+
 ### 2.2.1
 * Update CtrlP settings.
 * The function `GrepWrapper` must escape `#`.

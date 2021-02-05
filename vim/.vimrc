@@ -6,7 +6,7 @@
 "  (_)___/_/_/ /_/ /_/_/   \___/
 "
 "----------------------------------------------------------------
-"  Version : 2.2.2
+"  Version : 2.3.0
 "  License : MIT
 "  Author  : Gerard Bajona
 "  URL     : https://github.com/gerardbm/vimrc
@@ -1261,6 +1261,14 @@ augroup asymptote
 				\ :call <SID>Generator('.png', &ft)<CR>
 augroup end
 
+" Draw with pp3
+augroup pp3
+	autocmd!
+	autocmd BufRead,BufNewFile *.pp3 set filetype=pp3
+	autocmd FileType pp3 nnoremap <silent> <buffer> <Leader>ii
+				\ :call <SID>Generator('.png', &ft)<CR>
+augroup end
+
 " Draw with Gnuplot
 augroup gnuplot
 	autocmd!
@@ -1765,6 +1773,9 @@ function! s:Generator(ext, ft) abort
 	elseif a:ft ==# 'asy'
 		let l:eps = expand('%:r') . '.eps'
 		let l:cmd = system('asy ' . l:inp)
+	elseif a:ft ==# 'pp3'
+		let l:eps = expand('%:r') . '.eps'
+		let l:cmd = system('pp3 ' . l:inp)
 	elseif a:ft ==# 'gnuplot'
 		let l:opt = ' -e "set terminal png; set output ''' . l:out . '''" '
 		let l:cmd = system('gnuplot' . l:opt . l:inp)
@@ -1773,7 +1784,7 @@ function! s:Generator(ext, ft) abort
 	endif
 	if v:shell_error ==# 0
 		pclose
-		if a:ft =~# '\(eukleides\|asy\)'
+		if a:ft =~# '\(eukleides\|asy\|pp3\)'
 			call <SID>EPS2PNG(l:eps, l:out)
 		endif
 		call <SID>Previewer(l:out)
