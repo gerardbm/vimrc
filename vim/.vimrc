@@ -6,7 +6,7 @@
 "  (_)___/_/_/ /_/ /_/_/   \___/
 "
 "----------------------------------------------------------------
-"  Version : 2.3.0
+"  Version : 2.3.1
 "  License : MIT
 "  Author  : Gerard Bajona
 "  URL     : https://github.com/gerardbm/vimrc
@@ -483,7 +483,7 @@ autocmd FileType markdown,liquid let b:surround_{char2nr('v')} = "‘\r’"
 autocmd FileType markdown,liquid let b:surround_{char2nr('x')} = "«\r»"
 autocmd FileType markdown,liquid let b:surround_{char2nr('e')} = "\[\r\]
 			\\(\){:rel=\"nofollow noopener noreferrer\" target=\"_blank\"}"
-autocmd FileType markdown,liquid let b:surround_{char2nr('j')} = "\![\r\]
+autocmd FileType markdown,liquid let b:surround_{char2nr('j')} = "!\[\r\]
 			\\(/images/\){: .align-}"
 
 " Caps Lock settings

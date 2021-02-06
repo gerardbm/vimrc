@@ -1,5 +1,8 @@
 ## Changelog
 
+### 2.3.1
+* Fix vim-surround shortcut.
+
 ### 2.3.0
 * Add support to generate sky charts with pp3.
 
