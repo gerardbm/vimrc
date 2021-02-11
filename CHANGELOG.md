@@ -1,5 +1,8 @@
 ## Changelog
 
+### 2.3.2
+* Add the nnoremap `gd` to remove markdown links.
+
 ### 2.3.1
 * Fix vim-surround shortcut.
 

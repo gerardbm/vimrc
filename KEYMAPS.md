@@ -100,6 +100,7 @@
   - `_` decreases a markdown heading (plugin `vim-md-headings`).
   - `gl` goes to the next markdown link.
   - `gh` goes to the previous markdown link.
+  - `gd` removes the next markdown link.
   - `<Leader>dd` displays the cursor position and buffer word-count.
 
 - Visual mode

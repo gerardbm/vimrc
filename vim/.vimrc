@@ -6,7 +6,7 @@
 "  (_)___/_/_/ /_/ /_/_/   \___/
 "
 "----------------------------------------------------------------
-"  Version : 2.3.1
+"  Version : 2.3.2
 "  License : MIT
 "  Author  : Gerard Bajona
 "  URL     : https://github.com/gerardbm/vimrc
@@ -1356,9 +1356,11 @@ augroup md
 	autocmd FileType markdown,liquid,text nnoremap <silent> <Leader>dd g<C-g>
 	autocmd FileType markdown,liquid,text vnoremap <silent> <Leader>dd g<C-g>
 	autocmd FileType markdown,liquid,text
-				\ nnoremap <silent> gl :call search('\v\[[^]]*]\([^)]*\)')<CR>
+				\ nnoremap <silent> gl :call search('\v\[[^]]*]\([^)]*\)', 'W')<CR>
 	autocmd FileType markdown,liquid,text
-				\ nnoremap <silent> gh :call search('\v\[[^]]*]\([^)]*\)', 'b')<CR>
+				\ nnoremap <silent> gh :call search('\v\[[^]]*]\([^)]*\)', 'bW')<CR>
+	autocmd FileType markdown,liquid,text
+				\ nnoremap <silent> gd :call <sid>RemoveMdLink()<CR>
 augroup end
 
 " New file headers
@@ -1685,6 +1687,18 @@ function! s:KeywordDensity() abort
 		echo '> ' . s:str_keys . ' of ' . s:str_words . ' (' . s:str_dens . '%)'
 	else
 		echo '> 0 of ' . s:str_words . ' (0%, pattern not found)'
+	endif
+endfunction
+
+" Remove markdown link
+function! s:RemoveMdLink() abort
+	let [l, c] = searchpos('\v\[[^]]*]\([^)]*\)', 'ncW')
+	if l > 0 && c > 0
+		if getline(".")[col(".")-1] ==# "["
+			norm! xf]vf)d
+		else
+			call cursor(l, c)
+		endif
 	endif
 endfunction
 
