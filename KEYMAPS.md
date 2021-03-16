@@ -208,7 +208,7 @@
   - `<C-g>` previews the current GitGutter hunk.
   - `<Leader>j` goes to the next GitGutter hunk.
   - `<Leader>k` goes to the previous GitGutter hunk.
-  - `<Leader>gs` adds the line to the staging area (GitGutter).
+  - `<Leader>ga` adds the line to the staging area (GitGutter).
   - `<Leader>gu` undoes the hunk (GitGutter).
   - `<Leader>gv` starts the fugitive command `:Gvdiffsplit`.
   - `<Leader>gh` starts the fugitive command `:Gvdiffsplit HEAD`.

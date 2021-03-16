@@ -6,7 +6,7 @@
 "  (_)___/_/_/ /_/ /_/_/   \___/
 "
 "----------------------------------------------------------------
-"  Version : 2.3.2
+"  Version : 2.3.3
 "  License : MIT
 "  Author  : Gerard Bajona
 "  URL     : https://github.com/gerardbm/vimrc
@@ -226,7 +226,7 @@ let g:gitgutter_diff_args             = '--ignore-space-at-eol'
 nmap <Leader>j <Plug>(GitGutterNextHunk)zz
 nmap <Leader>k <Plug>(GitGutterPrevHunk)zz
 nnoremap <silent> <C-g> :call <SID>ToggleGGPrev()<CR>zz
-nnoremap <Leader>gs :GitGutterStageHunk<CR>
+nnoremap <Leader>ga :GitGutterStageHunk<CR>
 nnoremap <Leader>gu :GitGutterUndoHunk<CR>
 
 " Fugitive settings

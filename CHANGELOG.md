@@ -1,5 +1,9 @@
 ## Changelog
 
+### 2.3.3
+* Change the nnoremap `<Leader>gs` (add line to staging area) to `<Leader>ga`.
+  - It is more intuitive.
+
 ### 2.3.2
 * Add the nnoremap `gd` to remove markdown links.
 
