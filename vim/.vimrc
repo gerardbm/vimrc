@@ -6,7 +6,7 @@
 "  (_)___/_/_/ /_/ /_/_/   \___/
 "
 "----------------------------------------------------------------
-"  Version : 2.3.3
+"  Version : 2.3.4
 "  License : MIT
 "  Author  : Gerard Bajona
 "  URL     : https://github.com/gerardbm/vimrc
@@ -461,7 +461,7 @@ if has("nvim")
 endif
 
 " Closetag settings
-let g:closetag_filenames = '*.html,*.xhtml,*.phtml,*.xml,*.html.erb'
+let g:closetag_filenames = '*.html,*.xhtml,*.phtml,*.xml,*.html.erb,*.md'
 
 " Surround settings
 " Use 'yss?', 'yss%' or 'yss=' to surround a line
@@ -1361,6 +1361,10 @@ augroup md
 				\ nnoremap <silent> gh :call search('\v\[[^]]*]\([^)]*\)', 'bW')<CR>
 	autocmd FileType markdown,liquid,text
 				\ nnoremap <silent> gd :call <sid>RemoveMdLink()<CR>
+	autocmd FileType markdown,liquid,text
+				\ :command! -range Enes <line1>,<line2>!trans en:es -brief
+	autocmd FileType markdown,liquid,text
+				\ :command! -range Esen <line1>,<line2>!trans es:en -brief
 augroup end
 
 " New file headers

@@ -1,5 +1,10 @@
 ## Changelog
 
+### 2.3.4
+* Add `*.md` to closetag settings.
+* Add the command `Enes` to translate selection (Eng to Spa).
+* Add the command `Esen` to translate selection (Spa to Eng).
+
 ### 2.3.3
 * Change the nnoremap `<Leader>gs` (add line to staging area) to `<Leader>ga`.
   - It is more intuitive.
