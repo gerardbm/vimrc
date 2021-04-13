@@ -1,5 +1,9 @@
 ## Changelog
 
+### 2.3.5
+* Fix `ToggleJekyll()` function.
+* Change `yml` to `yaml`.
+
 ### 2.3.4
 * Add `*.md` to closetag settings.
 * Add the command `Enes` to translate selection (Eng to Spa).

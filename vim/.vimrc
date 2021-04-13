@@ -6,7 +6,7 @@
 "  (_)___/_/_/ /_/ /_/_/   \___/
 "
 "----------------------------------------------------------------
-"  Version : 2.3.4
+"  Version : 2.3.5
 "  License : MIT
 "  Author  : Gerard Bajona
 "  URL     : https://github.com/gerardbm/vimrc
@@ -1284,13 +1284,13 @@ augroup povray
 				\ :call <SID>Generator('.png', &ft)<CR>
 augroup end
 
-" Run jekyll (liquid)
+" Run Jekyll (liquid)
 augroup liquid
 	autocmd!
-	autocmd FileType liquid,html,yml set wildignore+=*/.jekyll-cache/*,
+	autocmd FileType liquid,html,yaml set wildignore+=*/.jekyll-cache/*,
 				\*/_site/*,*/images/*,*/timg/*,*/icons/*,*/logo/*,*/where/*
 	autocmd FileType liquid setlocal spell spelllang=es colorcolumn=0
-	autocmd FileType liquid nnoremap <silent> <buffer> <Leader>ii
+	autocmd FileType liquid,yaml nnoremap <silent> <buffer> <Leader>ii
 				\ :call <SID>ToggleJekyll()<CR>
 augroup end
 
@@ -1350,7 +1350,7 @@ augroup end
 
 " MD
 augroup md
-	autocmd FileType markdown,liquid,text set expandtab
+	autocmd FileType markdown,liquid,text,yaml set expandtab
 	autocmd FileType markdown,liquid,text
 				\ nnoremap <silent> <Leader>cc :call <SID>KeywordDensity()<CR>
 	autocmd FileType markdown,liquid,text nnoremap <silent> <Leader>dd g<C-g>
@@ -1920,7 +1920,7 @@ command! -nargs=1 Commander call <SID>Commander(<f-args>)
 
 " Toggle jekyll server in the background
 function! s:ToggleJekyll() abort
-	call system('lsof -i :4000')
+	call system('lsof -i :4000 | grep -i listen')
 	if v:shell_error
 		silent exec "!(bundle exec jekyll serve &) > /dev/null"
 		call system("touch /tmp/jekyll.ps")
