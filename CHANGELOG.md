@@ -1,5 +1,8 @@
 ## Changelog
 
+### 2.3.6
+** Use `Gclog` instead of `Glog` (deprecated).
+
 ### 2.3.5
 * Fix `ToggleJekyll()` function.
 * Change `yml` to `yaml`.

@@ -6,7 +6,7 @@
 "  (_)___/_/_/ /_/ /_/_/   \___/
 "
 "----------------------------------------------------------------
-"  Version : 2.3.5
+"  Version : 2.3.6
 "  License : MIT
 "  Author  : Gerard Bajona
 "  URL     : https://github.com/gerardbm/vimrc
@@ -236,7 +236,7 @@ nnoremap <Leader>gh :Gvdiffsplit HEAD<CR>:windo set wrap<CR>
 nnoremap <Leader>gb :Gblame<CR>
 
 " Searching for text added or removed by a commit
-nnoremap <Leader>gg :call <SID>GrepWrapper('Glog', '-i -G', '--')<CR>
+nnoremap <Leader>gg :call <SID>GrepWrapper('Gclog', '-i -G', '--')<CR>
 
 " GV settings
 nnoremap <silent> <Leader>gz :call <SID>PreventGV()<CR>
