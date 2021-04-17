@@ -1,5 +1,8 @@
 ## Changelog
 
+### 2.3.7
+** Use `Git` instead of `Gstatus` (deprecated).
+
 ### 2.3.6
 ** Use `Gclog` instead of `Glog` (deprecated).
 

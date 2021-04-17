@@ -6,7 +6,7 @@
 "  (_)___/_/_/ /_/ /_/_/   \___/
 "
 "----------------------------------------------------------------
-"  Version : 2.3.6
+"  Version : 2.3.7
 "  License : MIT
 "  Author  : Gerard Bajona
 "  URL     : https://github.com/gerardbm/vimrc
@@ -1615,7 +1615,7 @@ function! s:ToggleGstatus() abort
 		if !empty(getwinvar(l:winnr, 'fugitive_status'))
 			execute l:winnr.'close'
 		else
-			Gstatus
+			Git
 		endif
 	endfor
 endfunction
