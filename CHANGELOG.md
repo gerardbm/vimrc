@@ -1,10 +1,16 @@
 ## Changelog
 
+### 2.4.0
+* Install `FZF` plugin.
+* The nnoremap `<C-f>` (fullscreen window) changed to `<C-w>f`.
+* Add the nnoremap `<C-f>` to open the command `:Files` (FZF).
+* Add the nnoremap `<C-c>` to open the command `:Commits` (FZF).
+
 ### 2.3.7
-** Use `Git` instead of `Gstatus` (deprecated).
+* Use `Git` instead of `Gstatus` (deprecated).
 
 ### 2.3.6
-** Use `Gclog` instead of `Glog` (deprecated).
+* Use `Gclog` instead of `Glog` (deprecated).
 
 ### 2.3.5
 * Fix `ToggleJekyll()` function.

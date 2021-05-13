@@ -55,6 +55,7 @@ This configuration is focused on programming in C/C++, Go, Rust, Haskell, Perl, 
   - [ctrlp.vim](https://github.com/ctrlpvim/ctrlp.vim)
   - [undotree](https://github.com/mbbill/undotree)
   - [ale](https://github.com/w0rp/ale)
+  - [fzf](https://github.com/junegunn/fzf.vim)
 
 - Specific for Vim and Deoplete:
   - [nvim-yarp](https://github.com/roxma/nvim-yarp)

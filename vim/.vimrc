@@ -6,7 +6,7 @@
 "  (_)___/_/_/ /_/ /_/_/   \___/
 "
 "----------------------------------------------------------------
-"  Version : 2.3.7
+"  Version : 2.4.0
 "  License : MIT
 "  Author  : Gerard Bajona
 "  URL     : https://github.com/gerardbm/vimrc
@@ -102,6 +102,8 @@ call plug#begin('~/.vim/plugged')
 	Plug 'ctrlpvim/ctrlp.vim'
 	Plug 'mbbill/undotree'
 	Plug 'dense-analysis/ale'
+	Plug 'junegunn/fzf'
+	Plug 'junegunn/fzf.vim'
 
 	" Deoplete, specific for Vim8
 	if !has("nvim")
@@ -276,6 +278,11 @@ let g:ale_linters            = {
 	\ 'css'        : ['csslint'],
 	\ 'tex'        : ['chktex'],
 	\ }
+
+" FZF settings
+let $FZF_PREVIEW_COMMAND = 'cat {}'
+nnoremap <C-f> :Files<CR>
+nnoremap <C-c> :Commits<CR>
 
 " Navigate between errors
 nnoremap <Leader>h :lprevious<CR>zz
@@ -810,7 +817,7 @@ if bufwinnr(1)
 endif
 
 " Toggle resize window
-nnoremap <silent> <C-f> :call <SID>ToggleResize()<CR>
+nnoremap <silent> <C-w>f :call <SID>ToggleResize()<CR>
 
 " Last, previous and next window; and only one window
 nnoremap <silent> <C-w>l :wincmd p<CR>:echo "Last window."<CR>

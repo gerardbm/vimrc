@@ -43,7 +43,7 @@
   - `<M-j>` goes to the window: down.
   - `<M-k>` goes to the window: up.
   - `<M-l>` goes to the window: right.
-  - `<C-f>` toggles maximize/minimize the current window.
+  - `<Leader>,f` toggles maximize/minimize the current window.
   - `<Leader>,` it is `wincmd` to easily manage windows.
   - `<Leader>,-` splits window horizontally.
   - `<Leader>,.` splits window vertically.
@@ -229,6 +229,8 @@
   - `<C-p>` opens the CtrlP menu buffers.
   - `<C-b>` display a list of sessions to open (`:OpenSession`).
   - `<C-t>` opens, focuses or closes Tagbar.
+  - `<C-f>` opens the menu of `:Files` (FZF).
+  - `<C-c>` opens the menu of `:Commits` (FZF).
   - `<Leader>ii` runs a script and previews it in a split window.
   - `<Leader>ij` runs a script into a tmux window.
   - `<Leader>ia` adds/changes the path of a database.
