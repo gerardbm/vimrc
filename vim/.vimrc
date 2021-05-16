@@ -6,7 +6,7 @@
 "  (_)___/_/_/ /_/ /_/_/   \___/
 "
 "----------------------------------------------------------------
-"  Version : 2.4.0
+"  Version : 2.4.1
 "  License : MIT
 "  Author  : Gerard Bajona
 "  URL     : https://github.com/gerardbm/vimrc
@@ -281,8 +281,9 @@ let g:ale_linters            = {
 
 " FZF settings
 let $FZF_PREVIEW_COMMAND = 'cat {}'
-nnoremap <C-f> :Files<CR>
-nnoremap <C-c> :Commits<CR>
+nnoremap <C-f><C-f> :Files<CR>
+nnoremap <C-f><C-g> :Commits<CR>
+nnoremap <C-f><Space> :BLines<CR>
 
 " Navigate between errors
 nnoremap <Leader>h :lprevious<CR>zz

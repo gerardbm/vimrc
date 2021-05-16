@@ -11,7 +11,7 @@ Navigate easily: between buffers, tabs, windows and tmux panes; between syntax w
 
 Easily highlight the word under the cursor or the current selection. A lot of commands have been defined to work with the highlighted text: the mentioned grep and vimgrep, and replace. Also, you can search and replace into the visual selection only.
 
-Some useful tools have been integrated. Plugins: **CtrlP** (navigate between open buffers, MRU or directory files), **NERDTree** (tree files with filesystem operations), **vim-fugitive** (git commands), **GV** (navigate between git commits), **undotree** (history visualizer), **ALE** (async syntax linter), **deoplete** (autocompletion for Vim and Neovim), **neosnippet** (code snippets), **Vimwiki** (organize notes, manage todo-lists...) and manage sessions with **vim-session**.
+Some useful tools have been integrated. Plugins: **CtrlP** (navigate between open buffers, MRU or directory files), **NERDTree** (tree files with filesystem operations), **FZF** for faster searches with previews, **vim-fugitive** (git commands), **GV** (navigate between git commits), **undotree** (history visualizer), **ALE** (async syntax linter), **deoplete** (autocompletion for Vim and Neovim), **neosnippet** (code snippets), **Vimwiki** (organize notes, manage todo-lists...) and manage sessions with **vim-session**.
 
 Additionally, run scripting code (Bash, Perl, Ruby, Python, Lua, PHP and JavaScript) into a separate **tmux** window or simply preview the output in the preview window, where you can also preview SQL queries from **Sqlite** databases and **Maxima** operations (symbolic maths) from a MAX file. Preview the output of any shell command using the command `:Commander`.
 

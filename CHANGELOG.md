@@ -1,5 +1,10 @@
 ## Changelog
 
+### 2.4.1
+* Change the nnoremap `<C-f>` (`:Files` from FZF) to `<C-f><C-f>`.
+* Change the nnoremap `<C-c>` (`:Commits` from FZF) to `<C-f><C-g>`.
+* Add the nnoremap `<C-f><Space>` tot open the command `:Blines` (FZF).
+
 ### 2.4.0
 * Install `FZF` plugin.
 * The nnoremap `<C-f>` (fullscreen window) changed to `<C-w>f`.
