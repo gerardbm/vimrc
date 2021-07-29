@@ -1,5 +1,8 @@
 ## Changelog
 
+### 2.4.2
+* Fix plugins path (NERDCommenter and NERDTree).
+
 ### 2.4.1
 * Change the nnoremap `<C-f>` (`:Files` from FZF) to `<C-f><C-f>`.
 * Change the nnoremap `<C-c>` (`:Commits` from FZF) to `<C-f><C-g>`.
