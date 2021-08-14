@@ -6,7 +6,7 @@
 "  (_)___/_/_/ /_/ /_/_/   \___/
 "
 "----------------------------------------------------------------
-"  Version : 2.4.2
+"  Version : 2.4.3
 "  License : MIT
 "  Author  : Gerard Bajona
 "  URL     : https://github.com/gerardbm/vimrc
@@ -95,7 +95,7 @@ call plug#begin('~/.vim/plugged')
 	Plug 'xolox/vim-misc'
 
 	" Tools
-	Plug 'preservim/nerdcommenter'
+	Plug 'preservim/nerdcommenter', { 'commit': 'a5d1663' }
 	Plug 'preservim/nerdtree'
 	Plug 'valloric/listtoggle'
 	Plug 'majutsushi/tagbar'
@@ -273,6 +273,7 @@ nnoremap <silent> <C-n> :call <SID>ToggleNERDTree()<CR>
 let g:ale_sign_column_always = 1
 let g:ale_linters            = {
 	\ 'c'          : ['clang'],
+	\ 'vim'        : ['vint'],
 	\ 'python'     : ['pylint'],
 	\ 'javascript' : ['jshint'],
 	\ 'css'        : ['csslint'],

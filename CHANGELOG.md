@@ -1,5 +1,9 @@
 ## Changelog
 
+### 2.4.3
+* Downgrade NERDCommenter version.
+* Add 'vint' to `g:ale_linters`.
+
 ### 2.4.2
 * Fix plugins path (NERDCommenter and NERDTree).
 
