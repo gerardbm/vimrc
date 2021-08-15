@@ -1,5 +1,8 @@
 ## Changelog
 
+### 2.4.4
+* Remove the variable `g:ale_sign_column_always`.
+
 ### 2.4.3
 * Downgrade NERDCommenter version.
 * Add 'vint' to `g:ale_linters`.
