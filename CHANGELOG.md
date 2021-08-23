@@ -1,5 +1,8 @@
 ## Changelog
 
+### 2.5.0
+* Install the plugin `vim-rec` (syntax for recfiles).
+
 ### 2.4.4
 * Remove the variable `g:ale_sign_column_always`.
 

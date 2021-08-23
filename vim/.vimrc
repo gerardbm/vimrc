@@ -6,7 +6,7 @@
 "  (_)___/_/_/ /_/ /_/_/   \___/
 "
 "----------------------------------------------------------------
-"  Version : 2.4.4
+"  Version : 2.5.0
 "  License : MIT
 "  Author  : Gerard Bajona
 "  URL     : https://github.com/gerardbm/vimrc
@@ -169,6 +169,7 @@ call plug#begin('~/.vim/plugged')
 	Plug 'aklt/plantuml-syntax'
 	Plug 'gerardbm/asy.vim'
 	Plug 'gerardbm/eukleides.vim'
+	Plug 'zaid/vim-rec'
 
 	" Edition
 	Plug 'junegunn/vim-easy-align'
