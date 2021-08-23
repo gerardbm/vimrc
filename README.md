@@ -119,6 +119,7 @@ This configuration is focused on programming in C/C++, Go, Rust, Haskell, Perl, 
   - [plantuml-syntax](https://github.com/aklt/plantuml-syntax)
   - [asy.vim](https://github.com/gerardbm/asy.vim)
   - [eukleides.vim](https://github.com/gerardbm/eukleides.vim)
+  - [vim-rec](https://github.com/zaid/vim-rec)
 
 - Edition:
   - [vim-easy-align](https://github.com/junegunn/vim-easy-align)
