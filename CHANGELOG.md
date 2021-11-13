@@ -1,5 +1,9 @@
 ## Changelog
 
+### 2.5.1
+* Fix cursor shape on `VimEnter` via `edit-command-line` (zle).
+* Update vnoremap to copy text into the clipboard.
+
 ### 2.5.0
 * Install the plugin `vim-rec` (syntax for recfiles).
 

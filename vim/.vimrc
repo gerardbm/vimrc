@@ -6,7 +6,7 @@
 "  (_)___/_/_/ /_/ /_/_/   \___/
 "
 "----------------------------------------------------------------
-"  Version : 2.5.0
+"  Version : 2.5.1
 "  License : MIT
 "  Author  : Gerard Bajona
 "  URL     : https://github.com/gerardbm/vimrc
@@ -642,6 +642,7 @@ if !has("nvim")
 	let &t_SI = "\<Esc>[6 q"
 	let &t_SR = "\<Esc>[4 q"
 	let &t_EI = "\<Esc>[2 q"
+	autocmd VimEnter * silent exec "! echo -ne '\e[2 q'"
 else
 	set guicursor=n-v:block-Cursor/lCursor-blinkon0
 	set guicursor+=i-ci-c:ver100-Cursor/lCursor-blinkon0
@@ -1143,7 +1144,7 @@ nnoremap zh [s
 nnoremap zp z=
 
 " Copy text into the clipboard
-vnoremap <Leader>y "+y<Esc>
+vnoremap <Leader>y "+y
 
 " Paste text from the clipboard
 nnoremap <Leader>p "+p
