@@ -6,7 +6,7 @@
 "  (_)___/_/_/ /_/ /_/_/   \___/
 "
 "----------------------------------------------------------------
-"  Version : 2.5.1
+"  Version : 2.5.2
 "  License : MIT
 "  Author  : Gerard Bajona
 "  URL     : https://github.com/gerardbm/vimrc
@@ -642,7 +642,6 @@ if !has("nvim")
 	let &t_SI = "\<Esc>[6 q"
 	let &t_SR = "\<Esc>[4 q"
 	let &t_EI = "\<Esc>[2 q"
-	autocmd VimEnter * silent exec "! echo -ne '\e[2 q'"
 else
 	set guicursor=n-v:block-Cursor/lCursor-blinkon0
 	set guicursor+=i-ci-c:ver100-Cursor/lCursor-blinkon0
@@ -737,7 +736,6 @@ nnoremap <F2> :call <SID>RenameFile()<CR>
 
 " Work on buffer
 nnoremap yab :%y<CR>
-nnoremap Yab :%y +<CR>
 nnoremap dab :%d<CR>
 nnoremap vab ggVG
 
@@ -1189,22 +1187,33 @@ endif
 " Go to the error line
 set errorformat=%m\ in\ %f\ on\ line\ %l
 
+" Use the correct cursor shape via 'edit-command-line' (zle)
+augroup zsh
+	autocmd!
+	if !has("nvim")
+		autocmd Filetype zsh silent! exec "! echo -ne '\e[2 q'"
+	endif
+augroup end
+
 " Run code in a tmux window
 augroup tmuxy
-autocmd FileType javascript,lua,perl,php,python,ruby,sh
-			\ nnoremap <silent> <buffer> <Leader>ij
-			\ :call <SID>Tmuxy()<CR>
+	autocmd!
+	autocmd FileType javascript,lua,perl,php,python,ruby,sh
+				\ nnoremap <silent> <buffer> <Leader>ij
+				\ :call <SID>Tmuxy()<CR>
 augroup end
 
 " Run code in the preview window
 augroup scripty
-autocmd FileType javascript,lua,perl,php,python,ruby,sh
-			\ nnoremap <silent> <buffer> <Leader>ii
-			\ :call <SID>Scripty()<CR>
+	autocmd!
+	autocmd FileType javascript,lua,perl,php,python,ruby,sh
+				\ nnoremap <silent> <buffer> <Leader>ii
+				\ :call <SID>Scripty()<CR>
 augroup end
 
-" Work with sqlite databases
+" Work with Sqlite databases
 augroup sqlite
+	autocmd!
 	autocmd FileType sql nnoremap <silent> <Leader>ia
 				\ :call <SID>SqliteDatabase()<CR>
 	autocmd FileType sql nnoremap <silent> <buffer> <Leader>ii

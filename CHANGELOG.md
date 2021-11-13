@@ -1,5 +1,9 @@
 ## Changelog
 
+### 2.5.2
+* Syntax improvements.
+* Remove the nnoremap `Yab` (copy buffer to clipboard).
+
 ### 2.5.1
 * Fix cursor shape on `VimEnter` via `edit-command-line` (zle).
 * Update vnoremap to copy text into the clipboard.

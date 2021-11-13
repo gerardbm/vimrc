@@ -25,7 +25,6 @@
   - `<Leader>bw` switches CWD to the current filepath.
   - `<Leader>by` copies the filepath to the clipboard.
   - `yab` yanks the buffer content.
-  - `Yab` yanks the buffer content to the clipboard.
   - `dab` deletes the buffer content.
   - `vab` selects the buffer content.
 
