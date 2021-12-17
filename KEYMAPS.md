@@ -130,9 +130,9 @@
   - `ñb` inserts `()` faster.
   - `ñB` inserts `{}` faster.
   - `ñp` inserts `{%  %}` faster.
-  - `ñ-` inserts `{%-  -%}` faster.
-  - `<M-n>` jumps to the next AutoPairs match.
-  - `<M-p>` toggles AutoPairs plugin.
+  - `ññ` inserts a `\` faster.
+  - `<C-z>` jumps to the next AutoPairs match.
+  - `<C-q>` toggles AutoPairs plugin.
 
 - Command mode
   - `<C-a>` moves the cursor to the start of line (0).
@@ -164,8 +164,9 @@
   - `h` surrounds to `[\r](//)`
   - `e` surrounds to `[\r\](){:rel="nofollow noopener noreferrer" target="_blank"}`
   - `j` surrounds to `![\r](/images/){: .align-}`
-  - `c` surrounds to `“\r”`
-  - `v` surrounds to `‘\r’`
+  - `r` surrounds to `[\r]`
+  - `b` surrounds to `(\r)`
+  - `B` surrounds to `{\r}`
   - `x` surrounds to `«\r»`
 
 ### Search

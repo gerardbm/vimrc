@@ -1,5 +1,9 @@
 ## Changelog
 
+### 2.5.3
+* Change and reduce vim-surround keymaps.
+* Add the inoremap `ññ` to insert a backslash (`\`) faster.
+
 ### 2.5.2
 * Syntax improvements.
 * Remove the nnoremap `Yab` (copy buffer to clipboard).

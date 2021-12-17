@@ -6,7 +6,7 @@
 "  (_)___/_/_/ /_/ /_/_/   \___/
 "
 "----------------------------------------------------------------
-"  Version : 2.5.2
+"  Version : 2.5.3
 "  License : MIT
 "  Author  : Gerard Bajona
 "  URL     : https://github.com/gerardbm/vimrc
@@ -477,19 +477,11 @@ let g:closetag_filenames = '*.html,*.xhtml,*.phtml,*.xml,*.html.erb,*.md'
 autocmd FileType php let b:surround_{char2nr('p')} = "<?php \r ?>"
 autocmd FileType erb let b:surround_{char2nr('=')} = "<%= \r %>"
 autocmd FileType erb let b:surround_{char2nr('-')} = "<% \r %>"
-autocmd FileType html,markdown,liquid let b:surround_{char2nr('=')} = "{% \r %}"
-autocmd FileType html,markdown,liquid let b:surround_{char2nr('-')} = "{%- \r -%}"
-autocmd FileType html,markdown,liquid let b:surround_{char2nr('u')} = "<u>\r</u>"
-autocmd FileType html,markdown,liquid let b:surround_{char2nr('d')} = "<del>\r</del>"
-autocmd FileType html,markdown,liquid let b:surround_{char2nr('k')} = "<kbd>\r</kbd>"
-autocmd FileType html,markdown,liquid let b:surround_{char2nr('n')} = "<sub>\r</sub>"
-autocmd FileType html,markdown,liquid let b:surround_{char2nr('p')} = "<sup>\r</sup>"
+autocmd FileType html,markdown,liquid let b:surround_{char2nr('p')} = "{% \r %}"
 autocmd FileType markdown,liquid let b:surround_{char2nr('i')} = "_\r_"
 autocmd FileType markdown,liquid let b:surround_{char2nr('o')} = "**\r**"
-autocmd FileType markdown,liquid let b:surround_{char2nr('h')} = "\[\r\]\(//\)"
-autocmd FileType markdown,liquid let b:surround_{char2nr('c')} = "“\r”"
-autocmd FileType markdown,liquid let b:surround_{char2nr('v')} = "‘\r’"
 autocmd FileType markdown,liquid let b:surround_{char2nr('x')} = "«\r»"
+autocmd FileType markdown,liquid let b:surround_{char2nr('h')} = "\[\r\]\(//\)"
 autocmd FileType markdown,liquid let b:surround_{char2nr('e')} = "\[\r\]
 			\\(\){:rel=\"nofollow noopener noreferrer\" target=\"_blank\"}"
 autocmd FileType markdown,liquid let b:surround_{char2nr('j')} = "!\[\r\]
@@ -1169,12 +1161,12 @@ nnoremap <Leader>f mao<Esc>`a
 " Enter a new line Up from 'Normal Mode'
 nnoremap <Leader>F maO<Esc>`a
 
-" Insert brackets faster (not English keyboard layout)
+" Insert brackets and backslash faster
 inoremap ñr []<left>
 inoremap ñb ()<left>
 inoremap ñB {}<left>
+inoremap ññ \
 autocmd FileType html,markdown,liquid inoremap ñp {%  %}<left><left><left>
-autocmd FileType html,markdown,liquid inoremap ñ- {%-  -%}<left><left><left><left>
 
 "----------------------------------------------------------------
 " 15. Make settings
