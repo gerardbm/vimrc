@@ -1,5 +1,8 @@
 ## Changelog
 
+### 2.5.4
+* Use `python` by default instead of `python3`.
+
 ### 2.5.3
 * Change and reduce vim-surround keymaps.
 * Add the inoremap `ññ` to insert a backslash (`\`) faster.

@@ -6,7 +6,7 @@
 "  (_)___/_/_/ /_/ /_/_/   \___/
 "
 "----------------------------------------------------------------
-"  Version : 2.5.3
+"  Version : 2.5.4
 "  License : MIT
 "  Author  : Gerard Bajona
 "  URL     : https://github.com/gerardbm/vimrc
@@ -1381,7 +1381,7 @@ augroup end
 " New file headers
 augroup headers
 	autocmd!
-	autocmd BufNewFile *.py 0put =\"#!/usr/bin/env python3\<nl>\#
+	autocmd BufNewFile *.py 0put =\"#!/usr/bin/env python\<nl>\#
 				\ -*- coding: utf-8 -*-\<nl>\"|$
 	autocmd BufNewFile *.rb 0put =\"#!/usr/bin/env ruby\<nl>\"|$
 	autocmd BufNewFile *.pl 0put =\"#!/usr/bin/env perl\<nl>\"|$
@@ -1754,7 +1754,7 @@ function! s:Runners() abort
 	elseif &filetype =~# 'php'
 		let s:run = 'php'
 	elseif &filetype =~# 'python'
-		let s:run = <SID>PyShebang()
+		let s:run = 'python'
 	elseif &filetype =~# 'ruby'
 		let s:run = 'ruby'
 	elseif &filetype =~# 'sh'
@@ -1763,15 +1763,6 @@ function! s:Runners() abort
 		let s:run = 'empty'
 	endif
 	return s:run
-endfunction
-
-" Check the python version used in the shebang
-function! s:PyShebang() abort
-	if getline(1) =~# '^#!.*/bin/env\s\+python3\>'
-		return "python3"
-	else
-		return "python"
-	endif
 endfunction
 
 " Generator function
