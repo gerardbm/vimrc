@@ -6,7 +6,7 @@
 "  (_)___/_/_/ /_/ /_/_/   \___/
 "
 "----------------------------------------------------------------
-"  Version : 2.5.4
+"  Version : 2.6.0
 "  License : MIT
 "  Author  : Gerard Bajona
 "  URL     : https://github.com/gerardbm/vimrc
@@ -170,6 +170,7 @@ call plug#begin('~/.vim/plugged')
 	Plug 'gerardbm/asy.vim'
 	Plug 'gerardbm/eukleides.vim'
 	Plug 'zaid/vim-rec'
+	Plug 'sirtaj/vim-openscad'
 
 	" Edition
 	Plug 'junegunn/vim-easy-align'
@@ -482,10 +483,12 @@ autocmd FileType markdown,liquid let b:surround_{char2nr('i')} = "_\r_"
 autocmd FileType markdown,liquid let b:surround_{char2nr('o')} = "**\r**"
 autocmd FileType markdown,liquid let b:surround_{char2nr('x')} = "«\r»"
 autocmd FileType markdown,liquid let b:surround_{char2nr('h')} = "\[\r\]\(//\)"
-autocmd FileType markdown,liquid let b:surround_{char2nr('e')} = "\[\r\]
-			\\(\){:rel=\"nofollow noopener noreferrer\" target=\"_blank\"}"
 autocmd FileType markdown,liquid let b:surround_{char2nr('j')} = "!\[\r\]
 			\\(/images/\){: .align-}"
+autocmd FileType markdown,liquid let b:surround_{char2nr('e')} = "\[\r\]
+			\\(\){:rel=\"noopener noreferrer\" target=\"_blank\"}"
+autocmd FileType markdown,liquid let b:surround_{char2nr('y')} = "<a href=\"\"
+			\ rel=\"noopener noreferrer\" target=\"_blank\">\r<\/a>"
 
 " Caps Lock settings
 imap <expr><C-l> deoplete#smart_close_popup()."\<Plug>CapsLockToggle"
@@ -1166,6 +1169,7 @@ inoremap ñr []<left>
 inoremap ñb ()<left>
 inoremap ñB {}<left>
 inoremap ññ \
+inoremap çç {{  }}<left><left><left>
 autocmd FileType html,markdown,liquid inoremap ñp {%  %}<left><left><left>
 
 "----------------------------------------------------------------

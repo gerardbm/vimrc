@@ -1,5 +1,10 @@
 ## Changelog
 
+### 2.6.0
+* Install the plugin `vim-openscad` (syntax for openscad).
+* Update surround keymaps.
+* Add the nnoremap `çç` to add `{{  }}`.
+
 ### 2.5.4
 * Use `python` by default instead of `python3`.
 

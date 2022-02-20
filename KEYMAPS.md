@@ -131,6 +131,7 @@
   - `ñB` inserts `{}` faster.
   - `ñp` inserts `{%  %}` faster.
   - `ññ` inserts a `\` faster.
+  - `çç` inserts `{{  }}` faster.
   - `<C-z>` jumps to the next AutoPairs match.
   - `<C-q>` toggles AutoPairs plugin.
 
@@ -162,8 +163,9 @@
   - `n` surrounds to `<sub>\r</sub>`
   - `p` surrounds to `<sup>\r</sup>`
   - `h` surrounds to `[\r](//)`
-  - `e` surrounds to `[\r\](){:rel="nofollow noopener noreferrer" target="_blank"}`
   - `j` surrounds to `![\r](/images/){: .align-}`
+  - `e` surrounds to `[\r\](){:rel="noopener noreferrer" target="_blank"}`
+  - `y` surrounds to `<a href=\"\" rel=\"noopener noreferrer\" target=\"_blank\">\r<\/a>`
   - `r` surrounds to `[\r]`
   - `b` surrounds to `(\r)`
   - `B` surrounds to `{\r}`
