@@ -6,7 +6,7 @@
 "  (_)___/_/_/ /_/ /_/_/   \___/
 "
 "----------------------------------------------------------------
-"  Version : 2.6.0
+"  Version : 2.6.1
 "  License : MIT
 "  Author  : Gerard Bajona
 "  URL     : https://github.com/gerardbm/vimrc
@@ -321,7 +321,9 @@ let g:ctrlp_prompt_mappings     = {
 	\ 'PrtDelete()'          : ['<C-d>', '<DEL>'],
 	\ 'PrtDeleteWord()'      : ['<C-w>'],
 	\ 'PrtClear()'           : ['<C-u>'],
+	\ 'PrtClearCache()'      : ['<C-r>'],
 	\ 'ToggleByFname()'      : ['<C-g>'],
+	\ 'ToggleFocus()'        : ['<tab>'],
 	\ 'AcceptSelection("e")' : ['<C-m>', '<CR>'],
 	\ 'AcceptSelection("h")' : ['<C-x>'],
 	\ 'AcceptSelection("t")' : ['<C-t>'],
@@ -515,6 +517,7 @@ nnoremap <Leader>W :ArgWrap<CR>
 
 " Vim-move settings. Use Shift
 let g:move_key_modifier = 'S'
+let g:move_key_modifier_visualmode = 'S'
 
 " --- Misc ---
 " Vim-tmux navigator settings

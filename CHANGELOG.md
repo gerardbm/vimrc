@@ -1,5 +1,9 @@
 ## Changelog
 
+### 2.6.1
+* Update `CtrlP` settings.
+* Update `vim-move` settings.
+
 ### 2.6.0
 * Install the plugin `vim-openscad` (syntax for openscad).
 * Update surround keymaps.
