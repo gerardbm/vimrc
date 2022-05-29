@@ -256,6 +256,8 @@
   - `<Leader>W` inits ArgWrap plugin.
   - `<Leader>ww` opens the personal vimwiki.
   - `<Leader>we` toggles the status of a vimwiki list item.
+  - `gll` increases indentation level of a vimwiki list item.
+  - `glh` decreases indentation level of a vimwiki list item.
   - `<Leader>gl` opens the URL under the cursor in a web browser.
   - `gi` inits the plugin EasyAlign.
 
