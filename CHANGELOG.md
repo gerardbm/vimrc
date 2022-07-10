@@ -1,5 +1,10 @@
 ## Changelog
 
+### 2.6.2
+* Change the nnoremap `<C-f><C-f>` (`:Files` from FZF) to `<C-f>`.
+* Remove the nnoremap `<C-f><C-g>` (:`Commits`).
+* Remove the nnoremap `<C-f><C-space>` (:`BLines`).
+
 ### 2.6.1
 * Update `CtrlP` settings.
 * Update `vim-move` settings.

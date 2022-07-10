@@ -231,9 +231,9 @@
   - `<C-p>` opens the CtrlP menu buffers.
   - `<C-b>` display a list of sessions to open (`:OpenSession`).
   - `<C-t>` opens, focuses or closes Tagbar.
-  - `<C-f><C-f>` opens the menu of `:Files` (FZF).
-  - `<C-f><C-g>` opens the menu of `:Commits` (FZF).
-  - `<C-f><Space>` opens the menu of `:BLines` (FZF).
+  - `<C-f>` opens the menu of `:Files` (FZF).
+  <!-- - `<C-f><C-g>` opens the menu of `:Commits` (FZF). -->
+  <!-- - `<C-f><Space>` opens the menu of `:BLines` (FZF). -->
   - `<Leader>ii` runs a script and previews it in a split window.
   - `<Leader>ij` runs a script into a tmux window.
   - `<Leader>ia` adds/changes the path of a database.

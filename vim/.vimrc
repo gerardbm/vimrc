@@ -283,9 +283,7 @@ let g:ale_linters = {
 
 " FZF settings
 let $FZF_PREVIEW_COMMAND = 'cat {}'
-nnoremap <C-f><C-f> :Files<CR>
-nnoremap <C-f><C-g> :Commits<CR>
-nnoremap <C-f><Space> :BLines<CR>
+nnoremap <C-f> :Files<CR>
 
 " Navigate between errors
 nnoremap <Leader>h :lprevious<CR>zz
