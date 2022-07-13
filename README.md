@@ -136,6 +136,7 @@ This configuration is focused on programming in C/C++, Go, Rust, Haskell, Perl, 
   - [MatchTagAlways](https://github.com/Valloric/MatchTagAlways)
   - [vim-argwrap](https://github.com/FooSoft/vim-argwrap)
   - [vim-md-headings](https://github.com/gerardbm/vim-md-headings)
+  - [vim-md-checkbox](https://github.com/gerardbm/vim-md-checkbox)
   - [vim-move](https://github.com/gerardbm/vim-move)
 
 - Misc:

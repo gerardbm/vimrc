@@ -97,6 +97,8 @@
   - `<C-z>` jumps to the next AutoPairs match.
   - `=` increases a markdown heading (plugin `vim-md-headings`).
   - `_` decreases a markdown heading (plugin `vim-md-headings`).
+  - `<leader>we` toggles a checkbox (plugin `vim-md-checkbox`).
+  - `<leader>wx` removes a checkbox (plugin `vim-md-checkbox`).
   - `gl` goes to the next markdown link.
   - `gh` goes to the previous markdown link.
   - `gd` removes the next markdown link.

@@ -1,5 +1,8 @@
 ## Changelog
 
+### 2.7.0
+* Install the plugin `vim-md-checkbox` (toggle checkboxes).
+
 ### 2.6.2
 * Change the nnoremap `<C-f><C-f>` (`:Files` from FZF) to `<C-f>`.
 * Remove the nnoremap `<C-f><C-g>` (:`Commits`).
@@ -323,7 +326,7 @@
 * Change tab size to 2 instead of 4.
 
 ### 1.23.00
-* Install the plugin vim-md-headings to add two new maps.
+* Install the plugin `vim-md-headings` to add two new maps.
   - Add the nnoremap `=` to increase markdown headings.
   - Add the nnoremap `_` to decrease markdown headings.
 * Workaround to fix warning version of vim-go plugin (only vim).

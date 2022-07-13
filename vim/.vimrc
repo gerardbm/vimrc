@@ -6,7 +6,7 @@
 "  (_)___/_/_/ /_/ /_/_/   \___/
 "
 "----------------------------------------------------------------
-"  Version : 2.6.2
+"  Version : 2.7.0
 "  License : MIT
 "  Author  : Gerard Bajona
 "  URL     : https://github.com/gerardbm/vimrc
@@ -186,6 +186,7 @@ call plug#begin('~/.vim/plugged')
 	Plug 'Valloric/MatchTagAlways'
 	Plug 'FooSoft/vim-argwrap'
 	Plug 'gerardbm/vim-md-headings'
+	Plug 'gerardbm/vim-md-checkbox'
 	Plug 'matze/vim-move'
 
 	" Misc
