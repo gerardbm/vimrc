@@ -6,7 +6,7 @@
 "  (_)___/_/_/ /_/ /_/_/   \___/
 "
 "----------------------------------------------------------------
-"  Version : 2.7.0
+"  Version : 2.7.1
 "  License : MIT
 "  Author  : Gerard Bajona
 "  URL     : https://github.com/gerardbm/vimrc
@@ -1309,6 +1309,8 @@ augroup liquid
 	autocmd FileType liquid setlocal spell spelllang=es colorcolumn=0
 	autocmd FileType liquid,yaml nnoremap <silent> <buffer> <Leader>ii
 				\ :call <SID>ToggleJekyll()<CR>
+	autocmd FileType liquid,md nnoremap <silent> <buffer> <Leader>ij
+				\ :call <SID>ViewJekyllPost()<CR>
 augroup end
 
 "----------------------------------------------------------------
@@ -1939,4 +1941,14 @@ function! s:ToggleJekyll() abort
 		call system("notify-send -t 2 'Jekyll server was stoped!'")
 	endif
 	redraw!
+endfunction
+
+" Preview the current post in the web broswer
+function! s:ViewJekyllPost() abort
+	silent update
+	let s:grep = expand("grep '^permalink: ' ")
+	let s:file = expand('%')
+	let s:sed = expand(" | sed 's/permalink: //g'")
+	let s:permalink = system(s:grep . s:file . s:sed)
+	call system("google-chrome http://localhost:4000" . s:permalink)
 endfunction

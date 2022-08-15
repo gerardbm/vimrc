@@ -1,5 +1,8 @@
 ## Changelog
 
+### 2.7.1
+* Add the nnoremap `<Leader>ij` to preview the current post in the web browser.
+
 ### 2.7.0
 * Install the plugin `vim-md-checkbox` (toggle checkboxes).
 

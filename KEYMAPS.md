@@ -252,6 +252,7 @@
   - `<Leader>ii` converts PLT (Gnuplot) to PNG and previews it with Mupdf.
   - `<Leader>ii` renders POV (POV-Ray) to PNG and previews it with Mupdf.
   - `<Leader>ii` runs/stops bundle in the background, for liquid files.
+  - `<Leader>ij` previews the current post (MD file) in the web browser.
   - `<Leader>cc` gets the keyword density of a text.
   - `<Leader>B` shows syntax highlighting groups.
   - `<Leader>u` toggles the plugin Undotree.
