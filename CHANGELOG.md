@@ -1,5 +1,8 @@
 ## Changelog
 
+### 2.7.2
+* Update listchars and showbreak
+
 ### 2.7.1
 * Add the nnoremap `<Leader>ij` to preview the current post in the web browser.
 

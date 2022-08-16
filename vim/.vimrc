@@ -6,7 +6,7 @@
 "  (_)___/_/_/ /_/ /_/_/   \___/
 "
 "----------------------------------------------------------------
-"  Version : 2.7.1
+"  Version : 2.7.2
 "  License : MIT
 "  Author  : Gerard Bajona
 "  URL     : https://github.com/gerardbm/vimrc
@@ -889,7 +889,7 @@ let g:f6msg = 'Toggle list.'
 nnoremap <F6> :set list!<CR>:echo g:f6msg<CR>
 
 " Show tabs and end-of-lines
-set listchars=tab:│\ ,trail:¬
+set listchars=tab:┊\ ,trail:¬
 
 "----------------------------------------------------------------
 " 11. Moving around lines
@@ -906,7 +906,7 @@ set wrap
 " Don't break the words
 " Only works if I set nolist (F6)
 set linebreak
-set showbreak=├——»
+set showbreak=↳\ 
 
 " Stop automatic wrapping
 set textwidth=0
