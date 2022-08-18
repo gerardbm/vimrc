@@ -72,6 +72,7 @@
   - `<C-y>` scrolls the window up [count].
   - `<C-d>` scrolls the window down 50%.
   - `<C-u>` scrolls the window up 50%.
+  - `<C-b>` inits the Visual-block mode.
   - `<Leader>bf` autoformat a buffer (sql, js, html, xml, css).
   - `<Leader><BS>` deletes the Windows ^M.
   - `<Leader>o` isolates the current line.
@@ -110,7 +111,7 @@
   - `<Leader>tf` retabs the current selection.
   - `<C-s>` expands neosnippet.
   - `v` expands the region selected.
-  - `<C-v>` shrinks the selection.
+  - `m` shrinks the selection.
   - `<Leader>dd` displays the cursor position and selection word-count.
 
 - Insert mode
@@ -231,7 +232,6 @@
 - Normal mode
   - `<C-n>` opens, focuses or closes NERDTree.
   - `<C-p>` opens the CtrlP menu buffers.
-  - `<C-b>` display a list of sessions to open (`:OpenSession`).
   - `<C-t>` opens, focuses or closes Tagbar.
   - `<C-f>` opens the menu of `:Files` (FZF).
   <!-- - `<C-f><C-g>` opens the menu of `:Commits` (FZF). -->

@@ -1,5 +1,11 @@
 ## Changelog
 
+### 2.7.3
+* Change the nnoremap `<C-b>` (`:OpenSession`) to Visual-Block.
+* The nnoremap to `:OpenSession` disappears.
+* Change the vmap `<C-v>` (`expand_region_shrink`) to `m`.
+  - I'm using `^V` at terminal level to paste.
+
 ### 2.7.2
 * Update listchars and showbreak
 

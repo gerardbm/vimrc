@@ -6,7 +6,7 @@
 "  (_)___/_/_/ /_/ /_/_/   \___/
 "
 "----------------------------------------------------------------
-"  Version : 2.7.2
+"  Version : 2.7.3
 "  License : MIT
 "  Author  : Gerard Bajona
 "  URL     : https://github.com/gerardbm/vimrc
@@ -74,6 +74,9 @@ endif
 
 " Set inc/dec
 set nrformats-=octal
+
+" Visual block
+nnoremap <C-b> <C-v>
 
 "----------------------------------------------------------------
 " 2. Plugins (Plug)
@@ -252,8 +255,6 @@ vnoremap <silent> <Leader>gz :call <SID>PreventGV()<CR>
 let g:session_autosave  = 'no'
 let g:session_autoload  = 'no'
 let g:session_directory = '~/.vim/sessions/'
-
-nnoremap <C-b> :OpenSession<CR>
 
 " --- Tools ---
 " NERDCommenter settings
@@ -497,7 +498,7 @@ cmap <silent> <C-l> <Plug>CapsLockToggle
 
 " Expand region settings
 vmap v <Plug>(expand_region_expand)
-vmap <C-v> <Plug>(expand_region_shrink)
+vmap m <Plug>(expand_region_shrink)
 
 " MatchTagAlways settings
 let g:mta_filetypes = {
