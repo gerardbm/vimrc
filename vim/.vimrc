@@ -6,7 +6,7 @@
 "  (_)___/_/_/ /_/ /_/_/   \___/
 "
 "----------------------------------------------------------------
-"  Version : 2.7.3
+"  Version : 2.7.4
 "  License : MIT
 "  Author  : Gerard Bajona
 "  URL     : https://github.com/gerardbm/vimrc
@@ -1385,6 +1385,12 @@ augroup md
 				\ :command! -range Enes <line1>,<line2>!trans en:es -brief
 	autocmd FileType markdown,liquid,text
 				\ :command! -range Esen <line1>,<line2>!trans es:en -brief
+augroup end
+
+" CSV
+augroup csv
+	autocmd!
+	autocmd BufRead,BufNewFile *.csv set filetype=csv
 augroup end
 
 " New file headers

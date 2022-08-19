@@ -1,5 +1,8 @@
 ## Changelog
 
+### 2.7.4
+* Add little CSV syntax.
+
 ### 2.7.3
 * Change the nnoremap `<C-b>` (`:OpenSession`) to Visual-Block.
 * The nnoremap to `:OpenSession` disappears.
