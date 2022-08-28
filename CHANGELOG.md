@@ -1,5 +1,8 @@
 ## Changelog
 
+### 2.7.5
+* Improve `ToggleJekyll()` function.
+
 ### 2.7.4
 * Add little CSV syntax.
 

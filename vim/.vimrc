@@ -6,7 +6,7 @@
 "  (_)___/_/_/ /_/ /_/_/   \___/
 "
 "----------------------------------------------------------------
-"  Version : 2.7.4
+"  Version : 2.7.5
 "  License : MIT
 "  Author  : Gerard Bajona
 "  URL     : https://github.com/gerardbm/vimrc
@@ -1935,11 +1935,11 @@ endfunction
 
 command! -nargs=1 Commander call <SID>Commander(<f-args>)
 
-" Toggle jekyll server in the background
+" Toggle Jekyll server in the background
 function! s:ToggleJekyll() abort
 	call system('lsof -i :4000 | grep -i listen')
 	if v:shell_error
-		silent exec "!(bundle exec jekyll serve &) > /dev/null"
+		silent exec "!(bundle exec jekyll serve -q -l -I &) > /dev/null"
 		call system("touch /tmp/jekyll.ps")
 		call system("notify-send -t 2 'Executing Jekyll server...'")
 	else
