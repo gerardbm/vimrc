@@ -135,6 +135,7 @@
   - `ñp` inserts `{%  %}` faster.
   - `ññ` inserts a `\` faster.
   - `çç` inserts `{{  }}` faster.
+  - `ñc` enter Vim's expression register.
   - `<C-z>` jumps to the next AutoPairs match.
   - `<C-q>` toggles AutoPairs plugin.
 

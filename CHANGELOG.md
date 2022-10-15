@@ -1,5 +1,8 @@
 ## Changelog
 
+### 2.7.6
+* Add the inoremap `ñc` to enter Vim's expression register.
+
 ### 2.7.5
 * Improve `ToggleJekyll()` function.
 

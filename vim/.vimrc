@@ -6,7 +6,7 @@
 "  (_)___/_/_/ /_/ /_/_/   \___/
 "
 "----------------------------------------------------------------
-"  Version : 2.7.5
+"  Version : 2.7.6
 "  License : MIT
 "  Author  : Gerard Bajona
 "  URL     : https://github.com/gerardbm/vimrc
@@ -1174,6 +1174,9 @@ inoremap ñB {}<left>
 inoremap ññ \
 inoremap çç {{  }}<left><left><left>
 autocmd FileType html,markdown,liquid inoremap ñp {%  %}<left><left><left>
+
+" Enter Vim's expression register
+inoremap ñc <C-r>=
 
 "----------------------------------------------------------------
 " 15. Make settings
