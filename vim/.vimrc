@@ -6,7 +6,7 @@
 "  (_)___/_/_/ /_/ /_/_/   \___/
 "
 "----------------------------------------------------------------
-"  Version : 2.7.6
+"  Version : 2.7.7
 "  License : MIT
 "  Author  : Gerard Bajona
 "  URL     : https://github.com/gerardbm/vimrc
@@ -1642,11 +1642,11 @@ endfunction
 function! s:ToggleGstatus() abort
 	for l:winnr in range(1, winnr('$'))
 		if !empty(getwinvar(l:winnr, 'fugitive_status'))
-			execute l:winnr.'close'
-		else
-			Git
+			exe l:winnr 'close'
+			return
 		endif
 	endfor
+	keepalt Git
 endfunction
 
 " Better toggle for NERDTree

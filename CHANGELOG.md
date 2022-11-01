@@ -1,10 +1,13 @@
 ## Changelog
 
+### 2.7.7
+* Improve the function `ToggleGstatus()`.
+
 ### 2.7.6
 * Add the inoremap `ñc` to enter Vim's expression register.
 
 ### 2.7.5
-* Improve `ToggleJekyll()` function.
+* Improve the function `ToggleJekyll()`.
 
 ### 2.7.4
 * Add little CSV syntax.
