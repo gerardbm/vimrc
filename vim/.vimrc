@@ -1175,7 +1175,7 @@ inoremap ññ \
 inoremap çç {{  }}<left><left><left>
 autocmd FileType html,markdown,liquid inoremap ñp {%  %}<left><left><left>
 
-" Enter Vim's expression register
+" Enter Vim's expression register (math)
 inoremap ñc <C-r>=
 
 "----------------------------------------------------------------

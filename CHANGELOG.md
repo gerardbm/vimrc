@@ -4,7 +4,7 @@
 * Improve the function `ToggleGstatus()`.
 
 ### 2.7.6
-* Add the inoremap `ñc` to enter Vim's expression register.
+* Add the inoremap `ñc` to enter Vim's expression register (math).
 
 ### 2.7.5
 * Improve the function `ToggleJekyll()`.
