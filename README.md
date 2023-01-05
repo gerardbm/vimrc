@@ -15,7 +15,7 @@ Some useful tools have been integrated. Plugins: **CtrlP** (navigate between ope
 
 Additionally, run scripting code (Bash, Perl, Ruby, Python, Lua, PHP and JavaScript) into a separate **tmux** window or simply preview the output in the preview window, where you can also preview SQL queries from **Sqlite** databases and **Maxima** operations (symbolic maths) from a MAX file. Preview the output of any shell command using the command `:Commander`.
 
-Instant preview with MuPDF after making the following conversions:
+Instant preview with MuPDF (PNG, HTML and EPUB) and Zathura (PDF) after making the following conversions:
 
 - MD to PDF, EPUB and HTML using pandoc, with math support.
 - TEX to PDF using pdflatex.

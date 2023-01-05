@@ -6,7 +6,7 @@
 "  (_)___/_/_/ /_/ /_/_/   \___/
 "
 "----------------------------------------------------------------
-"  Version : 2.7.7
+"  Version : 2.7.8
 "  License : MIT
 "  Author  : Gerard Bajona
 "  URL     : https://github.com/gerardbm/vimrc
@@ -1789,7 +1789,7 @@ function! s:Generator(ext, ft) abort
 	let l:inp = expand('%')
 	let l:out = expand('%:r') . a:ext
 	if a:ft ==# 'tex'
-		let l:cmd = system('pdflatex ' . l:inp)
+		call system('pdflatex ' . l:inp)
 	elseif a:ft ==# 'markdown'
 		if a:ext ==# '.html'
 			let l:opt = '--mathjax '
@@ -1800,32 +1800,32 @@ function! s:Generator(ext, ft) abort
 						\ -V papersize=a4
 						\ -V geometry:margin=2.5cm '
 		endif
-		let l:cmd = system('pandoc -s ' . l:opt . l:inp . ' -o ' . l:out)
+		call system('pandoc -s ' . l:opt . l:inp . ' -o ' . l:out)
 	elseif a:ft ==# 'plantuml'
-		let l:cmd = system('plantuml ' . l:inp . ' ' . l:out)
+		call system('plantuml ' . l:inp . ' ' . l:out)
 	elseif a:ft ==# 'dot'
-		let l:cmd = system('dot -Tpng ' . l:inp . ' -o ' . l:out)
+		call system('dot -Tpng ' . l:inp . ' -o ' . l:out)
 	elseif a:ft ==# 'eukleides'
 		let l:eps = expand('%:r') . '.eps'
-		let l:cmd = system('eukleides ' . l:inp)
+		call system('eukleides ' . l:inp)
 	elseif a:ft ==# 'asy'
 		let l:eps = expand('%:r') . '.eps'
-		let l:cmd = system('asy ' . l:inp)
+		call system('asy ' . l:inp)
 	elseif a:ft ==# 'pp3'
 		let l:eps = expand('%:r') . '.eps'
-		let l:cmd = system('pp3 ' . l:inp)
+		call system('pp3 ' . l:inp)
 	elseif a:ft ==# 'gnuplot'
 		let l:opt = ' -e "set terminal png; set output ''' . l:out . '''" '
-		let l:cmd = system('gnuplot' . l:opt . l:inp)
+		call system('gnuplot' . l:opt . l:inp)
 	elseif a:ft ==# 'pov'
-		let l:cmd = system('povray -D ' . l:inp)
+		call system('povray -D ' . l:inp)
 	endif
 	if v:shell_error ==# 0
 		pclose
 		if a:ft =~# '\(eukleides\|asy\|pp3\)'
 			call <SID>EPS2PNG(l:eps, l:out)
 		endif
-		call <SID>Previewer(l:out)
+		call <SID>Previewer(l:out, a:ext)
 	else
 		call <SID>WinPreview()
 		exec '0put =l:cmd'
@@ -1840,17 +1840,25 @@ function! s:EPS2PNG(eps, out) abort
 		call system('convert' . l:opt_bef . a:eps . l:opt_aft . a:out)
 endfunction
 
-" Preview outputs (EPUB, PDF, HTML, PNG) with mupdf
-function! s:Previewer(out) abort
+" Preview EPUB, HTML & PNG with mupdf
+" Preview PDF with zathura
+function! s:Previewer(out, ft) abort
+	if a:ft ==# '.pdf'
+		let l:tool = 'zathura'
+	else
+		let l:tool = 'mupdf'
+	endif
 	let l:dev = ' 2>/dev/null'
 	let l:checkps = system('ps -ef
 				\ | grep -v grep
-				\ | grep mupdf
+				\ | grep '. l:tool .'
 				\ | grep -o ' . a:out . l:dev)
 	if l:checkps ==# ''
-		call system('mupdf ' . a:out . ' &')
+		call system(l:tool . ' ' . a:out . ' &')
 	else
-		call system('pkill -HUP mupdf')
+		if l:tool ==# 'mupdf'
+			call system('pkill -HUP mupdf')
+		endif
 	endif
 endfunction
 
