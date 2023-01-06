@@ -1,5 +1,8 @@
 ## Changelog
 
+### 2.7.9
+* Revert a little change in the function `Generator()`.
+
 ### 2.7.8
 * Extend the function `Previewer()` to use Zathura for PDF files.
 * Improve the function `Generator()`.

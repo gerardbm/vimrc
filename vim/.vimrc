@@ -6,7 +6,7 @@
 "  (_)___/_/_/ /_/ /_/_/   \___/
 "
 "----------------------------------------------------------------
-"  Version : 2.7.8
+"  Version : 2.7.9
 "  License : MIT
 "  Author  : Gerard Bajona
 "  URL     : https://github.com/gerardbm/vimrc
@@ -1789,7 +1789,7 @@ function! s:Generator(ext, ft) abort
 	let l:inp = expand('%')
 	let l:out = expand('%:r') . a:ext
 	if a:ft ==# 'tex'
-		call system('pdflatex ' . l:inp)
+		let l:cmd = system('pdflatex ' . l:inp)
 	elseif a:ft ==# 'markdown'
 		if a:ext ==# '.html'
 			let l:opt = '--mathjax '
@@ -1800,25 +1800,25 @@ function! s:Generator(ext, ft) abort
 						\ -V papersize=a4
 						\ -V geometry:margin=2.5cm '
 		endif
-		call system('pandoc -s ' . l:opt . l:inp . ' -o ' . l:out)
+		let l:cmd = system('pandoc -s ' . l:opt . l:inp . ' -o ' . l:out)
 	elseif a:ft ==# 'plantuml'
-		call system('plantuml ' . l:inp . ' ' . l:out)
+		let l:cmd = system('plantuml ' . l:inp . ' ' . l:out)
 	elseif a:ft ==# 'dot'
-		call system('dot -Tpng ' . l:inp . ' -o ' . l:out)
+		let l:cmd = system('dot -Tpng ' . l:inp . ' -o ' . l:out)
 	elseif a:ft ==# 'eukleides'
 		let l:eps = expand('%:r') . '.eps'
-		call system('eukleides ' . l:inp)
+		let l:cmd = system('eukleides ' . l:inp)
 	elseif a:ft ==# 'asy'
 		let l:eps = expand('%:r') . '.eps'
-		call system('asy ' . l:inp)
+		let l:cmd = system('asy ' . l:inp)
 	elseif a:ft ==# 'pp3'
 		let l:eps = expand('%:r') . '.eps'
-		call system('pp3 ' . l:inp)
+		let l:cmd = system('pp3 ' . l:inp)
 	elseif a:ft ==# 'gnuplot'
 		let l:opt = ' -e "set terminal png; set output ''' . l:out . '''" '
-		call system('gnuplot' . l:opt . l:inp)
+		let l:cmd = system('gnuplot' . l:opt . l:inp)
 	elseif a:ft ==# 'pov'
-		call system('povray -D ' . l:inp)
+		let l:cmd = system('povray -D ' . l:inp)
 	endif
 	if v:shell_error ==# 0
 		pclose
