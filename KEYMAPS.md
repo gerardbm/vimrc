@@ -22,8 +22,9 @@
   - `<Leader>S` updates all the buffers.
   - `<Leader>bb` opens the `:edit` command.
   - `<Leader>bg` opens a list of all buffers.
-  - `<Leader>bw` switches CWD to the current filepath.
   - `<Leader>by` copies the filepath to the clipboard.
+  - `<Leader>dd` switches CWD to the current filepath.
+  - `<Leader>dg` switches CWD to the git root directory.
   - `yab` yanks the buffer content.
   - `dab` deletes the buffer content.
   - `vab` selects the buffer content.
@@ -103,7 +104,7 @@
   - `gl` goes to the next markdown link.
   - `gh` goes to the previous markdown link.
   - `gd` removes the next markdown link.
-  - `<Leader>dd` displays the cursor position and buffer word-count.
+  - `<Leader>cx` displays the cursor position and buffer word-count.
 
 - Visual mode
   - `<Leader>y` copies the selection into the clipboard.
@@ -112,7 +113,7 @@
   - `<C-s>` expands neosnippet.
   - `v` expands the region selected.
   - `m` shrinks the selection.
-  - `<Leader>dd` displays the cursor position and selection word-count.
+  - `<Leader>cx` displays the cursor position and selection word-count.
 
 - Insert mode
   - `<C-a>` moves the cursor to the start of line (0).
@@ -220,7 +221,7 @@
   - `<Leader>gh` starts the fugitive command `:Gvdiffsplit HEAD`.
   - `<Leader>gb` starts the fugitive command `:Gblame`.
   - `<Leader>gg` searches a string between commits (Glog).
-  - `<Leader gz>` opens a list of the last commits (GV)'.
+  - `<Leader>gz` opens a list of the last commits (`:Commits`)'.
 
 ### Errors
 - Normal mode
@@ -232,11 +233,9 @@
 ### Tools
 - Normal mode
   - `<C-n>` opens, focuses or closes NERDTree.
-  - `<C-p>` opens the CtrlP menu buffers.
   - `<C-t>` opens, focuses or closes Tagbar.
   - `<C-f>` opens the menu of `:Files` (FZF).
-  <!-- - `<C-f><C-g>` opens the menu of `:Commits` (FZF). -->
-  <!-- - `<C-f><Space>` opens the menu of `:BLines` (FZF). -->
+  - `<C-p>` opens the menu of `:Buffers` (FZF.
   - `<Leader>ii` runs a script and previews it in a split window.
   - `<Leader>ij` runs a script into a tmux window.
   - `<Leader>ia` adds/changes the path of a database.
@@ -256,7 +255,7 @@
   - `<Leader>ij` previews the current post (MD file) in the web browser.
   - `<Leader>cc` gets the keyword density of a text.
   - `<Leader>B` shows syntax highlighting groups.
-  - `<Leader>u` toggles the plugin Undotree.
+  - `<Leader>U` toggles the plugin Undotree.
   - `<Leader>W` inits ArgWrap plugin.
   - `<Leader>ww` opens the personal vimwiki.
   - `<Leader>we` toggles the status of a vimwiki list item.
@@ -272,13 +271,14 @@
 - CtrlP plugin (customized)
   - `<C-h>` toggles type (into CtrlP).
   - `<C-l>` toggles type (into CtrlP).
-  - `<C-b>` moves cursor to the left (into CtrlP).
-  - `<C-f>` moves cursor to the right (into CtrlP).
   - `<C-s>` deletes the last character.
   - `<C-d>` deletes the current character.
   - `<C-u>` deletes the entire line.
   - `<C-g>` runs the `ToggleByFname` function.
   - `<C-p>` exits the plugin from inside.
+
+- FZF plugin (customized)
+  - `<C-h>` hides the window preview (into CtrlP).
 
 ### Terminal
 - Terminal mode

@@ -7,11 +7,11 @@ This Vim configuration is purely subjective. The goal of it is to get comfortabl
 
 The `<Leader>` key is ",": it's enabled only in 'Normal mode' to avoid the delay time when typing it from 'Insert mode'. The map `<C-c>` is used as `<Escape>` from any mode. Three cursor shapes (block, vertical and horizontal) are defined for Vim and Neovim for the terminals URxvt and XTerm (even into tmux); it also works in the last versions of gnome-terminal, terminator, termite and st. Default encoding is UTF-8. Color support: 256 colors for Vim and Neovim.
 
-Navigate easily: between buffers, tabs, windows and tmux panes; between syntax warnings and errors (it populates location-list); between misspelled words, where you can cycle between Catalan, English and Spanish dictionaries; between highlighted search results, where you can grep the highlight in the current buffer, all files from the current directory and subdirectories, the arglist and even between the old git commits, or use the internal vimgrep (grep and vimgrep populate the Quickfix and display the total matches); between GitGutter hunks; between git history (using the plugins vim-fugitive and GV); between tags of source code files with tagbar.
+Navigate easily: between buffers, tabs, windows and tmux panes; between syntax warnings and errors (it populates location-list); between misspelled words, where you can cycle between Catalan, English and Spanish dictionaries; between highlighted search results, where you can grep the highlight in the current buffer, all files from the current directory and subdirectories, the arglist and even between the old git commits, or use the internal vimgrep (grep and vimgrep populate the Quickfix and display the total matches); between GitGutter hunks; between git history (using the plugins vim-fugitive and FZF); between tags of source code files with tagbar.
 
 Easily highlight the word under the cursor or the current selection. A lot of commands have been defined to work with the highlighted text: the mentioned grep and vimgrep, and replace. Also, you can search and replace into the visual selection only.
 
-Some useful tools have been integrated. Plugins: **CtrlP** (navigate between open buffers, MRU or directory files), **NERDTree** (tree files with filesystem operations), **FZF** for faster searches with previews, **vim-fugitive** (git commands), **GV** (navigate between git commits), **undotree** (history visualizer), **ALE** (async syntax linter), **deoplete** (autocompletion for Vim and Neovim), **neosnippet** (code snippets), **Vimwiki** (organize notes, manage todo-lists...) and manage sessions with **vim-session**.
+Some useful tools have been integrated. Plugins: **FZF** (navigate between files, open buffers, git commits, git files, lines, history, etc), **NERDTree** (tree files with filesystem operations), **vim-fugitive** (git commands), **undotree** (history visualizer), **ALE** (async syntax linter), **deoplete** (autocompletion for Vim and Neovim), **neosnippet** (code snippets), **Vimwiki** (organize notes, manage todo-lists...) and manage sessions with **vim-session**.
 
 Additionally, run scripting code (Bash, Perl, Ruby, Python, Lua, PHP and JavaScript) into a separate **tmux** window or simply preview the output in the preview window, where you can also preview SQL queries from **Sqlite** databases and **Maxima** operations (symbolic maths) from a MAX file. Preview the output of any shell command using the command `:Commander`.
 
@@ -41,7 +41,7 @@ This configuration is focused on programming in C/C++, Go, Rust, Haskell, Perl, 
 - Git tools:
   - [vim-gitgutter](https://github.com/airblade/vim-gitgutter)
   - [vim-fugitive](https://github.com/tpope/vim-fugitive)
-  - [gv.vim](https://github.com/junegunn/gv.vim)
+  <!-- - [gv.vim](https://github.com/junegunn/gv.vim) -->
 
 - Sessions:
   - [vim-session](https://github.com/xolox/vim-session)
@@ -52,10 +52,10 @@ This configuration is focused on programming in C/C++, Go, Rust, Haskell, Perl, 
   - [nerdtree](https://github.com/scrooloose/nerdtree)
   - [listtoggle](https://github.com/valloric/listtoggle)
   - [tagbar](https://github.com/majutsushi/tagbar)
-  - [ctrlp.vim](https://github.com/ctrlpvim/ctrlp.vim)
   - [undotree](https://github.com/mbbill/undotree)
   - [ale](https://github.com/w0rp/ale)
   - [fzf](https://github.com/junegunn/fzf.vim)
+  <!-- - [ctrlp.vim](https://github.com/ctrlpvim/ctrlp.vim) -->
 
 - Specific for Vim and Deoplete:
   - [nvim-yarp](https://github.com/roxma/nvim-yarp)

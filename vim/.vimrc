@@ -6,7 +6,7 @@
 "  (_)___/_/_/ /_/ /_/_/   \___/
 "
 "----------------------------------------------------------------
-"  Version : 2.7.9
+"  Version : 2.8.0
 "  License : MIT
 "  Author  : Gerard Bajona
 "  URL     : https://github.com/gerardbm/vimrc
@@ -91,7 +91,6 @@ call plug#begin('~/.vim/plugged')
 	" Git tools
 	Plug 'airblade/vim-gitgutter'
 	Plug 'tpope/vim-fugitive'
-	Plug 'junegunn/gv.vim'
 
 	" Sessions
 	Plug 'xolox/vim-session'
@@ -102,7 +101,6 @@ call plug#begin('~/.vim/plugged')
 	Plug 'preservim/nerdtree'
 	Plug 'valloric/listtoggle'
 	Plug 'majutsushi/tagbar'
-	Plug 'ctrlpvim/ctrlp.vim'
 	Plug 'mbbill/undotree'
 	Plug 'dense-analysis/ale'
 	Plug 'junegunn/fzf'
@@ -246,10 +244,6 @@ nnoremap <Leader>gb :Gblame<CR>
 " Searching for text added or removed by a commit
 nnoremap <Leader>gg :call <SID>GrepWrapper('Gclog', '-i -G', '--')<CR>
 
-" GV settings
-nnoremap <silent> <Leader>gz :call <SID>PreventGV()<CR>
-vnoremap <silent> <Leader>gz :call <SID>PreventGV()<CR>
-
 " --- Sessions ---
 " Vim-session settings
 let g:session_autosave  = 'no'
@@ -284,8 +278,12 @@ let g:ale_linters = {
 	\ }
 
 " FZF settings
+let $FZF_DEFAULT_COMMAND = "ag --hidden --ignore .git -p ~/.gitignore -g ''"
 let $FZF_PREVIEW_COMMAND = 'cat {}'
+let g:fzf_preview_window = ['right', 'ctrl-h']
 nnoremap <C-f> :Files<CR>
+nnoremap <C-p> :Buffers<CR>
+nnoremap <Leader>gz :Commits<CR>
 
 " Navigate between errors
 nnoremap <Leader>h :lprevious<CR>zz
@@ -301,40 +299,8 @@ let g:tagbar_autofocus        = 1
 let g:tagbar_show_linenumbers = 2
 let g:tagbar_sort             = 0
 
-" CtrlP settings
-let g:ctrlp_map                 = '<C-p>'
-let g:ctrlp_cmd                 = 'CtrlPBuffer'
-let g:ctrlp_working_path_mode   = 'rc'
-let g:ctrlp_custom_ignore       = '\v[\/]\.(git|hg|svn)$'
-let g:ctrlp_match_window        = 'bottom,order:btt,min:1,max:10,results:85'
-let g:ctrlp_show_hidden         = 1
-let g:ctrlp_follow_symlinks     = 1
-let g:ctrlp_open_multiple_files = '0i'
-let g:ctrlp_prompt_mappings     = {
-	\ 'PrtHistory(1)'        : [''],
-	\ 'PrtHistory(-1)'       : [''],
-	\ 'ToggleType(1)'        : ['<C-l>', '<C-up>'],
-	\ 'ToggleType(-1)'       : ['<C-h>', '<C-down>'],
-	\ 'PrtCurLeft()'         : ['<C-b>', '<Left>'],
-	\ 'PrtCurRight()'        : ['<C-f>', '<Right>'],
-	\ 'PrtBS()'              : ['<C-s>', '<BS>'],
-	\ 'PrtDelete()'          : ['<C-d>', '<DEL>'],
-	\ 'PrtDeleteWord()'      : ['<C-w>'],
-	\ 'PrtClear()'           : ['<C-u>'],
-	\ 'PrtClearCache()'      : ['<C-r>'],
-	\ 'ToggleByFname()'      : ['<C-g>'],
-	\ 'ToggleFocus()'        : ['<tab>'],
-	\ 'AcceptSelection("e")' : ['<C-m>', '<CR>'],
-	\ 'AcceptSelection("h")' : ['<C-x>'],
-	\ 'AcceptSelection("t")' : ['<C-t>'],
-	\ 'AcceptSelection("v")' : ['<C-v>'],
-	\ 'OpenMulti()'          : ['<C-o>'],
-	\ 'MarkToOpen()'         : ['<c-z>'],
-	\ 'PrtExit()'            : ['<esc>', '<c-c>', '<c-p>'],
-	\ }
-
 " Undotree toggle
-nnoremap <Leader>u :UndotreeToggle<CR>
+nnoremap <Leader>U :UndotreeToggle<CR>
 
 " --- Languages ---
 " Go settings
@@ -754,11 +720,14 @@ nnoremap <C-l> :bnext<CR>
 nnoremap <Leader>bb :edit <C-R>=expand("%:p:h")<CR>/
 nnoremap <Leader>bg :buffers<CR>:buffer<Space>
 
-" Switch CWD to the directory of the current buffer
-nnoremap <Leader>bw :lcd %:p:h<CR>:pwd<CR>
-
 " Copy the filepath to clipboard
 nnoremap <Leader>by :let @+=expand("%:p")<CR>
+
+" Switch CWD to the directory of the current buffer
+nnoremap <Leader>dd :lcd %:p:h<CR>:pwd<CR>
+
+" Switch CWD to git root directory
+nnoremap <silent> <Leader>dg :call <SID>GitRoot()<CR>
 
 " Ignore case when autocompletes when browsing files
 set fileignorecase
@@ -1376,8 +1345,8 @@ augroup md
 	autocmd FileType markdown,liquid,text,yaml set expandtab
 	autocmd FileType markdown,liquid,text
 				\ nnoremap <silent> <Leader>cc :call <SID>KeywordDensity()<CR>
-	autocmd FileType markdown,liquid,text nnoremap <silent> <Leader>dd g<C-g>
-	autocmd FileType markdown,liquid,text vnoremap <silent> <Leader>dd g<C-g>
+	autocmd FileType markdown,liquid,text nnoremap <silent> <Leader>cx g<C-g>
+	autocmd FileType markdown,liquid,text vnoremap <silent> <Leader>cx g<C-g>
 	autocmd FileType markdown,liquid,text
 				\ nnoremap <silent> gl :call search('\v\[[^]]*]\([^)]*\)', 'W')<CR>
 	autocmd FileType markdown,liquid,text
@@ -1631,10 +1600,16 @@ function! s:ToggleGGPrev()
 	endif
 endfunction
 
-" Execute GV only once
-function! s:PreventGV() abort
-	if &buftype !=# 'nofile'
-		execute ':GV'
+" Switch CWD to git root directory
+function! s:GitRoot() abort
+	execute ':lcd %:p:h'
+	let l:isgit = system('git rev-parse --is-inside-work-tree 2>/dev/null')
+	if v:shell_error == 0
+		let l:path = system('git rev-parse --show-toplevel 2>/dev/null')
+		execute ':lcd ' . l:path
+		execute ':pwd'
+	else
+		echo "You're not in a git directory."
 	endif
 endfunction
 
@@ -1820,7 +1795,7 @@ function! s:Generator(ext, ft) abort
 	elseif a:ft ==# 'pov'
 		let l:cmd = system('povray -D ' . l:inp)
 	endif
-	if v:shell_error ==# 0
+	if v:shell_error == 0
 		pclose
 		if a:ft =~# '\(eukleides\|asy\|pp3\)'
 			call <SID>EPS2PNG(l:eps, l:out)

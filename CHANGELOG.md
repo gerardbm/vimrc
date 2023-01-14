@@ -1,5 +1,19 @@
 ## Changelog
 
+### 2.8.0
+* Add the internal `FZF` map `<C-h>` to hide the window preview.
+* Remove the plugin `CtrlP`.
+* Remove the plugin `GV`.
+* Use the nnoremap `<C-f>` (`:Files`).
+* Add the nnoremap `<C-p>` (`:Buffers`).
+* The nnoremap `<Leader>gz` executes `:Commits` instead of `:GV`.
+* The nnoremap `<Leader>dd` (word-count) changes to `<Leader>cx`.
+* The vnoremap `<Leader>dd` (word-count) changes to `<Leader>cx`.
+* The nnoremap `<Leader>bw` (switch CWD) changes to `<Leader>dd`.
+* Add the nnoremap `<Leader>dg` (switch to git root directory).
+* Add the function `GitRoot()` to switch to git root directory.
+* The nnoremap `<Leader>u` (`Undotree`) changes to `<Leader>U`.
+
 ### 2.7.9
 * Revert a little change in the function `Generator()`.
 
