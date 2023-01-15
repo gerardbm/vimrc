@@ -1,5 +1,14 @@
 ## Changelog
 
+### 2.8.1
+* Update `FZF` settings.
+* Add the nnoremap `<Leader>uh` (`:History`).
+* Add the nnoremap `<Leader>ul` (`:BLines`).
+* Add the nnoremap `<Leader>ut` (`:Tags`).
+* Add the nnoremap `<Leader>uu` (`:BTags`).
+* Add the nnoremap `<Leader>uf` (`:BTags`, filter functions).
+* Add the nnoremap `<Leader>uv` (`:BTags`, filter variables).
+
 ### 2.8.0
 * Add the internal `FZF` map `<C-h>` to hide the window preview.
 * Remove the plugin `CtrlP`.

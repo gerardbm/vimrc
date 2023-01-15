@@ -6,7 +6,7 @@
 "  (_)___/_/_/ /_/ /_/_/   \___/
 "
 "----------------------------------------------------------------
-"  Version : 2.8.0
+"  Version : 2.8.1
 "  License : MIT
 "  Author  : Gerard Bajona
 "  URL     : https://github.com/gerardbm/vimrc
@@ -280,10 +280,20 @@ let g:ale_linters = {
 " FZF settings
 let $FZF_DEFAULT_COMMAND = "ag --hidden --ignore .git -p ~/.gitignore -g ''"
 let $FZF_PREVIEW_COMMAND = 'cat {}'
-let g:fzf_preview_window = ['right', 'ctrl-h']
+let g:fzf_preview_window = ['right', 'ctrl-i']
 nnoremap <C-f> :Files<CR>
 nnoremap <C-p> :Buffers<CR>
 nnoremap <Leader>gz :Commits<CR>
+nnoremap <Leader>uh :History<CR>
+nnoremap <Leader>ul :BLines<CR>
+nnoremap <Leader>ut :Tags<CR>
+nnoremap <Leader>uu :BTags<CR>
+nnoremap <silent><Leader>uf
+			\ :call fzf#vim#buffer_tags('',
+			\ { 'options': ['--nth', '..-2,-1', '--query', '^f$ ']  })<CR>
+nnoremap <silent><Leader>uv
+			\ :call fzf#vim#buffer_tags('',
+			\ { 'options': ['--nth', '..-2,-1', '--query', '^v$ ']  })<CR>
 
 " Navigate between errors
 nnoremap <Leader>h :lprevious<CR>zz

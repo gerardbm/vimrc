@@ -221,7 +221,7 @@
   - `<Leader>gh` starts the fugitive command `:Gvdiffsplit HEAD`.
   - `<Leader>gb` starts the fugitive command `:Gblame`.
   - `<Leader>gg` searches a string between commits (Glog).
-  - `<Leader>gz` opens a list of the last commits (`:Commits`)'.
+  - `<Leader>gz` opens the menu of `:Commits` (FZF).
 
 ### Errors
 - Normal mode
@@ -235,7 +235,13 @@
   - `<C-n>` opens, focuses or closes NERDTree.
   - `<C-t>` opens, focuses or closes Tagbar.
   - `<C-f>` opens the menu of `:Files` (FZF).
-  - `<C-p>` opens the menu of `:Buffers` (FZF.
+  - `<C-p>` opens the menu of `:Buffers` (FZF).
+  - `<Leader>uh` opens the menu of `:History` (FZF).
+  - `<Leader>ul` opens the menu of `:BLines` (FZF).
+  - `<Leader>ut` opens the menu of `:Tags` (FZF).
+  - `<Leader>uu` opens the menu of `:BTags` (FZF).
+  - `<Leader>uf` opens the menu of `:BTags`, filter functions (FZF).
+  - `<Leader>uv` opens the menu of `:BTags`, filter variables (FZF).
   - `<Leader>ii` runs a script and previews it in a split window.
   - `<Leader>ij` runs a script into a tmux window.
   - `<Leader>ia` adds/changes the path of a database.
@@ -268,17 +274,8 @@
   - `<Leader>x` inits tabularize plugin.
   - `<Leader>X` inits tabularize plugin (only the first match).
 
-- CtrlP plugin (customized)
-  - `<C-h>` toggles type (into CtrlP).
-  - `<C-l>` toggles type (into CtrlP).
-  - `<C-s>` deletes the last character.
-  - `<C-d>` deletes the current character.
-  - `<C-u>` deletes the entire line.
-  - `<C-g>` runs the `ToggleByFname` function.
-  - `<C-p>` exits the plugin from inside.
-
 - FZF plugin (customized)
-  - `<C-h>` hides the window preview (into CtrlP).
+  - `<C-i>` hides the window preview (into FZF).
 
 ### Terminal
 - Terminal mode
