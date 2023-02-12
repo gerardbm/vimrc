@@ -41,13 +41,13 @@ endif
 " set mouse=c
 
 " Colorscheme settings
-" It is required to use the colorscheme Atomic
-" Source: https://github.com/gerardbm/atomic
+" It is required to use the Atomic Color Scheme
+" Source: https://github.com/gerardbm/vim-atomic
 function! AtomicSwitcher()
-	if (strftime("%H") > 8) && (strftime("%H") < 20)
-		AtomicDarkBlueSoft
+	if (strftime('%H') > 8) && (strftime('%H') < 20)
+		AtomicSpaceHC
 	else
-		AtomicNightOrangeHard
+		AtomicNightHC
 	endif
 endfunction
 
@@ -55,7 +55,6 @@ call AtomicSwitcher()
 
 " Shortcuts
 nnoremap <S-F9> :call CycleModes()<CR>:colorscheme atomic<CR>
-vnoremap <S-F9> :<C-u>call CycleModes()<CR>:colorscheme atomic<CR>gv
 
 " Paste ('p') from the clipboard
 set clipboard=unnamedplus
