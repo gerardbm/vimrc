@@ -1,5 +1,8 @@
 ## Changelog
 
+### 2.8.2
+* Enable local `.vimrc` config (`set exrc`).
+
 ### 2.8.1
 * Update `FZF` settings.
 * Add the nnoremap `<Leader>uh` (`:History`).

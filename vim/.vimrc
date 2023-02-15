@@ -6,7 +6,7 @@
 "  (_)___/_/_/ /_/ /_/_/   \___/
 "
 "----------------------------------------------------------------
-"  Version : 2.8.1
+"  Version : 2.8.2
 "  License : MIT
 "  Author  : Gerard Bajona
 "  URL     : https://github.com/gerardbm/vimrc
@@ -42,6 +42,10 @@ endif
 
 " Reload .vimrc
 nnoremap <F12> :so $MYVIMRC<CR>
+
+" Enable local .vimrc config
+set exrc
+set secure
 
 " Lines of memory to remember
 set history=10000
