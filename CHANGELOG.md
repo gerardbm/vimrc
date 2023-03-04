@@ -1,5 +1,9 @@
 ## Changelog
 
+### 2.8.3
+* Fix the cursor shape in vim for the tty.
+* Next an prev centered.
+
 ### 2.8.2
 * Enable local `.vimrc` config (`set exrc`).
 

@@ -6,7 +6,7 @@
 "  (_)___/_/_/ /_/ /_/_/   \___/
 "
 "----------------------------------------------------------------
-"  Version : 2.8.2
+"  Version : 2.8.3
 "  License : MIT
 "  Author  : Gerard Bajona
 "  URL     : https://github.com/gerardbm/vimrc
@@ -617,9 +617,11 @@ set laststatus=2
 
 " Change the cursor shape
 if !has("nvim")
-	let &t_SI = "\<Esc>[6 q"
-	let &t_SR = "\<Esc>[4 q"
-	let &t_EI = "\<Esc>[2 q"
+	if &term != "linux"
+		let &t_SI = "\<Esc>[6 q"
+		let &t_SR = "\<Esc>[4 q"
+		let &t_EI = "\<Esc>[2 q"
+	endif
 else
 	set guicursor=n-v:block-Cursor/lCursor-blinkon0
 	set guicursor+=i-ci-c:ver100-Cursor/lCursor-blinkon0
@@ -1034,6 +1036,10 @@ vnoremap <silent> <Leader><CR> :<C-U>call <SID>VSetSearch()<CR>:set hlsearch<CR>
 
 " Disable highlight
 nnoremap <Leader>m :noh<CR>
+
+" Next and prev centered
+nnoremap n nzz
+nnoremap N Nzz
 
 " Search into a Visual selection
 vnoremap <silent> <Space> :<C-U>call <SID>RangeSearch('/')<CR>
