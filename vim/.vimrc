@@ -6,7 +6,7 @@
 "  (_)___/_/_/ /_/ /_/_/   \___/
 "
 "----------------------------------------------------------------
-"  Version : 2.8.3
+"  Version : 2.8.4
 "  License : MIT
 "  Author  : Gerard Bajona
 "  URL     : https://github.com/gerardbm/vimrc
@@ -783,7 +783,7 @@ set winminheight=0
 set winminwidth=0
 set splitbelow
 set splitright
-set fillchars+=stlnc:\/,vert:│,fold:―,diff:―
+set fillchars+=stlnc:―,vert:│,fold:―,diff:―
 
 " Split windows
 map <C-w>- :split<CR>
@@ -1372,11 +1372,13 @@ augroup md
 	autocmd FileType markdown,liquid,text
 				\ nnoremap <silent> gh :call search('\v\[[^]]*]\([^)]*\)', 'bW')<CR>
 	autocmd FileType markdown,liquid,text
-				\ nnoremap <silent> gd :call <sid>RemoveMdLink()<CR>
+				\ nnoremap <silent> gd :call <SID>RemoveMdLink()<CR>
 	autocmd FileType markdown,liquid,text
 				\ :command! -range Enes <line1>,<line2>!trans en:es -brief
 	autocmd FileType markdown,liquid,text
 				\ :command! -range Esen <line1>,<line2>!trans es:en -brief
+	autocmd FileType markdown,liquid,text
+				\ nnoremap <silent> gx :call <SID>CustomGx()<CR>
 augroup end
 
 " CSV
@@ -1728,6 +1730,13 @@ function! s:RemoveMdLink() abort
 			call cursor(l, c)
 		endif
 	endif
+endfunction
+
+" Custom gx to preview images in markdown
+function! s:CustomGx()
+	let l:src = expand("<cfile>")
+	execute "silent !feh " . substitute(l:src, '^/', '', 'g') . " &"
+	redraw!
 endfunction
 
 "----------------------------------------------------------------

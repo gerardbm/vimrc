@@ -1,5 +1,9 @@
 ## Changelog
 
+### 2.8.4
+* Update fillchars.
+* Add the function `CustomGx()` to customize the map `gx`.
+
 ### 2.8.3
 * Fix the cursor shape in vim for the tty.
 * Next an prev centered.
