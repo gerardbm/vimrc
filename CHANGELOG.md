@@ -1,5 +1,8 @@
 ## Changelog
 
+### 2.8.5
+* Code cleanup.
+
 ### 2.8.4
 * Update fillchars.
 * Add the function `CustomGx()` to customize the map `gx`.

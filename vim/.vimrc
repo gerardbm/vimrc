@@ -6,7 +6,7 @@
 "  (_)___/_/_/ /_/ /_/_/   \___/
 "
 "----------------------------------------------------------------
-"  Version : 2.8.4
+"  Version : 2.8.5
 "  License : MIT
 "  Author  : Gerard Bajona
 "  URL     : https://github.com/gerardbm/vimrc
@@ -1331,12 +1331,6 @@ augroup binary
 	autocmd BufWritePost *.bin if &bin | %!xxd
 	autocmd BufWritePost *.bin set nomod | endif
 augroup end
-
-" Markdown
-let g:markdown_fenced_languages = [
-	\ 'python',
-	\ 'sh',
-	\ ]
 
 " Mail
 augroup mail
