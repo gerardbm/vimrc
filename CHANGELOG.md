@@ -1,5 +1,8 @@
 ## Changelog
 
+### 2.9.0
+* Add 'tgpt' (Terminal GPT 3.5).
+
 ### 2.8.5
 * Code cleanup.
 

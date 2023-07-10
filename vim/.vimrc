@@ -6,7 +6,7 @@
 "  (_)___/_/_/ /_/ /_/_/   \___/
 "
 "----------------------------------------------------------------
-"  Version : 2.8.5
+"  Version : 2.9.0
 "  License : MIT
 "  Author  : Gerard Bajona
 "  URL     : https://github.com/gerardbm/vimrc
@@ -1968,3 +1968,9 @@ function! s:ViewJekyllPost() abort
 	let s:permalink = system(s:grep . s:file . s:sed)
 	call system("google-chrome http://localhost:4000" . s:permalink)
 endfunction
+
+" Shell output to the buffer
+command! -nargs=1 SH :r !<args>
+
+" Use Terminal GPT
+nnoremap <Leader>T :SH tgpt -q "

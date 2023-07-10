@@ -263,6 +263,7 @@
   - `<Leader>B` shows syntax highlighting groups.
   - `<Leader>U` toggles the plugin Undotree.
   - `<Leader>W` inits ArgWrap plugin.
+  - `<Leader>T` uses tgpt; the ouput goes to the buffer.
   - `<Leader>ww` opens the personal vimwiki.
   - `<Leader>we` toggles the status of a vimwiki list item.
   - `gll` increases indentation level of a vimwiki list item.
