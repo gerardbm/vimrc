@@ -6,7 +6,7 @@
 "  (_)___/_/_/ /_/ /_/_/   \___/
 "
 "----------------------------------------------------------------
-"  Version : 2.9.0
+"  Version : 2.9.1
 "  License : MIT
 "  Author  : Gerard Bajona
 "  URL     : https://github.com/gerardbm/vimrc
@@ -79,9 +79,6 @@ endif
 " Set inc/dec
 set nrformats-=octal
 
-" Visual block
-nnoremap <C-b> <C-v>
-
 "----------------------------------------------------------------
 " 2. Plugins (Plug)
 "----------------------------------------------------------------
@@ -120,7 +117,7 @@ call plug#begin('~/.vim/plugged')
 	Plug 'Shougo/deoplete.nvim', { 'commit': '17ffeb9' }
 	Plug 'Shougo/neosnippet.vim', { 'commit': '037b7a7' }
 	Plug 'Shougo/neosnippet-snippets'
-	Plug 'Shougo/context_filetype.vim'
+	Plug 'Shougo/context_filetype.vim', { 'commit': 'e276626' }
 	Plug 'ervandew/supertab'
 
 	" C/C++ support
@@ -281,11 +278,15 @@ let g:ale_linters = {
 	\ 'tex'        : ['chktex'],
 	\ }
 
+let g:ale_sign_error='✗'
+let g:ale_sign_warning='∆'
+let g:ale_sign_info='ℹ'
+
 " FZF settings
 let $FZF_DEFAULT_COMMAND = "ag --hidden --ignore .git -p ~/.gitignore -g ''"
 let $FZF_PREVIEW_COMMAND = 'cat {}'
 let g:fzf_preview_window = ['right', 'ctrl-i']
-nnoremap <C-f> :Files<CR>
+nnoremap <C-q> :Files<CR>
 nnoremap <C-p> :Buffers<CR>
 nnoremap <Leader>gz :Commits<CR>
 nnoremap <Leader>uh :History<CR>
@@ -445,7 +446,7 @@ vnoremap <Leader>X :Tabularize /.*/<Left><Left><Left>
 let g:AutoPairsFlyMode        = 0
 let g:AutoPairsMultilineClose = 0
 let g:AutoPairsShortcutJump   = '<C-z>'
-let g:AutoPairsShortcutToggle = '<C-q>'
+let g:AutoPairsShortcutToggle = '<C-b>'
 
 " Workaround to fix an Auto-pairs bug until it gets fixed
 if has("nvim")
@@ -980,7 +981,7 @@ cnoremap <C-d> <DEL>
 cnoremap <C-p> <Up>
 cnoremap <C-n> <Down>
 cnoremap <C-v> <C-r>"
-cnoremap <C-q> <S-Right><C-w>
+cnoremap <C-g> <S-Right><C-w>
 
 "----------------------------------------------------------------
 " 12. Paste mode

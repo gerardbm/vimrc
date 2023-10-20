@@ -95,7 +95,7 @@
   - `cv` duplicates a line down.
   - `<Tab>` adds one tabulator.
   - `<S-Tab>` deletes one tabulator.
-  - `<C-q>` toggles AutoPairs plugin.
+  - `<C-b>` toggles AutoPairs plugin.
   - `<C-z>` jumps to the next AutoPairs match.
   - `=` increases a markdown heading (plugin `vim-md-headings`).
   - `_` decreases a markdown heading (plugin `vim-md-headings`).
@@ -147,7 +147,7 @@
   - `<C-f>` moves the cursor forward one character.
   - `<C-h>` deletes the last character.
   - `<C-d>` deletes the current character.
-  - `<C-q>` deletes a word, forward.
+  - `<C-g>` deletes a word, forward.
   - `<C-w>` deletes a word, backward.
   - `<C-u>` deletes all characters before the cursor.
   - `<C-j>` enters a new line.
@@ -234,7 +234,7 @@
 - Normal mode
   - `<C-n>` opens, focuses or closes NERDTree.
   - `<C-t>` opens, focuses or closes Tagbar.
-  - `<C-f>` opens the menu of `:Files` (FZF).
+  - `<C-q>` opens the menu of `:Files` (FZF).
   - `<C-p>` opens the menu of `:Buffers` (FZF).
   - `<Leader>uh` opens the menu of `:History` (FZF).
   - `<Leader>ul` opens the menu of `:BLines` (FZF).

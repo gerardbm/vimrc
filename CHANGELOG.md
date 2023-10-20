@@ -1,5 +1,12 @@
 ## Changelog
 
+### 2.9.1
+* Recover the default map for Visual-Block.
+* Add ALE signs.
+* Change the nnoremap `<C-f>` (`:Files` from FZF) to `<C-q>`.
+* Change the map `<C-q>` (toggle AutoPairs) to `<C-b>`.
+* Change the cnoremap `<C-q>` (delete a word, forward) to `<C-g>`.
+
 ### 2.9.0
 * Add 'tgpt' (Terminal GPT 3.5).
 
