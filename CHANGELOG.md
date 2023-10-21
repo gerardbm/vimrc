@@ -1,5 +1,8 @@
 ## Changelog
 
+### 2.9.2
+* Change the map `<C-b>` (toggle AutoPairs) to `<C-y>`.
+
 ### 2.9.1
 * Recover the default map for Visual-Block.
 * Add ALE signs.

@@ -95,7 +95,7 @@
   - `cv` duplicates a line down.
   - `<Tab>` adds one tabulator.
   - `<S-Tab>` deletes one tabulator.
-  - `<C-b>` toggles AutoPairs plugin.
+  - `<C-y>` toggles AutoPairs plugin.
   - `<C-z>` jumps to the next AutoPairs match.
   - `=` increases a markdown heading (plugin `vim-md-headings`).
   - `_` decreases a markdown heading (plugin `vim-md-headings`).
