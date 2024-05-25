@@ -6,7 +6,7 @@
 "  (_)___/_/_/ /_/ /_/_/   \___/
 "
 "----------------------------------------------------------------
-"  Version : 2.9.2
+"  Version : 2.9.3
 "  License : MIT
 "  Author  : Gerard Bajona
 "  URL     : https://github.com/gerardbm/vimrc
@@ -102,7 +102,6 @@ call plug#begin('~/.vim/plugged')
 	Plug 'preservim/nerdtree'
 	Plug 'valloric/listtoggle'
 	Plug 'majutsushi/tagbar'
-	Plug 'mbbill/undotree'
 	Plug 'dense-analysis/ale'
 	Plug 'junegunn/fzf'
 	Plug 'junegunn/fzf.vim'
@@ -199,6 +198,8 @@ call plug#begin('~/.vim/plugged')
 	Plug 'mattn/webapi-vim'
 	Plug 'mattn/emmet-vim'
 	Plug 'vimwiki/vimwiki', { 'branch': 'master' }
+	" Plug 'mbbill/undotree'
+	" Plug 'chrisbra/colorizer'
 
 	" Color schemes
 	Plug 'gerardbm/vim-atomic'
@@ -515,7 +516,7 @@ nmap <Leader>gl <Plug>(openbrowser-open)
 " Goyo settings
 let g:goyo_width  = "80"
 let g:goyo_height = "100%"
-let g:goyo_linenr = 0
+let g:goyo_linenr = 1
 
 nnoremap <F11> :Goyo<CR>
 
@@ -661,6 +662,7 @@ endif
 syntax enable
 
 " Color scheme
+let g:atomic_matchparen = 0
 colorscheme atomic
 
 " Show syntax highlighting groups
@@ -1934,7 +1936,7 @@ endfunction
 function! s:ResizeWinPreview() abort
 	exec '$d'
 	let s:size = line('$')
-	if s:size < 11
+	if s:size < 10
 		exec 'resize ' . line('$')
 	else
 		exec 'resize 10'

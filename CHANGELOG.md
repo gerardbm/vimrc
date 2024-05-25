@@ -1,5 +1,11 @@
 ## Changelog
 
+### 2.9.3
+* Disable Undotree temporarily.
+* Add line number in Goyo plugin.
+* Add settings for Atomic color scheme.
+* Change the preview window size.
+
 ### 2.9.2
 * Change the map `<C-b>` (toggle AutoPairs) to `<C-y>`.
 
