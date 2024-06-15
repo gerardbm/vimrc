@@ -1,5 +1,8 @@
 ## Changelog
 
+### 2.9.4
+* Stop FZF updates for compatibility issues with tmux.
+
 ### 2.9.3
 * Disable Undotree temporarily.
 * Add line number in Goyo plugin.

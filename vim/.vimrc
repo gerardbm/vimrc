@@ -6,7 +6,7 @@
 "  (_)___/_/_/ /_/ /_/_/   \___/
 "
 "----------------------------------------------------------------
-"  Version : 2.9.3
+"  Version : 2.9.4
 "  License : MIT
 "  Author  : Gerard Bajona
 "  URL     : https://github.com/gerardbm/vimrc
@@ -103,7 +103,7 @@ call plug#begin('~/.vim/plugged')
 	Plug 'valloric/listtoggle'
 	Plug 'majutsushi/tagbar'
 	Plug 'dense-analysis/ale'
-	Plug 'junegunn/fzf'
+	Plug 'junegunn/fzf', { 'commit': '01e7668' }
 	Plug 'junegunn/fzf.vim'
 
 	" Deoplete, specific for Vim8
