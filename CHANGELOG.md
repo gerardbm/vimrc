@@ -1,10 +1,13 @@
 ## Changelog
 
+### 2.9.6
+* Add 'proselint' to `g:ale_linters_ignore` in vimwiki files.
+
 ### 2.9.5
 * Allow FZF updates again; compatibility issues have been resolved.
 * Enable Undotree again.
 * Enable the colorizer plugin.
-* Add 'proselint' to `g:ale_linters_ignore`.
+* Add 'proselint' to `g:ale_linters_ignore` in markdown files.
 
 ### 2.9.4
 * Stop FZF updates for compatibility issues with tmux.

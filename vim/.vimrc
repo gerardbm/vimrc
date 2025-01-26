@@ -6,7 +6,7 @@
 "  (_)___/_/_/ /_/ /_/_/   \___/
 "
 "----------------------------------------------------------------
-"  Version : 2.9.5
+"  Version : 2.9.6
 "  License : MIT
 "  Author  : Gerard Bajona
 "  URL     : https://github.com/gerardbm/vimrc
@@ -280,7 +280,8 @@ let g:ale_linters = {
 	\ }
 
 let g:ale_linters_ignore = {
-	\ 'markdown': ['proselint'],
+	\ 'markdown' : ['proselint'],
+	\ 'vimwiki'  : ['proselint'],
 	\}
 
 let g:ale_sign_error='✗'
