@@ -1,5 +1,11 @@
 ## Changelog
 
+### 2.9.5
+* Allow FZF updates again; compatibility issues have been resolved.
+* Enable Undotree again.
+* Enable the colorizer plugin.
+* Add 'proselint' to `g:ale_linters_ignore`.
+
 ### 2.9.4
 * Stop FZF updates for compatibility issues with tmux.
 

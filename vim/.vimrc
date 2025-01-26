@@ -6,7 +6,7 @@
 "  (_)___/_/_/ /_/ /_/_/   \___/
 "
 "----------------------------------------------------------------
-"  Version : 2.9.4
+"  Version : 2.9.5
 "  License : MIT
 "  Author  : Gerard Bajona
 "  URL     : https://github.com/gerardbm/vimrc
@@ -103,7 +103,7 @@ call plug#begin('~/.vim/plugged')
 	Plug 'valloric/listtoggle'
 	Plug 'majutsushi/tagbar'
 	Plug 'dense-analysis/ale'
-	Plug 'junegunn/fzf', { 'commit': '01e7668' }
+	Plug 'junegunn/fzf'
 	Plug 'junegunn/fzf.vim'
 
 	" Deoplete, specific for Vim8
@@ -198,8 +198,8 @@ call plug#begin('~/.vim/plugged')
 	Plug 'mattn/webapi-vim'
 	Plug 'mattn/emmet-vim'
 	Plug 'vimwiki/vimwiki', { 'branch': 'master' }
-	" Plug 'mbbill/undotree'
-	" Plug 'chrisbra/colorizer'
+	Plug 'mbbill/undotree'
+	Plug 'chrisbra/colorizer'
 
 	" Color schemes
 	Plug 'gerardbm/vim-atomic'
@@ -278,6 +278,10 @@ let g:ale_linters = {
 	\ 'css'        : ['csslint'],
 	\ 'tex'        : ['chktex'],
 	\ }
+
+let g:ale_linters_ignore = {
+	\ 'markdown': ['proselint'],
+	\}
 
 let g:ale_sign_error='✗'
 let g:ale_sign_warning='∆'
