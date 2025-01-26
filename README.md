@@ -53,6 +53,7 @@ This configuration is focused on programming in C/C++, Go, Rust, Haskell, Perl, 
   - [listtoggle](https://github.com/valloric/listtoggle)
   - [tagbar](https://github.com/majutsushi/tagbar)
   - [undotree](https://github.com/mbbill/undotree)
+  - [colorizer](https://github.com/chrisbra/colorizer)
   - [ale](https://github.com/w0rp/ale)
   - [fzf](https://github.com/junegunn/fzf.vim)
   <!-- - [ctrlp.vim](https://github.com/ctrlpvim/ctrlp.vim) -->
