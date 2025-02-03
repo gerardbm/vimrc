@@ -14,6 +14,10 @@ syn region markdownCode matchgroup=markdownCodeDelimiter
 " Extended
 syn match markdownExt /{[.:#][^}]*}/ conceal
 
+" Error
+" syn match markdownError "\w\@<=_\w\@="
+syn match markdownError "\w\@<=\w\@="
+
 " Latex
 let b:current_syntax = ''
 unlet b:current_syntax

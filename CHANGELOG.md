@@ -1,5 +1,8 @@
 ## Changelog
 
+### 2.9.7
+* Improve the markdown syntax.
+
 ### 2.9.6
 * Add 'proselint' to `g:ale_linters_ignore` in vimwiki files.
 
