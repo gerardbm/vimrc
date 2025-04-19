@@ -133,10 +133,11 @@
   - `ñr` inserts `[]` faster.
   - `ñb` inserts `()` faster.
   - `ñB` inserts `{}` faster.
+  - `ññ` inserts `{{  }}` faster.
   - `ñp` inserts `{%  %}` faster.
-  - `ññ` inserts a `\` faster.
-  - `çç` inserts `{{  }}` faster.
-  - `ñc` enter Vim's expression register (math).
+  - `ñ-` inserts `{%-  -%}` faster.
+  - `ñl` inserts a `\` faster.
+  - `ñm` enter Vim's expression register (math).
   - `<C-z>` jumps to the next AutoPairs match.
   - `<C-q>` toggles AutoPairs plugin.
 

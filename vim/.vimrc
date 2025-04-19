@@ -6,7 +6,7 @@
 "  (_)___/_/_/ /_/ /_/_/   \___/
 "
 "----------------------------------------------------------------
-"  Version : 2.9.7
+"  Version : 2.9.8
 "  License : MIT
 "  Author  : Gerard Bajona
 "  URL     : https://github.com/gerardbm/vimrc
@@ -1164,16 +1164,17 @@ nnoremap <Leader>f mao<Esc>`a
 " Enter a new line Up from 'Normal Mode'
 nnoremap <Leader>F maO<Esc>`a
 
-" Insert brackets and backslash faster
+" Insert brackets faster using the ISO-ES layout
 inoremap ñr []<left>
 inoremap ñb ()<left>
 inoremap ñB {}<left>
-inoremap ññ \
-inoremap çç {{  }}<left><left><left>
+inoremap ññ {{  }}<left><left><left>
+inoremap ñl \
 autocmd FileType html,markdown,liquid inoremap ñp {%  %}<left><left><left>
+autocmd FileType html,markdown,liquid inoremap ñ- {%-  -%}<left><left><left><left>
 
 " Enter Vim's expression register (math)
-inoremap ñc <C-r>=
+inoremap ñm <C-r>=
 
 "----------------------------------------------------------------
 " 15. Make settings

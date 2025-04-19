@@ -1,5 +1,11 @@
 ## Changelog
 
+### 2.9.8
+* Change the inoremap `ññ` (insert a backslash) to `ñl`.
+* Change the inoremap `çç` (insert `{{  }}`) to `ññ`.
+* Add the inoremap `ñ-` to insert the liquid tags `{%-  -%}`.
+* Change the inoremap `ñc` (do math operations) to `ñm`.
+
 ### 2.9.7
 * Improve the markdown syntax.
 
@@ -117,7 +123,7 @@
 ### 2.6.0
 * Install the plugin `vim-openscad` (syntax for openscad).
 * Update surround keymaps.
-* Add the nnoremap `çç` to add `{{  }}`.
+* Add the inoremap `çç` to add `{{  }}`.
 
 ### 2.5.4
 * Use `python` by default instead of `python3`.
