@@ -220,7 +220,7 @@
   - `<Leader>gu` undoes the hunk (GitGutter).
   - `<Leader>gv` starts the fugitive command `:Gvdiffsplit`.
   - `<Leader>gh` starts the fugitive command `:Gvdiffsplit HEAD`.
-  - `<Leader>gb` starts the fugitive command `:Gblame`.
+  - `<Leader>gb` starts the fugitive command `:Git blame`.
   - `<Leader>gg` searches a string between commits (Glog).
   - `<Leader>gz` opens the menu of `:Commits` (FZF).
 
@@ -264,7 +264,6 @@
   - `<Leader>B` shows syntax highlighting groups.
   - `<Leader>U` toggles the plugin Undotree.
   - `<Leader>W` inits ArgWrap plugin.
-  - `<Leader>T` uses tgpt; the ouput goes to the buffer.
   - `<Leader>ww` opens the personal vimwiki.
   - `<Leader>we` toggles the status of a vimwiki list item.
   - `gll` increases indentation level of a vimwiki list item.

@@ -6,7 +6,7 @@
 "  (_)___/_/_/ /_/ /_/_/   \___/
 "
 "----------------------------------------------------------------
-"  Version : 2.9.8
+"  Version : 2.9.9
 "  License : MIT
 "  Author  : Gerard Bajona
 "  URL     : https://github.com/gerardbm/vimrc
@@ -241,7 +241,7 @@ nnoremap <Leader>gu :GitGutterUndoHunk<CR>
 nnoremap <C-s> :call <SID>ToggleGstatus()<CR>
 nnoremap <Leader>gv :Gvdiffsplit<CR>:windo set wrap<CR>
 nnoremap <Leader>gh :Gvdiffsplit HEAD<CR>:windo set wrap<CR>
-nnoremap <Leader>gb :Gblame<CR>
+nnoremap <Leader>gb :Git blame<CR>
 
 " Searching for text added or removed by a commit
 nnoremap <Leader>gg :call <SID>GrepWrapper('Gclog', '-i -G', '--')<CR>
@@ -1980,6 +1980,3 @@ endfunction
 
 " Shell output to the buffer
 command! -nargs=1 SH :r !<args>
-
-" Use Terminal GPT
-nnoremap <Leader>T :SH tgpt -q "

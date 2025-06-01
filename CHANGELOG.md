@@ -1,5 +1,9 @@
 ## Changelog
 
+### 2.9.9
+* Fix the nnoremap `<Leader>gb`: the command is `:Git blame`.
+* Remove 'tgpt' (Terminal GPT 3.5).
+
 ### 2.9.8
 * Change the inoremap `ññ` (insert a backslash) to `ñl`.
 * Change the inoremap `çç` (insert `{{  }}`) to `ññ`.
