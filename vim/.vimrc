@@ -6,7 +6,7 @@
 "  (_)___/_/_/ /_/ /_/_/   \___/
 "
 "----------------------------------------------------------------
-"  Version : 2.9.9
+"  Version : 2.9.10
 "  License : MIT
 "  Author  : Gerard Bajona
 "  URL     : https://github.com/gerardbm/vimrc
@@ -297,7 +297,7 @@ nnoremap <C-p> :Buffers<CR>
 nnoremap <Leader>gz :Commits<CR>
 nnoremap <Leader>uh :History<CR>
 nnoremap <Leader>ul :BLines<CR>
-nnoremap <Leader>ut :Tags<CR>
+nnoremap <Leader>um :BMarks<CR>
 nnoremap <Leader>uu :BTags<CR>
 nnoremap <silent><Leader>uf
 			\ :call fzf#vim#buffer_tags('',
@@ -305,6 +305,7 @@ nnoremap <silent><Leader>uf
 nnoremap <silent><Leader>uv
 			\ :call fzf#vim#buffer_tags('',
 			\ { 'options': ['--nth', '..-2,-1', '--query', '^v$ ']  })<CR>
+nnoremap <Leader>ut :Tags<CR>
 
 " Navigate between errors
 nnoremap <Leader>h :lprevious<CR>zz

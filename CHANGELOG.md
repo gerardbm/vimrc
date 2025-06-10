@@ -1,5 +1,8 @@
 ## Changelog
 
+### 2.9.10
+* Add the nnoremap `<Leader>um` (`:BMarks`).
+
 ### 2.9.9
 * Fix the nnoremap `<Leader>gb`: the command is `:Git blame`.
 * Remove 'tgpt' (Terminal GPT 3.5).

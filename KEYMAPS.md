@@ -239,10 +239,11 @@
   - `<C-p>` opens the menu of `:Buffers` (FZF).
   - `<Leader>uh` opens the menu of `:History` (FZF).
   - `<Leader>ul` opens the menu of `:BLines` (FZF).
-  - `<Leader>ut` opens the menu of `:Tags` (FZF).
+  - `<Leader>um` opens the menu of `:BMarks` (FZF).
   - `<Leader>uu` opens the menu of `:BTags` (FZF).
   - `<Leader>uf` opens the menu of `:BTags`, filter functions (FZF).
   - `<Leader>uv` opens the menu of `:BTags`, filter variables (FZF).
+  - `<Leader>ut` opens the menu of `:Tags` (FZF).
   - `<Leader>ii` runs a script and previews it in a split window.
   - `<Leader>ij` runs a script into a tmux window.
   - `<Leader>ia` adds/changes the path of a database.
