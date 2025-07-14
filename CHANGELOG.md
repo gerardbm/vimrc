@@ -1,5 +1,8 @@
 ## Changelog
 
+### 2.9.11
+* Fix: add autocmd support for `liquid.markdown` filetype.
+
 ### 2.9.10
 * Add the nnoremap `<Leader>um` (`:BMarks`).
 

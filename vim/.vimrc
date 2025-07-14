@@ -6,7 +6,7 @@
 "  (_)___/_/_/ /_/ /_/_/   \___/
 "
 "----------------------------------------------------------------
-"  Version : 2.9.10
+"  Version : 2.9.11
 "  License : MIT
 "  Author  : Gerard Bajona
 "  URL     : https://github.com/gerardbm/vimrc
@@ -87,7 +87,8 @@ call plug#begin('~/.vim/plugged')
 
 	" Statusbar
 	Plug 'vim-airline/vim-airline'
-	Plug 'vim-airline/vim-airline-themes'
+	" Plug 'vim-airline/vim-airline-themes'
+	Plug 'gerardbm/vim-airline-themes'
 
 	" Git tools
 	Plug 'airblade/vim-gitgutter'
@@ -1304,15 +1305,15 @@ augroup povray
 				\ :call <SID>Generator('.png', &ft)<CR>
 augroup end
 
-" Run Jekyll (liquid)
+" Run Jekyll (liquid.markdown)
 augroup liquid
 	autocmd!
-	autocmd FileType liquid,html,yaml set wildignore+=*/.jekyll-cache/*,
+	autocmd FileType liquid.markdown,html,yaml set wildignore+=*/.jekyll-cache/*,
 				\*/_site/*,*/images/*,*/timg/*,*/icons/*,*/logo/*,*/where/*
-	autocmd FileType liquid setlocal spell spelllang=es colorcolumn=0
-	autocmd FileType liquid,yaml nnoremap <silent> <buffer> <Leader>ii
+	autocmd FileType liquid.markdown setlocal spell spelllang=es colorcolumn=0
+	autocmd FileType liquid.markdown,yaml nnoremap <silent> <buffer> <Leader>ii
 				\ :call <SID>ToggleJekyll()<CR>
-	autocmd FileType liquid,md nnoremap <silent> <buffer> <Leader>ij
+	autocmd FileType liquid.markdown nnoremap <silent> <buffer> <Leader>ij
 				\ :call <SID>ViewJekyllPost()<CR>
 augroup end
 
