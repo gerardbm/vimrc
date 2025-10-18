@@ -1,5 +1,8 @@
 ## Changelog
 
+### 2.9.12
+* Add the nnoremap `<Leader>ij` to convert PlantUML to SVG via `Generator()`.
+
 ### 2.9.11
 * Fix: add autocmd support for `liquid.markdown` filetype.
 

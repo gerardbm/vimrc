@@ -254,6 +254,7 @@
   - `<Leader>ih` converts MD to HTML and previews it with Mupdf.
   - `<Leader>ij` converts MD to EPUB and previews it with Mupdf.
   - `<Leader>ii` converts UML (PlantUML) to PNG and previews it with Mupdf.
+  - `<Leader>ij` converts UML (PlantUML) to SVG and previews it with Mupdf.
   - `<Leader>ii` converts EUK (Eukleides) to PNG and previews it with Mupdf.
   - `<Leader>ii` converts ASY (Asymptote) to PNG and previews it with Mupdf.
   - `<Leader>ii` converts PP3 (Sky charts) to PNG and previews it with Mupdf.

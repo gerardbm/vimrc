@@ -6,7 +6,7 @@
 "  (_)___/_/_/ /_/ /_/_/   \___/
 "
 "----------------------------------------------------------------
-"  Version : 2.9.11
+"  Version : 2.9.12
 "  License : MIT
 "  Author  : Gerard Bajona
 "  URL     : https://github.com/gerardbm/vimrc
@@ -1257,6 +1257,8 @@ augroup uml
 	autocmd!
 	autocmd FileType plantuml nnoremap <silent> <buffer> <Leader>ii
 				\ :call <SID>Generator('.png', &ft)<CR>
+	autocmd FileType plantuml nnoremap <silent> <buffer> <Leader>ij
+				\ :call <SID>Generator('.svg', &ft)<CR>
 augroup end
 
 " Draw with Graphviz
@@ -1811,7 +1813,11 @@ function! s:Generator(ext, ft) abort
 		endif
 		let l:cmd = system('pandoc -s ' . l:opt . l:inp . ' -o ' . l:out)
 	elseif a:ft ==# 'plantuml'
-		let l:cmd = system('plantuml ' . l:inp . ' ' . l:out)
+		if a:ext ==# '.png'
+			let l:cmd = system('plantuml ' . l:inp)
+		elseif a:ext ==# '.svg'
+			let l:cmd = system('plantuml -tsvg ' . l:inp)
+		endif
 	elseif a:ft ==# 'dot'
 		let l:cmd = system('dot -Tpng ' . l:inp . ' -o ' . l:out)
 	elseif a:ft ==# 'eukleides'
@@ -1854,6 +1860,8 @@ endfunction
 function! s:Previewer(out, ft) abort
 	if a:ft ==# '.pdf'
 		let l:tool = 'zathura'
+  elseif a:ft ==# '.svg'
+    let l:tool = 'eog'
 	else
 		let l:tool = 'mupdf'
 	endif
