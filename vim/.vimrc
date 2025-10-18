@@ -1861,7 +1861,7 @@ function! s:Previewer(out, ft) abort
 	if a:ft ==# '.pdf'
 		let l:tool = 'zathura'
   elseif a:ft ==# '.svg'
-    let l:tool = 'eog'
+    let l:tool = 'geeqie' " 'eog' is also a good option
 	else
 		let l:tool = 'mupdf'
 	endif
