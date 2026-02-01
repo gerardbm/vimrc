@@ -61,20 +61,24 @@ This configuration is focused on programming in C/C++, Go, Rust, Haskell, Perl, 
 
 - Autocomplete:
   - [coc.nvim](https://github.com/neoclide/coc.nvim)
-    - Bash: `:CocInstall coc-sh`
+    - Bash: `:CocInstall coc-sh` (install `bash-language-server` via npm)
     - C/C++: `:CocInstall coc-clangd` (install `clangd`)
     - CSS: `:CocInstall coc-css`
     - Go: `:CocInstall coc-go` (install `gopls`)
     - Haskell: `:CocInstall coc-hls`
     - HTML: `:CocInstall coc-html`
     - JavaScript: `:CocInstall coc-tsserver`
+    - Julia: `:CocInstall coc-julia`
     - Json: `:CocInstall coc-json`
+    - LaTeX: `:CocInstall coc-texlab`
+    - Lua: `:CocInstall coc-lua`
     - Markdown: `:CocInstall coc-markdownlint`
     - Perl: `:CocInstall coc-perl`
     - PHP: `:CocInstall coc-phpls`
     - Python: `:CocInstall coc-pyright`
     - Ruby: `:CocInstall coc-solargraph` (install `rubocop`)
     - Rust: `:CocInstall coc-rust-analyzer` (install `rust-analyzer`)
+    - SQL: `:CocInstall coc-sql`
     - VimScript: `:CocInstall coc-vimlsp`
     - [More language servers](https://github.com/neoclide/coc.nvim/wiki/Language-servers)
   - [vim-snippets](https://github.com/honza/vim-snippets)
