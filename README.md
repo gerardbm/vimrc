@@ -1,4 +1,5 @@
 # Vim configuration
+
 Gerard's **Vim** & **Neovim** configuration.
 
 This Vim configuration is purely subjective. The goal of it is to get comfortable while programming.
@@ -11,7 +12,7 @@ Navigate easily: between buffers, tabs, windows and tmux panes; between syntax w
 
 Easily highlight the word under the cursor or the current selection. A lot of commands have been defined to work with the highlighted text: the mentioned grep and vimgrep, and replace. Also, you can search and replace into the visual selection only.
 
-Some useful tools have been integrated. Plugins: **FZF** (navigate between files, open buffers, git commits, git files, lines, history, etc), **NERDTree** (tree files with filesystem operations), **vim-fugitive** (git commands), **undotree** (history visualizer), **ALE** (async syntax linter), **deoplete** (autocompletion for Vim and Neovim), **neosnippet** (code snippets), **Vimwiki** (organize notes, manage todo-lists...) and manage sessions with **vim-session**.
+Some useful tools have been integrated. Plugins: **FZF** (navigate between files, open buffers, git commits, git files, lines, history, etc), **NERDTree** (tree files with filesystem operations), **vim-fugitive** (git commands), **undotree** (history visualizer), **ALE** (async syntax linter), **coc.nvim** (LSP and autocompletion for Vim and Neovim), **vim-snippets** (code snippets), **Vimwiki** (organize notes, manage todo-lists...) and manage sessions with **vim-session**.
 
 Additionally, run scripting code (Bash, Perl, Ruby, Python, Lua, PHP and JavaScript) into a separate **tmux** window or simply preview the output in the preview window, where you can also preview SQL queries from **Sqlite** databases and **Maxima** operations (symbolic maths) from a MAX file. Preview the output of any shell command using the command `:Commander`.
 
@@ -52,36 +53,34 @@ This configuration is focused on programming in C/C++, Go, Rust, Haskell, Perl, 
   - [nerdtree](https://github.com/scrooloose/nerdtree)
   - [listtoggle](https://github.com/valloric/listtoggle)
   - [tagbar](https://github.com/majutsushi/tagbar)
+  - [ale](https://github.com/dense-analysis/ale)
+  - [fzf](https://github.com/junegunn/fzf)
+  - [fzf.vim](https://github.com/junegunn/fzf.vim)
   - [undotree](https://github.com/mbbill/undotree)
-  - [colorizer](https://github.com/chrisbra/colorizer)
-  - [ale](https://github.com/w0rp/ale)
-  - [fzf](https://github.com/junegunn/fzf.vim)
   <!-- - [ctrlp.vim](https://github.com/ctrlpvim/ctrlp.vim) -->
 
-- Specific for Vim and Deoplete:
-  - [nvim-yarp](https://github.com/roxma/nvim-yarp)
-  - [vim-hug-neovim-rpc](https://github.com/roxma/vim-hug-neovim-rpc)
-
 - Autocomplete:
-  - [deoplete](https://github.com/Shougo/deoplete)
-  - [neosnippet.vim](https://github.com/Shougo/neosnippet.vim)
-  - [neosnippet-snippets](https://github.com/Shougo/neosnippet-snippets)
-  - [context_filetype.vim](https://github.com/Shougo/context_filetype.vim)
-  - [supertab](https://github.com/ervandew/supertab)
-
-- C/C++ support
-  - [deoplete-clang](https://github.com/deoplete-plugins/deoplete-clang)
+  - [coc.nvim](https://github.com/neoclide/coc.nvim)
+    - Bash: `:CocInstall coc-sh`
+    - C/C++: `:CocInstall coc-clangd` (install `clangd`)
+    - CSS: `:CocInstall coc-css`
+    - Go: `:CocInstall coc-go` (install `gopls`)
+    - Haskell: `:CocInstall coc-hls`
+    - HTML: `:CocInstall coc-html`
+    - JavaScript: `:CocInstall coc-tsserver`
+    - Json: `:CocInstall coc-json`
+    - Markdown: `:CocInstall coc-markdownlint`
+    - Perl: `:CocInstall coc-perl`
+    - PHP: `:CocInstall coc-phpls`
+    - Python: `:CocInstall coc-pyright`
+    - Ruby: `:CocInstall coc-solargraph` (install `rubocop`)
+    - Rust: `:CocInstall coc-rust-analyzer` (install `rust-analyzer`)
+    - VimScript: `:CocInstall coc-vimlsp`
+    - [More language servers](https://github.com/neoclide/coc.nvim/wiki/Language-servers)
+  - [vim-snippets](https://github.com/honza/vim-snippets)
 
 - Go support
   - [vim-go](https://github.com/fatih/vim-go)
-  - [gocode](https://github.com/nsf/gocode)
-  - [deoplete-go](https://github.com/zchee/deoplete-go)
-
-- Perl support
-  - [perlomni.vim](https://github.com/c9s/perlomni.vim)
-
-- Python support
-  - [deoplete-jedi](https://github.com/deoplete-plugins/deoplete-jedi)
 
 - Ruby support
   - [vim-ruby](https://github.com/vim-ruby/vim-ruby)
@@ -89,33 +88,14 @@ This configuration is focused on programming in C/C++, Go, Rust, Haskell, Perl, 
   - [vim-endwise](https://github.com/tpope/vim-endwise)
   - [vim-liquid](https://github.com/tpope/vim-liquid)
 
-- PHP support
-  - [phpcomplete.vim](https://github.com/shawncplus/phpcomplete.vim)
-
-- Haskell support
-  - [neco-ghc](https://github.com/eagletmt/neco-ghc)
-
-- Rust support
-  - [vim-racer](https://github.com/racer-rust/vim-racer)
-
-- Zsh support
-  - [deoplete-zsh](https://github.com/deoplete-plugins/deoplete-zsh)
-
 - JavaScript support
-  - [tern_for_vim](https://github.com/ternjs/tern_for_vim)
-  - [deoplete-ternjs](https://github.com/carlitux/deoplete-ternjs)
   - [jspc.vim](https://github.com/othree/jspc.vim)
   - [vim-jsbeautify](https://github.com/maksimr/vim-jsbeautify)
-
-  - VimL support
-  - [neco-vim](https://github.com/Shougo/neco-vim)
 
 - Additional syntax files:
   - [html5.vim](https://github.com/othree/html5.vim)
   - [css-syntax.vim](https://github.com/vim-language-dept/css-syntax.vim)
-  - [vim-css3-syntax](https://github.com/hail2u/vim-css3-syntax)
   - [vim-javascript](https://github.com/pangloss/vim-javascript)
-  - [neco-syntax](https://github.com/Shougo/neco-syntax)
   - [i3config.vim](https://github.com/mboughaba/i3config.vim)
   - [plantuml-syntax](https://github.com/aklt/plantuml-syntax)
   - [asy.vim](https://github.com/gerardbm/asy.vim)
@@ -148,9 +128,11 @@ This configuration is focused on programming in C/C++, Go, Rust, Haskell, Perl, 
   - [webapi-vim](https://github.com/mattn/webapi-vim)
   - [emmet-vim](https://github.com/mattn/emmet-vim)
   - [vimwiki](https://github.com/vimwiki/vimwiki)
+  - [colorizer](https://github.com/chrisbra/colorizer)
 
 - Color schemes:
   - [vim-atomic](https://github.com/gerardbm/vim-atomic)
+  - [vim-cosmic](https://github.com/gerardbm/vim-cosmic)
 
 Read the [code](https://github.com/gerardbm/vimrc/blob/master/vim/.vimrc) directly to know more details.
 

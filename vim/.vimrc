@@ -6,7 +6,7 @@
 "  (_)___/_/_/ /_/ /_/_/   \___/
 "
 "----------------------------------------------------------------
-"  Version : 2.9.12
+"  Version : 3.0.0
 "  License : MIT
 "  Author  : Gerard Bajona
 "  URL     : https://github.com/gerardbm/vimrc
@@ -69,8 +69,8 @@ nnoremap Q <NOP>
 " Open help in a vertical window
 cnoreabbrev help vert help
 
-" Terminal (nvim)
-if has("terminal") && has("nvim")
+" Terminal
+if has("terminal")
 	nnoremap <silent> <F7> :call <SID>ToggleTerminal()<CR>
 	tnoremap <silent> <F7> <C-\><C-n><Bar>:wincmd p<CR>
 	tnoremap <Esc> <C-\><C-n>
@@ -99,40 +99,21 @@ call plug#begin('~/.vim/plugged')
 	Plug 'xolox/vim-misc'
 
 	" Tools
-	Plug 'preservim/nerdcommenter', { 'commit': 'a5d1663' }
+	Plug 'preservim/nerdcommenter'
 	Plug 'preservim/nerdtree'
 	Plug 'valloric/listtoggle'
 	Plug 'majutsushi/tagbar'
 	Plug 'dense-analysis/ale'
 	Plug 'junegunn/fzf'
 	Plug 'junegunn/fzf.vim'
+	Plug 'mbbill/undotree'
 
-	" Deoplete, specific for Vim8
-	if !has("nvim")
-		Plug 'roxma/nvim-yarp'
-		Plug 'roxma/vim-hug-neovim-rpc'
-	endif
-
-	" Autocomplete
-	Plug 'Shougo/deoplete.nvim', { 'commit': '17ffeb9' }
-	Plug 'Shougo/neosnippet.vim', { 'commit': '037b7a7' }
-	Plug 'Shougo/neosnippet-snippets'
-	Plug 'Shougo/context_filetype.vim', { 'commit': 'e276626' }
-	Plug 'ervandew/supertab'
-
-	" C/C++ support
-	Plug 'deoplete-plugins/deoplete-clang', { 'commit': '30f17cb' }
+	" LSP and autocompletion
+	Plug 'neoclide/coc.nvim', {'branch': 'release'}
+	Plug 'honza/vim-snippets'
 
 	" Go support
-	Plug 'fatih/vim-go', { 'tag': 'v1.19' }
-	Plug 'nsf/gocode', { 'rtp': 'vim', 'do': '~/.vim/plugged/gocode/vim/symlink.sh' }
-	Plug 'deoplete-plugins/deoplete-go', { 'commit': 'fa73f06'}
-
-	" Perl support
-	Plug 'c9s/perlomni.vim'
-
-	" Python support
-	Plug 'deoplete-plugins/deoplete-jedi', { 'commit': '46121d9' }
+	Plug 'fatih/vim-go',
 
 	" Ruby support
 	Plug 'vim-ruby/vim-ruby'
@@ -140,33 +121,14 @@ call plug#begin('~/.vim/plugged')
 	Plug 'tpope/vim-endwise'
 	Plug 'tpope/vim-liquid'
 
-	" PHP support
-	Plug 'shawncplus/phpcomplete.vim'
-
-	" Haskell support
-	Plug 'eagletmt/neco-ghc'
-
-	" Rust support
-	Plug 'racer-rust/vim-racer'
-
-	" Zsh support
-	Plug 'deoplete-plugins/deoplete-zsh', { 'commit': '12141ad' }
-
 	" JavaScript support
-	Plug 'ternjs/tern_for_vim', { 'do': 'npm install' }
-	Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern' }
 	Plug 'othree/jspc.vim'
 	Plug 'maksimr/vim-jsbeautify'
-
-	" VimL support
-	Plug 'Shougo/neco-vim', { 'commit' : '4c0203b' }
 
 	" Additional syntax files
 	Plug 'othree/html5.vim'
 	Plug 'vim-language-dept/css-syntax.vim'
-	Plug 'hail2u/vim-css3-syntax'
 	Plug 'pangloss/vim-javascript'
-	Plug 'Shougo/neco-syntax', { 'commit': '98cba4a' }
 	Plug 'mboughaba/i3config.vim'
 	Plug 'aklt/plantuml-syntax'
 	Plug 'gerardbm/asy.vim'
@@ -199,11 +161,11 @@ call plug#begin('~/.vim/plugged')
 	Plug 'mattn/webapi-vim'
 	Plug 'mattn/emmet-vim'
 	Plug 'vimwiki/vimwiki', { 'branch': 'master' }
-	Plug 'mbbill/undotree'
 	Plug 'chrisbra/colorizer'
 
 	" Color schemes
 	Plug 'gerardbm/vim-atomic'
+	Plug 'gerardbm/vim-cosmic'
 
 call plug#end()
 
@@ -264,33 +226,31 @@ let g:NERDCustomDelimiters      = {
 	\ 'python': {'left': '#'},
 	\ }
 
-nnoremap cc :call NERDComment(0,'toggle')<CR>
-vnoremap cc :call NERDComment(0,'toggle')<CR>
+nnoremap cc :call nerdcommenter#Comment(0, 'toggle')<CR>
+vnoremap cc :call nerdcommenter#Comment(0, 'toggle')<CR>
 
 " NERDTree settings
 nnoremap <silent> <C-n> :call <SID>ToggleNERDTree()<CR>
 
+" Listtoggle settings
+let g:lt_location_list_toggle_map = '<leader>e'
+let g:lt_quickfix_list_toggle_map = '<leader>q'
+
+" Tagbar toggle (custom function)
+nnoremap <silent> <C-t> :call <SID>ToggleTagbar()<CR>
+let g:tagbar_autofocus        = 1
+let g:tagbar_show_linenumbers = 2
+let g:tagbar_sort             = 0
+
 " ALE settings
-let g:ale_linters = {
-	\ 'c'          : ['clang'],
-	\ 'vim'        : ['vint'],
-	\ 'python'     : ['pylint'],
-	\ 'javascript' : ['jshint'],
-	\ 'css'        : ['csslint'],
-	\ 'tex'        : ['chktex'],
-	\ }
-
-let g:ale_linters_ignore = {
-	\ 'markdown' : ['proselint'],
-	\ 'vimwiki'  : ['proselint'],
-	\}
-
+let g:ale_enabled = 0
 let g:ale_sign_error='✗'
 let g:ale_sign_warning='•'
 let g:ale_sign_info='ℹ'
+let g:ale_virtualtext_cursor=0
 
 " FZF settings
-let $FZF_DEFAULT_COMMAND = "ag --hidden --ignore .git -p ~/.gitignore -g ''"
+let $FZF_DEFAULT_COMMAND = "ag --hidden --ignore .git -g ''"
 let $FZF_PREVIEW_COMMAND = 'cat {}'
 let g:fzf_preview_window = ['right', 'ctrl-i']
 nnoremap <C-q> :Files<CR>
@@ -308,22 +268,29 @@ nnoremap <silent><Leader>uv
 			\ { 'options': ['--nth', '..-2,-1', '--query', '^v$ ']  })<CR>
 nnoremap <Leader>ut :Tags<CR>
 
+" Undotree toggle
+nnoremap <Leader>U :UndotreeToggle<CR>
+
+" --- LSP and autocompletion ---
+"  Coc.nvim settings
+set signcolumn=yes
+let g:coc_diagnostic_enable = 1
+let g:coc_snippet_next = '<c-j>'
+let g:coc_snippet_prev = '<c-k>'
+
+imap <C-s> <Plug>(coc-snippets-expand-jump)
+smap <C-s> <Plug>(coc-snippets-expand-jump)
+xmap <C-s> <Plug>(coc-snippets-select)
+
+nnoremap <Leader>E :CocDiagnostics --all<CR>
+nnoremap <silent> cod <Plug>(coc-definition)
+nnoremap <silent> cot <Plug>(coc-type-definition)
+nnoremap <silent> coc <Plug>(coc-implementation)
+nnoremap <silent> cor <Plug>(coc-references)
+
 " Navigate between errors
 nnoremap <Leader>h :lprevious<CR>zz
 nnoremap <Leader>l :lnext<CR>zz
-
-" Listtoggle settings
-let g:lt_location_list_toggle_map = '<leader>e'
-let g:lt_quickfix_list_toggle_map = '<leader>q'
-
-" Tagbar toggle (custom function)
-nnoremap <silent> <C-t> :call <SID>ToggleTagbar()<CR>
-let g:tagbar_autofocus        = 1
-let g:tagbar_show_linenumbers = 2
-let g:tagbar_sort             = 0
-
-" Undotree toggle
-nnoremap <Leader>U :UndotreeToggle<CR>
 
 " --- Languages ---
 " Go settings
@@ -335,7 +302,6 @@ let g:go_highlight_operators         = 1
 let g:go_highlight_build_constraints = 1
 let g:go_bin_path                    = expand('~/.gotools')
 let g:go_list_type                   = 'quickfix'
-let g:go_version_warning             = 0 " Keep until vim v8.0.1453, nvim v3.2
 
 " CSS3 settings
 augroup VimCSS3Syntax
@@ -346,11 +312,7 @@ augroup END
 " Javascript settings
 let g:javascript_plugin_jsdoc = 1
 let g:javascript_plugin_ngdoc = 1
-let g:javascript_plugin_flow  = 1
-
-" Tern_for_vim settings
-let g:tern#command   = ['tern']
-let g:tern#arguments = ['--persistent']
+let g:javascript_plugin_flow  = 0
 
 " JS-Beautify
 let g:config_Beautifier = {}
@@ -379,52 +341,6 @@ augroup beautify
 	autocmd FileType css vnoremap <buffer> <Leader>bf :call RangeCSSBeautify()<cr>
 augroup end
 
-" --- Autocomplete ---
-" SuperTab settings
-let g:SuperTabDefaultCompletionType = '<TAB>'
-
-" Deoplete settings
-" - «Deoplete requires Neovim with Python3 enabled»
-let g:python3_host_prog       = '/usr/bin/python3'
-let g:python3_host_skip_check = 1
-
-autocmd CompleteDone * if pumvisible() == 0 | pclose | endif
-let g:deoplete#enable_at_startup = 1
-let g:deoplete#enable_smart_case = 1
-let g:deoplete#omni#functions    = {}
-call deoplete#custom#option('auto_complete_delay', 250)
-
-inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
-
-" Python autocompletion
-let g:deoplete#sources#jedi#show_docstring = 1
-
-" Go autocompletion
-let g:deoplete#sources#go#gocode_binary = $GOPATH.'/bin/gocode'
-let g:deoplete#sources#go#sort_class    = ['package', 'func', 'type', 'var', 'const']
-let g:deoplete#sources#go#use_cache     = 1
-
-" Javascript autocompletion
-let g:deoplete#omni#functions.javascript = [
-	\ 'tern#Complete',
-	\ 'jspc#omni',
-	\ ]
-
-" Clang autocompletion
-let g:deoplete#sources#clang#libclang_path = '/usr/lib/llvm-4.0/lib/libclang.so'
-let g:deoplete#sources#clang#clang_header = '/usr/lib/clang'
-
-" --- Snippets ---
-" Neosnippet settings
-imap <C-s> <Plug>(neosnippet_expand_or_jump)
-smap <C-s> <Plug>(neosnippet_expand_or_jump)
-xmap <C-s> <Plug>(neosnippet_expand_target)
-
-" Behaviour like SuperTab
-smap <expr><TAB>
-	\ neosnippet#expandable_or_jumpable() ?
-	\ "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
-
 " For conceal markers
 if has('conceal')
 	set conceallevel=0 concealcursor=niv
@@ -433,10 +349,6 @@ if has('conceal')
 	nnoremap <silent> cop :set conceallevel=2<CR>:set concealcursor=niv<CR>
 	nnoremap <silent> com :set conceallevel=3<CR>:set concealcursor=niv<CR>
 endif
-
-augroup all
-	autocmd InsertLeave * NeoSnippetClearMarkers
-augroup end
 
 " --- Edition ---
 " Easy align settings
@@ -482,7 +394,7 @@ autocmd FileType markdown,liquid let b:surround_{char2nr('y')} = "<a href=\"\"
 			\ rel=\"noopener noreferrer\" target=\"_blank\">\r<\/a>"
 
 " Caps Lock settings
-imap <expr><C-l> deoplete#smart_close_popup()."\<Plug>CapsLockToggle"
+imap <silent> <C-l> <Plug>CapsLockToggle
 cmap <silent> <C-l> <Plug>CapsLockToggle
 
 " Expand region settings
@@ -582,38 +494,6 @@ set matchtime=2
 set noerrorbells
 set novisualbell
 
-if !has("nvim")
-	set t_vb=
-
-	" Terminal keycodes
-	if &term =~ 'screen'
-		set <F1>=[11~
-		set <F2>=[12~
-		set <F3>=[13~
-		set <F4>=[14~
-		set <F5>=[15~
-		set <F6>=[17~
-		set <F7>=[18~
-		set <F8>=[19~
-		set <F9>=[20~
-		set <F10>=[21~
-		set <F11>=[23~
-		set <F12>=[24~
-		set <S-F1>=[11;2~
-		set <S-F2>=[12;2~
-		set <S-F3>=[13;2~
-		set <S-F4>=[14;2~
-		set <S-F5>=[15;2~
-		set <S-F6>=[17;2~
-		set <S-F7>=[18;2~
-		set <S-F8>=[19;2~
-		set <S-F9>=[20;2~
-		set <S-F10>=[21;2~
-		set <S-F11>=[23;2~
-		set <S-F12>=[24;2~
-	endif
-endif
-
 " Mouse
 set mouse=a
 
@@ -669,8 +549,8 @@ endif
 syntax enable
 
 " Color scheme
-let g:atomic_matchparen = 0
-colorscheme atomic
+let g:cosmic_matchparen = 0
+colorscheme cosmic
 
 " Show syntax highlighting groups
 nnoremap <Leader>B :call <SID>SynStack()<CR>
@@ -973,10 +853,10 @@ inoremap <C-a> <C-O>0
 inoremap <C-e> <C-O>$
 
 " Moves the cursor back one character
-inoremap <expr><C-b> deoplete#smart_close_popup()."\<Left>"
+inoremap <C-b> <Left>
 
 " Moves the cursor forward one character
-inoremap <expr><C-f> deoplete#smart_close_popup()."\<Right>"
+inoremap <C-f> <Right>
 
 " Remove one character
 inoremap <C-d> <DEL>
@@ -1414,7 +1294,7 @@ function! s:ToggleTerminal()
 		call win_gotoid(s:winZsh)
 		norm! i
 	else
-		execute ':below 10sp term://$SHELL'
+		execute ':terminal'
 		keepalt file terminal
 		let s:winZsh = win_getid()
 		norm! i
@@ -1783,7 +1663,7 @@ function! s:Runners() abort
 	elseif &filetype =~# 'php'
 		let s:run = 'php'
 	elseif &filetype =~# 'python'
-		let s:run = 'python'
+		let s:run = 'python3'
 	elseif &filetype =~# 'ruby'
 		let s:run = 'ruby'
 	elseif &filetype =~# 'sh'

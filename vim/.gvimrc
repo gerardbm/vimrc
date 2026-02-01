@@ -23,7 +23,7 @@ set guioptions+=a
 
 " Typography
 if has("gui_gtk2") || has("gui_gtk3")
-	set guifont=Terminess\ Powerline\ 13
+	set guifont=Noto\ Mono\ for\ Powerline\ 12
 elseif has("gui_macvim")
 	set guifont=Menlo\ Regular:h14
 elseif has("gui_win32")
@@ -52,6 +52,8 @@ endif
 " endfunction
 
 " call AtomicSwitcher()
+
+colorscheme atomic
 
 AtomicSpaceMC
 

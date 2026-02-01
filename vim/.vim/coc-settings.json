@@ -1,0 +1,27 @@
+{
+	"snippets.ultisnips.enable": false,
+	"suggest.noselect": false,
+	"suggest.enablePreselect": true,
+	"inlayHint.enable": false,
+	"diagnostic.enable": true,
+	"diagnostic.errorSign": "✗",
+	"diagnostic.warningSign": "•",
+	"diagnostic.infoSign": "ℹ",
+	"diagnostic.hintSign": "➤",
+	"hover.floatConfig": {
+		"border": true,
+		"rounded": true
+	},
+	"suggest.floatConfig": {
+		"border": true,
+		"rounded": true
+	},
+	"diagnostic.floatConfig": {
+		"border": true,
+		"rounded": true
+	},
+	"signature.floatConfig": {
+		"border": true,
+		"rounded": true
+	}
+}

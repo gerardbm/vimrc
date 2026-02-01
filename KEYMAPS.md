@@ -110,7 +110,7 @@
   - `<Leader>y` copies the selection into the clipboard.
   - `<Leader>z` toggles the case of the selection.
   - `<Leader>tf` retabs the current selection.
-  - `<C-s>` expands neosnippet.
+  - `<C-s>` expands snippets.
   - `v` expands the region selected.
   - `m` shrinks the selection.
   - `<Leader>cx` displays the cursor position and selection word-count.
@@ -126,7 +126,7 @@
   - `<C-j>` enters a new line.
   - `<C-k>` enters a digraph.
   - `<C-l>` toggles the CapsLock key.
-  - `<C-s>` expands neosnippet.
+  - `<C-s>` expands snippets.
   - `<C-x>` ins-completion.
   - `<C-n>` keyword completion: next.
   - `<C-p>` keyword completion: previous.
@@ -272,6 +272,11 @@
   - `glh` decreases indentation level of a vimwiki list item.
   - `<Leader>gl` opens the URL under the cursor in a web browser.
   - `gi` inits the plugin EasyAlign.
+  - `<Leader>E` populates the location list (`:CocDiagnostics --all`).
+  - `cod` (coc-definition).
+  - `cot` (coc-type-definition).
+  - `coc` (coc-implementation).
+  - `cor` (coc-references).
 
 - Visual mode
   - `<Leader>x` inits tabularize plugin.
@@ -282,8 +287,7 @@
 
 ### Terminal
 - Terminal mode
-  - `<F7>` returns to the last window (Neovim).
-  - `<F7>t` returns to the last window (Vim).
+  - `<F7>` returns to the last window.
 
 ### Commands
 - Command mode

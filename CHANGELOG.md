@@ -1,5 +1,43 @@
 ## Changelog
 
+### 3.0.0
+* Remove the plugin deoplete.nvim.
+* Remove the plugin nvim-yarp.
+* Remove the plugin vim-hug-neovim-rpc.
+* Remove the plugin neosnippet.vim.
+* Remove the plugin neosnippet-snippets.
+* Remove the plugin context_filetype.vim.
+* Remove the plugin supertab.
+* Remove the plugin deoplete-clang.
+* Remove the plugin gocode.
+* Remove the plugin deoplete-go.
+* Remove the plugin perlomni.
+* Remove the plugin deoplete-jedi.
+* Remove the plugin phpcomplete.
+* Remove the plugin neco-ghc.
+* Remove the plugin vim-racer.
+* Remove the plugin deoplete-zsh.
+* Remove the plugin tern_for_vim.
+* Remove the plugin deoplete-ternjs.
+* Remove the plugin neco-vim.
+* Remove the plugin vim-css3-syntax.
+* Remove the plugin neco-syntax.
+* Remove and clean up the settings related to the removed plugins.
+* Install the plugin vim-cosmic.
+* Disable ALE by default.
+* Fix `FZF_DEFAULT_COMMAND` (don't use `.gitignore`).
+* Add the imap `<C-s>` to expand snippets/jump.
+* Add the smap `<C-s>` to expand snippets/jump.
+* Add the xmap `<C-s>` to select snippets.
+* Add the nnoremap `<Leader>E` to populate the location list (`:CocDiagnostics --all`).
+* Add the nnoremap `cod` (coc-definition).
+* Add the nnoremap `cot` (coc-type-definition).
+* Add the nnoremap `coc` (coc-implementation).
+* Add the nnoremap `cor` (coc-references).
+* Remove terminal keycodes.
+* Use the colorscheme cosmic.
+* Use `python3` as runner for python.
+
 ### 2.9.12
 * Add the nnoremap `<Leader>ij` to convert PlantUML to SVG via `Generator()`.
 
@@ -78,8 +116,8 @@
 
 ### 2.8.0
 * Add the internal `FZF` map `<C-h>` to hide the window preview.
-* Remove the plugin `CtrlP`.
-* Remove the plugin `GV`.
+* Remove the plugin CtrlP.
+* Remove the plugin GV.
 * Use the nnoremap `<C-f>` (`:Files`).
 * Add the nnoremap `<C-p>` (`:Buffers`).
 * The nnoremap `<Leader>gz` executes `:Commits` instead of `:GV`.
