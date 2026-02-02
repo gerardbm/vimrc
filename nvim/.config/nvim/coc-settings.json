@@ -23,5 +23,9 @@
 	"signature.floatConfig": {
 		"border": true,
 		"rounded": true
-	}
+	},
+	"markdownlint.config": {
+    "line-length": false,
+    "no-inline-html": false
+  }
 }
