@@ -4,7 +4,7 @@ Gerard's **Vim** & **Neovim** configuration.
 
 This Vim configuration is purely subjective. The goal of it is to get comfortable while programming.
 
-## General settings:
+## General settings
 
 The `<Leader>` key is ",": it's enabled only in 'Normal mode' to avoid the delay time when typing it from 'Insert mode'. The map `<C-c>` is used as `<Escape>` from any mode. Three cursor shapes (block, vertical and horizontal) are defined for Vim and Neovim for the terminals URxvt and XTerm (even into tmux); it also works in the last versions of gnome-terminal, terminator, termite and st. Default encoding is UTF-8. Color support: 256 colors for Vim and Neovim.
 
@@ -31,10 +31,12 @@ Instant preview with MuPDF (PNG, HTML and EPUB) and Zathura (PDF) after making t
 This configuration is focused on programming in C/C++, Go, Rust, Haskell, Perl, Python, Ruby, PHP, Bash, JavaScript, Liquid (Jekyll) and web development in general, with HTML5 and CSS3. It's also a good configuration to write technical and academic papers with LaTeX and markdown.
 
 **More specific information:**
+
 - [Keymaps](https://github.com/gerardbm/vimrc/blob/master/KEYMAPS.md)
 - [Changelog](https://github.com/gerardbm/vimrc/blob/master/CHANGELOG.md)
 
-## List of plugins:
+## List of plugins
+
 - Statusbar:
   - [vim-airline](https://github.com/vim-airline/vim-airline)
   - [vim-airline-themes](https://github.com/vim-airline/vim-airline-themes)
