@@ -25,7 +25,7 @@
 		"rounded": true
 	},
 	"markdownlint.config": {
-    "line-length": false,
-    "no-inline-html": false
-  }
+		"line-length": false,
+		"no-inline-html": false
+	}
 }
