@@ -3,6 +3,7 @@
 	"suggest.noselect": false,
 	"suggest.enablePreselect": true,
 	"inlayHint.enable": false,
+	"diagnostic.virtualText": false,
 	"diagnostic.enable": true,
 	"diagnostic.errorSign": "✗",
 	"diagnostic.warningSign": "•",
