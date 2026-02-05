@@ -28,5 +28,11 @@
 	"markdownlint.config": {
 		"line-length": false,
 		"no-inline-html": false
-	}
+	},
+	"html.filetypes": [
+		"html",
+		"liquid",
+		"markdown",
+		"liquid.markdown"
+	]
 }
