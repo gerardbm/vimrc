@@ -6,7 +6,7 @@
 "  (_)___/_/_/ /_/ /_/_/   \___/
 "
 "----------------------------------------------------------------
-"  Version : 3.0.0
+"  Version : 3.0.1
 "  License : MIT
 "  Author  : Gerard Bajona
 "  URL     : https://github.com/gerardbm/vimrc
@@ -281,6 +281,13 @@ let g:coc_snippet_prev = '<c-k>'
 imap <C-s> <Plug>(coc-snippets-expand-jump)
 smap <C-s> <Plug>(coc-snippets-expand-jump)
 xmap <C-s> <Plug>(coc-snippets-select)
+
+inoremap <silent><expr> <TAB>
+	\ coc#pum#visible() ? coc#_select_confirm() :
+	\ coc#expandableOrJumpable() ? 
+	\ "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
+	\ CheckBackspace() ? "\<TAB>" :
+	\ coc#refresh()
 
 nnoremap <Leader>E :CocDiagnostics --all<CR>
 nnoremap <silent> cod <Plug>(coc-definition)
@@ -754,9 +761,6 @@ nnoremap <S-TAB> <<
 
 vnoremap <TAB> >gv
 vnoremap <S-TAB> <gv
-
-inoremap <TAB> <C-i>
-inoremap <S-TAB> <C-d>
 
 " Don't show tabs
 set list
@@ -1624,6 +1628,11 @@ function! s:CustomGx()
 	let l:src = expand("<cfile>")
 	execute "silent !feh " . substitute(l:src, '^/', '', 'g') . " &"
 	redraw!
+endfunction
+
+function! CheckBackspace() abort
+	let col = col('.') - 1
+	return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
 
 "----------------------------------------------------------------

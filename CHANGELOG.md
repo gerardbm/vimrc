@@ -1,5 +1,9 @@
 # Changelog
 
+## 3.0.1
+
+* Add the inoremap `<TAB>` to `coc#_select_confirm`.
+
 ## 3.0.0
 
 * Remove the plugin deoplete.nvim.

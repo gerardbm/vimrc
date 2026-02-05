@@ -1,4 +1,7 @@
-### Interface
+# Keymaps
+
+## Interface
+
 - Normal mode
   - `<F1>` it's the default help.
   - `<F2>` renames the current buffer.
@@ -13,7 +16,8 @@
   - `<F11>` toggles Goyo plugin.
   - `<F12>` reloads your Vim/Neovim configuration.
 
-### Buffers
+## Buffers
+
 - Normal mode
   - `<C-h>` goes to the previous buffer.
   - `<C-l>` goes to the next buffer.
@@ -29,7 +33,8 @@
   - `dab` deletes the buffer content.
   - `vab` selects the buffer content.
 
-### Tabs
+## Tabs
+
 - Normal mode
   - `<Leader>td` closes the current tab.
   - `<Leader>to` closes all the tabs except the current.
@@ -37,7 +42,8 @@
   - `<Leader>tr` moves the tab position to the left.
   - `<Leader>ty` moves the tab position to the right.
 
-### Windows
+## Windows
+
 - Normal mode
   - `<M-h>` goes to the window: left.
   - `<M-j>` goes to the window: down.
@@ -59,7 +65,8 @@
   - `<Leader>.` closes the preview window from another window.
   - `q` closes the preview window (`:pclose`) from inside.
 
-### Edition
+## Edition
+
 - Normal mode
   - `J` moves lines down.
   - `K` moves lines up.
@@ -93,8 +100,6 @@
   - `cc` toggles the commented code.
   - `cx` duplicates a line up.
   - `cv` duplicates a line down.
-  - `<Tab>` adds one tabulator.
-  - `<S-Tab>` deletes one tabulator.
   - `<C-y>` toggles AutoPairs plugin.
   - `<C-z>` jumps to the next AutoPairs match.
   - `=` increases a markdown heading (plugin `vim-md-headings`).
@@ -177,7 +182,8 @@
   - `B` surrounds to `{\r}`
   - `x` surrounds to `«\r»`
 
-### Search
+## Search
+
 - Normal mode
   - `<Space>` searches forward for the pattern.
   - `<Leader><Space>` searches backward for the pattern.
@@ -187,7 +193,8 @@
 - Visual mode
   - `<Leader><CR>` highlights the current selection.
 
-### Grep
+## Grep
+
 - Normal mode
   - `<Leader>vg` vimgreps the highlight in the current buffer.
   - `<Leader>vf` vimgreps the highlight in the current directory.
@@ -198,19 +205,22 @@
   - `<Leader>n` goes to the next vimgrep result.
   - `<Leader>N` goes to the previous vimgrep result.
 
-### Replace
+## Replace
+
 - Normal mode
   - `<Leader>r` replaces the highlight in the current buffer.
   - `<Leader>R` replaces the highlight the loaded buffers.
   - `<Leader>Q` replaces the highlight to each valid quickfix entry.
 
-### Arglist
-  - `<Leader>aa` adds files to the arglist with `:argadd`.
-  - `<Leader>ad` deletes files from the arglist with `:argdelete`.
-  - `<Leader>an` creates a new arglist starting with `:args **/*.`.
-  - `<Leader>al` displays the arglist vertically.
+## Arglist
 
-### Git
+- `<Leader>aa` adds files to the arglist with `:argadd`.
+- `<Leader>ad` deletes files from the arglist with `:argdelete`.
+- `<Leader>an` creates a new arglist starting with `:args **/*.`.
+- `<Leader>al` displays the arglist vertically.
+
+## Git
+
 - Normal mode
   - `<C-s>` toggles the plugin fugitive `:Gstatus`.
   - `<C-g>` previews the current GitGutter hunk.
@@ -224,14 +234,16 @@
   - `<Leader>gg` searches a string between commits (Glog).
   - `<Leader>gz` opens the menu of `:Commits` (FZF).
 
-### Errors
+## Errors
+
 - Normal mode
   - `<Leader>h` goes to the previous warning/error.
   - `<Leader>l` goes to the next warning/error.
   - `<Leader>q` toggles the quickfix window.
   - `<Leader>e` toggles the location list window.
 
-### Tools
+## Tools
+
 - Normal mode
   - `<C-n>` opens, focuses or closes NERDTree.
   - `<C-t>` opens, focuses or closes Tagbar.
@@ -285,10 +297,12 @@
 - FZF plugin (customized)
   - `<C-i>` hides the window preview (into FZF).
 
-### Terminal
+## Terminal
+
 - Terminal mode
   - `<F7>` returns to the last window.
 
-### Commands
+## Commands
+
 - Command mode
   - `:WW` save the current buffer with sudo permissions.
