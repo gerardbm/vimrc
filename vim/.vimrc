@@ -6,7 +6,7 @@
 "  (_)___/_/_/ /_/ /_/_/   \___/
 "
 "----------------------------------------------------------------
-"  Version : 3.0.1
+"  Version : 3.0.2
 "  License : MIT
 "  Author  : Gerard Bajona
 "  URL     : https://github.com/gerardbm/vimrc
@@ -253,6 +253,7 @@ let g:ale_virtualtext_cursor=0
 let $FZF_DEFAULT_COMMAND = "ag --hidden --ignore .git -g ''"
 let $FZF_PREVIEW_COMMAND = 'cat {}'
 let g:fzf_preview_window = ['right', 'ctrl-i']
+let g:fzf_layout = {'down': '10'}
 nnoremap <C-q> :Files<CR>
 nnoremap <C-p> :Buffers<CR>
 nnoremap <Leader>gz :Commits<CR>

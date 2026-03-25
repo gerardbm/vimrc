@@ -1,5 +1,9 @@
 # Changelog
 
+## 3.0.2
+
+* Update fzf settings (add `g:fzf_layout`).
+
 ## 3.0.1
 
 * Add the inoremap `<TAB>` to `coc#_select_confirm`.
