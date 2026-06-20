@@ -108,6 +108,7 @@ This configuration is focused on programming in C/C++, Go, Rust, Haskell, Perl, 
   - [eukleides.vim](https://github.com/gerardbm/eukleides.vim)
   - [vim-rec](https://github.com/zaid/vim-rec)
   - [vim-openscad](https://github.com/sirtaj/vim-openscad)
+  - [vim-hugo](https://github.com/phelipetls/vim-hugo)
 
 - Edition:
   - [vim-easy-align](https://github.com/junegunn/vim-easy-align)

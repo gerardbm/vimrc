@@ -1,5 +1,11 @@
 # Changelog
 
+## 3.1.0
+
+* Install the plugin vim-hugo.
+* Add the inoremap `ñ<` to insert the go-hugo tags `{{<  >}}`.
+* Add the inoremap `ñ>` to insert the go-hugo tags `{{%  %}}`.
+
 ## 3.0.2
 
 * Update fzf settings (add `g:fzf_layout`).

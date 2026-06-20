@@ -6,7 +6,7 @@
 "  (_)___/_/_/ /_/ /_/_/   \___/
 "
 "----------------------------------------------------------------
-"  Version : 3.0.2
+"  Version : 3.1.0
 "  License : MIT
 "  Author  : Gerard Bajona
 "  URL     : https://github.com/gerardbm/vimrc
@@ -135,6 +135,7 @@ call plug#begin('~/.vim/plugged')
 	Plug 'gerardbm/eukleides.vim'
 	Plug 'zaid/vim-rec'
 	Plug 'sirtaj/vim-openscad'
+	Plug 'phelipetls/vim-hugo'
 
 	" Edition
 	Plug 'junegunn/vim-easy-align'
@@ -1059,6 +1060,8 @@ inoremap ññ {{  }}<left><left><left>
 inoremap ñl \
 autocmd FileType html,markdown,liquid inoremap ñp {%  %}<left><left><left>
 autocmd FileType html,markdown,liquid inoremap ñ- {%-  -%}<left><left><left><left>
+autocmd FileType html,markdown,liquid inoremap ñ< {{<  >}}<left><left><left><left>
+autocmd FileType html,markdown,liquid inoremap ñ> {{%  %}}<left><left><left><left>
 
 " Enter Vim's expression register (math)
 inoremap ñm <C-r>=

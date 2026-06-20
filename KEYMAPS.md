@@ -141,6 +141,8 @@
   - `ññ` inserts `{{  }}` faster.
   - `ñp` inserts `{%  %}` faster.
   - `ñ-` inserts `{%-  -%}` faster.
+  - `ñ<` inserts `{{<  >}}` faster.
+  - `ñ>` inserts `{{%  %}}` faster.
   - `ñl` inserts a `\` faster.
   - `ñm` enter Vim's expression register (math).
   - `<C-z>` jumps to the next AutoPairs match.
